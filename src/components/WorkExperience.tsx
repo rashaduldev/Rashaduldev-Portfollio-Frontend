@@ -87,7 +87,7 @@ export default function WorkExperience() {
                     }`}
                   >
                     <div className="rounded p-6 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700 transition-all duration-300 group hover:shadow-lg">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col md:flex-row justify-between">
                         <p className="font-semibold">{exp.title}</p>
                         <i className="text-md">{exp.duration}</i>
                       </div>

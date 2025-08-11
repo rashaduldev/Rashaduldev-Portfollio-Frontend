@@ -26,10 +26,10 @@ interface SkillSectionProps {
 }
 
 const designSkills: Skill[] = [
-  { key: "photoshop", value: 100 },
-  { key: "figma", value: 90 },
-  { key: "xd", value: 60 },
-  { key: "illustrator", value: 70 },
+  { key: "photoshop", value: 30 },
+  { key: "figma", value: 40 },
+  { key: "xd", value: 40 },
+  { key: "illustrator", value: 30 },
 ];
 
 const toolskills: Skill[] = [
@@ -42,14 +42,15 @@ const toolskills: Skill[] = [
 ];
 
 const devSkills: Skill[] = [
-  { key: "html", value: 100 },
-  { key: "css", value: 98 },
-  { key: "js", value: 95 },
+  { key: "html", value: 90 },
+  { key: "css", value: 90 },
+  { key: "tailwind", value: 95 },
+  { key: "js", value: 85 },
   { key: "ts", value: 90 },
+  { key: "gulp", value: 95 },
   { key: "react", value: 90 },
   { key: "next", value: 90 },
   { key: "vue", value: 40 },
-  { key: "tailwind", value: 100 },
   { key: "bootstrap", value: 80 },
   { key: "node", value: 80 },
   { key: "ex", value: 75 },

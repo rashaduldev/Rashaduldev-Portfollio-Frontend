@@ -1,6 +1,6 @@
 {
   "header": {
-    "brand": "Rashaduldev",
+    "brand": "uivibe",
     "home": "Home",
     "projects": "Projects",
     "contact": "Contact",
@@ -18,9 +18,10 @@
     "subtitle": "Hi there, I'm",
     "title": "Rashadul Islam",
     "stack": "Frontend Developer",
-    "description": "I'm a Frontend Web Developer with a strong passion for creating error-free, responsive websites that ensure 100% client satisfaction. Skilled in JavaScript and TypeScript, I work with modern frameworks like React.js, Next.js, and Vue.js, and design using Tailwind CSS and Bootstrap. I also have experience with backend technologies like Node.js, Express.js, and databases including MongoDB, Mongoose, SQL, and PostgreSQL. I use tools like Git, Firebase, Cloudinary, JetBrains, and cPanel to streamline development. I'm always eager to learn new technologies and improve my craft.",
+    "description": "Frontend Web Developer passionate about crafting pixel-perfect, responsive websites that blend clean code with engaging design. Skilled in JavaScript, TypeScript, React.js, Next.js, and Tailwind CSS, I turn ideas into interactive, user-friendly experiences — always aiming for flawless performance and 100% client satisfaction.",
     "leftbutton": "Let's go",
-    "resume": "Download Resume"
+    "resume": "Download Resume",
+    "quata": "Learning Learning & Learning ........"
   },
   "skills": {
     "about": "About me",
@@ -41,6 +42,7 @@
     "css": "CSS",
     "js": "JavaScript",
     "ts": "TypeScript",
+    "gulp": "Gulp.js",
     "react": "React.js",
     "next": "Next.js",
     "vue": " Vue.js",
@@ -68,38 +70,22 @@
       "company": "Themefisher",
       "department": "Developer",
       "description": "Built apps with Tailwind, React, Next.js, etc.",
-      "duration": "July 2025 – Present"
-    },
-    {
-      "year": "2025",
-      "title": "Junior Frontend Developer",
-      "company": "Uysystems Ltd",
-      "department": "Engineering",
-      "description": "Worked on full-stack with React and MongoDB.",
-      "duration": "Sep 2024 – June 2025"
+      "duration": "April 2025 – August 2025"
     }
   ],
   "2024": [
-    {
-      "year": "2025",
-      "title": "Implementation Assistant",
-      "company": "a2i (contructual)",
-      "department": "Mygov team",
-      "description": "Created reusable form templates for MyGov.",
-      "duration": "Sep 2024 – June 2025"
-    },
-    {
-      "year": "2025",
-      "title": "Intern Frontend Developer",
+   {
+      "year": "2024",
+      "title": "Frontend Developer",
       "company": "Uysystems Ltd",
-      "department": "Development",
-      "description": "Built responsive websites with HTML, CSS, Bootstrap, Ajax, PHP, Laravel",
-      "duration": "Feb 2024 – Aug 2024"
+      "department": "Developer",
+      "description": "Worked on full-stack with React and MongoDB.",
+      "duration": "February 2024 – March 2025"
     }
   ],
   "2023": [
     {
-    "year": "2025",
+    "year": "2023",
     "title": "IT Manager",
     "company": "ShopUp",
     "department": "Unicorn Dept",
@@ -156,6 +142,18 @@
   "viewallproject": "View all project",
   "projects": [
       {
+    "id": 12,
+    "title": "Optivus (FramerBite clone) Paid Theme",
+    "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
+    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+    "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
+    "endtrac": "Frontend",
+    "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
+    "liveLink": "http://optivus.uivibe.me",
+    "status": "Latest"
+  },
+     {
     "id": 11,
     "title": "HTML_tailwind_dashboard",
     "description": "A fully responsive CRM dashboard built with pure HTML and Tailwind CSS—no frameworks or libraries used. Clean UI, mobile-friendly layout, and lightweight design focused on frontend presentation only.",

@@ -47,9 +47,8 @@ interface MainSection {
   description: string;
   leftbutton: string;
   resume: string;
+  quata:string;
 }
-
-// @/types/translations.ts
 
 export interface SkillsSection {
   photoshop: string;
@@ -66,6 +65,7 @@ export interface SkillsSection {
   css: string;
   js: string;
   ts: string;
+  gulp: string;
   react: string;
   next: string;
   vue: string;

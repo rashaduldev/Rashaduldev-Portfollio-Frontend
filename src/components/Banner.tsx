@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext } from "react";
-import Image from "next/image";
 import { LayoutContext } from "./context";
 import { CiLocationArrow1 } from "react-icons/ci";
 import {
@@ -77,6 +76,7 @@ export default function Banner() {
             {translations?.main?.description ||
               "I build interactive and responsive web applications using modern web technologies. Let's turn your ideas into reality."}
           </p>
+          <p className="mb-5 text-gray-600 font-semibold">{translations?.main?.quata}</p>
 
           {/* Social Icons */}
           <div className="flex items-center gap-3 mb-6 flex-wrap">
@@ -151,67 +151,11 @@ export default function Banner() {
           <DotLottieReact
       src="https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie"
       loop
-      className="w-96 h-96"
+      className="h-[400px] w-[800px]"
       autoplay
     />
 
-        {/* Right Image Card */}
-        <div className="flex justify-center items-center flex-wrap gap-10">
-          <a
-            href="#"
-            className="group relative w-[300px] sm:w-[350px] md:w-[400px] h-[350px] md:h-[400px] p-5 block"
-          >
-            {/* Gradient Border */}
-            <div className="absolute top-10 -left-10 w-full h-full z-0 transition-all duration-300 group-hover:scale-[0.96] rotate-[-10deg] skew-[-10deg] group-hover:rotate-[-14deg] group-hover:skew-[-14deg]">
-              <svg className="w-full h-full">
-                <defs>
-                  <linearGradient id="grad-orange" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgb(253,137,68)" />
-                    <stop offset="100%" stopColor="rgb(153,75,23)" />
-                  </linearGradient>
-                </defs>
-                <rect
-                  width="100%"
-                  height="100%"
-                  fill="none"
-                  stroke="url(#grad-orange)"
-                  strokeWidth={4}
-                />
-              </svg>
-            </div>
-
-           <div className="relative group w-[300px] h-[300px] mx-auto">
-  {/* Image Wrapper */}
-  <div className="absolute inset-0 flex items-center justify-center rotate-[-10deg] skew-[-10deg] overflow-hidden transition-all duration-500 group-hover:rotate-[-14deg] group-hover:skew-[-14deg] group-hover:scale-95">
-    <Image
-      src="https://res.cloudinary.com/de8yddexc/image/upload/c_crop,ar_1:1/v1750745977/rashadul-removebg-preview_svemu4.png"
-      alt="Rashadul Islam"
-      height={400}
-      width={400}
-      priority
-      className="opacity-30 scale-90 max-w-[180px] max-h-[180px] transition-all duration-500 group-hover:scale-100 group-hover:opacity-100"
-    />
-  </div>
-
-  {/* Text Content */}
-  <div className="absolute -bottom-20 left-0 p-4 uppercase text-yellow-600 z-10 w-full">
-    <span className="block text-sm md:text-base font-mono rotate-[320deg] origin-bottom-left -right-20 absolute -top-20 bottom-full translate-y-[100%] -translate-x-[calc(100%+40px)] opacity-0 transition-all duration-700 group-hover:translate-x-[-100%] group-hover:opacity-100 delay-[300ms]">
-      <span>{'console.log("HELLO WORLD")'}</span>
-    </span>
-    <strong className="block text-3xl md:text-5xl font-black translate-x-[-80px] opacity-0 transition-all duration-700 group-hover:translate-x-0 group-hover:opacity-100 delay-[100ms]">
-      Hello
-    </strong>
-    <strong className="block text-3xl md:text-5xl font-black translate-x-[-80px] opacity-0 transition-all duration-700 group-hover:translate-x-0 group-hover:opacity-100 delay-[200ms]">
-      World
-    </strong>
-    {/* <span className="block text-base mt-2 translate-x-[-80px] opacity-0 transition-all duration-700 group-hover:translate-x-0 group-hover:opacity-100 delay-[400ms]">
-      Details and stuff
-    </span> */}
-  </div>
-</div>
-
-          </a>
-        </div>
+   
       </div>
     </section>
   );

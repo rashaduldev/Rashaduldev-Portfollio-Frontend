@@ -1,6 +1,8 @@
-// next.config.js
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', 
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,16 +18,18 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'www.crowe.com', 
+        hostname: 'www.crowe.com',
       },
       {
         protocol: 'https',
-        hostname: 'onemarketmedia.com', 
+        hostname: 'onemarketmedia.com',
       },
-       {
+      {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
     ],
   },
 };
+
+module.exports = nextConfig;
