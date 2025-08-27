@@ -221,10 +221,9 @@
       "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
       "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
       "techStack": "HTML5, CSS3, JavaScript",
-      
       "endtrac": "Frontend",
       "githubLink": "https://github.com/rashaduldev/Digital-clock",
-      "liveLink": "https://rashaduldev.github.io/Digital-clock",
+      "liveLink": "http://digital-clock.uivibe.me",
       "status": "Old"
     },
     {
@@ -250,7 +249,7 @@
     
     "endtrac": "Frontend",
     "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
-    "liveLink": "https://rashaduldev.github.io/Password-Generator-Js",
+    "liveLink": "http://password-generator.uivibe.me",
     "status": "Old"
     },
     {
@@ -262,8 +261,8 @@
       "techStack": "React.js, MongoDB",
       
       "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev",
-      "liveLink": "https://github.com/rashaduldev",
+      "githubLink": "https://github.com/rashaduldev/a-to-z-e-commerce",
+      "liveLink": "https://ecommerce-neon-ten.vercel.app",
       "status": "Latest"
     },
     {
