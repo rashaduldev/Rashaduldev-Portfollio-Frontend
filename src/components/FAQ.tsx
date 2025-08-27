@@ -5,7 +5,17 @@ import { LayoutContext } from "@/components/context";
 import { FaChevronDown } from "react-icons/fa";
 import { FAQ } from "@/types/translations";
 import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
+// Framer Motion variants for FAQ items
+const faqItemVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }, // cubic-bezier
+  },
+};
 
 export default function FaqSection() {
   const context = useContext(LayoutContext);
@@ -66,12 +76,6 @@ export default function FaqSection() {
   );
 }
 
-// animation variant for items
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
 type FAQItemProps = {
   faq: FAQ;
   isOpen: boolean;
@@ -93,7 +97,7 @@ function AnimatedFAQItem({ faq, isOpen, onClick, isRTL }: FAQItemProps) {
 
   return (
     <motion.div
-      variants={itemVariants}
+      variants={faqItemVariants}
       className={`border border-gray-300 dark:border-gray-700 rounded overflow-hidden ${
         isRTL ? "text-right" : "text-left"
       }`}
@@ -112,6 +116,7 @@ function AnimatedFAQItem({ faq, isOpen, onClick, isRTL }: FAQItemProps) {
           }`}
         />
       </button>
+
       <div
         ref={contentRef}
         className="overflow-hidden transition-all duration-500 ease-in-out"
