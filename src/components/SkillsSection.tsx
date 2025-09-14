@@ -47,11 +47,10 @@ const devSkills: Skill[] = [
   { key: "tailwind", value: 95 },
   { key: "js", value: 85 },
   { key: "ts", value: 90 },
-  { key: "gulp", value: 95 },
+  { key: "gulp", value: 90 },
+  { key: "astro", value: 95 },
   { key: "react", value: 90 },
   { key: "next", value: 90 },
-  { key: "vue", value: 40 },
-  { key: "bootstrap", value: 80 },
   { key: "node", value: 80 },
   { key: "ex", value: 75 },
   { key: "wp", value: 65 },
@@ -91,9 +90,9 @@ const SkillSection = ({
   return (
     <div
       ref={sectionRef}
-      className="skill-section opacity-0 transform translate-y-12 transition-all duration-1000 ease-in-out mb-10"
+      className="mb-10 transition-all duration-1000 ease-in-out transform translate-y-12 opacity-0 skill-section"
     >
-      <h2 className="text-2xl font-bold mb-6">{title}</h2>
+      <h2 className="mb-6 text-2xl font-bold">{title}</h2>
       {skills.map((skill, idx) => (
         <div key={skill.key} className="mb-5">
           <div className="flex justify-between mb-1 text-sm">
@@ -144,7 +143,7 @@ export default function SkillsSection() {
         : "bg-[#3f4144] dark:bg-white";
 
     return (
-      <div className="w-full h-2 rounded overflow-hidden bg-gray-300 dark:bg-gray-700">
+      <div className="w-full h-2 overflow-hidden bg-gray-300 rounded dark:bg-gray-700">
         <div
           className={`h-2 transition-all duration-1000 ${barColor}`}
           style={{
@@ -193,12 +192,12 @@ export default function SkillsSection() {
     <section
       ref={sectionRef}
       dir={isRTL ? "rtl" : "ltr"}
-      className="w-full py-2 transition-colors duration-300 overflow-hidden"
+      className="w-full py-2 overflow-hidden transition-colors duration-300"
     >
-      <h2 className="text-4xl font-bold my-2 md:my-10">
+      <h2 className="my-2 text-4xl font-bold md:my-10">
         {translations.skills.about}
       </h2>
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid gap-10 md:grid-cols-2">
         {/* Left Column: Tools + Design */}
         <div className="space-y-12">
           <SkillSection

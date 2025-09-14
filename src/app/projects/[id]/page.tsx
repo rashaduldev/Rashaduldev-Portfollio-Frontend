@@ -16,6 +16,6 @@ export const metadata = {
 };
 
 export async function generateStaticParams() {
-  const projectIds = ["1", "2", "3","4","5","6","7","8","9","10","11","12"];
+  const projectIds = ["1", "2", "3","4","5","6","7","8","9","10","11","12","13","14"];
   return projectIds.map((id) => ({ id }));
 }

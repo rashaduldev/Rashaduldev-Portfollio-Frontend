@@ -66,11 +66,10 @@ export interface SkillsSection {
   js: string;
   ts: string;
   gulp: string;
+  astro: string;
   react: string;
   next: string;
-  vue: string;
   tailwind: string;
-  bootstrap: string;
   node: string;
   ex: string;
   wp: string;

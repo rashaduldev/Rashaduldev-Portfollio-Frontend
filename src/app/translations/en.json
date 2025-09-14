@@ -38,19 +38,18 @@
     "figma": "Figma",
     "xd": "Adobe XD",
     "illustrator": "Adobe Illustrator",
-    "html": "HTML",
-    "css": "CSS",
+    "html": "HTML5",
+    "css": "CSS3",
     "js": "JavaScript",
     "ts": "TypeScript",
     "gulp": "Gulp.js",
+    "astro": "Astro.js",
     "react": "React.js",
     "next": "Next.js",
-    "vue": " Vue.js",
     "tailwind": "Tailwind CSS",
-    "bootstrap": "Bootstrap",
     "node": "Node.js",
     "ex": "Express.js",
-    "wp": "Wordpress"
+    "wp": "Wordpress (theme-development)"
   },
   "statsSection": {
   "title":"Achievements",
@@ -143,7 +142,7 @@
   "projects": [
       {
     "id": 12,
-    "title": "Optivus (FramerBite clone) Paid Theme",
+    "title": "Optivus[Gulpjs] (FramerBite clone) Paid Theme",
     "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
     "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
     "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
@@ -151,6 +150,30 @@
     "endtrac": "Frontend",
     "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
     "liveLink": "http://optivus.uivibe.me",
+    "status": "Old"
+  },
+   {
+    "id": 13,
+    "title": "Optivus[NEXTJS] (FramerBite clone) Paid Theme",
+    "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
+    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+    "techStack": "Tailwind, TypeScript, Nextjs",
+    "endtrac": "Frontend",
+    "githubLink": "https://github.com/rashaduldev/nextplate-main",
+    "liveLink": "https://optivus-nextplate.vercel.app/",
+    "status": "Latest"
+  },
+   {
+    "id": 14,
+    "title": "Ena-Ema Technologies [NEXTJS] (Company Website)",
+    "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
+    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814005/ena-ema_desktop_hmyed1.png",
+    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814004/ena-ema_mobile_n2ibte.png",
+    "techStack": "Tailwind, TypeScript, Nextjs",
+    "endtrac": "Frontend",
+    "githubLink": "https://github.com/rashaduldev/ena-ema-frontend-task",
+    "liveLink": "https://ena-ema-landing.vercel.app",
     "status": "Latest"
   },
      {
@@ -180,10 +203,10 @@
     {
       "id": 2,
       "title": "Trade Ventures",
-      "description": "A responsive frontend application built with Next.js and Tailwind CSS, designed for seamless user interaction and dynamic content management. The project offers a clean UI, fast performance, and optimized navigation for enhanced user experience. It includes modern design principles and responsive layouts, ensuring accessibility across all devices.",
+      "description": "A responsive frontend application built with Nextjs and Tailwind CSS, designed for seamless user interaction and dynamic content management. The project offers a clean UI, fast performance, and optimized navigation for enhanced user experience. It includes modern design principles and responsive layouts, ensuring accessibility across all devices.",
       "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
       "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
-      "techStack": "Next.js,Tailwind,recharts,JavaScript,Daisyui",
+      "techStack": "Nextjs,Tailwind,recharts,JavaScript,Daisyui",
       "endtrac": "Frontend",
       "githubLink": "https://github.com/rashaduldev/Trade-Venture",
       "liveLink": "https://trade-venture-roan.vercel.app",
@@ -232,7 +255,7 @@
       "description": "About Responsive portfolio website built from a Figma design using Next.js (or Astro) and Tailwind CSS. Features include SEO optimization, accessibility, animations, and performance tuning with 95+ PageSpeed score. Deployed on Vercel/Netlify with full documentation.",
       "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
       "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
-      "techStack": "Next.js,Tailwind, TypeScript",
+      "techStack": "Nextjs, Tailwind, TypeScript",
       
       "endtrac": "Frontend",
       "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
@@ -243,13 +266,13 @@
     "id": 7,
     "title": "Password Generator",
     "description": "This is a simple yet effective password generator built using HTML, CSS, and JavaScript. Users can generate strong, random passwords with customizable options for length and character types. It features a clean user interface and real-time password display, ideal for basic security needs.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
+    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
+    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
     "techStack": "HTML5, CSS3, JavaScript",
     
     "endtrac": "Frontend",
     "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
-    "liveLink": "http://password-generator.uivibe.me",
+    "liveLink": "https://password-generator-bd.vercel.app",
     "status": "Old"
     },
     {
