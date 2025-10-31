@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,32 +17,29 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const context = useContext(LayoutContext);
   if (!context) {
-    throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
-    );
+    throw new Error("LayoutContext must be used within a LayoutContext.Provider");
   }
-  const { language, setLanguage, translations, isRTL } = context;
 
+  const { language, setLanguage, translations, isRTL } = context;
   const { theme, setTheme } = useTheme();
+
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  const [scrolled, setScrolled] = useState(false);
-
+  // 🔸 Header scroll background toggle
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // Scroll progress effect
+
+  // 🔸 Scroll progress bar
   useEffect(() => {
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (scrollTop / docHeight) * 100;
       setScrollProgress(scrolled);
     };
@@ -52,7 +50,7 @@ export default function Header() {
 
   return (
     <>
-      {/* 🔵 Scroll Progress Bar (Top) */}
+      {/* 🔵 Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full z-[9999] h-[5px] bg-transparent">
         <div
           className="h-full transition-all duration-100 ease-linear bg-[#3f4144] dark:bg-orange-400"
@@ -63,59 +61,59 @@ export default function Header() {
         />
       </div>
 
-      {/* 🔵 Main Header */}
+      {/* 🔵 Header */}
       <header
         className={`w-full fixed top-0 z-50 text-gray-900 dark:text-gray-100 transition-colors duration-300 ${
-          scrolled
-            ? "bg-white dark:bg-gray-950"
-            : ""
+          scrolled ? "bg-white dark:bg-gray-950" : ""
         }`}
       >
-        <div className="max-w-7xl md:mx-auto mx-5 py-4 flex items-center justify-between relative">
+        <div className="relative flex items-center justify-between py-4 mx-5 max-w-7xl md:mx-auto">
+          {/* Logo */}
           <div className={isRTL ? "absolute" : "absolute"}>
             <Link href="/" className="text-xl font-bold">
               {translations?.header?.brand || "My Brand"}
             </Link>
           </div>
 
+          {/* Navigation (Desktop) */}
           <nav className="flex-grow text-center">
-            <div className="hidden md:flex justify-center gap-6">
+            <div className="justify-center hidden gap-6 md:flex">
               <Link
                 href="/"
-                className={`hover:text-blue-500 ${
-                  pathname === "/" ? "text-blue-600 font-semibold" : ""
+                className={`hover:text-orange-500 ${
+                  pathname === "/" ? "text-orange-500 font-semibold" : ""
                 }`}
               >
                 {translations?.header?.home || "Home"}
               </Link>
               <Link
                 href="/projects"
-                className={`hover:text-blue-500 ${
-                  pathname === "/projects" ? "text-blue-600 font-semibold" : ""
+                className={`hover:text-orange-500 ${
+                  pathname === "/projects" ? "text-orange-500 font-semibold" : ""
                 }`}
               >
                 {translations?.header?.projects || "Projects"}
               </Link>
               <Link
                 href="/contact"
-                className={`hover:text-blue-500 ${
-                  pathname === "/contact" ? "text-blue-600 font-semibold" : ""
+                className={`hover:text-orange-500 ${
+                  pathname === "/contact" ? "text-orange-500 font-semibold" : ""
                 }`}
               >
                 {translations?.header?.contact || "Contact"}
               </Link>
               <Link
                 href="/github"
-                className={`hover:text-blue-500 ${
-                  pathname === "/github" ? "text-blue-600 font-semibold" : ""
+                className={`hover:text-orange-500 ${
+                  pathname === "/github" ? "text-orange-500 font-semibold" : ""
                 }`}
               >
                 {translations?.header?.github || "Github"}
               </Link>
               <Link
                 href="/articles"
-                className={`hover:text-blue-500 ${
-                  pathname === "/articles" ? "text-blue-600 font-semibold" : ""
+                className={`hover:text-orange-500 ${
+                  pathname === "/articles" ? "text-orange-500 font-semibold" : ""
                 }`}
               >
                 {translations?.header?.articles || "Articles"}
@@ -123,66 +121,48 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* Right-side Controls */}
           <div className="flex items-center gap-2">
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                onClick={() => setDrawerOpen(true)}
-                aria-label="Open menu"
-              >
+              <Button variant="ghost" onClick={() => setDrawerOpen(true)} aria-label="Open menu">
                 <Menu className="w-5 h-5" />
               </Button>
             </div>
+
+            {/* Theme Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  aria-label={
-                    theme === "dark"
-                      ? "Switch to light mode"
-                      : "Switch to dark mode"
-                  }
+                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                 >
                   {theme === "dark" ? (
-                    <Moon className="h-5 w-5" />
+                    <Moon className="w-5 h-5" />
                   ) : (
-                    <Sun className="h-5 w-5" />
+                    <Sun className="w-5 h-5" />
                   )}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  🖥 Device Default
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  ☀️ Light Mode
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  🌙 Dark Mode
-                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>🖥 Device Default</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("light")}>☀️ Light Mode</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>🌙 Dark Mode</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  aria-label="Select language"
-                >
+                <Button variant="outline" size="sm" aria-label="Select language">
                   🌐 {language.toUpperCase()}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setLanguage("en")}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("bn")}>
-                  বাংলা
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("ar")}>
-                  العربية
-                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("bn")}>বাংলা</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("ar")}>العربية</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -200,52 +180,51 @@ export default function Header() {
               : "-translate-x-full"
           }`}
         >
+          {/* Drawer Header */}
           <div className="flex items-center justify-end p-4 border-b border-gray-200 dark:border-gray-700">
-            <Button
-              variant="ghost"
-              onClick={() => setDrawerOpen(false)}
-              aria-label="Close menu"
-            >
+            <Button variant="ghost" onClick={() => setDrawerOpen(false)} aria-label="Close menu">
               <X className="w-5 h-5" />
             </Button>
           </div>
-          <div className="flex flex-col p-4 gap-4">
+
+          {/* Drawer Links */}
+          <div className="flex flex-col gap-4 p-4">
             <Link
               href="/"
-              className={`hover:text-blue-500 ${
-                pathname === "/" ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-orange-500 ${
+                pathname === "/" ? "text-orange-500 font-semibold" : ""
               }`}
             >
               {translations?.header?.home || "Home"}
             </Link>
             <Link
               href="/projects"
-              className={`hover:text-blue-500 ${
-                pathname === "/projects" ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-orange-500 ${
+                pathname === "/projects" ? "text-orange-500 font-semibold" : ""
               }`}
             >
               {translations?.header?.projects || "Projects"}
             </Link>
             <Link
               href="/contact"
-              className={`hover:text-blue-500 ${
-                pathname === "/contact" ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-orange-500 ${
+                pathname === "/contact" ? "text-orange-500 font-semibold" : ""
               }`}
             >
               {translations?.header?.contact || "Contact"}
             </Link>
             <Link
               href="/github"
-              className={`hover:text-blue-500 ${
-                pathname === "/github" ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-orange-500 ${
+                pathname === "/github" ? "text-orange-500 font-semibold" : ""
               }`}
             >
               {translations?.header?.github || "Github"}
             </Link>
             <Link
               href="/articles"
-              className={`hover:text-blue-500 ${
-                pathname === "/articles" ? "text-blue-600 font-semibold" : ""
+              className={`hover:text-orange-500 ${
+                pathname === "/articles" ? "text-orange-500 font-semibold" : ""
               }`}
             >
               {translations?.header?.articles || "Articles"}
@@ -256,7 +235,7 @@ export default function Header() {
         {/* 🔵 Backdrop */}
         {isDrawerOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 z-40 bg-black bg-opacity-50"
             onClick={() => setDrawerOpen(false)}
           />
         )}

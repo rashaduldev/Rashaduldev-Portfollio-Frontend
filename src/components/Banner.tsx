@@ -36,21 +36,19 @@ export default function Banner() {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
-
-  const iconHover = { scale: 1.2, rotate: 10 };
   const buttonHover = { scale: 1.05 };
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden mt-5">
+    <section className="relative w-full min-h-screen mt-5 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed zoom-bg"
+        className="absolute inset-0 bg-fixed bg-center bg-no-repeat bg-cover zoom-bg"
         style={{
           backgroundImage:
             "url('https://img.freepik.com/free-vector/abstract-horizontal-grid-lines-graph-style-graphic-design_1017-39918.jpg?semt=ais_hybrid&w=740')",
         }}
       />
-      <div className="absolute inset-0 bg-white/60 dark:bg-black/70 backdrop-blur-sm z-10" />
+      <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/70 backdrop-blur-sm" />
 
       <motion.div
         className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 max-w-7xl mx-auto min-h-[100vh] ${
@@ -61,15 +59,12 @@ export default function Banner() {
         variants={containerVariants}
       >
         {/* Left Content */}
-        <motion.div
-          variants={containerVariants}
-          className="flex-1"
-        >
+        <motion.div variants={containerVariants} className="flex-1">
           <motion.h3
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-2"
+            className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300"
           >
             {translations?.main?.subtitle || "Hi there, I'm"}
           </motion.h3>
@@ -78,7 +73,7 @@ export default function Banner() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white mb-4"
+            className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl dark:text-white"
           >
             <TypeAnimation
               sequence={[
@@ -97,7 +92,7 @@ export default function Banner() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 mb-6 max-w-prose md:min-w-2xl text-justify"
+            className="mb-6 text-base leading-relaxed text-justify text-gray-600 sm:text-lg dark:text-gray-300 max-w-prose md:min-w-2xl"
           >
             {translations?.main?.description ||
               "I build interactive and responsive web applications using modern web technologies. Let's turn your ideas into reality."}
@@ -107,7 +102,7 @@ export default function Banner() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mb-5 text-gray-600 font-semibold"
+            className="mb-5 font-semibold text-gray-600 dark:text-gray-100"
           >
             {translations?.main?.quata}
           </motion.div>
@@ -117,19 +112,28 @@ export default function Banner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex items-center gap-3 mb-6 flex-wrap"
+            className="flex flex-wrap items-center gap-3 mb-6"
           >
-            {[FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF].map(
-              (Icon, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={iconHover}
-                  className="w-9 h-9 rounded-full bg-gray-200 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center transition dark:bg-gray-700 dark:text-white dark:hover:bg-blue-500"
-                >
-                  <Icon size={16} />
-                </motion.div>
-              )
-            )}
+            {[
+              {
+                Icon: FaLinkedinIn,
+                url: "https://linkedin.com/in/rashaduldev",
+              },
+              { Icon: FaGithub, url: "https://github.com/rashaduldev" },
+              { Icon: FaEnvelope, url: "mailto:rashadul.dev@gmail.com" },
+              { Icon: FaFacebookF, url: "https://facebook.com/rashaduldev" },
+            ].map(({ Icon, url }, idx) => (
+              <motion.a
+                key={idx}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                className="flex items-center justify-center transition bg-gray-200 rounded-full text-g-600 w-9 h-9 hover:bg-orange-500 hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-orange-500"
+              >
+                <Icon size={16} />
+              </motion.a>
+            ))}
           </motion.div>
 
           {/* Buttons */}
@@ -137,7 +141,7 @@ export default function Banner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-4 items-center"
+            className="flex flex-wrap items-center gap-4"
           >
             <motion.div whileHover={buttonHover}>
               <Button
@@ -178,7 +182,7 @@ export default function Banner() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.7 }}
-          className="flex-1 flex justify-center items-center"
+          className="flex items-center justify-center flex-1"
         >
           <DotLottieReact
             src="https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie"
