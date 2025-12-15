@@ -1,244 +1,221 @@
 "use client";
-
 import { useState, useEffect, useContext } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import { LayoutContext } from "./context";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { LayoutContext } from "./context"; 
+import UtilityControls from "./Home/UtilityControls";
+
+interface HeaderSection {
+  brand: string;
+  home: string;
+  projects: string;
+  contact: string;
+  github: string;
+  articles: string;
+  scrollMessage: string;
+}
+
+type PortfolioJSON = {
+    header: HeaderSection;
+    [key: string]: unknown;
+};
+interface LayoutContextType {
+    language: string;
+    setLanguage: (lang: string) => void;
+    translations: PortfolioJSON | null;
+    isRTL: boolean;
+}
+
+const navLinks = [
+  {
+    id: "home",
+    href: "/",
+    labelKey: "home", 
+  },
+  {
+    id: "projects",
+    href: "/projects",
+    labelKey: "projects", 
+  },
+  {
+    id: "contact",
+    href: "/contact",
+    labelKey: "contact", 
+  },
+  {
+    id: "github",
+    href: "/github",
+    labelKey: "github", 
+  },
+  {
+    id: "articles",
+    href: "/articles",
+    labelKey: "articles", 
+  },
+];
 
 export default function Header() {
-  const context = useContext(LayoutContext);
+  const context = useContext(LayoutContext) as LayoutContextType | null; 
+
   if (!context) {
-    throw new Error("LayoutContext must be used within a LayoutContext.Provider");
+    throw new Error(
+      "LayoutContext must be used within a LayoutContext.Provider"
+    );
   }
+  const { translations } = context; 
 
-  const { language, setLanguage, translations, isRTL } = context;
-  const { theme, setTheme } = useTheme();
-
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
 
-  // 🔸 Header scroll background toggle
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    // Close mobile menu on route change
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    // Handle header shadow/background on scroll
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔸 Scroll progress bar
+  // Scroll progress effect
   useEffect(() => {
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (scrollTop / docHeight) * 100;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(scrolled);
     };
 
     window.addEventListener("scroll", updateScrollProgress);
     return () => window.removeEventListener("scroll", updateScrollProgress);
   }, []);
+  
+  const getLabel = (key: keyof HeaderSection, fallback: string) => {
+    return translations?.header?.[key] || fallback;
+  };
 
   return (
     <>
-      {/* 🔵 Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full z-[9999] h-[5px] bg-transparent">
         <div
-          className="h-full transition-all duration-100 ease-linear bg-[#3f4144] dark:bg-orange-400"
+          className="h-full transition-all duration-100 ease-linear bg-[#3f4144] dark:bg-primary"
           style={{
             width: `${scrollProgress}%`,
-            opacity: scrollProgress > 0 ? 1 : 0,
+            opacity: scrollProgress > 0 && scrollProgress < 100 ? 1 : 0, 
           }}
         />
       </div>
 
-      {/* 🔵 Header */}
       <header
         className={`w-full fixed top-0 z-50 text-gray-900 dark:text-gray-100 transition-colors duration-300 ${
-          scrolled ? "bg-white dark:bg-gray-950" : ""
+          scrolled
+            ? "bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm shadow-md"
+            : ""
         }`}
       >
-        <div className="relative flex items-center justify-between py-4 mx-5 max-w-7xl md:mx-auto">
-          {/* Logo */}
-          <div className={isRTL ? "absolute" : "absolute"}>
-            <Link href="/" className="text-xl font-bold">
-              {translations?.header?.brand || "My Brand"}
+        <div className="flex items-center justify-between py-1 section-container">
+          {/* 1. Logo (Left) */}
+          <div className="flex-shrink-0">
+            <Link href="/">
+              <Image 
+                src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
+                width={100} 
+                height={20} 
+                alt={getLabel("brand", "My Brand Logo")}
+                priority
+              />
             </Link>
           </div>
+          
+          <div className="flex-grow hidden md:block" />
+          
+          <div className="flex items-center gap-4 md:gap-10">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex">
+              <div className="flex gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    className={`hover:text-primary transition-colors duration-200 ${
+                      pathname === link.href ? "text-primary font-semibold" : ""
+                    }`}
+                  >
+                    {getLabel(link.labelKey as keyof HeaderSection, link.labelKey)}
+                  </Link>
+                ))}
+              </div>
+            </nav>
 
-          {/* Navigation (Desktop) */}
-          <nav className="flex-grow text-center">
-            <div className="justify-center hidden gap-6 md:flex">
-              <Link
-                href="/"
-                className={`hover:text-orange-500 ${
-                  pathname === "/" ? "text-orange-500 font-semibold" : ""
-                }`}
-              >
-                {translations?.header?.home || "Home"}
-              </Link>
-              <Link
-                href="/projects"
-                className={`hover:text-orange-500 ${
-                  pathname === "/projects" ? "text-orange-500 font-semibold" : ""
-                }`}
-              >
-                {translations?.header?.projects || "Projects"}
-              </Link>
-              <Link
-                href="/contact"
-                className={`hover:text-orange-500 ${
-                  pathname === "/contact" ? "text-orange-500 font-semibold" : ""
-                }`}
-              >
-                {translations?.header?.contact || "Contact"}
-              </Link>
-              <Link
-                href="/github"
-                className={`hover:text-orange-500 ${
-                  pathname === "/github" ? "text-orange-500 font-semibold" : ""
-                }`}
-              >
-                {translations?.header?.github || "Github"}
-              </Link>
-              <Link
-                href="/articles"
-                className={`hover:text-orange-500 ${
-                  pathname === "/articles" ? "text-orange-500 font-semibold" : ""
-                }`}
-              >
-                {translations?.header?.articles || "Articles"}
-              </Link>
+            {/* Desktop Utility Controls */}
+            <div className="hidden md:flex">
+                <UtilityControls />
             </div>
-          </nav>
 
-          {/* Right-side Controls */}
-          <div className="flex items-center gap-2">
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Button variant="ghost" onClick={() => setDrawerOpen(true)} aria-label="Open menu">
-                <Menu className="w-5 h-5" />
+              <Button
+                variant="ghost"
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
               </Button>
             </div>
-
-            {/* Theme Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                >
-                  {theme === "dark" ? (
-                    <Moon className="w-5 h-5" />
-                  ) : (
-                    <Sun className="w-5 h-5" />
-                  )}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setTheme("system")}>🖥 Device Default</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("light")}>☀️ Light Mode</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>🌙 Dark Mode</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" aria-label="Select language">
-                  🌐 {language.toUpperCase()}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setLanguage("en")}>English</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("bn")}>বাংলা</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("ar")}>العربية</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
         </div>
 
-        {/* 🔵 Mobile Drawer */}
-        <div
-          className={`fixed top-0 ${
-            isRTL ? "right-0" : "left-0"
-          } h-full w-64 bg-gray-200 dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
-            isDrawerOpen
-              ? "translate-x-0"
-              : isRTL
-              ? "translate-x-full"
-              : "-translate-x-full"
-          }`}
-        >
-          {/* Drawer Header */}
-          <div className="flex items-center justify-end p-4 border-b border-gray-200 dark:border-gray-700">
-            <Button variant="ghost" onClick={() => setDrawerOpen(false)} aria-label="Close menu">
-              <X className="w-5 h-5" />
-            </Button>
-          </div>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }} 
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="w-full overflow-hidden absolute top-full left-0 bg-white shadow-xl md:hidden dark:bg-gray-900" // Note the `absolute top-full left-0` for a true dropdown effect
+            >
+              <div className="section-container">
+                <div className="flex flex-col py-4">
+                  {/* Mobile Navigation Links */}
+                  <nav className="flex flex-col gap-1">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.id}
+                        href={link.href}
+                        className={`block py-2 px-3 text-base transition-colors duration-200 rounded-md ${
+                          pathname === link.href 
+                            ? "text-primary font-semibold bg-primary/10 dark:bg-primary/20" 
+                            : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {getLabel(link.labelKey as keyof HeaderSection, link.labelKey)}
+                      </Link>
+                    ))}
+                  </nav>
 
-          {/* Drawer Links */}
-          <div className="flex flex-col gap-4 p-4">
-            <Link
-              href="/"
-              className={`hover:text-orange-500 ${
-                pathname === "/" ? "text-orange-500 font-semibold" : ""
-              }`}
-            >
-              {translations?.header?.home || "Home"}
-            </Link>
-            <Link
-              href="/projects"
-              className={`hover:text-orange-500 ${
-                pathname === "/projects" ? "text-orange-500 font-semibold" : ""
-              }`}
-            >
-              {translations?.header?.projects || "Projects"}
-            </Link>
-            <Link
-              href="/contact"
-              className={`hover:text-orange-500 ${
-                pathname === "/contact" ? "text-orange-500 font-semibold" : ""
-              }`}
-            >
-              {translations?.header?.contact || "Contact"}
-            </Link>
-            <Link
-              href="/github"
-              className={`hover:text-orange-500 ${
-                pathname === "/github" ? "text-orange-500 font-semibold" : ""
-              }`}
-            >
-              {translations?.header?.github || "Github"}
-            </Link>
-            <Link
-              href="/articles"
-              className={`hover:text-orange-500 ${
-                pathname === "/articles" ? "text-orange-500 font-semibold" : ""
-              }`}
-            >
-              {translations?.header?.articles || "Articles"}
-            </Link>
-          </div>
-        </div>
-
-        {/* 🔵 Backdrop */}
-        {isDrawerOpen && (
-          <div
-            className="fixed inset-0 z-40 bg-black bg-opacity-50"
-            onClick={() => setDrawerOpen(false)}
-          />
-        )}
+                  {/* Mobile Utility Controls */}
+                  <UtilityControls isMobile={true} /> 
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
     </>
   );

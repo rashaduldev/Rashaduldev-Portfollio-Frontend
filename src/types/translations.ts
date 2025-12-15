@@ -77,6 +77,7 @@ export interface SkillsSection {
   designTitle: string;
   devTitle: string;
   about: string;
+  mongo:string;
   [key: string]: string;
 }
 
@@ -99,9 +100,9 @@ interface EducationItem {
   description: string;
 }
 
-interface FooterSection {
+export interface FooterSection {
   company: string;
-  about: string;
+  projects: string;
   contact: string;
   privacy: string;
   terms: string;

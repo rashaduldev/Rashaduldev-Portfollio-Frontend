@@ -60,7 +60,7 @@ const ScrollToTopWithProgress: React.FC = () => {
                 opacity="0.6"
               />
             </svg>
-            <div className="bg-orange-400 dark:bg-orange-300 w-full h-full"></div>
+            <div className="bg-primary w-full h-full"></div>
           </div>
         </div>
 

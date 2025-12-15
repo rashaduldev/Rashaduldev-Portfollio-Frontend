@@ -16,8 +16,8 @@
   },
   "main": {
     "subtitle": "Hi there, I'm",
-    "title": "Rashadul Islam",
-    "stack": "Frontend Developer",
+    "title": "Md Rashadul Islam",
+    "stack": "Jr. Frontend Developer",
     "description": "Frontend Web Developer passionate about crafting pixel-perfect, responsive websites that blend clean code with engaging design. Skilled in JavaScript, TypeScript, React.js, Next.js, and Tailwind CSS, I turn ideas into interactive, user-friendly experiences — always aiming for flawless performance and 100% client satisfaction.",
     "leftbutton": "Let's go",
     "resume": "Download Resume",
@@ -48,8 +48,8 @@
     "next": "Next.js",
     "tailwind": "Tailwind CSS",
     "node": "Node.js",
-    "ex": "Express.js",
-    "wp": "Wordpress (theme-development)"
+    "wp": "Wordpress(theme customization)",
+    "mongo": "MongoDB"
   },
   "statsSection": {
   "title":"Achievements",
