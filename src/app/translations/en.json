@@ -48,6 +48,7 @@
     "next": "Next.js",
     "tailwind": "Tailwind CSS",
     "node": "Node.js",
+    "ex": "Express js",
     "wp": "Wordpress(theme customization)",
     "mongo": "MongoDB"
   },
@@ -434,7 +435,8 @@
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
     "subscribeSuccess": "Thank you for subscribing with email:",
-    "copyright": "© 2025 Rashadul. All rights reserved."
+    "copyright": "© 2025 Rashadul. All rights reserved.",
+    "projects": "Projects"
   },
   "contact": {
   "heroTitle": "Get in Touch",

@@ -49,7 +49,8 @@
     "bootstrap": "Bootstrap",
     "node": "Node.js",
     "ex": "Express.js",
-    "wp": "ووردبريس"
+    "wp": "ووردبريس",
+    "mongo": "MongoDB"
   },
   "statsSection": {
     "title": "الإنجازات",
@@ -386,7 +387,8 @@
     "emailPlaceholder": "أدخل بريدك الإلكتروني",
     "subscribe": "اشترك",
     "subscribeSuccess": "شكرًا لاشتراكك بالبريد الإلكتروني:",
-    "copyright": "© 2025 رشادول. جميع الحقوق محفوظة."
+    "copyright": "© 2025 رشادول. جميع الحقوق محفوظة.",
+    "projects": "Projects"
   },
   "contact": {
     "heroTitle": "تواصل معنا",
