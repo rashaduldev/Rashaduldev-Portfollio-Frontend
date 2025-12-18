@@ -40,7 +40,7 @@ export function DropdownMenu({ id, openDropdownId, setOpenDropdownId, trigger, c
       {/* Dropdown content */}
       <div
         className={cn(
-          "absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg z-50 p-2 transform origin-top-right transition-all duration-200",
+          "absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border rounded-md shadow-lg z-50 p-2 transform origin-top-right transition-all duration-200",
           isOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none",
@@ -57,7 +57,7 @@ export function DropdownMenu({ id, openDropdownId, setOpenDropdownId, trigger, c
 export function DropdownMenuItem({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
   return (
     <div
-      className={cn("cursor-pointer px-3 py-2 text-sm rounded hover:bg-gray-100", className)}
+      className={cn("cursor-pointer px-3 py-2 text-sm rounded hover:bg-gray-100 dark:hover:bg-gray-500 flex items-center", className)}
       onClick={onClick}
     >
       {children}

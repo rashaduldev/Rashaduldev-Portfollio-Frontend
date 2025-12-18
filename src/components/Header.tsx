@@ -8,16 +8,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutContext } from "./context"; 
 import UtilityControls from "./Home/UtilityControls";
-
-interface HeaderSection {
-  brand: string;
-  home: string;
-  projects: string;
-  contact: string;
-  github: string;
-  articles: string;
-  scrollMessage: string;
-}
+import { HeaderSection } from "@/types/translations";
 
 type PortfolioJSON = {
     header: HeaderSection;
@@ -107,7 +98,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-[9999] h-[5px] bg-transparent">
+      <div className="fixed top-0 left-0 w-full z-9999 h-1.25 bg-transparent">
         <div
           className="h-full transition-all duration-100 ease-linear bg-[#3f4144] dark:bg-primary"
           style={{
@@ -126,7 +117,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-between py-1 section-container">
           {/* 1. Logo (Left) */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href="/">
               <Image 
                 src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
@@ -138,7 +129,7 @@ export default function Header() {
             </Link>
           </div>
           
-          <div className="flex-grow hidden md:block" />
+          <div className="grow hidden md:block" />
           
           <div className="flex items-center gap-4 md:gap-10">
             {/* Desktop Navigation Links */}

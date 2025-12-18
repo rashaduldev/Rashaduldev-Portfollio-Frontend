@@ -23,7 +23,7 @@ export type PortfolioJSON = {
   services: ServicesSection
 };
 
-interface HeaderSection {
+export interface HeaderSection {
   brand: string;
   home: string;
   projects: string;
@@ -32,7 +32,6 @@ interface HeaderSection {
   articles: string;
   scrollMessage: string;
 }
-
 interface CookieConsentSection {
   title: string;
   message: string;

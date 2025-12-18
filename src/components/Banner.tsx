@@ -78,7 +78,7 @@ export default function Banner() {
             {translations?.main?.description ||
               "I build interactive and responsive web applications using modern web technologies. Let's turn your ideas into reality."}
           </p>
-          <p className="mb-5 font-semibold text-gray-900">
+          <p className="mb-5 font-semibold text-gray-900 dark:text-gray-200">
             {translations?.main?.quata}
           </p>
 
