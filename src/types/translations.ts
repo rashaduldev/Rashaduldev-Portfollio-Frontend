@@ -5,7 +5,7 @@ export type PortfolioJSON = {
   cookieConsent: CookieConsentSection;
   main: MainSection;
   skills: SkillsSection;
-  experience: Record<string, ExperienceItem[]>;
+  experience: ExperienceItem[];
   education: Record<string, EducationItem>;
   Educationheading:string;
   footer: FooterSection;

@@ -16,12 +16,8 @@ export default function WorkExperience() {
   }
 
   const { translations, isRTL } = context;
-
-  // 🔥 KEEP Record TYPE
-  const experienceRecord: Record<string, ExperienceItem[]> =
+  const experienceRecord:  ExperienceItem[] =
     translations?.experience ?? {};
-
-  // 🔥 Convert Record -> Flat Array (duplicate year supported)
   const experiences: ExperienceItem[] =
     Object.values(experienceRecord).flat();
 
@@ -39,7 +35,7 @@ export default function WorkExperience() {
       <div className="relative">
         {/* Vertical line */}
         <div
-          className={`absolute top-0 bottom-0 w-[2px] bg-gray-400 dark:bg-gray-600 ${
+          className={`absolute top-0 bottom-0 w-0.5 bg-gray-400 dark:bg-gray-600 ${
             isRTL
               ? "right-0 md:right-1/2 md:translate-x-1/2"
               : "left-0 md:left-1/2 md:-translate-x-1/2"
