@@ -37,8 +37,8 @@ export default function WhyChooseMe() {
           className="flex flex-col justify-start items-start space-y-6"
         >
           <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-orange-600"></span>
-            <h2 className="uppercase text-3xl font-medium tracking-wide">
+            <span className="h-3 w-3 rounded-full bg-primary"></span>
+            <h2 className="">
               {sectionTitle}
             </h2>
           </div>
@@ -74,26 +74,26 @@ export default function WhyChooseMe() {
                   isRTL ? "flex-row-reverse" : ""
                 }`}
               >
-                <span className="text-xs font-mono text-orange-500 dark:text-orange-300">
+                <span className="text-xs font-mono text-primary dark:text-primary/30">
                   [#]
                 </span>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {feature.title}
+                  {feature?.title}
                 </h3>
               </div>
               <p className="mt-1 text-sm leading-relaxed">
-                {feature.description}
+                {feature?.description}
               </p>
             </motion.div>
           ))}
         </div>
       </div>
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="my-5 text-3xl mx-auto text-orange-600 dark:text-orange-400 ">
-          {section.contactdescription}
+        <h2 className="my-5">
+          {section?.contactdescription}
         </h2>
         <Button className="cursor-pointer px-5 py-3 text-base">
-          <Link href="/contact">{section.contactbutton}</Link>
+          <Link href="/contact">{section?.contactbutton}</Link>
         </Button>
       </div>
     </section>

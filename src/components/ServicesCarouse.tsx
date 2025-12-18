@@ -59,7 +59,7 @@ export default function ServicesCarousel() {
 
   return (
     <section className="w-full py-12 mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <h2 className="mb-8">
         {translations.services?.title || "Services I Offer"}
       </h2>
 
@@ -101,7 +101,7 @@ export default function ServicesCarousel() {
                   delay: idx * 0.1,
                 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="min-w-[280px] max-w-sm min-h-[420px] border border-gray-200 dark:border-gray-700 rounded flex-shrink-0 transition-transform transform hover:-translate-y-2 duration-300 ease-in-out bg-white dark:bg-gray-900"
+                className="min-w-70 max-w-sm min-h-105 border border-gray-200 dark:border-gray-700 rounded shrink-0 transition-transform transform hover:-translate-y-2 duration-300 ease-in-out bg-white dark:bg-gray-900"
               >
                 {service.image && (
                   <Image

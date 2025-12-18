@@ -7,33 +7,25 @@ import SkillsMarquee from "../SkillsMarquee";
 import SkillsSection from "../SkillsSection";
 import StatsSection from "../StatsCountSection";
 import TestimonialSection from "../TestimonialSection";
-import Timeline from "../Education";
 import WhyChooseMe from "../WhyChooseMe";
 import WorkExperience from "../WorkExperience";
+import EducationSection from "../Education";
 
 const NormalRoute = () => {
   return (
     <>
-      {/* Banner full width */}
-      <Banner />
-
-      {/* Container content */}
-      <div className="md:mx-auto mx-5 max-w-7xl">
+    <Banner />
+      <div className="section-container">
         <SkillsSection />
         <SkillsMarquee />
         <WorkExperience />
         <ProjectsSection />
         <StatsSection />
-      </div>
-
-      {/* Testimonial section full width and centered in layout */}
-      <TestimonialSection />
-
-      {/* Continue container content */}
-      <div className="md:mx-auto mx-5 max-w-7xl">
+        <TestimonialSection />
         <WhyChooseMe />
+        {/* issue here */}
         <ServicesCarousel />
-        <Timeline />
+        <EducationSection />
         <LatestArticles />
         <FaqSection />
       </div>

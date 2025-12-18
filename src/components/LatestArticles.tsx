@@ -26,22 +26,22 @@ export default function LatestArticles() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 gap-4">
         {/* Left Circle and Subheading */}
         <div className="flex items-center">
-          <span className="w-3 h-3 rounded-full bg-orange-400 mr-2"></span>
-          <h2 className="uppercase text-sm font-medium tracking-wide">
+          <span className="w-3 h-3 rounded-full bg-primary mr-2"></span>
+          <p className="text-primary">
             {sectionleftTitle}
-          </h2>
+          </p>
         </div>
 
         {/* Center Title */}
         <div className="text-center flex-1">
-          <h2 className="text-2xl sm:text-3xl font-bold">{sectionTitle}</h2>
+          <h2>{sectionTitle}</h2>
         </div>
 
         {/* Right Link */}
         <div className="text-right">
           <Link
             href="/articles"
-            className="text-sm font-medium text-orange-600 underline dark:text-orange-400"
+            className="text-sm font-medium text-primary underline"
           >
             {viewAllLabel}
           </Link>
@@ -75,10 +75,10 @@ export default function LatestArticles() {
                 <span>{article.category}</span>
                 <span>{article.date}</span>
               </div>
-              <h3 className="mt-2 text-lg font-semibold">{article.title}</h3>
+              <h4 className="mt-2">{article.title}</h4>
               <Link
                 href={`/articles/${article.id}`}
-                className="mt-4 inline-flex items-center gap-1 text-sm text-orange-600 dark:text-orange-400 hover:underline"
+                className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline"
               >
                 {section?.readMoreLabel ?? "Read More"}
                 <span className="inline-block transform transition-transform group-hover:translate-x-1">

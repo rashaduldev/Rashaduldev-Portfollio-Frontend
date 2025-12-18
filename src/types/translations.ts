@@ -91,6 +91,8 @@ export interface ExperienceItem {
   department?: string;
   description?: string;
   duration?: string;
+  type:string;
+  location:string;  
 }
 
 interface EducationItem {

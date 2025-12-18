@@ -129,7 +129,14 @@
     @apply bg-background text-foreground font-secondary;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-primary tracking-wide;}
+    @apply font-primary tracking-wide font-bold;
+  }
+    .h2,h2 {
+      @apply text-3xl md:text-4xl;
+    }
+    .h4,h4 {
+      @apply text-xl md:text-2xl;
+    }
 }
 @layer utilities {
   .animate-spin-slow {
@@ -148,7 +155,7 @@
   color: #3f4144;
 }
 .section-container{
-  @apply container mx-auto md:px-5 lg:px-0;
+  @apply container mx-auto px-5 lg:px-0;
 }
 
 /* banner image css */

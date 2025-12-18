@@ -40,7 +40,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   const pathname = usePathname();
   const isActive = pathname === href || (href === "/" && pathname === "/");
 
-  const baseClasses = "hover:text-primary-hover transition-colors duration-200";
+  const baseClasses = "hover:text-primary transition-colors duration-200";
   const activeClasses = "text-primary font-bold";
 
   return (
@@ -104,7 +104,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full py-12 bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 border-t-2">
-      <div className="max-w-7xl md:mx-auto mx-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="section-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         
         <div className="block md:hidden">
           <div className="flex flex-row gap-8">
@@ -229,7 +229,7 @@ export default function Footer() {
       <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
         {getTranslation(
           "copyright",
-          `© ${new Date().getFullYear()} My Brand. All rights reserved.`
+          `© ${new Date().getFullYear()} rashaduldev. All rights reserved.`
         )}
       </p>
     </footer>

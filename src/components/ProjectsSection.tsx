@@ -35,16 +35,16 @@ const ProjectsSection = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 gap-4">
         {/* Left Circle */}
         <div className="flex items-center">
-          <div className="w-4 h-4 rounded-full bg-orange-500 mr-2"></div>
-          <span className="text-sm text-orange-500 uppercase tracking-wide font-semibold">
-            {projectsSection.projectsHeading || "Projects"}
+          <div className="w-4 h-4 rounded-full bg-primary mr-2"></div>
+          <span className="text-sm text-primary uppercase tracking-wide font-semibold">
+            {projectsSection?.projectsHeading || "Projects"}
           </span>
         </div>
 
         {/* Center Heading */}
         <div className="text-center flex-1">
-          <h2 className="text-2xl sm:text-3xl font-bold mt-1">
-            {projectsSection.trustedProjects || "Latest Projects"}
+          <h2>
+            {projectsSection?.trustedProjects || "Latest Projects"}
           </h2>
         </div>
 
@@ -52,9 +52,9 @@ const ProjectsSection = () => {
         <div className="text-right">
           <Link
             href="/projects"
-            className="text-sm text-orange-600 dark:text-orange-400 underline rounded-md transition"
+            className="text-sm text-primary underline rounded-md transition"
           >
-            {projectsSection.viewallproject || "View All Projects"}
+            {projectsSection?.viewallproject || "View All Projects"}
           </Link>
         </div>
       </div>
@@ -68,13 +68,12 @@ const ProjectsSection = () => {
         {projects.map((item, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 100 }} // bottom to top
+            initial={{ opacity: 0, y: 100 }} 
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
             className="group relative rounded shadow-md overflow-hidden transition-all hover:scale-105 hover:border-1 hover:border-[#fdfdfd5d] hover:shadow-lg min-h-[420px] flex flex-col"
           >
-            {/* Diagonal Background Image */}
             <div className="absolute -bottom-10 -left-10 w-[150%] h-[150%] transform rotate-12 opacity-5 z-0">
               <Image
                 src={item.desktopimage}
@@ -116,7 +115,7 @@ const ProjectsSection = () => {
             {/* Card Content */}
             <div className="p-4 flex flex-col justify-between h-full relative z-20">
               <div className="mb-4">
-                <h3 className="text-lg sm:text-xl font-semibold">
+                <h3 className="text-lg">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-sm sm:text-base text-justify dark:text-gray-300">
@@ -125,7 +124,7 @@ const ProjectsSection = () => {
               </div>
 
               <div className="mt-auto flex justify-between items-center">
-                <p className="text-orange-600 font-semibold">{item.endtrac}</p>
+                <p className="text-primary font-semibold">{item.endtrac}</p>
                 <p className="text-sm dark:text-gray-300">
                   {item.techStack.length > 30
                     ? item.techStack.slice(0, 30) + "..."

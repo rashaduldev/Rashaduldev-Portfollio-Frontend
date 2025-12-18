@@ -38,7 +38,7 @@ export default function FaqSection() {
   return (
     <section className="w-full py-12" dir={isRTL ? "rtl" : "ltr"}>
       <h2
-        className={`text-3xl font-bold text-center mb-10 ${
+        className={`text-center mb-10 ${
           isRTL ? "text-right" : "text-left"
         }`}
       >

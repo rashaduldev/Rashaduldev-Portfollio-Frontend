@@ -19,7 +19,7 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import "./banner.css";
-import rashadul from '../../public/assets/rashadul.svg'
+import rashadul from "../../public/assets/rashadul-portfollio.png";
 import Image from "next/image";
 
 export default function Banner() {
@@ -47,7 +47,7 @@ export default function Banner() {
       <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/70 backdrop-blur-sm" />
 
       <div
-        className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 max-w-7xl mx-auto min-h-[100vh] ${
+        className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 section-container min-h-[100vh] ${
           isRTL ? "md:flex-row" : ""
         }`}
       >
@@ -78,7 +78,9 @@ export default function Banner() {
             {translations?.main?.description ||
               "I build interactive and responsive web applications using modern web technologies. Let's turn your ideas into reality."}
           </p>
-          <p className="mb-5 font-semibold text-gray-900">{translations?.main?.quata}</p>
+          <p className="mb-5 font-semibold text-gray-900">
+            {translations?.main?.quata}
+          </p>
 
           {/* Social Icons */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -120,20 +122,14 @@ export default function Banner() {
               isRTL ? "justify-start" : ""
             }`}
           >
-            <Button
-            variant="outline"
-              asChild
-            >
+            <Button variant="outline" asChild>
               <Link href="/contact" className="flex items-center gap-2">
                 {translations?.main?.leftbutton || "Let's go"}
                 <CiLocationArrow1 size={20} />
               </Link>
             </Button>
 
-            <Button
-            variant="outline"
-              asChild
-            >
+            <Button variant="outline" asChild>
               <Link
                 href="/assets/Rashadul.pdf"
                 download="Resume of Md Rashadul Islam.pdf"
@@ -150,43 +146,21 @@ export default function Banner() {
           </div>
         </motion.div>
 
-         <div className="flex-1 flex justify-center items-center">
-  <div className="relative w-40 sm:w-52 md:w-64 lg:w-80 h-auto">
+        <div className="flex-1 flex justify-center items-center">
+          <div className="relative w-40 sm:w-52 md:w-64 lg:w-80 h-auto">
+            {/* Image */}
+            <Image
+              src={rashadul}
+              alt="Md Rashadul Islam profile photo"
+              width={420}
+              height={420}
+              priority
+              className="relative w-full h-full object-cover z-20 rounded-full"
+            />
+          </div>
+        </div>
 
-    {/* Snake Border */}
-    <svg
-      className="absolute inset-0 w-full h-full z-10"
-      viewBox="0 0 200 200"
-    >
-      <rect
-        x="2"
-        y="2"
-        width="296"
-        height="296"
-        rx="16"
-        ry="16"
-        fill="none"
-        stroke="#cc4e00"
-        strokeWidth="1"
-        strokeDasharray="60 260" 
-        strokeDashoffset="0"
-        className="snake-line"
-      />
-    </svg>
-
-    {/* Image */}
-    <Image
-      src={rashadul}
-      alt="Md Rashadul Islam profile photo"
-      width={420}
-      height={420}
-      priority
-      className="relative w-full h-full object-cover z-20"
-    />
-  </div>
-</div>
-
-          {/* <DotLottieReact
+        {/* <DotLottieReact
       src="https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie"
       loop
       className="h-[400px] w-[800px]"

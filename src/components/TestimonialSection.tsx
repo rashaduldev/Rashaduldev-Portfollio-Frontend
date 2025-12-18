@@ -53,7 +53,7 @@ const TestimonialSection: React.FC = () => {
       <div className="absolute inset-0 bg-white/50 dark:bg-black/70 backdrop-blur-sm z-0" />
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <h2 className="text-4xl font-extrabold text-lightText dark:text-darkText mb-4 transition-colors duration-500">
+        <h2 className="mb-4 transition-colors duration-500">
           {testimonialsSection.testimonialHeading}
         </h2>
         <p className="text-xl text-gray-500 dark:text-gray-400 mb-10 transition-colors duration-500">
@@ -99,7 +99,7 @@ const TestimonialSection: React.FC = () => {
                   className="w-full h-full object-cover opacity-80 dark:opacity-70 transition-opacity duration-500"
                 />
               </div>
-              <p className="italic text-sm text-orange-500 dark:text-orange-400 transition-colors duration-500">
+              <p className="italic text-sm transition-colors duration-500">
                 &quot;{testimonial.quote}{" "}
                 <span className="font-semibold">{testimonial.highlight}</span>
                 &quot;

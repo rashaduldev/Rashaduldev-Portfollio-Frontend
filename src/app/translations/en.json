@@ -62,38 +62,88 @@
   ]
 },
 "experienceHeading": "Work Experience",
-"experience": {
-  "2025": [
-    {
-      "year": "2025",
-      "title": "Frontend Developer",
-      "company": "Themefisher",
-      "department": "Developer",
-      "description": "Built apps with Tailwind, React, Next.js, etc.",
-      "duration": "April 2025 – August 2025"
-    }
-  ],
-  "2024": [
-   {
-      "year": "2024",
-      "title": "Frontend Developer",
-      "company": "Uysystems Ltd",
-      "department": "Developer",
-      "description": "Worked on full-stack with React and MongoDB.",
-      "duration": "February 2024 – March 2025"
-    }
-  ],
-  "2023": [
-    {
+"experience": [
+  {
+    "year": "2025",
+    "title": "Frontend Developer",
+    "company": "Ena Ema Technologies",
+    "type":"Remote",
+    "location":"USA",
+    "department": "Developer",
+    "description": "Enthusiastic Junior Web Developer with hands-on experience in building full-stack applications using Next.js, Node.js, Express, and MongoDB. Skilled in developing responsive, high-performance web solutions and passionate about learning modern technologies to deliver efficient, user-focused applications.",
+    "duration": "September 2025 – Present"
+  },
+  {
+    "year": "2025",
+    "title": "Frontend Developer",
+    "company": "Themefisher",
+    "type":"On-site",
+    "location":"Shamoli, Dhaka",
+    "department": "Developer",
+    "description": "In this exciting role, I’m responsible for building high-quality, performant, and accessible web templates and interfaces using modern frontend technologies.",
+    "duration": "July 2025 – August 2025"
+  },
+  {
+    "year": "2024",
+    "title": "Frontend Web Developer (Entry level)",
+    "company": "Uysystems Ltd",
+    "type":"On-site",
+    "location":"Sahajadpur,Badda,Dhaka",
+    "department": "Developer",
+    "description": "Worked on full-stack with React and MongoDB.",
+    "duration": "Nov 2024 – Jun 2025"
+  },
+  {
+    "year": "2024",
+    "title": "Implementation Assistant (Promoted permanent)",
+    "location":"Sahajadpur,Badda,Dhaka",
+    "company": "Uysystems Ltd",
+    "type":"On-site",
+    "department": "MyGov ITSM Digitization (A2I Project)",
+    "description": "Form build up.Template making.Government service digitization.Customer support Service.",
+    "duration": "Sep 2024 – Jun 2025"
+  },
+  {
+    "year": "2024",
+    "title": "Implementation Assistant (Intern)",
+    "company": "Uysystems Ltd",
+    "type":"On-site",
+    "location":"Sahajadpur,Badda,Dhaka",
+    "department": "MyGov ITSM Digitization (A2I Project)",
+    "description": "Form build up.Template making.Government service digitization.Customer support Service.",
+    "duration": "Feb 2024 – Aug 2024"
+  },
+  {
     "year": "2023",
-    "title": "IT Manager",
+    "title": "Programming Hire and Train",
+    "company": "UyLab",
+     "type":"On-site",
+    "location":"Mohakhali,Dhaka",
+    "department": "Developer",
+    "description": "Successfully completed the training on Programming under the Hire and Train program of the Enhancing Digital Government & Economy (EDGE) project by the Bangladesh Computer Council (BCC), ICT Division.",
+    "duration": "Sep 2023 – Dec 2023"
+  },
+  {
+    "year": "2023",
+    "title": "Career transitioner to Web Development",
+    "company": "Career Break",
+     "type":"On-site",
+    "location":"Dhaka",
+    "department": "Home",
+    "description": "Dedicated time to learning web development technologies and building a portfolio of projects.",
+    "duration": "Jun 2023 – Aug 2023"
+  },
+  {
+    "year": "2023",
+    "title": "Computer Operator",
     "company": "ShopUp",
-    "department": "Unicorn Dept",
+     "type":"On-site",
+    "location":"Dhanmondi,Dhaka",
+    "department": "Unicorn Department",
     "description": "Managed IT infrastructure.",
-    "duration": "Dec 2022 – Jan 2024"
+    "duration": "Jun 2022 – may 2023"
   }
-  ]
-},
+],
   "testimonialsSection": {
     "testimonialHeading": "Testimonials",
     "trustedClients": "",
@@ -435,7 +485,7 @@
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
     "subscribeSuccess": "Thank you for subscribing with email:",
-    "copyright": "© 2025 Rashadul. All rights reserved.",
+    "copyright": "© 2025 rashaduldev. All rights reserved.",
     "projects": "Projects"
   },
   "contact": {

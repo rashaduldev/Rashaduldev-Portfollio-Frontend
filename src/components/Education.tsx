@@ -5,7 +5,7 @@ import { LayoutContext } from "./context";
 import { CiSaveDown1 } from "react-icons/ci";
 import { motion } from "framer-motion";
 
-export default function Timeline() {
+export default function EducationSection() {
   const context = useContext(LayoutContext);
 
   if (!context) {
@@ -23,8 +23,8 @@ export default function Timeline() {
 
   return (
     <section className="w-full py-16 px-4 md:px-8 bg-white dark:bg-[#05070C]">
-      <h2 className="mb-12 text-3xl font-bold text-gray-900 text-start md:text-4xl dark:text-white">
-        {translations.Educationheading}
+      <h2 className="mb-12 ">
+        {translations?.Educationheading}
       </h2>
 
       <motion.div
@@ -66,7 +66,7 @@ export default function Timeline() {
                 </p>
               )}
               {edu.department && (
-                <p className="text-sm italic text-yellow-600 dark:text-yellow-300">
+                <p className="text-sm italic text-primary/60 dark:text-primary/30">
                   {edu.department}
                 </p>
               )}

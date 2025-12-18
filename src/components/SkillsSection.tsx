@@ -93,7 +93,7 @@ const SkillSection = ({
       ref={sectionRef}
       className="mb-10 transition-all duration-1000 ease-in-out transform translate-y-12 opacity-0 skill-section"
     >
-      <h2 className="mb-6 text-2xl font-bold">{title}</h2>
+      <h4 className="mb-6">{title}</h4>
       {skills.map((skill, idx) => (
         <div key={skill.key} className="mb-5">
           <div className="flex justify-between mb-1 text-sm">
@@ -195,7 +195,7 @@ export default function SkillsSection() {
       dir={isRTL ? "rtl" : "ltr"}
       className="w-full py-2 overflow-hidden transition-colors duration-300"
     >
-      <h2 className="my-2 text-4xl font-bold md:my-10">
+      <h2 className="my-2 md:my-10">
         {translations.skills.about}
       </h2>
       <div className="grid gap-10 md:grid-cols-2">

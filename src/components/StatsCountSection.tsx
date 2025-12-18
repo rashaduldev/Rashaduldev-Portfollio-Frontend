@@ -28,8 +28,8 @@ const StatsSection = () => {
   return (
     <section ref={ref} className="py-16 transition-colors duration-300">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mt-2">
-          {statsSection.title || "Achievements"}
+        <h2 className="mt-2">
+          {statsSection?.title || "Achievements"}
         </h2>
       </div>
 
@@ -39,7 +39,7 @@ const StatsSection = () => {
           isRTL ? "direction-rtl text-right" : "text-left"
         )}
       >
-        {stats.map((item, idx) => (
+        {stats?.map((item, idx) => (
           <div
             key={idx}
             className="rounded border border-gray-300 dark:border-gray-700 p-6 flex flex-col items-center text-center transition-transform hover:scale-105 duration-300"
