@@ -178,7 +178,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="w-full overflow-hidden absolute top-full left-0 bg-white shadow-xl md:hidden dark:bg-gray-900"
+              className="w-full absolute top-full left-0 bg-white shadow-xl md:hidden dark:bg-gray-900"
             >
               <div className="section-container">
                 <div className="flex flex-col py-4">

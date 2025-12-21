@@ -47,7 +47,7 @@ export default function Banner() {
       <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/70 backdrop-blur-sm" />
 
       <div
-        className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 section-container min-h-[100vh] ${
+        className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 section-container min-h-screen ${
           isRTL ? "md:flex-row" : ""
         }`}
       >

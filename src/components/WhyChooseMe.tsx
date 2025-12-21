@@ -1,5 +1,4 @@
-// components/WhyChooseMe.tsx
-
+"use client"
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import { FeatureItem } from "@/types/translations";

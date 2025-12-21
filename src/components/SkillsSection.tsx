@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useScroll, useTransform, useSpring } from "framer-motion";
 import { LayoutContext } from "./context";

@@ -10,10 +10,14 @@ import TestimonialSection from "../TestimonialSection";
 import WhyChooseMe from "../WhyChooseMe";
 import WorkExperience from "../WorkExperience";
 import EducationSection from "../Education";
+import Header from "../Header";
+import Footer from "../Footer";
+import ScrollToTopWithProgress from "../ScrollToTopWithProgress";
 
 const NormalRoute = () => {
   return (
     <>
+    <Header />
     <Banner />
       <div className="section-container">
         <SkillsSection />
@@ -29,6 +33,8 @@ const NormalRoute = () => {
         <LatestArticles />
         <FaqSection />
       </div>
+      <Footer />
+      <ScrollToTopWithProgress />
     </>
   );
 };

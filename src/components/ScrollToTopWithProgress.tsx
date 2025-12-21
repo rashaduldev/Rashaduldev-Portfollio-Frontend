@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState, useContext } from "react";
 import { ArrowUp } from "lucide-react";
 import { LayoutContext } from "./context";

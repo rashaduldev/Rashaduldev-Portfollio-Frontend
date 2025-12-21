@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Pagination } from "swiper/modules";
