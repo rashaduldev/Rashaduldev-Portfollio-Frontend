@@ -26,7 +26,6 @@ export default function DashboardPage() {
           </Card>
         ))}
       </div>
-      {/* Add a placeholder for Recent Activity chart here */}
     </div>
   );
 }
