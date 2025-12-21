@@ -11,6 +11,10 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import { IoArrowBack } from "react-icons/io5"
+import ReCAPTCHA from "react-google-recaptcha";
+import { recapchaTokenVarification } from "@/utils/auth"
+import { useState } from "react"
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -25,11 +29,24 @@ const STATIC_CREDENTIALS = {
 
 export default function LoginPage() {
   const router = useRouter()
+  const [recaptchaStatus,setRecaptchaStatus]=useState(false);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: "", password: "" },
   })
+
+  const handleCapcha=async(value:string|null)=>{
+    try {
+      const res = await recapchaTokenVarification(value!)
+      if (res?.success) {
+        setRecaptchaStatus(true)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+const sitekey = process.env.NEXT_PUBLIC_RECAPCHA_CLIENT_KEY
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
     if (
@@ -37,7 +54,7 @@ export default function LoginPage() {
       values.password === STATIC_CREDENTIALS.password
     ) {
       const token = "admin-token-" + Math.random().toString(36).substring(2, 15)
-      Cookies.set("token", token, { expires: 1 }) // 1 day expiry
+      Cookies.set("token", token, { expires: 1 })
       toast.success("Login successful!")
       router.push("/dashboard")
     } else {
@@ -82,10 +99,16 @@ export default function LoginPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full cursor-pointer">Sign In</Button>
+              <div className="flex justify-center mt-3">
+                 <ReCAPTCHA
+                sitekey={sitekey as string}
+                onChange={handleCapcha}
+              />
+              </div>
+              <Button disabled={recaptchaStatus?false:true} type="submit" className="w-full cursor-pointer">Sign In</Button>
             </form>
           </Form>
-          <Link href="/" className="underline text-primary">Back To Home</Link>
+          <Link href="/" className="mt-4 w-fit mx-auto hover:underline text-primary flex items-center gap-2 justify-center"><IoArrowBack/>Back To Home</Link>
         </CardContent>
       </Card>
     </div>
