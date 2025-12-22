@@ -140,7 +140,7 @@
      "type":"On-site",
     "location":"Dhanmondi,Dhaka",
     "department": "Unicorn Department",
-    "description": "Managed IT infrastructure.",
+    "description": "Managed IT systems and digital operations, ensuring smooth workflow across teams.Oversaw system management, IT infrastructure, and maintained secure and efficient technology solutions.Contributed to process automation and facilitated team coordination to improve productivity.Handled DMS (Database Management System) and WMS (Warehouse Management System) for streamlined data and warehouse operations.",
     "duration": "Jun 2022 – may 2023"
   }
 ],
@@ -205,7 +205,7 @@
   },
    {
     "id": 13,
-    "title": "Optivus[NEXTJS] (FramerBite clone) Paid Theme",
+    "title": "Optivus (FramerBite clone) Paid Theme",
     "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
     "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
     "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
@@ -217,7 +217,7 @@
   },
    {
     "id": 14,
-    "title": "Ena-Ema Technologies [NEXTJS] (Company Website)",
+    "title": "Ena-Ema Technologies (Company Website)",
     "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
     "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814005/ena-ema_desktop_hmyed1.png",
     "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814004/ena-ema_mobile_n2ibte.png",
@@ -229,7 +229,7 @@
   },
      {
     "id": 11,
-    "title": "HTML_tailwind_dashboard",
+    "title": "HTML Tailwind Dashboard",
     "description": "A fully responsive CRM dashboard built with pure HTML and Tailwind CSS—no frameworks or libraries used. Clean UI, mobile-friendly layout, and lightweight design focused on frontend presentation only.",
     "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
     "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
@@ -265,7 +265,7 @@
     },
     {
       "id": 3,
-      "title": "SSL Garments System",
+      "title": "SSL Garments (Frontend)",
       "description": "The SSL Garments System (Frontend) is a dynamic and responsive web application designed to manage garment production processes. Developed using Next.js and Tailwind CSS, this frontend interface enables users to interact with the garment management system, track orders, view inventory, and manage production workflows. The application features a user-friendly design with a focus on performance, offering a seamless experience across various devices.",
       "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
       "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
@@ -277,7 +277,7 @@
     },
     {
       "id": 4,
-      "title": "Learning Management System (LMS)",
+      "title": "Learning Management System (LMS) Landing",
       "description": "A fully responsive and dynamic Learning Management System built with React for the front end. It offers user authentication, course browsing, enrollment, and video lessons. Designed to simplify online learning with a clean UI, intuitive navigation, and integrated payment support. Admins can manage courses, instructors, and students efficiently.",
       "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
       "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
@@ -335,8 +335,8 @@
       "techStack": "React.js, MongoDB",
       
       "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev/a-to-z-e-commerce",
-      "liveLink": "https://ecommerce-neon-ten.vercel.app",
+      "githubLink": "",
+      "liveLink": "https://a-to-z-ecommerce.vercel.app",
       "status": "Latest"
     },
     {

@@ -24,7 +24,7 @@ export const recapchaTokenVarification=async(token:string)=>{
             "Content-Type":"application/x-www-form-urlencoded",
         },
         body:new URLSearchParams({
-            seccret:process.env.NEXT_PUBLIC_RECAPCHA_SERVER_KEY!,
+            secret:process.env.NEXT_PUBLIC_RECAPCHA_SERVER_KEY!,
             response:token
         })
     })

@@ -34,7 +34,7 @@ export default function Banner() {
   const { translations, isRTL } = context;
 
   return (
-    <section className="relative w-full min-h-screen mt-5 overflow-hidden">
+    <section className="relative w-full min-h-screen pt-5 overflow-hidden">
       {/* Background Image with Zoom Animation */}
       <div
         className="absolute inset-0 bg-fixed bg-center bg-no-repeat bg-cover zoom-bg"

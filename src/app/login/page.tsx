@@ -36,16 +36,21 @@ export default function LoginPage() {
     defaultValues: { email: "", password: "" },
   })
 
-  const handleCapcha=async(value:string|null)=>{
-    try {
-      const res = await recapchaTokenVarification(value!)
-      if (res?.success) {
-        setRecaptchaStatus(true)
-      }
-    } catch (error) {
-      console.error(error);
+ const handleCapcha = async (value: string | null) => {
+  if (!value) return;
+
+  try {
+    const res = await recapchaTokenVarification(value);
+    console.log(res);
+
+    if (res.success) {
+      setRecaptchaStatus(true);
     }
+  } catch (error) {
+    console.error(error);
   }
+};
+
 const sitekey = process.env.NEXT_PUBLIC_RECAPCHA_CLIENT_KEY
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
