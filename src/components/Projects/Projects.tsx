@@ -75,7 +75,7 @@ const Projects = () => {
   return (
     <section
       dir={isRTL ? "rtl" : "ltr"}
-      className="pb-16 px-3 md:px-0 max-w-7xl mx-auto transition-colors duration-300 min-h-screen mt-24"
+      className="transition-colors duration-300"
     >
       {/* Header */}
       <div
@@ -153,7 +153,7 @@ const Projects = () => {
             key={item.id}
             className="group relative bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col h-full"
           >
-            <div className="flex flex-col flex-grow">
+            <div className="flex flex-col grow">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 truncate max-w-full">
                   {item.title}
@@ -184,7 +184,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow line-clamp-4">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 grow line-clamp-4">
                 {item.description}
               </p>
 

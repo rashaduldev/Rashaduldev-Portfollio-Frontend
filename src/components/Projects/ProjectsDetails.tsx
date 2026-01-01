@@ -7,6 +7,7 @@ import { FaGithub, FaLink, FaHeart, FaShareAlt } from "react-icons/fa";
 import { Project } from "@/types/translations";
 import Link from "next/link";
 import { LayoutContext } from "../context";
+import { Button } from "../ui/button";
 
 type Comment = {
   name: string;
@@ -72,7 +73,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
   };
 
   return (
-    <div className={`py-6 mt-24 max-w-5xl md:mx-auto mx-3 min-h-screen transition-colors duration-300 ${isRTL ? "text-right" : "text-left"}`}>
+    <div className={`max-w-5xl md:mx-auto mx-3 min-h-screen transition-colors duration-300 ${isRTL ? "text-right" : "text-left"}`}>
       <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">{project.title}</h1>
       <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{project.techStack}</p>
@@ -121,9 +122,9 @@ export default function ProjectDetailsClient({ projectId }: Props) {
           <input type="text" name="name" placeholder="Name" required value={commentData.name} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <input type="email" name="email" placeholder="Email" required value={commentData.email} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <textarea name="message" placeholder="Your Comment" required value={commentData.message} onChange={handleChange} className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900"></textarea>
-          <button type="submit" className="sm:col-span-2 bg-orange-500 text-gray-100 px-4 py-2 rounded-md hover:bg-orange-600 transition">
+          <Button type="submit" className="col-span-2">
             Submit Comment
-          </button>
+          </Button>
         </form>
 
         <div className="mt-8 space-y-4">

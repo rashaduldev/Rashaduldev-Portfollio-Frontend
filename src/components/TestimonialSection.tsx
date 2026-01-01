@@ -43,7 +43,7 @@ const TestimonialSection: React.FC = () => {
 
   return (
     <section
-      className="py-16 transition-colors duration-500 bg-cover bg-center relative"
+      className="py-16 transition-colors duration-500 bg-cover bg-center relative rounded"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/de8yddexc/image/upload/v1750764780/abstract-liquid-shape-black-white-260nw-2353716569_jlmxxc.webp')",

@@ -10,11 +10,11 @@ export default function Articles() {
   const articles = context?.translations?.latestArticlesSection?.articles || [];
 
   if (articles.length === 0)
-    return <p className="text-center my-20">No articles found.</p>;
+    return <p className="text-center my-28">No articles found.</p>;
 
   return (
-    <section className="max-w-7xl mx-auto px-3 md:px-0 mt-24">
-      <h1 className="text-4xl font-bold mb-10 text-center">All Articles</h1>
+    <>
+      <h1 className="text-4xl font-bold mb-10 text-center">Articles</h1>
 
       <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
         {articles.map((article: ArticleItem) => (
@@ -41,6 +41,6 @@ export default function Articles() {
           </Link>
         ))}
       </div>
-    </section>
+    </>
   );
 }

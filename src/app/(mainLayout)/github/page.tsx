@@ -2,7 +2,7 @@ import GithubProjects from "@/components/Github/Github";
 
 const GithubPage = () => {
   return (
-    <div>
+    <div className="my-10">
       <GithubProjects />
     </div>
   );

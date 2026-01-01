@@ -4,6 +4,9 @@ import { useContext, useEffect, useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { LayoutContext } from "@/components/context";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import toast from "react-hot-toast";
 
 type ArticleItem = {
   id: number;
@@ -85,7 +88,7 @@ export default function ArticleDetailsClient() {
     } else {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert("Link copied to clipboard!");
+        toast.success("Link copied to clipboard!");
       } catch (error) {
         console.error("Error copying to clipboard:", error);
       }
@@ -94,7 +97,7 @@ export default function ArticleDetailsClient() {
 
   const handleComment = () => {
     if (!id || newComment.trim() === "" || newComment.length > 500) {
-      alert("Comment must be between 1 and 500 characters.");
+      toast.error("Comment must be between 1 and 500 characters.");
       return;
     }
     const updatedComments = [...comments, newComment.trim()];
@@ -124,7 +127,7 @@ export default function ArticleDetailsClient() {
   }
 
   return (
-    <div className="max-w-4xl md:mx-auto mx-3 py-4 md:p-0 mt-24 space-y-6 mb-10">
+    <div className="max-w-4xl md:mx-auto mx-3 py-4 md:p-0 space-y-6">
       <h1 className="text-3xl font-bold">{article.title}</h1>
       <div className="text-sm text-gray-500">
         <span>{article.category}</span> • <span>{article.date}</span>
@@ -176,20 +179,18 @@ export default function ArticleDetailsClient() {
         </div>
 
         <div className="mt-4 flex gap-2">
-          <input
+          <Input
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Write a comment..."
-            className="flex-1 px-4 py-2 border rounded dark:bg-gray-800 dark:text-white"
             aria-label="Comment input"
           />
-          <button
+          <Button
             onClick={handleComment}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
           >
             Comment
-          </button>
+          </Button>
         </div>
       </div>
     </div>

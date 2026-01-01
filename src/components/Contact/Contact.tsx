@@ -55,7 +55,7 @@ const Contact = () => {
     <div
       dir={isRTL ? "rtl" : "ltr"}
       className={clsx(
-        "min-h-screen transition-colors duration-300 mt-[68px]",
+        "min-h-screen transition-colors duration-300",
         resolvedTheme === "dark"
           ? "bg-gray-900 text-gray-100"
           : "bg-white text-gray-900"
@@ -130,7 +130,7 @@ const Contact = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-green-400 to-blue-500 dark:from-purple-600 dark:to-pink-600 py-12 text-center text-gray-100 rounded-t-3xl">
+      <section className="bg-linear-to-r from-green-400 to-blue-500 dark:from-purple-600 dark:to-pink-600 py-12 text-center text-gray-100 rounded-3xl">
         <h3 className="text-2xl md:text-4xl font-bold mb-4">{t.ctaTitle}</h3>
         <p className="text-lg">{t.ctaDescription}</p>
       </section>

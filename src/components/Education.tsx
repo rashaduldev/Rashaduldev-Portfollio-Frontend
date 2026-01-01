@@ -22,7 +22,7 @@ export default function EducationSection() {
   });
 
   return (
-    <section className="w-full py-16 px-4 md:px-8 bg-white dark:bg-[#05070C]">
+    <section className="w-full py-16 px-4 md:px-8 bg-white dark:bg-[#0A0A0A]">
       <h2 className="mb-12 ">
         {translations?.Educationheading}
       </h2>
@@ -54,7 +54,7 @@ export default function EducationSection() {
 
             {/* Minimal Clean Card */}
             <div
-              className="mt-6 border border-gray-300 dark:border-gray-700 rounded-xl p-6 min-h-[280px] bg-transparent transform-gpu transition-transform duration-700 ease-out group-hover:rotate-x-0 group-hover:rotate-y-0 rotate-x-[45deg] rotate-y-[5deg] translate-y-4 shadow-lg"
+              className="mt-6 border border-gray-300 dark:border-gray-700 rounded-xl p-6 min-h-70 bg-transparent transform-gpu transition-transform duration-700 ease-out group-hover:rotate-x-0 group-hover:rotate-y-0 rotate-x-45 rotate-y-[5deg] translate-y-4 shadow-lg"
             >
               <h3 className="text-sm font-bold text-gray-700 dark:text-gray-400">{year}</h3>
               <p className="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
@@ -66,7 +66,7 @@ export default function EducationSection() {
                 </p>
               )}
               {edu.department && (
-                <p className="text-sm italic text-primary/60 dark:text-primary/30">
+                <p className="text-sm italic text-primary">
                   {edu.department}
                 </p>
               )}

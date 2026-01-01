@@ -116,17 +116,17 @@ export default function GithubProjects() {
 
   if (error) {
     return (
-      <main className="max-w-7xl mx-auto p-6">
-        <h1 className="text-4xl font-bold mb-8 text-center">
+      <>
+        <h1 className="text-4xl font-bold text-center">
           My GitHub Projects
         </h1>
         <p className="text-red-600 text-center">Error: {error}</p>
-      </main>
+      </>
     );
   }
 
   return (
-    <main className="max-w-7xl mx-auto mt-24 px-3 md:px-0">
+    <>
       {/* Profile Section */}
       {user && (
         <section
@@ -223,7 +223,7 @@ export default function GithubProjects() {
             >
               <div>
                 <h3 className="text-xl font-semibold mb-2">{repo.name}</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 min-h-[60px]">
+                <p className="text-gray-700 dark:text-gray-300 mb-4 min-h-15">
                   {repo.description || "No description provided."}
                 </p>
               </div>
@@ -266,6 +266,6 @@ export default function GithubProjects() {
           ))}
         </div>
       </section>
-    </main>
+    </>
   );
 }
