@@ -94,7 +94,7 @@ const SkillSection = ({
       ref={sectionRef}
       className="mb-10 transition-all duration-1000 ease-in-out transform translate-y-12 opacity-0 skill-section"
     >
-      <h4 className="mb-6">{title}</h4>
+      <h3 className="mb-6">{title}</h3>
       {skills.map((skill, idx) => (
         <div key={skill.key} className="mb-5">
           <div className="flex justify-between mb-1 text-sm">
@@ -141,7 +141,7 @@ export default function SkillsSection() {
   const renderBar = (value: number): React.ReactNode => {
     const barColor =
       value === 100
-        ? "bg-orange-400 dark:bg-orange-300"
+        ? "bg-primary dark:bg-primary"
         : "bg-[#3f4144] dark:bg-white";
 
     return (

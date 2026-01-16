@@ -85,8 +85,8 @@ const Projects = () => {
         )}
       >
         <div className="flex items-center">
-          <div className="w-4 h-4 rounded-full bg-orange-500 mr-2"></div>
-          <span className="text-sm text-orange-500 uppercase tracking-wide font-semibold">
+          <div className="w-4 h-4 rounded-full bg-primary mr-2"></div>
+          <span className="text-sm text-primary uppercase tracking-wide font-semibold">
             {projectsSection.projectsHeading || "Projects"}
           </span>
         </div>
@@ -111,8 +111,8 @@ const Projects = () => {
               className={clsx(
                 "px-3 py-1 rounded-full border text-sm transition-colors cursor-pointer",
                 selectedTechs.includes(tech)
-                  ? "bg-orange-500 text-white border-orange-500"
-                  : "bg-transparent text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-white"
+                  ? "bg-primary text-white border-orange-500"
+                  : "bg-transparent text-primary border-orange-500 hover:bg-primary hover:text-white"
               )}
             >
               {tech}
@@ -158,7 +158,7 @@ const Projects = () => {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 truncate max-w-full">
                   {item.title}
                 </h3>
-                <span className="text-xs font-medium bg-orange-100 text-orange-600 dark:bg-orange-700 dark:text-orange-200 px-3 py-1 rounded-full select-none whitespace-nowrap">
+                <span className="text-xs font-medium bg-primary/10 text-primary dark:bg-primary dark:text-p-200 px-3 py-1 rounded-full select-none whitespace-nowrap">
                   {item.endtrac}
                 </span>
               </div>
@@ -207,7 +207,7 @@ const Projects = () => {
             <div className="flex justify-end gap-6 pt-4 border-t border-gray-200 dark:border-gray-700">
               <Link
                 href={`/projects/${item.id}`}
-                className="text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                 aria-label={`Details about ${item.title}`}
               >
                 <FaInfoCircle size={20} />
@@ -217,7 +217,7 @@ const Projects = () => {
                   href={item.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                   aria-label={`${item.title} GitHub repository`}
                 >
                   <FaGithub size={20} />
@@ -228,7 +228,7 @@ const Projects = () => {
                   href={item.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-orange-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
                   aria-label={`${item.title} live site`}
                 >
                   <FaLink size={20} />

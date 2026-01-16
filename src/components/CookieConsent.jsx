@@ -67,7 +67,7 @@ const CookieConsent = () => {
       >
         <Button
           onClick={acceptCookies}
-          className="bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 dark:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+          className="bg-primary hover:bg-primary text-white dark:bg-primary dark:hover:bg-primary dark:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         >
           {translations.cookieConsent.accept}
         </Button>

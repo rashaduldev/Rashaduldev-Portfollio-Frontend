@@ -4,7 +4,7 @@ import { Users, Briefcase, MessageSquare, Eye } from "lucide-react";
 const stats = [
   { label: "Total Visitors", value: "12,450", icon: Users, color: "text-blue-600" },
   { label: "Project Views", value: "3,200", icon: Eye, color: "text-emerald-600" },
-  { label: "Total Projects", value: "24", icon: Briefcase, color: "text-orange-600" },
+  { label: "Total Projects", value: "24", icon: Briefcase, color: "text-primary" },
   { label: "New Messages", value: "12", icon: MessageSquare, color: "text-purple-600" },
 ];
 

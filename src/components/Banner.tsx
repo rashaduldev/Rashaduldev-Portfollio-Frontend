@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
-  FaFacebookF,
   FaLinkedinIn,
   FaGithub,
   FaEnvelope,
@@ -21,6 +20,7 @@ import { motion } from "framer-motion";
 import "./banner.css";
 import rashadul from "../../public/assets/rashadul-portfollio.png";
 import Image from "next/image";
+import { SiCodewars } from "react-icons/si";
 
 export default function Banner() {
   const context = useContext(LayoutContext);
@@ -58,9 +58,9 @@ export default function Banner() {
           transition={{ duration: 0.8 }}
           className={`flex-1 ${isRTL ? "text-right" : "text-left"}`}
         >
-          <h3 className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
+          <span className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
             {translations?.main?.subtitle || "Hi there, I'm"}
-          </h3>
+          </span>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl dark:text-white">
             <TypeAnimation
               sequence={[
@@ -88,6 +88,7 @@ export default function Banner() {
               href="https://linkedin.com/in/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile"
               className="flex items-center justify-center text-blue-600 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-blue-600 hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-blue-500"
             >
               <FaLinkedinIn size={16} />
@@ -96,23 +97,26 @@ export default function Banner() {
               href="https://github.com/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
               className="flex items-center justify-center text-gray-900 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-gray-900 hover:text-white dark:bg-gray-700 dark:text-white"
             >
               <FaGithub size={16} />
             </Link>
             <Link
               href="mailto:rashadul.dev@gmail.com"
-              className="flex items-center justify-center text-red-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-red-500 hover:text-white dark:bg-gray-700 dark:text-white"
+              aria-label="Send me an email"
+              className="flex items-center justify-center text-green-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-green-500 hover:text-white dark:bg-gray-700 dark:text-white"
             >
               <FaEnvelope size={16} />
             </Link>
             <Link
-              href="https://facebook.com/rashaduldev"
+              href="https://www.codewars.com/users/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center text-blue-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-blue-500 hover:text-white dark:bg-gray-700 dark:text-white"
+              aria-label="Visit my Codewars profile"
+              className="flex items-center justify-center text-red-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-red-500 hover:text-white dark:bg-gray-700 dark:text-white"
             >
-              <FaFacebookF size={16} />
+              <SiCodewars size={16} />
             </Link>
           </div>
 
@@ -129,20 +133,21 @@ export default function Banner() {
               </Link>
             </Button>
 
-            <Button variant="outline" asChild>
-              <Link
-                href="/assets/Rashadul.pdf"
-                download="Resume of Md Rashadul Islam.pdf"
-                className="flex items-center gap-2"
-              >
-                {translations?.main?.resume || "Download Resume"}
-                {isRTL ? (
-                  <IoArrowRedoCircleOutline size={20} />
-                ) : (
-                  <IoArrowUndoCircleOutline size={20} />
-                )}
-              </Link>
-            </Button>
+          <Button variant="outline" asChild>
+            <a
+              href="/assets/Rashadul.pdf"
+              download="Resume of Md Rashadul Islam.pdf"
+              className="flex items-center gap-2"
+              aria-label="Download resume as PDF"
+            >
+              {translations?.main?.resume || "Download Resume"}
+              {isRTL ? (
+                <IoArrowRedoCircleOutline size={20} />
+              ) : (
+                <IoArrowUndoCircleOutline size={20} />
+              )}
+            </a>
+          </Button>
           </div>
         </motion.div>
 
@@ -152,10 +157,11 @@ export default function Banner() {
             <Image
               src={rashadul}
               alt="Md Rashadul Islam profile photo"
-              width={420}
-              height={420}
+              width={280}
+              height={280}
               priority
-              className="relative w-full h-full object-cover z-20 rounded-full"
+              fetchPriority="high"
+              className="rounded-full"
             />
           </div>
         </div>

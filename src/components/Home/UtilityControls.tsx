@@ -87,7 +87,7 @@ export default function UtilityControls({ isMobile = false }: UtilityControlsPro
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent>   {/* <-- সরাসরি content */}
+          <DropdownMenuContent>
             <DropdownMenuItem onClick={() => setTheme("system")}>
               <MdImportantDevices className="mr-2" /> Device Default
             </DropdownMenuItem>
@@ -126,7 +126,7 @@ export default function UtilityControls({ isMobile = false }: UtilityControlsPro
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <Button><Link href="/login">Admin Login</Link></Button>
+      <Button asChild size="sm"><Link href="/login" aria-label="Admin login">Admin Login</Link></Button>
     </div>
   )
 }

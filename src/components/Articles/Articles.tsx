@@ -21,6 +21,7 @@ export default function Articles() {
           <Link
             key={article.id}
             href={`/articles/${article.id}`}
+            aria-label={`Read more about ${article.title}`}
             className="block border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative w-full h-48">

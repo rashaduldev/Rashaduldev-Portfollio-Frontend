@@ -4,11 +4,12 @@ import { Mail } from "lucide-react";
 import { useState, useContext } from "react";
 import { Input } from "@/components/ui/input";
 import { LayoutContext } from "./context"; 
-import { FaDev, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaDev, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FooterSection } from "@/types/translations";
+import { SiCodewars } from "react-icons/si";
 interface ExpectedLayoutContextValue {
   translations: {
     footer: FooterSection;
@@ -159,17 +160,19 @@ export default function Footer() {
           </h3>
           <div className="flex flex-row gap-4 mt-2">
             <Link
-              href="https://www.facebook.com/rashaduldev"
+              href="https://www.codewars.com/users/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my Codewars profile"
               className="hover:text-primary-hover transition-colors duration-200"
             >
-              <FaFacebookF className="text-xl" />
+              <SiCodewars className="text-xl" />
             </Link>
             <Link
               href="https://github.com/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
               className="hover:text-primary-hover transition-colors duration-200"
             >
               <FaGithub className="text-xl" />
@@ -178,6 +181,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile"
               className="hover:text-primary-hover transition-colors duration-200"
             >
               <FaLinkedinIn className="text-xl" />
@@ -186,6 +190,7 @@ export default function Footer() {
               href="https://app.daily.dev/rashaduldev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my daily dev profile"
               className="hover:text-primary-hover transition-colors duration-200"
             >
               <FaDev className="text-xl" />

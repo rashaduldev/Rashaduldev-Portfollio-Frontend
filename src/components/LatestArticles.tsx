@@ -76,15 +76,14 @@ export default function LatestArticles() {
                 <span>{article.category}</span>
                 <span>{article.date}</span>
               </div>
-              <h4 className="mt-2">{article.title}</h4>
+              <h3 className="mt-2">{article.title}</h3>
               <Link
                 href={`/articles/${article.id}`}
+                aria-label={`Read more about ${article.title}`}
                 className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline"
               >
                 {section?.readMoreLabel ?? "Read More"}
-                <span className="inline-block transform transition-transform group-hover:translate-x-1">
-                  →
-                </span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </motion.article>

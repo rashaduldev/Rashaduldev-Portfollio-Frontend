@@ -76,7 +76,7 @@ export default function CookiesPolicy() {
               href="https://www.aboutcookies.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-orange-600 hover:underline"
+              className="text-primary hover:underline"
             >
               aboutcookies.org
             </a>
@@ -103,7 +103,7 @@ export default function CookiesPolicy() {
             If you have questions about our Cookies Policy, please contact us at{" "}
             <a
               href="mailto:rashadul.dev@gmail.com"
-              className="text-orange-600 hover:underline"
+              className="text-primary hover:underline"
             >
               rashadul.dev@gmail.com
             </a>

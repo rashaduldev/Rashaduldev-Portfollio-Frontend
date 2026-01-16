@@ -9,12 +9,14 @@ const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-heading",
+  display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

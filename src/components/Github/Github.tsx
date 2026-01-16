@@ -87,7 +87,7 @@ export default function GithubProjects() {
           My GitHub Profile
         </h1>
         <svg
-          className="animate-spin h-12 w-12 text-orange-500 mb-4"
+          className="animate-spin h-12 w-12 text-primary mb-4"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -179,7 +179,7 @@ export default function GithubProjects() {
 
       {/* Summary Stats */}
       <section className="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-        <div className="p-6 bg-orange-50 dark:bg-orange-900 rounded-lg shadow">
+        <div className="p-6 bg-primary/50 dark:bg-primary rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-2">⭐ Stars</h2>
           <p className="text-3xl font-bold">{totalStars}</p>
         </div>

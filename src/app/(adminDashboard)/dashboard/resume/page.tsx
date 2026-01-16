@@ -17,7 +17,7 @@ export default function ResumePage() {
             {/* Example Row */}
             <div className="flex justify-between items-center p-4 border rounded-lg">
               <div>
-                <h4 className="font-bold">Senior Developer @ Tech Corp</h4>
+                <h2 className="font-bold">Senior Developer @ Tech Corp</h2>
                 <p className="text-sm text-slate-500">2021 - Present (Current)</p>
               </div>
               <div className="flex gap-2">
