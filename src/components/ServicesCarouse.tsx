@@ -12,7 +12,7 @@ export default function ServicesCarousel() {
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -48,7 +48,19 @@ export default function ServicesCarousel() {
     const container = scrollRef.current;
     if (container) {
       updateScrollButtons();
-      container.addEventListener("scroll", updateScrollButtons);
+      let ticking = false;
+
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateScrollButtons();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      container.addEventListener("scroll", onScroll);
     }
     return () => {
       if (container) {
@@ -91,7 +103,6 @@ export default function ServicesCarousel() {
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
-                layout
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}

@@ -48,13 +48,12 @@ export default function WhyChooseMe() {
             height={300}
           />
           <p className="leading-relaxed text-justify max-w-xl">
-            {/* Optional description text if you want more context */}
             {section.description}
           </p>
         </motion.div>
 
         {/* Features (50%) */}
-        <div className="space-y-8">
+        <div className="space-y-4 sm:space-y-8 mt-8 sm:mt-0" >
           {features.map((feature, index) => (
             <motion.div
               key={index}

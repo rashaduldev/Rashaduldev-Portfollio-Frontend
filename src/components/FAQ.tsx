@@ -22,7 +22,7 @@ export default function FaqSection() {
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -37,11 +37,7 @@ export default function FaqSection() {
 
   return (
     <section className="w-full py-12" dir={isRTL ? "rtl" : "ltr"}>
-      <h2
-        className={`text-center mb-10 ${
-          isRTL ? "text-right" : "text-left"
-        }`}
-      >
+      <h2 className={`text-center mb-10 ${isRTL ? "text-right" : "text-left"}`}>
         {faqs?.faqTitle || "Frequently Asked Questions"}
       </h2>
       <p className={`mb-8 ${isRTL ? "text-right" : "text-left"}`}>
@@ -105,8 +101,8 @@ function AnimatedFAQItem({ faq, isOpen, onClick, isRTL }: FAQItemProps) {
     >
       <button
         onClick={onClick}
-        className={`w-full flex justify-between items-center p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer ${
-          isRTL ? "flex-row" : ""
+        className={`w-full flex justify-between items-start text-start p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer ${
+          isRTL ? "flex-row-reverse" : ""
         }`}
       >
         <span className="font-medium">{faq.question}</span>

@@ -155,7 +155,7 @@
   color: #3f4144;
 }
 .section-container{
-  @apply container mx-auto px-5 lg:px-0;
+  @apply container mx-auto px-5;
 }
 
 /* banner image css */

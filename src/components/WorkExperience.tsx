@@ -27,7 +27,7 @@ export default function WorkExperience() {
   );
 
   return (
-    <section className="w-full py-12 overflow-x-hidden">
+    <section className="w-full pb-12 overflow-x-hidden">
       <h2 className="text-center mb-12">
         {translations.experienceHeading}
       </h2>
@@ -35,14 +35,14 @@ export default function WorkExperience() {
       <div className="relative">
         {/* Vertical line */}
         <div
-          className={`absolute top-0 bottom-0 w-0.5 bg-gray-400 dark:bg-gray-600 ${
+          className={`absolute hidden md:block top-0 bottom-0 w-0.5 bg-gray-400 dark:bg-gray-600 ${
             isRTL
               ? "right-0 md:right-1/2 md:translate-x-1/2"
               : "left-0 md:left-1/2 md:-translate-x-1/2"
           }`}
         />
 
-        <div className="flex flex-col space-y-1 relative z-10">
+        <div className="flex flex-col gap-4 md:gap-0 space-y-1 relative z-10">
           {sortedExperiences.map((exp, index) => {
             const isLeft = index % 2 === 0;
             const alignLeft = (!isRTL && isLeft) || (isRTL && !isLeft);
@@ -56,16 +56,16 @@ export default function WorkExperience() {
                 }`}
               >
                 {/* Dot */}
-                <div className="absolute hidden md:block left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-700 z-10" />
+                <div className="absolute hidden md:block left-1/2 -translate-x-1/2 top-0 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-700 z-10" />
 
-                <div className="w-full md:w-1/2 px-4">
+                <div className="w-full md:w-1/2 md:px-4">
                   <motion.div
                     initial={{ opacity: 0, x: animationX }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="p-6 border rounded-lg hover:shadow-lg transition">
+                    <div className="p-4 md:p-6 border rounded-lg hover:shadow-lg transition">
                       <div className="flex items-center justify-between">
                         <span className="inline-block mb-2 px-3 py-1 text-xs font-semibold rounded-full bg-gray-200 dark:bg-gray-800">
                         {exp.year}
@@ -75,7 +75,7 @@ export default function WorkExperience() {
                       </span>
                       </div>
 
-                      <div className="flex justify-between items-center">
+                      <div className="flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
                         <p className="font-semibold text-lg">
                           {exp.title}
                         </p>
@@ -96,7 +96,7 @@ export default function WorkExperience() {
                         {exp.type} · {exp.location}
                       </p>
 
-                      <p className="text-sm mt-2">
+                      <p className="text-sm mt-2 text-pretty">
                         {exp.description}
                       </p>
                     </div>

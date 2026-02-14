@@ -224,7 +224,7 @@ export default function Footer() {
               className="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary"
               required
             />
-            <Button type="submit" className="cursor-pointer">
+            <Button type="submit" className="h-9">
               <Mail className="w-4 h-4 mr-2" />
               {getTranslation("subscribe", "Subscribe")}
             </Button>

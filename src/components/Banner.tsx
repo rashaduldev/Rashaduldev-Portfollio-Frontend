@@ -152,7 +152,7 @@ export default function Banner() {
         </motion.div>
 
         <div className="flex-1 flex justify-center items-center">
-          <div className="relative w-40 sm:w-52 md:w-64 lg:w-80 h-auto">
+          <div className="relative w-full sm:w-52 md:w-64 lg:w-80 h-auto">
             {/* Image */}
             <Image
               src={rashadul}

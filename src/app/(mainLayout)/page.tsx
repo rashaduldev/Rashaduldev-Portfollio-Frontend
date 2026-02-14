@@ -25,7 +25,7 @@ const MainLayoutPage = () => {
         <TestimonialSection />
         <WhyChooseMe />
         {/* issue here */}
-        <ServicesCarousel />
+        {/* <ServicesCarousel /> */}
         <EducationSection />
         <LatestArticles />
         <FaqSection />
