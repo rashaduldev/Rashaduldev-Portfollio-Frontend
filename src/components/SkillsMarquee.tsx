@@ -7,9 +7,6 @@ import {
   FaCss3Alt,
   FaReact,
   FaNodeJs,
-  FaBootstrap,
-  FaVuejs,
-  FaWordpress,
 } from "react-icons/fa";
 import {
   SiFirebase,
@@ -24,66 +21,88 @@ import {
   SiAdobephotoshop,
   SiAdobeillustrator,
   SiAdobexd,
+  SiPostman,
+  SiSwagger,
+  SiAxios,
+  SiReactquery,
+  SiRedux,
+  SiMongodb,
+  SiAstro,
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 import Marquee from "react-fast-marquee";
 import { LayoutContext } from "./context";
 
 const SkillsMarquee = () => {
   const context = useContext(LayoutContext);
-  if (!context) {
-    throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
-    );
-  }
+  if (!context) return null;
 
   const { translations, isRTL } = context;
   const skills = translations.skills;
 
-  const tools = [
-    { name: skills.git, icon: <FaGitAlt /> },
-    { name: skills.firebase, icon: <SiFirebase /> },
-    { name: skills.cloudinary, icon: <SiCloudinary /> },
-    { name: skills.jetBrains, icon: <SiJetbrains /> },
-    { name: skills.cpanel, icon: <SiCpanel /> },
-    { name: skills.vs, icon: <SiCpanel /> },
+  const frontend = [
+    { name: skills.react, icon: <FaReact /> },
+    { name: skills.next, icon: <SiNextdotjs /> },
+    { name: skills.ts, icon: <SiTypescript /> },
+    { name: skills.js, icon: <SiJavascript /> },
+    { name: skills.tailwind, icon: <SiTailwindcss /> },
+    { name: skills.astro, icon: <SiAstro /> },
+    { name: skills.html, icon: <FaHtml5 /> },
+    { name: skills.css, icon: <FaCss3Alt /> },
   ];
 
-  const design = [
-    { name: skills.photoshop, icon: <SiAdobephotoshop /> },
+  const stateAndApi = [
+    { name: skills.restapi, icon: <SiExpress /> },
+    { name: skills.redux, icon: <SiRedux /> },
+    { name: skills.tanstackQuery, icon: <SiReactquery /> },
+    { name: skills.axios, icon: <SiAxios /> },
+    { name: skills.postman, icon: <SiPostman /> },
+    { name: skills.swagger, icon: <SiSwagger /> },
+  ];
+
+  const tools = [
+    { name: skills.git, icon: <FaGitAlt /> },
+    { name: skills.vs, icon: <VscVscode /> },
     { name: skills.figma, icon: <FaFigma /> },
+    { name: skills.photoshop, icon: <SiAdobephotoshop /> },
     { name: skills.xd, icon: <SiAdobexd /> },
     { name: skills.illustrator, icon: <SiAdobeillustrator /> },
   ];
 
-  const development = [
-    { name: skills.html, icon: <FaHtml5 /> },
-    { name: skills.css, icon: <FaCss3Alt /> },
-    { name: skills.js, icon: <SiJavascript /> },
-    { name: skills.ts, icon: <SiTypescript /> },
-    { name: skills.react, icon: <FaReact /> },
-    { name: skills.next, icon: <SiNextdotjs /> },
-    { name: skills.vue, icon: <FaVuejs /> },
-    { name: skills.tailwind, icon: <SiTailwindcss /> },
-    { name: skills.bootstrap, icon: <FaBootstrap /> },
+  const backend = [
     { name: skills.node, icon: <FaNodeJs /> },
-    { name: skills.ex, icon: <SiExpress /> },
-    { name: skills.wp, icon: <FaWordpress /> },
+    { name: skills.mongo, icon: <SiMongodb /> },
+    { name: skills.firebase, icon: <SiFirebase /> },
+    { name: skills.cloudinary, icon: <SiCloudinary /> },
+    { name: skills.jetBrains, icon: <SiJetbrains /> },
+    { name: skills.cpanel, icon: <SiCpanel /> },
   ];
 
   const renderLine = (
-    title: string,
     items: { name: string; icon: JSX.Element }[],
-    scrollDirection: "left" | "right"
+    scrollDirection: "left" | "right",
+    speed: number = 40,
   ) => (
-    <div className="my-6 overflow-hidden ">
-      <Marquee direction={scrollDirection} gradient={false} speed={40}>
+    <div className="py-1 overflow-hidden">
+      <Marquee
+        direction={scrollDirection}
+        gradient={true}
+        gradientColor="var(--marquee-bg)"
+        gradientWidth={100}
+        speed={speed}
+        pauseOnHover={true}
+      >
         {items.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2 px-4 sm:px-6 text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap"
+            className="group flex items-center gap-4 mx-4 px-6 py-3 rounded-2xl bg-white/50 dark:bg-zinc-900/50 border border-gray-200/50 dark:border-zinc-800/50 hover:border-primary/50 hover:bg-white dark:hover:bg-zinc-800                       transition-all duration-300"
           >
-            <span className="text-lg sm:text-xl md:text-2xl">{item.icon}</span>
-            <span className="truncate">{item.name}</span>
+            <span className="text-2xl sm:text-3xl text-gray-600 dark:text-zinc-400 group-hover:text-primary group-hover:scale-110 transition-all duration-300">
+              {item.icon}
+            </span>
+            <span className="text-sm sm:text-base font-bold text-gray-700 dark:text-zinc-200 group-hover:text-primary tracking-tight">
+              {item.name}
+            </span>
           </div>
         ))}
       </Marquee>
@@ -94,10 +113,24 @@ const SkillsMarquee = () => {
   const oppositeDir = isRTL ? "left" : "right";
 
   return (
-    <div className="w-full py-8 my-16 overflow-hidden">
-      {renderLine(skills.tools, tools, dir)} {/* 1st line */}
-      {renderLine(skills.designTitle, design, oppositeDir)} {/* 2nd line */}
-      {renderLine(skills.devTitle, development, dir)} {/* 3rd line */}
+    <div className="relative w-full mb-20 overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full pointer-events-none" />
+
+      <div className="relative z-10 flex flex-col gap-2">
+        {renderLine(frontend, dir, 45)}
+        {renderLine(stateAndApi, oppositeDir, 35)}
+        {renderLine(tools, dir, 50)}
+        {renderLine(backend, oppositeDir, 40)}
+      </div>
+
+      <style jsx global>{`
+        :root {
+          --marquee-bg: #ffffff;
+        }
+        .dark {
+          --marquee-bg: #09090b;
+        } /* zinc-950 or your bg color */
+      `}</style>
     </div>
   );
 };

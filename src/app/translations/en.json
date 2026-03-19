@@ -24,126 +24,139 @@
     "quata": "Learning Learning & Learning ........"
   },
   "skills": {
-    "about": "About me",
-    "designTitle": "Design Skill",
-    "devTitle": "Development Skill",
-    "tools": "Tools",
-    "git": "Git (Version Control)",
-    "firebase": "Firebase",
-    "cloudinary": "Cloudinary",
-    "jetBrains": "JetBrains",
-    "cpanel": "cPanel",
-    "vs": "Vs Code",
-    "photoshop": "Photoshop",
-    "figma": "Figma",
-    "xd": "Adobe XD",
-    "illustrator": "Adobe Illustrator",
+    "about": "About Me",
+    "description": "A specialized ecosystem of modern technologies focused on creating high-performance web solutions.",
+    "all": "All Stack",
+    "frontend": "Frontend Development",
+    "state_data": "State & API Management",
+    "tools": "Development Tools",
+    "backend": "Backend & Database",
+
     "html": "HTML5",
     "css": "CSS3",
-    "js": "JavaScript",
+    "js": "JavaScript (ES6+)",
     "ts": "TypeScript",
-    "gulp": "Gulp.js",
-    "astro": "Astro.js",
     "react": "React.js",
     "next": "Next.js",
     "tailwind": "Tailwind CSS",
+    "astro": "Astro.js",
+    "gulp": "Gulp.js",
+    "wp": "WordPress Customization",
+
+    "restapi": "RESTful APIs",
+    "redux": "Redux Toolkit",
+    "tanstackQuery": "TanStack Query",
+    "axios": "Axios",
+
+    "postman": "Postman",
+    "swagger": "Swagger UI",
+    "git": "Git (Version Control)",
+    "vs": "VS Code",
+    "figma": "Figma",
+    "photoshop": "Adobe Photoshop",
+    "xd": "Adobe XD",
+    "illustrator": "Adobe Illustrator",
+    "jetBrains": "JetBrains IDEs",
+    "cpanel": "cPanel / Hosting",
+
     "node": "Node.js",
-    "ex": "Express js",
-    "wp": "Wordpress(theme customization)",
-    "mongo": "MongoDB"
+    "ex": "Express.js",
+    "mongo": "MongoDB",
+    "firebase": "Firebase",
+    "cloudinary": "Cloudinary"
   },
   "statsSection": {
-  "title":"Achievements",
-  "stats": [
-    { "value": 29, "label": "Project Completed" },
-    { "value": 6, "label": "Award Winner" },
-    { "value": 99, "label": "Client Satisfaction" },
-    { "value": 1.6, "label": "Years of Experience" }
-  ]
-},
-"experienceHeading": "Work Experience",
-"experience": [
-  {
-    "year": "2025",
-    "title": "Frontend Developer",
-    "company": "Ena Ema Technologies",
-    "type":"Remote",
-    "location":"USA",
-    "department": "Developer",
-    "description": "Enthusiastic Junior Web Developer with hands-on experience in building full-stack applications using Next.js, Node.js, Express, and MongoDB. Skilled in developing responsive, high-performance web solutions and passionate about learning modern technologies to deliver efficient, user-focused applications.",
-    "duration": "September 2025 – Present"
+    "title": "Achievements",
+    "stats": [
+      { "value": 29, "label": "Project Completed" },
+      { "value": 6, "label": "Award Winner" },
+      { "value": 99, "label": "Client Satisfaction" },
+      { "value": 1.6, "label": "Years of Experience" }
+    ]
   },
-  {
-    "year": "2025",
-    "title": "Frontend Developer",
-    "company": "Themefisher",
-    "type":"On-site",
-    "location":"Shamoli, Dhaka",
-    "department": "Developer",
-    "description": "In this exciting role, I’m responsible for building high-quality, performant, and accessible web templates and interfaces using modern frontend technologies.",
-    "duration": "July 2025 – August 2025"
-  },
-  {
-    "year": "2024",
-    "title": "Frontend Web Developer (Entry level)",
-    "company": "Uysystems Ltd",
-    "type":"On-site",
-    "location":"Sahajadpur,Badda,Dhaka",
-    "department": "Developer",
-    "description": "Worked on full-stack with React and MongoDB.",
-    "duration": "Nov 2024 – Jun 2025"
-  },
-  {
-    "year": "2024",
-    "title": "Implementation Assistant (Promoted permanent)",
-    "location":"Sahajadpur,Badda,Dhaka",
-    "company": "Uysystems Ltd",
-    "type":"On-site",
-    "department": "MyGov ITSM Digitization (A2I Project)",
-    "description": "Form build up.Template making.Government service digitization.Customer support Service.",
-    "duration": "Sep 2024 – Jun 2025"
-  },
-  {
-    "year": "2024",
-    "title": "Implementation Assistant (Intern)",
-    "company": "Uysystems Ltd",
-    "type":"On-site",
-    "location":"Sahajadpur,Badda,Dhaka",
-    "department": "MyGov ITSM Digitization (A2I Project)",
-    "description": "Form build up.Template making.Government service digitization.Customer support Service.",
-    "duration": "Feb 2024 – Aug 2024"
-  },
-  {
-    "year": "2023",
-    "title": "Programming Hire and Train",
-    "company": "UyLab",
-     "type":"On-site",
-    "location":"Mohakhali,Dhaka",
-    "department": "Developer",
-    "description": "Successfully completed the training on Programming under the Hire and Train program of the Enhancing Digital Government & Economy (EDGE) project by the Bangladesh Computer Council (BCC), ICT Division.",
-    "duration": "Sep 2023 – Dec 2023"
-  },
-  {
-    "year": "2023",
-    "title": "Career transitioner to Web Development",
-    "company": "Career Break",
-     "type":"On-site",
-    "location":"Dhaka",
-    "department": "Home",
-    "description": "Dedicated time to learning web development technologies and building a portfolio of projects.",
-    "duration": "Jun 2023 – Aug 2023"
-  },
-  {
-    "year": "2023",
-    "title": "Computer Operator",
-    "company": "ShopUp",
-     "type":"On-site",
-    "location":"Dhanmondi,Dhaka",
-    "department": "Unicorn Department",
-    "description": "Managed IT systems and digital operations, ensuring smooth workflow across teams.Oversaw system management, IT infrastructure, and maintained secure and efficient technology solutions.Contributed to process automation and facilitated team coordination to improve productivity.Handled DMS (Database Management System) and WMS (Warehouse Management System) for streamlined data and warehouse operations.",
-    "duration": "Jun 2022 – may 2023"
-  }
-],
+  "experienceHeading": "Work Experience",
+  "experience": [
+    {
+      "year": "2025",
+      "title": "Frontend Developer",
+      "company": "Ena Ema Technologies",
+      "type": "Remote",
+      "location": "USA",
+      "department": "Developer",
+      "description": "Enthusiastic Junior Web Developer with hands-on experience in building full-stack applications using Next.js, Node.js, Express, and MongoDB. Skilled in developing responsive, high-performance web solutions and passionate about learning modern technologies to deliver efficient, user-focused applications.",
+      "duration": "September 2025 – Present"
+    },
+    {
+      "year": "2025",
+      "title": "Frontend Developer",
+      "company": "Themefisher",
+      "type": "On-site",
+      "location": "Shamoli, Dhaka",
+      "department": "Developer",
+      "description": "In this exciting role, I’m responsible for building high-quality, performant, and accessible web templates and interfaces using modern frontend technologies.",
+      "duration": "July 2025 – August 2025"
+    },
+    {
+      "year": "2024",
+      "title": "Frontend Web Developer (Entry level)",
+      "company": "Uysystems Ltd",
+      "type": "On-site",
+      "location": "Sahajadpur,Badda,Dhaka",
+      "department": "Developer",
+      "description": "Worked on full-stack with React and MongoDB.",
+      "duration": "Nov 2024 – Jun 2025"
+    },
+    {
+      "year": "2024",
+      "title": "Implementation Assistant (Promoted permanent)",
+      "location": "Sahajadpur,Badda,Dhaka",
+      "company": "Uysystems Ltd",
+      "type": "On-site",
+      "department": "MyGov ITSM Digitization (A2I Project)",
+      "description": "Form build up.Template making.Government service digitization.Customer support Service.",
+      "duration": "Sep 2024 – Jun 2025"
+    },
+    {
+      "year": "2024",
+      "title": "Implementation Assistant (Intern)",
+      "company": "Uysystems Ltd",
+      "type": "On-site",
+      "location": "Sahajadpur,Badda,Dhaka",
+      "department": "MyGov ITSM Digitization (A2I Project)",
+      "description": "Form build up.Template making.Government service digitization.Customer support Service.",
+      "duration": "Feb 2024 – Aug 2024"
+    },
+    {
+      "year": "2023",
+      "title": "Programming Hire and Train",
+      "company": "UyLab",
+      "type": "On-site",
+      "location": "Mohakhali,Dhaka",
+      "department": "Developer",
+      "description": "Successfully completed the training on Programming under the Hire and Train program of the Enhancing Digital Government & Economy (EDGE) project by the Bangladesh Computer Council (BCC), ICT Division.",
+      "duration": "Sep 2023 – Dec 2023"
+    },
+    {
+      "year": "2023",
+      "title": "Career transitioner to Web Development",
+      "company": "Career Break",
+      "type": "On-site",
+      "location": "Dhaka",
+      "department": "Home",
+      "description": "Dedicated time to learning web development technologies and building a portfolio of projects.",
+      "duration": "Jun 2023 – Aug 2023"
+    },
+    {
+      "year": "2023",
+      "title": "Computer Operator",
+      "company": "ShopUp",
+      "type": "On-site",
+      "location": "Dhanmondi,Dhaka",
+      "department": "Unicorn Department",
+      "description": "Managed IT systems and digital operations, ensuring smooth workflow across teams.Oversaw system management, IT infrastructure, and maintained secure and efficient technology solutions.Contributed to process automation and facilitated team coordination to improve productivity.Handled DMS (Database Management System) and WMS (Warehouse Management System) for streamlined data and warehouse operations.",
+      "duration": "Jun 2022 – may 2023"
+    }
+  ],
   "testimonialsSection": {
     "testimonialHeading": "Testimonials",
     "trustedClients": "",
@@ -185,188 +198,188 @@
       }
     ]
   },
-"projectsSection": {
-  "projectsHeading": "Projects",
-  "trustedProjects": "Latest projects",
-  "AllProjects": "All Projects",
-  "viewallproject": "View all project",
-  "projects": [
+  "projectsSection": {
+    "projectsHeading": "Projects",
+    "trustedProjects": "Latest projects",
+    "AllProjects": "All Projects",
+    "viewallproject": "View all project",
+    "projects": [
       {
-    "id": 12,
-    "title": "Optivus[Gulpjs] (FramerBite clone) Paid Theme",
-    "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-    "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
-    "liveLink": "http://optivus.uivibe.me",
-    "status": "Old"
-  },
-   {
-    "id": 13,
-    "title": "Optivus (FramerBite clone) Paid Theme",
-    "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-    "techStack": "Tailwind, TypeScript, Nextjs",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/nextplate-main",
-    "liveLink": "https://optivus-nextplate.vercel.app/",
-    "status": "Latest"
-  },
-   {
-    "id": 14,
-    "title": "Ena-Ema Technologies (Company Website)",
-    "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814005/ena-ema_desktop_hmyed1.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814004/ena-ema_mobile_n2ibte.png",
-    "techStack": "Tailwind, TypeScript, Nextjs",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/ena-ema-frontend-task",
-    "liveLink": "https://ena-ema-landing.vercel.app",
-    "status": "Latest"
-  },
-     {
-    "id": 11,
-    "title": "HTML Tailwind Dashboard",
-    "description": "A fully responsive CRM dashboard built with pure HTML and Tailwind CSS—no frameworks or libraries used. Clean UI, mobile-friendly layout, and lightweight design focused on frontend presentation only.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
-    "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
-    "liveLink": "https://html-tailwind-dashboard.vercel.app",
-    "status": "Latest"
-  },
-    {
-      "id": 1,
-      "title": "Tourisom & Travels",
-      "description": "A MERN-Stack web application built with the MERN stack (MongoDB, Express.js, React, Node.js), offering seamless booking, destination exploration, and user management. Features include dynamic tour packages, secure authentication, a user-friendly interface, and responsive design for an enhanced travel planning experience.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-      "techStack": "MongoDB,Express,React.js,Node.js,Tailwind,Firebase",
-      "endtrac": "Mern-Stack",
-      "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-      "liveLink": "https://tour-guide-theta.vercel.app",
-      "status": "Latest"
-    },
-    {
-      "id": 2,
-      "title": "Trade Ventures",
-      "description": "A responsive frontend application built with Nextjs and Tailwind CSS, designed for seamless user interaction and dynamic content management. The project offers a clean UI, fast performance, and optimized navigation for enhanced user experience. It includes modern design principles and responsive layouts, ensuring accessibility across all devices.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
-      "techStack": "Nextjs,Tailwind,recharts,JavaScript,Daisyui",
-      "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev/Trade-Venture",
-      "liveLink": "https://trade-venture-roan.vercel.app",
-      "status": "Old"
-    },
-    {
-      "id": 3,
-      "title": "SSL Garments (Frontend)",
-      "description": "The SSL Garments System (Frontend) is a dynamic and responsive web application designed to manage garment production processes. Developed using Next.js and Tailwind CSS, this frontend interface enables users to interact with the garment management system, track orders, view inventory, and manage production workflows. The application features a user-friendly design with a focus on performance, offering a seamless experience across various devices.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-      "techStack": "React.js,Tailwind,JavaScript,Tsparticles",
-      "githubLink": "https://github.com/rashaduldev/ssl",
-      "liveLink": "https://stylorium.net",
-      "status": "Latest",
-      "endtrac": "Frontend"
-    },
-    {
-      "id": 4,
-      "title": "Learning Management System (LMS) Landing",
-      "description": "A fully responsive and dynamic Learning Management System built with React for the front end. It offers user authentication, course browsing, enrollment, and video lessons. Designed to simplify online learning with a clean UI, intuitive navigation, and integrated payment support. Admins can manage courses, instructors, and students efficiently.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-      "techStack": "HTML5, CSS3, React.js, JavaScript",
-      
-      "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
-      "liveLink": "https://learning.tripleibd.com",
-      "status": "Old"
-    },
+        "id": 12,
+        "title": "Optivus[Gulpjs] (FramerBite clone) Paid Theme",
+        "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
+        "liveLink": "http://optivus.uivibe.me",
+        "status": "Old"
+      },
       {
-      "id": 5,
-      "title": "Digital Clock",
-      "description": "A simple yet elegant digital clock built using HTML, CSS, and JavaScript. It dynamically displays the current time and updates every second in real-time. The project focuses on DOM manipulation and time-based functions, making it a great beginner-level JavaScript project.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-      "techStack": "HTML5, CSS3, JavaScript",
-      "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev/Digital-clock",
-      "liveLink": "http://digital-clock.uivibe.me",
-      "status": "Old"
-    },
-    {
-      "id": 6,
-      "title": "Functional portfollio Website",
-      "description": "About Responsive portfolio website built from a Figma design using Next.js (or Astro) and Tailwind CSS. Features include SEO optimization, accessibility, animations, and performance tuning with 95+ PageSpeed score. Deployed on Vercel/Netlify with full documentation.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
-      "techStack": "Nextjs, Tailwind, TypeScript",
-      
-      "endtrac": "Frontend",
-      "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
-      "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
-      "status": "Latest"
-    },
-    {
-    "id": 7,
-    "title": "Password Generator",
-    "description": "This is a simple yet effective password generator built using HTML, CSS, and JavaScript. Users can generate strong, random passwords with customizable options for length and character types. It features a clean user interface and real-time password display, ideal for basic security needs.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
-    "techStack": "HTML5, CSS3, JavaScript",
-    
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
-    "liveLink": "https://password-generator-bd.vercel.app",
-    "status": "Old"
-    },
-    {
-      "id": 8,
-      "title": "A to Z Ecommerce",
-      "description": "A full-featured ecommerce platform built from scratch using the Frontend. The project includes user authentication, product management, shopping cart functionality, secure checkout, and order tracking. It also features an admin dashboard for managing inventory, orders, and customers. Optimized for both desktop and mobile experiences.",
-      "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-      "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-      "techStack": "React.js, MongoDB",
-      
-      "endtrac": "Frontend",
-      "githubLink": "",
-      "liveLink": "https://a-to-z-ecommerce.vercel.app",
-      "status": "Latest"
-    },
-    {
-    "id": 9,
-    "title": "Airbook",
-    "description": "Airbook is a full-stack web application designed to simulate an airline booking experience. Users can explore flight options, book tickets, and manage bookings. The frontend is developed using React for a responsive UI, while the backend uses Node.js and MongoDB to handle data management and authentication.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "techStack": "React.js",
-    
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
-    "liveLink": "https://zippy-trouble.surge.sh",
-    "status": "Old"
+        "id": 13,
+        "title": "Optivus (FramerBite clone) Paid Theme",
+        "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "techStack": "Tailwind, TypeScript, Nextjs",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/nextplate-main",
+        "liveLink": "https://optivus-nextplate.vercel.app/",
+        "status": "Latest"
+      },
+      {
+        "id": 14,
+        "title": "Ena-Ema Technologies (Company Website)",
+        "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814005/ena-ema_desktop_hmyed1.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814004/ena-ema_mobile_n2ibte.png",
+        "techStack": "Tailwind, TypeScript, Nextjs",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/ena-ema-frontend-task",
+        "liveLink": "https://ena-ema-landing.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 11,
+        "title": "HTML Tailwind Dashboard",
+        "description": "A fully responsive CRM dashboard built with pure HTML and Tailwind CSS—no frameworks or libraries used. Clean UI, mobile-friendly layout, and lightweight design focused on frontend presentation only.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
+        "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
+        "liveLink": "https://html-tailwind-dashboard.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 1,
+        "title": "Tourisom & Travels",
+        "description": "A MERN-Stack web application built with the MERN stack (MongoDB, Express.js, React, Node.js), offering seamless booking, destination exploration, and user management. Features include dynamic tour packages, secure authentication, a user-friendly interface, and responsive design for an enhanced travel planning experience.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
+        "techStack": "MongoDB,Express,React.js,Node.js,Tailwind,Firebase",
+        "endtrac": "Mern-Stack",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
+        "liveLink": "https://tour-guide-theta.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 2,
+        "title": "Trade Ventures",
+        "description": "A responsive frontend application built with Nextjs and Tailwind CSS, designed for seamless user interaction and dynamic content management. The project offers a clean UI, fast performance, and optimized navigation for enhanced user experience. It includes modern design principles and responsive layouts, ensuring accessibility across all devices.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
+        "techStack": "Nextjs,Tailwind,recharts,JavaScript,Daisyui",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Trade-Venture",
+        "liveLink": "https://trade-venture-roan.vercel.app",
+        "status": "Old"
+      },
+      {
+        "id": 3,
+        "title": "SSL Garments (Frontend)",
+        "description": "The SSL Garments System (Frontend) is a dynamic and responsive web application designed to manage garment production processes. Developed using Next.js and Tailwind CSS, this frontend interface enables users to interact with the garment management system, track orders, view inventory, and manage production workflows. The application features a user-friendly design with a focus on performance, offering a seamless experience across various devices.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "techStack": "React.js,Tailwind,JavaScript,Tsparticles",
+        "githubLink": "https://github.com/rashaduldev/ssl",
+        "liveLink": "https://stylorium.net",
+        "status": "Latest",
+        "endtrac": "Frontend"
+      },
+      {
+        "id": 4,
+        "title": "Learning Management System (LMS) Landing",
+        "description": "A fully responsive and dynamic Learning Management System built with React for the front end. It offers user authentication, course browsing, enrollment, and video lessons. Designed to simplify online learning with a clean UI, intuitive navigation, and integrated payment support. Admins can manage courses, instructors, and students efficiently.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "techStack": "HTML5, CSS3, React.js, JavaScript",
+
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
+        "liveLink": "https://learning.tripleibd.com",
+        "status": "Old"
+      },
+      {
+        "id": 5,
+        "title": "Digital Clock",
+        "description": "A simple yet elegant digital clock built using HTML, CSS, and JavaScript. It dynamically displays the current time and updates every second in real-time. The project focuses on DOM manipulation and time-based functions, making it a great beginner-level JavaScript project.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Digital-clock",
+        "liveLink": "http://digital-clock.uivibe.me",
+        "status": "Old"
+      },
+      {
+        "id": 6,
+        "title": "Functional portfollio Website",
+        "description": "About Responsive portfolio website built from a Figma design using Next.js (or Astro) and Tailwind CSS. Features include SEO optimization, accessibility, animations, and performance tuning with 95+ PageSpeed score. Deployed on Vercel/Netlify with full documentation.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
+        "techStack": "Nextjs, Tailwind, TypeScript",
+
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
+        "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 7,
+        "title": "Password Generator",
+        "description": "This is a simple yet effective password generator built using HTML, CSS, and JavaScript. Users can generate strong, random passwords with customizable options for length and character types. It features a clean user interface and real-time password display, ideal for basic security needs.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
+        "liveLink": "https://password-generator-bd.vercel.app",
+        "status": "Old"
+      },
+      {
+        "id": 8,
+        "title": "A to Z Ecommerce",
+        "description": "A full-featured ecommerce platform built from scratch using the Frontend. The project includes user authentication, product management, shopping cart functionality, secure checkout, and order tracking. It also features an admin dashboard for managing inventory, orders, and customers. Optimized for both desktop and mobile experiences.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "techStack": "React.js, MongoDB",
+
+        "endtrac": "Frontend",
+        "githubLink": "",
+        "liveLink": "https://a-to-z-ecommerce.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 9,
+        "title": "Airbook",
+        "description": "Airbook is a full-stack web application designed to simulate an airline booking experience. Users can explore flight options, book tickets, and manage bookings. The frontend is developed using React for a responsive UI, while the backend uses Node.js and MongoDB to handle data management and authentication.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "techStack": "React.js",
+
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
+        "liveLink": "https://zippy-trouble.surge.sh",
+        "status": "Old"
+      },
+      {
+        "id": 10,
+        "title": "Tourist-Guide-Server",
+        "description": "The Tourist-Guide-Server is a robust backend for a travel planning platform, enabling seamless itinerary management and user authentication. Built with Node.js, Express, and MongoDB, it uses Mongoose for efficient data handling and JWT for secure authentication.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "techStack": "Node.js,Express,JWT,MongoDB,Mongoose",
+
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
+        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
+        "status": "Latest"
+      }
+    ]
   },
-    {
-    "id": 10,
-    "title": "Tourist-Guide-Server",
-    "description": "The Tourist-Guide-Server is a robust backend for a travel planning platform, enabling seamless itinerary management and user authentication. Built with Node.js, Express, and MongoDB, it uses Mongoose for efficient data handling and JWT for secure authentication.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "techStack": "Node.js,Express,JWT,MongoDB,Mongoose",
-    
-    "endtrac": "Backend",
-    "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-    "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-    "status": "Latest"
-  }
-  ]
-},
   "Educationheading": "Education",
   "education": {
     "2020": {
@@ -395,48 +408,48 @@
     }
   },
   "whyChooseMeSection": {
-     "title": "Why Choose Me",
-  "description": "I provide high-quality web solutions tailored to your business needs. With a strong focus on modern technologies, clean and efficient code, responsive design, and a seamless user experience, I ensure every project delivers real value. Whether you're a local business or an international client, you can count on professionalism, performance, and clear communication at every stage.",
-  "contactbutton": "Contact me",
-  "contactdescription": "Have a project in mind? Let’s bring your vision to life",
+    "title": "Why Choose Me",
+    "description": "I provide high-quality web solutions tailored to your business needs. With a strong focus on modern technologies, clean and efficient code, responsive design, and a seamless user experience, I ensure every project delivers real value. Whether you're a local business or an international client, you can count on professionalism, performance, and clear communication at every stage.",
+    "contactbutton": "Contact me",
+    "contactdescription": "Have a project in mind? Let’s bring your vision to life",
     "features": [
-    {
-      "title": "Clean & Modern Code",
-      "description": "I write maintainable, scalable, and efficient code with best practices and modern technologies."
-    },
-    {
-      "title": "Responsive Design",
-      "description": "Every website I build is fully responsive and optimized for all devices and screen sizes."
-    },
-    {
-      "title": "Performance Optimization",
-      "description": "I prioritize fast-loading websites with optimized assets and minimal latency."
-    },
-    {
-      "title": "SEO Friendly",
-      "description": "My projects are structured and coded with SEO best practices to improve visibility on search engines."
-    },
-    {
-      "title": "Custom Admin Panel",
-      "description": "I develop easy-to-manage custom admin panels so you can control your site without technical knowledge."
-    },
-    {
-      "title": "Third-Party API Integration",
-      "description": "Need payment gateways, Google Maps, or social media integration? I seamlessly connect your site with external services."
-    },
-    {
-      "title": "Cross-Browser Compatibility",
-      "description": "Your site will look and function consistently across all major browsers, including Chrome, Firefox, Safari, and Edge."
-    },
-    {
-      "title": "Bug Fixing & Debugging",
-      "description": "I quickly identify and fix bugs to ensure smooth and error-free user experiences."
-    },
-    {
-      "title": "Client Support",
-      "description": "After project delivery, I offer guidance and support to help you maintain and update your site confidently."
-    }
-  ]
+      {
+        "title": "Clean & Modern Code",
+        "description": "I write maintainable, scalable, and efficient code with best practices and modern technologies."
+      },
+      {
+        "title": "Responsive Design",
+        "description": "Every website I build is fully responsive and optimized for all devices and screen sizes."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "I prioritize fast-loading websites with optimized assets and minimal latency."
+      },
+      {
+        "title": "SEO Friendly",
+        "description": "My projects are structured and coded with SEO best practices to improve visibility on search engines."
+      },
+      {
+        "title": "Custom Admin Panel",
+        "description": "I develop easy-to-manage custom admin panels so you can control your site without technical knowledge."
+      },
+      {
+        "title": "Third-Party API Integration",
+        "description": "Need payment gateways, Google Maps, or social media integration? I seamlessly connect your site with external services."
+      },
+      {
+        "title": "Cross-Browser Compatibility",
+        "description": "Your site will look and function consistently across all major browsers, including Chrome, Firefox, Safari, and Edge."
+      },
+      {
+        "title": "Bug Fixing & Debugging",
+        "description": "I quickly identify and fix bugs to ensure smooth and error-free user experiences."
+      },
+      {
+        "title": "Client Support",
+        "description": "After project delivery, I offer guidance and support to help you maintain and update your site confidently."
+      }
+    ]
   },
   "latestArticlesSection": {
     "lefttitle": "Articles",
@@ -489,96 +502,96 @@
     "projects": "Projects"
   },
   "contact": {
-  "heroTitle": "Get in Touch",
-  "letsConnect": "Let's Connect",
-  "description": "I’d love to hear from you! Whether you have a question, project idea or just want to say hi.",
-  "email": "Email",
-  "phone": "Phone",
-  "address": "Address",
-  "namePlaceholder": "Your Name",
-  "phonePlaceholder": "Your Phone",
-  "emailPlaceholder": "Your Email",
-  "messagePlaceholder": "Your Message",
-  "sendButton": "Send Message",
-  "ctaTitle": "Looking for a Creative Developer?",
-  "ctaDescription": "Let’s build something amazing together. Reach out now!"
-},
+    "heroTitle": "Get in Touch",
+    "letsConnect": "Let's Connect",
+    "description": "I’d love to hear from you! Whether you have a question, project idea or just want to say hi.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "namePlaceholder": "Your Name",
+    "phonePlaceholder": "Your Phone",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Your Message",
+    "sendButton": "Send Message",
+    "ctaTitle": "Looking for a Creative Developer?",
+    "ctaDescription": "Let’s build something amazing together. Reach out now!"
+  },
   "notFound": {
     "title": "Page Not Found",
     "description": "Sorry, the page you are looking for doesn’t exist or has been moved.",
     "backToHome": "Go Back Home"
   },
-    "developerIsWorking": {
+  "developerIsWorking": {
     "title": "The Developer is Working...",
     "description": "This section is currently under development. Please check back soon for updates.",
     "backToHome": "Back to Home"
   },
- "faq": {
-  "faqTitle": "Frequently Asked Questions",
-  "faqDescription": "Here are some common questions and answers to help you understand my services better.",
-  "items": [
-    {
-      "question": "What services do you offer?",
-      "answer": "I specialize in modern front-end development using React, Next.js, and Tailwind CSS. I also provide UI/UX design, responsive layouts, performance optimization, and full-stack web development support when needed."
-    },
-    {
-      "question": "Do you work with international clients?",
-      "answer": "Yes, I collaborate with clients worldwide including the US, UK, Canada, Australia, and others. I focus on clear communication, time-zone flexibility, and timely delivery."
-    },
-    {
-      "question": "What technologies do you use?",
-      "answer": "My tech stack includes HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, MongoDB, and modern tools like Git, Figma, and Vite."
-    },
-    {
-      "question": "How can I contact you?",
-      "answer": "You can reach me via the contact form on my website, or directly through my email and LinkedIn. I’m responsive and open to discussing your project needs."
-    },
-    {
-      "question": "Can you help with performance optimization?",
-      "answer": "Absolutely. I conduct audits and offer optimization services to boost speed, Core Web Vitals, SEO, and overall user experience."
-    },
-    {
-      "question": "Are you available for freelance or contract work?",
-      "answer": "Yes, I’m available for freelance and contract-based projects. Whether it’s a landing page, a SaaS dashboard, or a full website, I’d love to hear about it."
-    },
-    {
-      "question": "How long does a typical project take?",
-      "answer": "It depends on the project scope, but a typical website or dashboard usually takes between 1 to 3 weeks. I always aim for timely delivery without compromising quality."
-    },
-    {
-      "question": "Do you work with design tools like Figma or Adobe XD?",
-      "answer": "Yes, I regularly convert Figma, Adobe XD, or Sketch designs into responsive, pixel-perfect, production-ready websites using modern frontend frameworks."
-    }
-  ]
-},
-"services": {
-  "title": "Services I Offer",
-  "items": [
-    {
-      "title": "Frontend Development",
-      "description": "Building responsive, accessible UIs using React, Next.js & Tailwind CSS.",
-       "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264472/resume/services/frontend.jpg"
-    },
-    {
-      "title": "Full-Stack Solutions",
-      "description": "From database to UI — creating seamless full-stack apps using MERN.",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/backend.jpg"
-    },
-    {
-      "title": "UI/UX Design",
-      "description": "Crafting user-centric interfaces with clean, modern aesthetics.",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/uiux.jpg"
-    },
-    {
-      "title": "Performance Optimization",
-      "description": "Improving load speed, SEO, and Lighthouse score for web apps.",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/performance.jpg"
-    },
-    {
-      "title": "API Integration",
-      "description": "Connecting your frontend to powerful APIs for dynamic functionality.",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264468/resume/services/api.jpg"
-    }
-  ]
-}
+  "faq": {
+    "faqTitle": "Frequently Asked Questions",
+    "faqDescription": "Here are some common questions and answers to help you understand my services better.",
+    "items": [
+      {
+        "question": "What services do you offer?",
+        "answer": "I specialize in modern front-end development using React, Next.js, and Tailwind CSS. I also provide UI/UX design, responsive layouts, performance optimization, and full-stack web development support when needed."
+      },
+      {
+        "question": "Do you work with international clients?",
+        "answer": "Yes, I collaborate with clients worldwide including the US, UK, Canada, Australia, and others. I focus on clear communication, time-zone flexibility, and timely delivery."
+      },
+      {
+        "question": "What technologies do you use?",
+        "answer": "My tech stack includes HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, MongoDB, and modern tools like Git, Figma, and Vite."
+      },
+      {
+        "question": "How can I contact you?",
+        "answer": "You can reach me via the contact form on my website, or directly through my email and LinkedIn. I’m responsive and open to discussing your project needs."
+      },
+      {
+        "question": "Can you help with performance optimization?",
+        "answer": "Absolutely. I conduct audits and offer optimization services to boost speed, Core Web Vitals, SEO, and overall user experience."
+      },
+      {
+        "question": "Are you available for freelance or contract work?",
+        "answer": "Yes, I’m available for freelance and contract-based projects. Whether it’s a landing page, a SaaS dashboard, or a full website, I’d love to hear about it."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "It depends on the project scope, but a typical website or dashboard usually takes between 1 to 3 weeks. I always aim for timely delivery without compromising quality."
+      },
+      {
+        "question": "Do you work with design tools like Figma or Adobe XD?",
+        "answer": "Yes, I regularly convert Figma, Adobe XD, or Sketch designs into responsive, pixel-perfect, production-ready websites using modern frontend frameworks."
+      }
+    ]
+  },
+  "services": {
+    "title": "Services I Offer",
+    "items": [
+      {
+        "title": "Frontend Development",
+        "description": "Building responsive, accessible UIs using React, Next.js & Tailwind CSS.",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264472/resume/services/frontend.jpg"
+      },
+      {
+        "title": "Full-Stack Solutions",
+        "description": "From database to UI — creating seamless full-stack apps using MERN.",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/backend.jpg"
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Crafting user-centric interfaces with clean, modern aesthetics.",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/uiux.jpg"
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Improving load speed, SEO, and Lighthouse score for web apps.",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/performance.jpg"
+      },
+      {
+        "title": "API Integration",
+        "description": "Connecting your frontend to powerful APIs for dynamic functionality.",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264468/resume/services/api.jpg"
+      }
+    ]
+  }
 }
