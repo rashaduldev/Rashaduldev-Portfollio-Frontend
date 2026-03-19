@@ -1,5 +1,5 @@
 {
-    "header": {
+  "header": {
     "brand": "ইউভাইব",
     "home": "হোম",
     "projects": "প্রজেক্টস",
@@ -14,43 +14,54 @@
     "accept": "গ্রহণ করুন",
     "terms": "শর্তাবলি"
   },
- "main": {
-      "subtitle": "হ্যালো, আমি",
-      "title": "রাশেদুল ইসলাম",
-      "stack": "ফ্রন্টএন্ড ডেভেলপার",
-      "description": "পিক্সেল-পারফেক্ট এবং রেসপনসিভ ওয়েবসাইট তৈরিতে আগ্রহী ফ্রন্টএন্ড ওয়েব ডেভেলপার, যিনি পরিষ্কার কোডকে আকর্ষণীয় ডিজাইনের সাথে মেলান। JavaScript, TypeScript, React.js, Next.js, এবং Tailwind CSS-এ দক্ষ, আমি আইডিয়াগুলোকে ইন্টারঅ্যাকটিভ এবং ব্যবহারকারী-বান্ধব অভিজ্ঞতায় রূপান্তর করি — সর্বদা নিখুঁত পারফরম্যান্স এবং ১০০% ক্লায়েন্ট সন্তুষ্টির লক্ষ্যে।",
-      "leftbutton": "চলুন শুরু করি",
-      "resume": "রেজুমে ডাউনলোড করুন",
-      "quata": "শিখছি, শিখছি এবং শিখছি ........"
-    },
+  "main": {
+    "subtitle": "হ্যালো, আমি",
+    "title": "রাশেদুল ইসলাম",
+    "stack": "ফ্রন্টএন্ড ডেভেলপার",
+    "description": "পিক্সেল-পারফেক্ট এবং রেসপনসিভ ওয়েবসাইট তৈরিতে আগ্রহী ফ্রন্টএন্ড ওয়েব ডেভেলপার, যিনি পরিষ্কার কোডকে আকর্ষণীয় ডিজাইনের সাথে মেলান। JavaScript, TypeScript, React.js, Next.js, এবং Tailwind CSS-এ দক্ষ, আমি আইডিয়াগুলোকে ইন্টারঅ্যাকটিভ এবং ব্যবহারকারী-বান্ধব অভিজ্ঞতায় রূপান্তর করি — সর্বদা নিখুঁত পারফরম্যান্স এবং ১০০% ক্লায়েন্ট সন্তুষ্টির লক্ষ্যে।",
+    "leftbutton": "চলুন শুরু করি",
+    "resume": "রেজুমে ডাউনলোড করুন",
+    "quata": "শিখছি, শিখছি এবং শিখছি ........"
+  },
   "skills": {
+    "designTitle": "ডিজাইন টুলস",
+    "devTitle": "ডেভেলপমেন্ট স্ট্যাক",
     "about": "আমার সম্পর্কে",
-    "designTitle": "ডিজাইন দক্ষতা",
-    "devTitle": "ডেভেলপমেন্ট দক্ষতা",
-    "tools": "টুলস",
-    "git": "গিট (ভার্সন কন্ট্রোল)",
-    "firebase": "ফায়ারবেস",
-    "cloudinary": "ক্লাউডিনারি",
-    "jetBrains": "জেটব্রেইনস",
-    "cpanel": "সি-প্যানেল",
-    "vs": "ভিএস কোড",
-    "photoshop": "ফটোশপ",
-    "figma": "ফিগমা",
-    "xd": "অ্যাডোব XD",
-    "illustrator": "অ্যাডোব ইলাস্ট্রেটর",
-    "html": "এইচটিএমএল",
-    "css": "সিএসএস",
-    "js": "জাভাস্ক্রিপ্ট",
+    "description": "উচ্চ-দক্ষতার ওয়েব সমাধান তৈরিতে মনোযোগী আধুনিক প্রযুক্তির একটি বিশেষায়িত ইকোসিস্টেম।",
+    "all": "সব স্ট্যাক",
+    "frontend": "ফ্রন্টএন্ড ডেভেলপমেন্ট",
+    "state_data": "স্টেট ও API ম্যানেজমেন্ট",
+    "tools": "ডেভেলপমেন্ট টুলস",
+    "backend": "ব্যাকএন্ড ও ডাটাবেস",
+    "html": "HTML5",
+    "css": "CSS3",
+    "js": "জাভাস্ক্রিপ্ট (ES6+)",
     "ts": "টাইপস্ক্রিপ্ট",
-    "react": "রিয়্যাক্ট.জেএস",
+    "react": "রিঅ্যাক্ট.জেএস",
     "next": "নেক্সট.জেএস",
-    "vue": "ভিউ.জেএস",
-    "tailwind": "টেইলওয়াইন্ড সিএসএস",
-    "bootstrap": "বুটস্ট্র্যাপ",
+    "tailwind": "টেইলউইন্ড CSS",
+    "astro": "অ্যাস্ট্রো.জেএস",
+    "gulp": "গাল্প.জেএস",
+    "wp": "ওয়ার্ডপ্রেস কাস্টমাইজেশন",
+    "restapi": "RESTful API",
+    "redux": "রিডাক্স টুলকিট",
+    "tanstackQuery": "ট্যানস্ট্যাক কোয়েরি",
+    "axios": "অ্যাক্সিওস",
+    "postman": "পোস্টম্যান",
+    "swagger": "সোয়াগার UI",
+    "git": "গিট (ভার্সন কন্ট্রোল)",
+    "vs": "VS Code",
+    "figma": "ফিগমা",
+    "photoshop": "অ্যাডোবি ফটোশপ",
+    "xd": "অ্যাডোবি XD",
+    "illustrator": "অ্যাডোবি ইলাস্ট্রেটর",
+    "jetBrains": "জেটব্রেইনস IDEs",
+    "cpanel": "সি-প্যানেল / হোস্টিং",
     "node": "নোড.জেএস",
     "ex": "এক্সপ্রেস.জেএস",
-    "wp": "ওয়ার্ডপ্রেস",
-    "mongo": "MongoDB"
+    "mongo": "মঙ্গোডিবি",
+    "firebase": "ফায়ারবেস",
+    "cloudinary": "ক্লাউডিনারি"
   },
   "statsSection": {
     "title": "সাফল্য",
@@ -145,198 +156,198 @@
     }
   ],
   "testimonialsSection": {
-  "testimonialHeading": "প্রশংসাপত্র",
-  "trustedClients": "",
-  "testimonials": [
-    {
-      "quote": "রাশেদুলের সাথে কাজ করার অভিজ্ঞতা দারুণ ছিল। তিনি সময়মতো আমার ওয়েবসাইট ডেলিভার করেছেন এবং সেটি পুরোপুরি রেসপন্সিভ ছিল।",
-      "highlight": "পুরোপুরি রেসপন্সিভ",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-1.png",
-      "name": "সারাহ উইলিয়ামস",
-      "username": "@sarah_w"
-    },
-    {
-      "quote": "আমার একাধিক রিভিশনের প্রয়োজন হয়েছিল, কিন্তু তিনি সবসময় ধৈর্যশীল ও সহানুভূতিশীল ছিলেন। শেষ রেজাল্টটা একদম আমার প্রত্যাশামতো ছিল।",
-      "highlight": "ধৈর্যশীল ও সহানুভূতিশীল",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-3.png",
-      "name": "জেসিকা লি",
-      "username": "@jess_dev"
-    },
-    {
-      "quote": "তিনি আমার রেস্টুরেন্টের জন্য একটি পোর্টফোলিও সাইট বানিয়ে দিয়েছিলেন। ডিজাইনটা অনেক আধুনিক ও মোবাইল ফ্রেন্ডলি ছিল।",
-      "highlight": "আধুনিক ও মোবাইল ফ্রেন্ডলি",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296070/resume/testimonials/testtomonials-5.png",
-      "name": "তানভীর আলম",
-      "username": "@tanvirfood"
-    },
-    {
-      "quote": "খুবই পেশাদার এবং প্রতিশ্রুতি অনুযায়ী কাজ ডেলিভার করেছেন। অ্যানিমেশন এবং পারফরম্যান্স ছিল অসাধারণ।",
-      "highlight": "পেশাদার",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-4.png",
-      "name": "এমিলি চেন",
-      "username": "@emilyweb"
-    },
-    {
-      "quote": "তিনি আমার ফ্রিল্যান্স পোর্টফোলিও সাইট একদম শুরু থেকে তৈরি করেছিলেন। পরিষ্কার কোড এবং চমৎকার ইউআই। আবারও কাজ করবো তার সঙ্গে!",
-      "highlight": "চমৎকার ইউআই",
-      "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-3.png",
-      "name": "ডেভিড মেন্ডেজ",
-      "username": "@davidm"
-    }
-  ]
-},
-"projectsSection": {
-  "projectsHeading": "প্রজেক্টসমূহ",
-  "trustedProjects": "সাম্প্রতিক প্রজেক্টসমূহ",
-  "AllProjects": "সব প্রজেক্ট",
-  "viewallproject": "সব প্রজেক্ট দেখুন",
-  "projects": [
-    {
-  "id": 12,
-  "title": "অপটিভাস (FramerBite ক্লোন) পেইড থিম",
-  "description": "Gulp.js ব্যবহার করে ওয়ার্কফ্লো অটোমেশন সহ একটি পেশাদার, সম্পূর্ণ রেসপনসিভ ফ্রন্টএন্ড প্রজেক্ট তৈরি করা হয়েছে। পরিষ্কার, রক্ষণাবেক্ষণযোগ্য কোড এবং আধুনিক, ব্যবহারকারী-কেন্দ্রিক ডিজাইন প্রদান করা হয়েছে, যা পারফরম্যান্সের জন্য অপ্টিমাইজড লজিক দ্বারা সমৃদ্ধ। ১০০% মোবাইল রেসপনসিভনেস নিশ্চিত করা হয়েছে, যা সব ডিভাইসে পরিপাটি ও পেশাদার মোবাইল অভিজ্ঞতা প্রদান করে।",
-  "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-  "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
-  "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
-  "endtrac": "ফ্রন্টএন্ড",
-  "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
-  "liveLink": "http://optivus.uivibe.me",
-  "status": "সর্বশেষ"
-},
-  {
-    "id": 11,
-    "title": "এইচটিএমএল টেইলউইন্ড ড্যাশবোর্ড",
-    "description": "একটি সম্পূর্ণ প্রতিক্রিয়াশীল সিআরএম ড্যাশবোর্ড যা শুধুমাত্র এইচটিএমএল এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি করা হয়েছে—কোনো ফ্রেমওয়ার্ক বা লাইব্রেরি ব্যবহার করা হয়নি। পরিষ্কার ইউআই, মোবাইল-ফ্রেন্ডলি লেআউট এবং ফ্রন্টএন্ড উপস্থাপনার উপর কেন্দ্রীভূত হালকা ওজনের ডিজাইন।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
-    "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
-    "liveLink": "https://html-tailwind-dashboard.vercel.app",
-    "status": "সাম্প্রতিক"
+    "testimonialHeading": "প্রশংসাপত্র",
+    "trustedClients": "",
+    "testimonials": [
+      {
+        "quote": "রাশেদুলের সাথে কাজ করার অভিজ্ঞতা দারুণ ছিল। তিনি সময়মতো আমার ওয়েবসাইট ডেলিভার করেছেন এবং সেটি পুরোপুরি রেসপন্সিভ ছিল।",
+        "highlight": "পুরোপুরি রেসপন্সিভ",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-1.png",
+        "name": "সারাহ উইলিয়ামস",
+        "username": "@sarah_w"
+      },
+      {
+        "quote": "আমার একাধিক রিভিশনের প্রয়োজন হয়েছিল, কিন্তু তিনি সবসময় ধৈর্যশীল ও সহানুভূতিশীল ছিলেন। শেষ রেজাল্টটা একদম আমার প্রত্যাশামতো ছিল।",
+        "highlight": "ধৈর্যশীল ও সহানুভূতিশীল",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-3.png",
+        "name": "জেসিকা লি",
+        "username": "@jess_dev"
+      },
+      {
+        "quote": "তিনি আমার রেস্টুরেন্টের জন্য একটি পোর্টফোলিও সাইট বানিয়ে দিয়েছিলেন। ডিজাইনটা অনেক আধুনিক ও মোবাইল ফ্রেন্ডলি ছিল।",
+        "highlight": "আধুনিক ও মোবাইল ফ্রেন্ডলি",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296070/resume/testimonials/testtomonials-5.png",
+        "name": "তানভীর আলম",
+        "username": "@tanvirfood"
+      },
+      {
+        "quote": "খুবই পেশাদার এবং প্রতিশ্রুতি অনুযায়ী কাজ ডেলিভার করেছেন। অ্যানিমেশন এবং পারফরম্যান্স ছিল অসাধারণ।",
+        "highlight": "পেশাদার",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-4.png",
+        "name": "এমিলি চেন",
+        "username": "@emilyweb"
+      },
+      {
+        "quote": "তিনি আমার ফ্রিল্যান্স পোর্টফোলিও সাইট একদম শুরু থেকে তৈরি করেছিলেন। পরিষ্কার কোড এবং চমৎকার ইউআই। আবারও কাজ করবো তার সঙ্গে!",
+        "highlight": "চমৎকার ইউআই",
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1747296071/resume/testimonials/testtomonials-3.png",
+        "name": "ডেভিড মেন্ডেজ",
+        "username": "@davidm"
+      }
+    ]
   },
-  {
-    "id": 1,
-    "title": "ট্যুরিজম অ্যান্ড ট্রাভেলস",
-    "description": "একটি MERN-স্ট্যাক ওয়েব অ্যাপ্লিকেশন যা MongoDB, Express.js, React, এবং Node.js ব্যবহার করে তৈরি করা হয়েছে, যা নিরবচ্ছিন্ন বুকিং, গন্তব্য অন্বেষণ এবং ব্যবহারকারী ব্যবস্থাপনা প্রদান করে। বৈশিষ্ট্যগুলির মধ্যে রয়েছে গতিশীল ট্যুর প্যাকেজ, নিরাপদ প্রমাণীকরণ, ব্যবহারকারী-বান্ধব ইন্টারফেস এবং উন্নত ভ্রমণ পরিকল্পনার জন্য প্রতিক্রিয়াশীল ডিজাইন।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-    "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
-    "endtrac": "Mern-Stack",
-    "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-    "liveLink": "https://tour-guide-theta.vercel.app",
-    "status": "সাম্প্রতিক"
+  "projectsSection": {
+    "projectsHeading": "প্রজেক্টসমূহ",
+    "trustedProjects": "সাম্প্রতিক প্রজেক্টসমূহ",
+    "AllProjects": "সব প্রজেক্ট",
+    "viewallproject": "সব প্রজেক্ট দেখুন",
+    "projects": [
+      {
+        "id": 12,
+        "title": "অপটিভাস (FramerBite ক্লোন) পেইড থিম",
+        "description": "Gulp.js ব্যবহার করে ওয়ার্কফ্লো অটোমেশন সহ একটি পেশাদার, সম্পূর্ণ রেসপনসিভ ফ্রন্টএন্ড প্রজেক্ট তৈরি করা হয়েছে। পরিষ্কার, রক্ষণাবেক্ষণযোগ্য কোড এবং আধুনিক, ব্যবহারকারী-কেন্দ্রিক ডিজাইন প্রদান করা হয়েছে, যা পারফরম্যান্সের জন্য অপ্টিমাইজড লজিক দ্বারা সমৃদ্ধ। ১০০% মোবাইল রেসপনসিভনেস নিশ্চিত করা হয়েছে, যা সব ডিভাইসে পরিপাটি ও পেশাদার মোবাইল অভিজ্ঞতা প্রদান করে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
+        "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
+        "endtrac": "ফ্রন্টএন্ড",
+        "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
+        "liveLink": "http://optivus.uivibe.me",
+        "status": "সর্বশেষ"
+      },
+      {
+        "id": 11,
+        "title": "এইচটিএমএল টেইলউইন্ড ড্যাশবোর্ড",
+        "description": "একটি সম্পূর্ণ প্রতিক্রিয়াশীল সিআরএম ড্যাশবোর্ড যা শুধুমাত্র এইচটিএমএল এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি করা হয়েছে—কোনো ফ্রেমওয়ার্ক বা লাইব্রেরি ব্যবহার করা হয়নি। পরিষ্কার ইউআই, মোবাইল-ফ্রেন্ডলি লেআউট এবং ফ্রন্টএন্ড উপস্থাপনার উপর কেন্দ্রীভূত হালকা ওজনের ডিজাইন।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
+        "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
+        "liveLink": "https://html-tailwind-dashboard.vercel.app",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 1,
+        "title": "ট্যুরিজম অ্যান্ড ট্রাভেলস",
+        "description": "একটি MERN-স্ট্যাক ওয়েব অ্যাপ্লিকেশন যা MongoDB, Express.js, React, এবং Node.js ব্যবহার করে তৈরি করা হয়েছে, যা নিরবচ্ছিন্ন বুকিং, গন্তব্য অন্বেষণ এবং ব্যবহারকারী ব্যবস্থাপনা প্রদান করে। বৈশিষ্ট্যগুলির মধ্যে রয়েছে গতিশীল ট্যুর প্যাকেজ, নিরাপদ প্রমাণীকরণ, ব্যবহারকারী-বান্ধব ইন্টারফেস এবং উন্নত ভ্রমণ পরিকল্পনার জন্য প্রতিক্রিয়াশীল ডিজাইন।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
+        "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
+        "endtrac": "Mern-Stack",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
+        "liveLink": "https://tour-guide-theta.vercel.app",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 2,
+        "title": "ট্রেড ভেঞ্চারস",
+        "description": "Next.js এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি একটি প্রতিক্রিয়াশীল ফ্রন্টএন্ড অ্যাপ্লিকেশন, যা নিরবচ্ছিন্ন ব্যবহারকারী মিথস্ক্রিয়া এবং গতিশীল কন্টেন্ট ব্যবস্থাপনার জন্য ডিজাইন করা হয়েছে। প্রকল্পটি পরিষ্কার ইউআই, দ্রুত পারফরম্যান্স এবং উন্নত ব্যবহারকারী অভিজ্ঞতার জন্য অপ্টিমাইজড নেভিগেশন প্রদান করে। এটি আধুনিক ডিজাইন নীতি এবং প্রতিক্রিয়াশীল লেআউট অন্তর্ভুক্ত করে, যা সকল ডিভাইসে অ্যাক্সেসযোগ্যতা নিশ্চিত করে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
+        "techStack": "Next.js, Tailwind, recharts, JavaScript, Daisyui",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Trade-Venture",
+        "liveLink": "https://trade-venture-roan.vercel.app",
+        "status": "পুরানো"
+      },
+      {
+        "id": 3,
+        "title": "এসএসএল গার্মেন্টস সিস্টেম",
+        "description": "এসএসএল গার্মেন্টস সিস্টেম (ফ্রন্টএন্ড) একটি গতিশীল এবং প্রতিক্রিয়াশীল ওয়েব অ্যাপ্লিকেশন যা গার্মেন্ট উৎপাদন প্রক্রিয়া ব্যবস্থাপনার জন্য ডিজাইন করা হয়েছে। Next.js এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি, এই ফ্রন্টএন্ড ইন্টারফেস ব্যবহারকারীদের অর্ডার ট্র্যাকিং, ইনভেন্টরি দেখা এবং উৎপাদন কর্মপ্রবাহ ব্যবস্থাপনা করতে সক্ষম করে। অ্যাপ্লিকেশনটি ব্যবহারকারী-বান্ধব ডিজাইন এবং পারফরম্যান্সের উপর কেন্দ্রীভূত, বিভিন্ন ডিভাইসে নিরবচ্ছিন্ন অভিজ্ঞতা প্রদান করে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "techStack": "React.js, Tailwind, JavaScript, Tsparticles",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/ssl",
+        "liveLink": "https://stylorium.net",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 4,
+        "title": "লার্নিং ম্যানেজমেন্ট সিস্টেম (এলএমএস)",
+        "description": "একটি সম্পূর্ণ প্রতিক্রিয়াশীল এবং গতিশীল লার্নিং ম্যানেজমেন্ট সিস্টেম যা ফ্রন্টএন্ডের জন্য React ব্যবহার করে তৈরি করা হয়েছে। এটি ব্যবহারকারী প্রমাণীকরণ, কোর্স ব্রাউজিং, নথিভুক্তি এবং ভিডিও পাঠ প্রদান করে। অনলাইন শিক্ষাকে সহজ করার জন্য ডিজাইন করা হয়েছে পরিষ্কার ইউআই, স্বজ্ঞাত নেভিগেশন এবং সমন্বিত পেমেন্ট সাপোর্ট সহ। অ্যাডমিনরা কোর্স, প্রশিক্ষক এবং ছাত্রদের দক্ষতার সাথে ব্যবস্থাপনা করতে পারে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "techStack": "HTML5, CSS3, React.js, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
+        "liveLink": "https://learning.tripleibd.com",
+        "status": "পুরানো"
+      },
+      {
+        "id": 5,
+        "title": "ডিজিটাল ঘড়ি",
+        "description": "একটি সহজ কিন্তু মার্জিত ডিজিটাল ঘড়ি যা এইচটিএমএল, সিএসএস এবং জাভাস্ক্রিপ্ট ব্যবহার করে তৈরি করা হয়েছে। এটি বর্তমান সময় গতিশীলভাবে প্রদর্শন করে এবং প্রতি সেকেন্ডে রিয়েল-টাইমে আপডেট হয়। প্রকল্পটি DOM ম্যানিপুলেশন এবং সময়-ভিত্তিক ফাংশনের উপর কেন্দ্রীভূত, এটি জাভাস্ক্রিপ্টের জন্য একটি দুর্দান্ত শিক্ষানবিস প্রকল্প।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Digital-clock",
+        "liveLink": "https://rashaduldev.github.io/Digital-clock",
+        "status": "পুরানো"
+      },
+      {
+        "id": 6,
+        "title": "ফাংশনাল পোর্টফোলিও ওয়েবসাইট",
+        "description": "ফিগমা ডিজাইন থেকে তৈরি একটি প্রতিক্রিয়াশীল পোর্টফোলিও ওয়েবসাইট যা Next.js (বা Astro) এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি। এটি এসইও অপ্টিমাইজেশন, অ্যাক্সেসিবিলিটি, অ্যানিমেশন এবং 95+ পেজস্পিড স্কোর সহ পারফরম্যান্স টিউনিং অন্তর্ভুক্ত করে। Vercel/Netlify-তে পূর্ণ ডকুমেন্টেশন সহ মোতায়েন করা হয়েছে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
+        "techStack": "Next.js, Tailwind, TypeScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
+        "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 7,
+        "title": "পাসওয়ার্ড জেনারেটর",
+        "description": "এটি একটি সহজ কিন্তু কার্যকর পাসওয়ার্ড জেনারেটর যা এইচটিএমএল, সিএসএস এবং জাভাস্ক্রিপ্ট ব্যবহার করে তৈরি করা হয়েছে। ব্যবহারকারীরা দৈর্ঘ্য এবং অক্ষরের ধরনের জন্য কাস্টমাইজযোগ্য বিকল্প সহ শক্তিশালী, র্যান্ডম পাসওয়ার্ড তৈরি করতে পারে। এটি পরিষ্কার ব্যবহারকারী ইন্টারফেস এবং রিয়েল-টাইম পাসওয়ার্ড প্রদর্শন বৈশিষ্ট্যযুক্ত, মৌলিক নিরাপত্তা প্রয়োজনের জন্য আদর্শ।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
+        "liveLink": "https://rashaduldev.github.io/Password-Generator-Js",
+        "status": "পুরানো"
+      },
+      {
+        "id": 8,
+        "title": "এ টু জেড ইকমার্স",
+        "description": "একটি সম্পূর্ণ বৈশিষ্ট্যযুক্ত ইকমার্স প্ল্যাটফর্ম যা ফ্রন্টএন্ড ব্যবহার করে স্ক্র্যাচ থেকে তৈরি। প্রকল্পটিতে ব্যবহারকারী প্রমাণীকরণ, পণ্য ব্যবস্থাপনা, শপিং কার্ট ফাংশনালিটি, নিরাপদ চেকআউট এবং অর্ডার ট্র্যাকিং অন্তর্ভুক্ত। এটি ইনভেন্টরি, অর্ডার এবং গ্রাহক ব্যবস্থাপনার জন্য একটি অ্যাডমিন ড্যাশবোর্ড বৈশিষ্ট্যযুক্ত। ডেস্কটপ এবং মোবাইল অভিজ্ঞতার জন্য অপ্টিমাইজড।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "techStack": "React.js, MongoDB",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev",
+        "liveLink": "https://github.com/rashaduldev",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 9,
+        "title": "এয়ারবুক",
+        "description": "এয়ারবুক একটি ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন যা এয়ারলাইন বুকিং অভিজ্ঞতা অনুকরণের জন্য ডিজাইন করা হয়েছে। ব্যবহারকারীরা ফ্লাইট বিকল্পগুলি অন্বেষণ করতে, টিকিট বুক করতে এবং বুকিং ব্যবস্থাপনা করতে পারে। ফ্রন্টএন্ডটি প্রতিক্রিয়াশীল ইউআইয়ের জন্য React ব্যবহার করে তৈরি করা হয়েছে, যখন ব্যাকএন্ডটি ডেটা ব্যবস্থাপনা এবং প্রমাণীকরণের জন্য Node.js এবং MongoDB ব্যবহার করে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "techStack": "React.js",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
+        "liveLink": "https://zippy-trouble.surge.sh",
+        "status": "পুরানো"
+      },
+      {
+        "id": 10,
+        "title": "ট্যুরিস্ট গাইড সার্ভার",
+        "description": "ট্যুরিস্ট গাইড সার্ভার হল একটি ভ্রমণ পরিকল্পনা প্ল্যাটফর্মের জন্য একটি শক্তিশালী ব্যাকএন্ড, যা নিরবচ্ছিন্ন ভ্রমণসূচি ব্যবস্থাপনা এবং ব্যবহারকারী প্রমাণীকরণ সক্ষম করে। Node.js, Express এবং MongoDB ব্যবহার করে তৈরি, এটি দক্ষ ডেটা হ্যান্ডলিংয়ের জন্য Mongoose এবং নিরাপদ প্রমাণীকরণের জন্য JWT ব্যবহার করে।",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
+        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
+        "status": "সাম্প্রতিক"
+      }
+    ]
   },
-  {
-    "id": 2,
-    "title": "ট্রেড ভেঞ্চারস",
-    "description": "Next.js এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি একটি প্রতিক্রিয়াশীল ফ্রন্টএন্ড অ্যাপ্লিকেশন, যা নিরবচ্ছিন্ন ব্যবহারকারী মিথস্ক্রিয়া এবং গতিশীল কন্টেন্ট ব্যবস্থাপনার জন্য ডিজাইন করা হয়েছে। প্রকল্পটি পরিষ্কার ইউআই, দ্রুত পারফরম্যান্স এবং উন্নত ব্যবহারকারী অভিজ্ঞতার জন্য অপ্টিমাইজড নেভিগেশন প্রদান করে। এটি আধুনিক ডিজাইন নীতি এবং প্রতিক্রিয়াশীল লেআউট অন্তর্ভুক্ত করে, যা সকল ডিভাইসে অ্যাক্সেসযোগ্যতা নিশ্চিত করে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
-    "techStack": "Next.js, Tailwind, recharts, JavaScript, Daisyui",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Trade-Venture",
-    "liveLink": "https://trade-venture-roan.vercel.app",
-    "status": "পুরানো"
-  },
-  {
-    "id": 3,
-    "title": "এসএসএল গার্মেন্টস সিস্টেম",
-    "description": "এসএসএল গার্মেন্টস সিস্টেম (ফ্রন্টএন্ড) একটি গতিশীল এবং প্রতিক্রিয়াশীল ওয়েব অ্যাপ্লিকেশন যা গার্মেন্ট উৎপাদন প্রক্রিয়া ব্যবস্থাপনার জন্য ডিজাইন করা হয়েছে। Next.js এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি, এই ফ্রন্টএন্ড ইন্টারফেস ব্যবহারকারীদের অর্ডার ট্র্যাকিং, ইনভেন্টরি দেখা এবং উৎপাদন কর্মপ্রবাহ ব্যবস্থাপনা করতে সক্ষম করে। অ্যাপ্লিকেশনটি ব্যবহারকারী-বান্ধব ডিজাইন এবং পারফরম্যান্সের উপর কেন্দ্রীভূত, বিভিন্ন ডিভাইসে নিরবচ্ছিন্ন অভিজ্ঞতা প্রদান করে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-    "techStack": "React.js, Tailwind, JavaScript, Tsparticles",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/ssl",
-    "liveLink": "https://stylorium.net",
-    "status": "সাম্প্রতিক"
-  },
-  {
-    "id": 4,
-    "title": "লার্নিং ম্যানেজমেন্ট সিস্টেম (এলএমএস)",
-    "description": "একটি সম্পূর্ণ প্রতিক্রিয়াশীল এবং গতিশীল লার্নিং ম্যানেজমেন্ট সিস্টেম যা ফ্রন্টএন্ডের জন্য React ব্যবহার করে তৈরি করা হয়েছে। এটি ব্যবহারকারী প্রমাণীকরণ, কোর্স ব্রাউজিং, নথিভুক্তি এবং ভিডিও পাঠ প্রদান করে। অনলাইন শিক্ষাকে সহজ করার জন্য ডিজাইন করা হয়েছে পরিষ্কার ইউআই, স্বজ্ঞাত নেভিগেশন এবং সমন্বিত পেমেন্ট সাপোর্ট সহ। অ্যাডমিনরা কোর্স, প্রশিক্ষক এবং ছাত্রদের দক্ষতার সাথে ব্যবস্থাপনা করতে পারে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-    "techStack": "HTML5, CSS3, React.js, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
-    "liveLink": "https://learning.tripleibd.com",
-    "status": "পুরানো"
-  },
-  {
-    "id": 5,
-    "title": "ডিজিটাল ঘড়ি",
-    "description": "একটি সহজ কিন্তু মার্জিত ডিজিটাল ঘড়ি যা এইচটিএমএল, সিএসএস এবং জাভাস্ক্রিপ্ট ব্যবহার করে তৈরি করা হয়েছে। এটি বর্তমান সময় গতিশীলভাবে প্রদর্শন করে এবং প্রতি সেকেন্ডে রিয়েল-টাইমে আপডেট হয়। প্রকল্পটি DOM ম্যানিপুলেশন এবং সময়-ভিত্তিক ফাংশনের উপর কেন্দ্রীভূত, এটি জাভাস্ক্রিপ্টের জন্য একটি দুর্দান্ত শিক্ষানবিস প্রকল্প।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-    "techStack": "HTML5, CSS3, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Digital-clock",
-    "liveLink": "https://rashaduldev.github.io/Digital-clock",
-    "status": "পুরানো"
-  },
-  {
-    "id": 6,
-    "title": "ফাংশনাল পোর্টফোলিও ওয়েবসাইট",
-    "description": "ফিগমা ডিজাইন থেকে তৈরি একটি প্রতিক্রিয়াশীল পোর্টফোলিও ওয়েবসাইট যা Next.js (বা Astro) এবং টেইলউইন্ড সিএসএস ব্যবহার করে তৈরি। এটি এসইও অপ্টিমাইজেশন, অ্যাক্সেসিবিলিটি, অ্যানিমেশন এবং 95+ পেজস্পিড স্কোর সহ পারফরম্যান্স টিউনিং অন্তর্ভুক্ত করে। Vercel/Netlify-তে পূর্ণ ডকুমেন্টেশন সহ মোতায়েন করা হয়েছে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
-    "techStack": "Next.js, Tailwind, TypeScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
-    "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
-    "status": "সাম্প্রতিক"
-  },
-  {
-    "id": 7,
-    "title": "পাসওয়ার্ড জেনারেটর",
-    "description": "এটি একটি সহজ কিন্তু কার্যকর পাসওয়ার্ড জেনারেটর যা এইচটিএমএল, সিএসএস এবং জাভাস্ক্রিপ্ট ব্যবহার করে তৈরি করা হয়েছে। ব্যবহারকারীরা দৈর্ঘ্য এবং অক্ষরের ধরনের জন্য কাস্টমাইজযোগ্য বিকল্প সহ শক্তিশালী, র্যান্ডম পাসওয়ার্ড তৈরি করতে পারে। এটি পরিষ্কার ব্যবহারকারী ইন্টারফেস এবং রিয়েল-টাইম পাসওয়ার্ড প্রদর্শন বৈশিষ্ট্যযুক্ত, মৌলিক নিরাপত্তা প্রয়োজনের জন্য আদর্শ।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
-    "techStack": "HTML5, CSS3, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
-    "liveLink": "https://rashaduldev.github.io/Password-Generator-Js",
-    "status": "পুরানো"
-  },
-  {
-    "id": 8,
-    "title": "এ টু জেড ইকমার্স",
-    "description": "একটি সম্পূর্ণ বৈশিষ্ট্যযুক্ত ইকমার্স প্ল্যাটফর্ম যা ফ্রন্টএন্ড ব্যবহার করে স্ক্র্যাচ থেকে তৈরি। প্রকল্পটিতে ব্যবহারকারী প্রমাণীকরণ, পণ্য ব্যবস্থাপনা, শপিং কার্ট ফাংশনালিটি, নিরাপদ চেকআউট এবং অর্ডার ট্র্যাকিং অন্তর্ভুক্ত। এটি ইনভেন্টরি, অর্ডার এবং গ্রাহক ব্যবস্থাপনার জন্য একটি অ্যাডমিন ড্যাশবোর্ড বৈশিষ্ট্যযুক্ত। ডেস্কটপ এবং মোবাইল অভিজ্ঞতার জন্য অপ্টিমাইজড।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-    "techStack": "React.js, MongoDB",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev",
-    "liveLink": "https://github.com/rashaduldev",
-    "status": "সাম্প্রতিক"
-  },
-  {
-    "id": 9,
-    "title": "এয়ারবুক",
-    "description": "এয়ারবুক একটি ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন যা এয়ারলাইন বুকিং অভিজ্ঞতা অনুকরণের জন্য ডিজাইন করা হয়েছে। ব্যবহারকারীরা ফ্লাইট বিকল্পগুলি অন্বেষণ করতে, টিকিট বুক করতে এবং বুকিং ব্যবস্থাপনা করতে পারে। ফ্রন্টএন্ডটি প্রতিক্রিয়াশীল ইউআইয়ের জন্য React ব্যবহার করে তৈরি করা হয়েছে, যখন ব্যাকএন্ডটি ডেটা ব্যবস্থাপনা এবং প্রমাণীকরণের জন্য Node.js এবং MongoDB ব্যবহার করে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "techStack": "React.js",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
-    "liveLink": "https://zippy-trouble.surge.sh",
-    "status": "পুরানো"
-  },
-  {
-    "id": 10,
-    "title": "ট্যুরিস্ট গাইড সার্ভার",
-    "description": "ট্যুরিস্ট গাইড সার্ভার হল একটি ভ্রমণ পরিকল্পনা প্ল্যাটফর্মের জন্য একটি শক্তিশালী ব্যাকএন্ড, যা নিরবচ্ছিন্ন ভ্রমণসূচি ব্যবস্থাপনা এবং ব্যবহারকারী প্রমাণীকরণ সক্ষম করে। Node.js, Express এবং MongoDB ব্যবহার করে তৈরি, এটি দক্ষ ডেটা হ্যান্ডলিংয়ের জন্য Mongoose এবং নিরাপদ প্রমাণীকরণের জন্য JWT ব্যবহার করে।",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
-    "endtrac": "Backend",
-    "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-    "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-    "status": "সাম্প্রতিক"
-  }
-]
-},
   "Educationheading": "শিক্ষাগত যোগ্যতা",
   "education": {
     "2020": {

@@ -15,42 +15,53 @@
     "terms": "الشروط والأحكام"
   },
   "main": {
-      "subtitle": "مرحبًا، أنا",
-      "title": "رشاد الإسلام",
-      "stack": "مطور واجهات أمامية",
-      "description": "مطور ويب فرونت إند شغوف بصنع مواقع إلكترونية دقيقة الاستجابة تجمع بين كود نظيف وتصميم جذاب. ماهر في JavaScript وTypeScript وReact.js وNext.js وTailwind CSS، أحول الأفكار إلى تجارب تفاعلية وسهلة الاستخدام — دائمًا أسعى لتحقيق أداء مثالي ورضا 100٪ من العملاء.",
-      "leftbutton": "هيا بنا",
-      "resume": "تحميل السيرة الذاتية",
-      "quata": "التعلم، التعلم والتعلم ........"
-    },
+    "subtitle": "مرحبًا، أنا",
+    "title": "رشاد الإسلام",
+    "stack": "مطور واجهات أمامية",
+    "description": "مطور ويب فرونت إند شغوف بصنع مواقع إلكترونية دقيقة الاستجابة تجمع بين كود نظيف وتصميم جذاب. ماهر في JavaScript وTypeScript وReact.js وNext.js وTailwind CSS، أحول الأفكار إلى تجارب تفاعلية وسهلة الاستخدام — دائمًا أسعى لتحقيق أداء مثالي ورضا 100٪ من العملاء.",
+    "leftbutton": "هيا بنا",
+    "resume": "تحميل السيرة الذاتية",
+    "quata": "التعلم، التعلم والتعلم ........"
+  },
   "skills": {
-    "about": "عني",
-    "designTitle": "مهارات التصميم",
-    "devTitle": "مهارات التطوير",
-    "tools": "الأدوات",
-    "git": "Git (نظام التحكم بالإصدار)",
-    "firebase": "Firebase",
-    "cloudinary": "Cloudinary",
-    "jetBrains": "JetBrains",
-    "cpanel": "cPanel",
-    "vs": "VS Code",
-    "photoshop": "فوتوشوب",
-    "figma": "فيغما",
-    "xd": "أدوبي XD",
-    "illustrator": "أدوبي إليستريتور",
-    "html": "HTML",
-    "css": "CSS",
-    "js": "JavaScript",
-    "ts": "TypeScript",
+    "designTitle": "أدوات التصميم",
+    "devTitle": "تقنيات التطوير",
+    "about": "نبذة عني",
+    "description": "نظام متكامل من التقنيات الحديثة يركز على إنشاء حلول ويب عالية الأداء.",
+    "all": "جميع التقنيات",
+    "frontend": "تطوير الواجهة الأمامية",
+    "state_data": "إدارة الحالة وواجهات API",
+    "tools": "أدوات التطوير",
+    "backend": "الخلفية وقواعد البيانات",
+    "html": "HTML5",
+    "css": "CSS3",
+    "js": "جافاسكريبت (ES6+)",
+    "ts": "تايب سكريبت",
     "react": "React.js",
     "next": "Next.js",
-    "vue": "Vue.js",
     "tailwind": "Tailwind CSS",
-    "bootstrap": "Bootstrap",
+    "astro": "Astro.js",
+    "gulp": "Gulp.js",
+    "wp": "تخصيص ووردبريس",
+    "restapi": "واجهات RESTful",
+    "redux": "Redux Toolkit",
+    "tanstackQuery": "TanStack Query",
+    "axios": "Axios",
+    "postman": "Postman",
+    "swagger": "Swagger UI",
+    "git": "Git (إدارة الإصدارات)",
+    "vs": "VS Code",
+    "figma": "Figma",
+    "photoshop": "Adobe Photoshop",
+    "xd": "Adobe XD",
+    "illustrator": "Adobe Illustrator",
+    "jetBrains": "JetBrains IDEs",
+    "cpanel": "cPanel / الاستضافة",
     "node": "Node.js",
     "ex": "Express.js",
-    "wp": "ووردبريس",
-    "mongo": "MongoDB"
+    "mongo": "MongoDB",
+    "firebase": "Firebase",
+    "cloudinary": "Cloudinary"
   },
   "statsSection": {
     "title": "الإنجازات",
@@ -61,7 +72,7 @@
       { "value": 1.6, "label": "سنوات الخبرة" }
     ]
   },
-"experienceHeading": "الخبرة العملية",
+  "experienceHeading": "الخبرة العملية",
   "experience": [
     {
       "year": "2025",
@@ -191,139 +202,139 @@
     "AllProjects": "جميع المشاريع",
     "viewallproject": "عرض جميع المشاريع",
     "projects": [
-  {
-    "id": 11,
-    "title": "لوحة تحكم HTML وTailwind",
-    "description": "لوحة تحكم CRM متجاوبة بالكامل مبنية باستخدام HTML وTailwind CSS فقط، بدون إطار عمل أو مكتبات. واجهة مستخدم نظيفة، تصميم متجاوب مع الأجهزة المحمولة، وتصميم خفيف الوزن يركز على العرض الأمامي فقط.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
-    "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
-    "liveLink": "https://html-tailwind-dashboard.vercel.app",
-    "status": "أحدث"
-  },
-  {
-    "id": 1,
-    "title": "السياحة والسفر",
-    "description": "تطبيق ويب متكامل تم تطويره باستخدام حزمة MERN (MongoDB، Express.js، React، Node.js)، يوفر حجزًا سلسًا، استكشاف الوجهات، وإدارة المستخدمين. تشمل الميزات حزم جولات ديناميكية، مصادقة آمنة، واجهة سهلة الاستخدام، وتصميم متجاوب لتجربة تخطيط سفر محسّنة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-    "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
-    "endtrac": "Mern-Stack",
-    "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-    "liveLink": "https://tour-guide-theta.vercel.app",
-    "status": "أحدث"
-  },
-  {
-    "id": 2,
-    "title": "المشاريع التجارية",
-    "description": "تطبيق واجهة أمامية متجاوب مبني باستخدام Next.js وTailwind CSS، مصمم لتفاعل المستخدم السلس وإدارة المحتوى الديناميكي. يوفر واجهة مستخدم نظيفة، أداء سريع، وتنقل محسن لتجربة مستخدم أفضل. يتضمن مبادئ تصميم حديثة وتخطيطات متجاوبة لضمان الوصول عبر جميع الأجهزة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
-    "techStack": "Next.js, Tailwind, recharts, JavaScript, Daisyui",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Trade-Venture",
-    "liveLink": "https://trade-venture-roan.vercel.app",
-    "status": "قديم"
-  },
-  {
-    "id": 3,
-    "title": "نظام SSL للملابس",
-    "description": "نظام SSL للملابس (واجهة أمامية) هو تطبيق ويب ديناميكي ومتجاوب مصمم لإدارة عمليات إنتاج الملابس. تم تطويره باستخدام Next.js وTailwind CSS، ويوفر واجهة لتتبع الطلبات، عرض المخزون، وإدارة سير العمل. يتميز بتصميم سهل الاستخدام مع التركيز على الأداء وسلس عبر الأجهزة المختلفة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
-    "techStack": "React.js, Tailwind, JavaScript, Tsparticles",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/ssl",
-    "liveLink": "https://stylorium.net",
-    "status": "أحدث"
-  },
-  {
-    "id": 4,
-    "title": "نظام إدارة التعلم",
-    "description": "نظام إدارة تعلم متجاوب وديناميكي مبني باستخدام React للواجهة الأمامية. يوفر مصادقة المستخدم، تصفح الدورات، التسجيل، ودروس فيديو. مصمم لتبسيط التعلم عبر الإنترنت مع واجهة نظيفة، تنقل سهل، ودعم مدفوعات مدمج. يمكن للإداريين إدارة الدورات، المدربين، والطلاب بكفاءة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
-    "techStack": "HTML5, CSS3, React.js, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
-    "liveLink": "https://learning.tripleibd.com",
-    "status": "قديم"
-  },
-  {
-    "id": 5,
-    "title": "ساعة رقمية",
-    "description": "ساعة رقمية أنيقة وبسيطة مبنية باستخدام HTML، CSS، وJavaScript. تعرض الوقت الحالي ديناميكيًا وتتحدث كل ثانية في الوقت الفعلي. يركز المشروع على التلاعب بالـ DOM والوظائف الزمنية، مما يجعله مشروعًا مثاليًا للمبتدئين في JavaScript.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-    "techStack": "HTML5, CSS3, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Digital-clock",
-    "liveLink": "https://rashaduldev.github.io/Digital-clock",
-    "status": "قديم"
-  },
-  {
-    "id": 6,
-    "title": "موقع محفظة وظيفية",
-    "description": "موقع محفظة متجاوب مبني من تصميم Figma باستخدام Next.js (أو Astro) وTailwind CSS. يتضمن تحسين SEO، إمكانية الوصول، الرسوم المتحركة، وتحسين الأداء بدرجة PageSpeed تزيد عن 95. تم نشره على Vercel/Netlify مع توثيق كامل.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
-    "techStack": "Next.js, Tailwind, TypeScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
-    "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
-    "status": "أحدث"
-  },
-  {
-    "id": 7,
-    "title": "مولد كلمات المرور",
-    "description": "مولد كلمات مرور بسيط وفعال مبني باستخدام HTML، CSS، وJavaScript. يمكن للمستخدمين إنشاء كلمات مرور قوية وعشوائية مع خيارات قابلة للتخصيص لطول وأنواع الأحرف. يتميز بواجهة مستخدم نظيفة وعرض كلمات المرور في الوقت الفعلي، مثالي لاحتياجات الأمان الأساسية.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
-    "techStack": "HTML5, CSS3, JavaScript",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
-    "liveLink": "https://rashaduldev.github.io/Password-Generator-Js",
-    "status": "قديم"
-  },
-  {
-    "id": 8,
-    "title": "التجارة الإلكترونية من الألف إلى الياء",
-    "description": "منصة تجارة إلكترونية كاملة المزايا مبنية من الصفر باستخدام الواجهة الأمامية. يتضمن المشروع مصادقة المستخدم، إدارة المنتجات، وظيفة سلة التسوق، الدفع الآمن، وتتبع الطلبات. يتميز بلوحة تحكم إدارية لإدارة المخزون، الطلبات، والعملاء. محسن لتجربة سطح المكتب والأجهزة المحمولة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
-    "techStack": "React.js, MongoDB",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev",
-    "liveLink": "https://github.com/rashaduldev",
-    "status": "أحدث"
-  },
-  {
-    "id": 9,
-    "title": "إيربوك",
-    "description": "إيربوك هو تطبيق ويب كامل الوظائف مصمم لمحاكاة تجربة حجز الطيران. يمكن للمستخدمين استكشاف خيارات الرحلات، حجز التذاكر، وإدارة الحجوزات. تم تطوير الواجهة الأمامية باستخدام React لواجهة مستخدم متجاوبة، بينما يستخدم الخلفية Node.js وMongoDB لإدارة البيانات والمصادقة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
-    "techStack": "React.js",
-    "endtrac": "Frontend",
-    "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
-    "liveLink": "https://zippy-trouble.surge.sh",
-    "status": "قديم"
-  },
-  {
-    "id": 10,
-    "title": "خادم دليل السائح",
-    "description": "خادم دليل السائح هو خلفية قوية لمنصة تخطيط السفر، تمكن من إدارة الجداول الزمنية والمصادقة بسلاسة. مبني باستخدام Node.js، Express، وMongoDB، ويستخدم Mongoose لمعالجة البيانات بكفاءة وJWT للمصادقة الآمنة.",
-    "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-    "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
-    "endtrac": "Backend",
-    "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-    "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-    "status": "أحدث"
-  }
-]
+      {
+        "id": 11,
+        "title": "لوحة تحكم HTML وTailwind",
+        "description": "لوحة تحكم CRM متجاوبة بالكامل مبنية باستخدام HTML وTailwind CSS فقط، بدون إطار عمل أو مكتبات. واجهة مستخدم نظيفة، تصميم متجاوب مع الأجهزة المحمولة، وتصميم خفيف الوزن يركز على العرض الأمامي فقط.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
+        "techStack": "HTML5, CSS3, Tailwind, JavaScript, Ajax",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
+        "liveLink": "https://html-tailwind-dashboard.vercel.app",
+        "status": "أحدث"
+      },
+      {
+        "id": 1,
+        "title": "السياحة والسفر",
+        "description": "تطبيق ويب متكامل تم تطويره باستخدام حزمة MERN (MongoDB، Express.js، React، Node.js)، يوفر حجزًا سلسًا، استكشاف الوجهات، وإدارة المستخدمين. تشمل الميزات حزم جولات ديناميكية، مصادقة آمنة، واجهة سهلة الاستخدام، وتصميم متجاوب لتجربة تخطيط سفر محسّنة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
+        "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
+        "endtrac": "Mern-Stack",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
+        "liveLink": "https://tour-guide-theta.vercel.app",
+        "status": "أحدث"
+      },
+      {
+        "id": 2,
+        "title": "المشاريع التجارية",
+        "description": "تطبيق واجهة أمامية متجاوب مبني باستخدام Next.js وTailwind CSS، مصمم لتفاعل المستخدم السلس وإدارة المحتوى الديناميكي. يوفر واجهة مستخدم نظيفة، أداء سريع، وتنقل محسن لتجربة مستخدم أفضل. يتضمن مبادئ تصميم حديثة وتخطيطات متجاوبة لضمان الوصول عبر جميع الأجهزة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463326/resume/projects/trade-venture-web.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747463389/resume/projects/tradeventure-mobile.png",
+        "techStack": "Next.js, Tailwind, recharts, JavaScript, Daisyui",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Trade-Venture",
+        "liveLink": "https://trade-venture-roan.vercel.app",
+        "status": "قديم"
+      },
+      {
+        "id": 3,
+        "title": "نظام SSL للملابس",
+        "description": "نظام SSL للملابس (واجهة أمامية) هو تطبيق ويب ديناميكي ومتجاوب مصمم لإدارة عمليات إنتاج الملابس. تم تطويره باستخدام Next.js وTailwind CSS، ويوفر واجهة لتتبع الطلبات، عرض المخزون، وإدارة سير العمل. يتميز بتصميم سهل الاستخدام مع التركيز على الأداء وسلس عبر الأجهزة المختلفة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748273205/resume/projects/djg28flqsbthxqy2h52t.png",
+        "techStack": "React.js, Tailwind, JavaScript, Tsparticles",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/ssl",
+        "liveLink": "https://stylorium.net",
+        "status": "أحدث"
+      },
+      {
+        "id": 4,
+        "title": "نظام إدارة التعلم",
+        "description": "نظام إدارة تعلم متجاوب وديناميكي مبني باستخدام React للواجهة الأمامية. يوفر مصادقة المستخدم، تصفح الدورات، التسجيل، ودروس فيديو. مصمم لتبسيط التعلم عبر الإنترنت مع واجهة نظيفة، تنقل سهل، ودعم مدفوعات مدمج. يمكن للإداريين إدارة الدورات، المدربين، والطلاب بكفاءة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
+        "techStack": "HTML5, CSS3, React.js, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
+        "liveLink": "https://learning.tripleibd.com",
+        "status": "قديم"
+      },
+      {
+        "id": 5,
+        "title": "ساعة رقمية",
+        "description": "ساعة رقمية أنيقة وبسيطة مبنية باستخدام HTML، CSS، وJavaScript. تعرض الوقت الحالي ديناميكيًا وتتحدث كل ثانية في الوقت الفعلي. يركز المشروع على التلاعب بالـ DOM والوظائف الزمنية، مما يجعله مشروعًا مثاليًا للمبتدئين في JavaScript.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Digital-clock",
+        "liveLink": "https://rashaduldev.github.io/Digital-clock",
+        "status": "قديم"
+      },
+      {
+        "id": 6,
+        "title": "موقع محفظة وظيفية",
+        "description": "موقع محفظة متجاوب مبني من تصميم Figma باستخدام Next.js (أو Astro) وTailwind CSS. يتضمن تحسين SEO، إمكانية الوصول، الرسوم المتحركة، وتحسين الأداء بدرجة PageSpeed تزيد عن 95. تم نشره على Vercel/Netlify مع توثيق كامل.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
+        "techStack": "Next.js, Tailwind, TypeScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
+        "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
+        "status": "أحدث"
+      },
+      {
+        "id": 7,
+        "title": "مولد كلمات المرور",
+        "description": "مولد كلمات مرور بسيط وفعال مبني باستخدام HTML، CSS، وJavaScript. يمكن للمستخدمين إنشاء كلمات مرور قوية وعشوائية مع خيارات قابلة للتخصيص لطول وأنواع الأحرف. يتميز بواجهة مستخدم نظيفة وعرض كلمات المرور في الوقت الفعلي، مثالي لاحتياجات الأمان الأساسية.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748849841/resume/projects/tuflkvvb5zdvm54b79px.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
+        "liveLink": "https://rashaduldev.github.io/Password-Generator-Js",
+        "status": "قديم"
+      },
+      {
+        "id": 8,
+        "title": "التجارة الإلكترونية من الألف إلى الياء",
+        "description": "منصة تجارة إلكترونية كاملة المزايا مبنية من الصفر باستخدام الواجهة الأمامية. يتضمن المشروع مصادقة المستخدم، إدارة المنتجات، وظيفة سلة التسوق، الدفع الآمن، وتتبع الطلبات. يتميز بلوحة تحكم إدارية لإدارة المخزون، الطلبات، والعملاء. محسن لتجربة سطح المكتب والأجهزة المحمولة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
+        "techStack": "React.js, MongoDB",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev",
+        "liveLink": "https://github.com/rashaduldev",
+        "status": "أحدث"
+      },
+      {
+        "id": 9,
+        "title": "إيربوك",
+        "description": "إيربوك هو تطبيق ويب كامل الوظائف مصمم لمحاكاة تجربة حجز الطيران. يمكن للمستخدمين استكشاف خيارات الرحلات، حجز التذاكر، وإدارة الحجوزات. تم تطوير الواجهة الأمامية باستخدام React لواجهة مستخدم متجاوبة، بينما يستخدم الخلفية Node.js وMongoDB لإدارة البيانات والمصادقة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
+        "techStack": "React.js",
+        "endtrac": "Frontend",
+        "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
+        "liveLink": "https://zippy-trouble.surge.sh",
+        "status": "قديم"
+      },
+      {
+        "id": 10,
+        "title": "خادم دليل السائح",
+        "description": "خادم دليل السائح هو خلفية قوية لمنصة تخطيط السفر، تمكن من إدارة الجداول الزمنية والمصادقة بسلاسة. مبني باستخدام Node.js، Express، وMongoDB، ويستخدم Mongoose لمعالجة البيانات بكفاءة وJWT للمصادقة الآمنة.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
+        "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
+        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
+        "status": "أحدث"
+      }
+    ]
   },
   "Educationheading": "التعليم",
   "education": {
@@ -474,40 +485,40 @@
   "faq": {
     "faqTitle": "الأسئلة المتكررة",
     "faqDescription": "هنا بعض الأسئلة الشائعة مع إجاباتها لمساعدتك على فهم خدماتي بشكل أفضل.",
-     "items": [
-    {
-      "question": "ما هي الخدمات التي تقدمها؟",
-      "answer": "أنا متخصص في تطوير الواجهة الأمامية باستخدام تقنيات حديثة مثل React و Next.js و Tailwind CSS. كما أقدم خدمات تصميم واجهات المستخدم (UI/UX) وتحسين أداء المواقع، ويمكنني تقديم حلول ويب كاملة عند الحاجة."
-    },
-    {
-      "question": "هل تعمل مع عملاء دوليين؟",
-      "answer": "نعم، لدي خبرة في العمل مع عملاء من الولايات المتحدة، المملكة المتحدة، كندا، أستراليا، ودول أخرى. أضمن تواصلًا واضحًا وتسليم المشاريع في الوقت المحدد."
-    },
-    {
-      "question": "ما هي التقنيات التي تستخدمها؟",
-      "answer": "أستخدم HTML و CSS و JavaScript و TypeScript و React و Next.js و Tailwind CSS و Node.js و MongoDB، بالإضافة إلى أدوات حديثة مثل Git و Figma و Vite."
-    },
-    {
-      "question": "كيف يمكنني التواصل معك؟",
-      "answer": "يمكنك التواصل معي عبر نموذج الاتصال الموجود على موقعي الإلكتروني، أو مباشرةً عبر البريد الإلكتروني أو وسائل التواصل الاجتماعي."
-    },
-    {
-      "question": "هل تقدم خدمات تحسين الأداء؟",
-      "answer": "بالتأكيد! أقدم مراجعة شاملة لأداء المواقع وتحسين السرعة وتجربة المستخدم (UX) ونتائج محركات البحث (SEO)."
-    },
-    {
-      "question": "هل أنت متاح للعمل الحر أو التعاقد؟",
-      "answer": "نعم، أنا متاح للمشاريع الحرة (Freelance) والتعاقدية. سواء كان موقع صفحة هبوط أو لوحة تحكم SaaS أو موقع متكامل، يسعدني العمل معك."
-    },
-    {
-      "question": "كم من الوقت يستغرق إنجاز مشروع؟",
-      "answer": "يعتمد الوقت على حجم المشروع، ولكن غالبًا ما يستغرق إنشاء موقع أو لوحة تحكم من أسبوع إلى ثلاثة أسابيع. أحرص دائمًا على الجودة والتسليم في الوقت المحدد."
-    },
-    {
-      "question": "هل تستخدم أدوات التصميم مثل Figma أو Adobe XD؟",
-      "answer": "نعم، يمكنني تحويل تصميمات Figma أو Adobe XD أو Sketch إلى مواقع ويب متجاوبة باستخدام تقنيات حديثة."
-    }
-  ]
+    "items": [
+      {
+        "question": "ما هي الخدمات التي تقدمها؟",
+        "answer": "أنا متخصص في تطوير الواجهة الأمامية باستخدام تقنيات حديثة مثل React و Next.js و Tailwind CSS. كما أقدم خدمات تصميم واجهات المستخدم (UI/UX) وتحسين أداء المواقع، ويمكنني تقديم حلول ويب كاملة عند الحاجة."
+      },
+      {
+        "question": "هل تعمل مع عملاء دوليين؟",
+        "answer": "نعم، لدي خبرة في العمل مع عملاء من الولايات المتحدة، المملكة المتحدة، كندا، أستراليا، ودول أخرى. أضمن تواصلًا واضحًا وتسليم المشاريع في الوقت المحدد."
+      },
+      {
+        "question": "ما هي التقنيات التي تستخدمها؟",
+        "answer": "أستخدم HTML و CSS و JavaScript و TypeScript و React و Next.js و Tailwind CSS و Node.js و MongoDB، بالإضافة إلى أدوات حديثة مثل Git و Figma و Vite."
+      },
+      {
+        "question": "كيف يمكنني التواصل معك؟",
+        "answer": "يمكنك التواصل معي عبر نموذج الاتصال الموجود على موقعي الإلكتروني، أو مباشرةً عبر البريد الإلكتروني أو وسائل التواصل الاجتماعي."
+      },
+      {
+        "question": "هل تقدم خدمات تحسين الأداء؟",
+        "answer": "بالتأكيد! أقدم مراجعة شاملة لأداء المواقع وتحسين السرعة وتجربة المستخدم (UX) ونتائج محركات البحث (SEO)."
+      },
+      {
+        "question": "هل أنت متاح للعمل الحر أو التعاقد؟",
+        "answer": "نعم، أنا متاح للمشاريع الحرة (Freelance) والتعاقدية. سواء كان موقع صفحة هبوط أو لوحة تحكم SaaS أو موقع متكامل، يسعدني العمل معك."
+      },
+      {
+        "question": "كم من الوقت يستغرق إنجاز مشروع؟",
+        "answer": "يعتمد الوقت على حجم المشروع، ولكن غالبًا ما يستغرق إنشاء موقع أو لوحة تحكم من أسبوع إلى ثلاثة أسابيع. أحرص دائمًا على الجودة والتسليم في الوقت المحدد."
+      },
+      {
+        "question": "هل تستخدم أدوات التصميم مثل Figma أو Adobe XD؟",
+        "answer": "نعم، يمكنني تحويل تصميمات Figma أو Adobe XD أو Sketch إلى مواقع ويب متجاوبة باستخدام تقنيات حديثة."
+      }
+    ]
   },
   "services": {
     "title": "الخدمات التي أقدمها",
@@ -520,7 +531,7 @@
       {
         "title": "حلول متكاملة Full-Stack",
         "description": "من قاعدة البيانات إلى الواجهة — إنشاء تطبيقات متكاملة بسلاسة باستخدام MERN.",
-       "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/backend.jpg"
+        "image": "https://res.cloudinary.com/de8yddexc/image/upload/v1748264470/resume/services/backend.jpg"
       },
       {
         "title": "تصميم واجهة وتجربة المستخدم (UI/UX)",

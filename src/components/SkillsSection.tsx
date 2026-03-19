@@ -1,235 +1,189 @@
-"use client"
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { useScroll, useTransform, useSpring } from "framer-motion";
+"use client";
+import React, { useState, useContext, useMemo } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { LayoutContext } from "./context";
 
-interface Skill {
+type Skill = {
   key: string;
-  value: number;
-}
-
-interface ProgressState {
-  design: number[];
-  tools: number[];
-  development: number[];
-}
-interface SkillTranslations {
-  [key: string]: string;
-}
-
-interface SkillSectionProps {
-  skills: Skill[];
-  title: string;
-  progress: number[];
-  isRTL: boolean;
-  renderBar: (value: number) => React.ReactNode;
-  translations: SkillTranslations;
-}
-
-const designSkills: Skill[] = [
-  { key: "photoshop", value: 30 },
-  { key: "figma", value: 65 },
-  { key: "xd", value: 40 },
-  { key: "illustrator", value: 30 },
-];
-
-const toolskills: Skill[] = [
-  { key: "git", value: 95 },
-  { key: "firebase", value: 95 },
-  { key: "cloudinary", value: 75 },
-  { key: "cpanel", value: 80 },
-  { key: "vs", value: 95 },
-  { key: "jetBrains", value: 70 },
-];
-
-const devSkills: Skill[] = [
-  { key: "html", value: 90 },
-  { key: "css", value: 90 },
-  { key: "tailwind", value: 95 },
-  { key: "js", value: 85 },
-  { key: "ts", value: 90 },
-  { key: "gulp", value: 90 },
-  { key: "astro", value: 95 },
-  { key: "react", value: 90 },
-  { key: "next", value: 90 },
-  { key: "node", value: 80 },
-  { key: "ex", value: 75 },
-  { key: "wp", value: 65 },
-  { key: "mongo", value: 72 },
-];
-
-const SkillSection = ({
-  skills,
-  title,
-  progress,
-  renderBar,
-  translations,
-}: SkillSectionProps) => {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-          } else {
-            entry.target.classList.remove("in-view");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={sectionRef}
-      className="mb-10 transition-all duration-1000 ease-in-out transform translate-y-12 opacity-0 skill-section"
-    >
-      <h3 className="mb-6">{title}</h3>
-      {skills.map((skill, idx) => (
-        <div key={skill.key} className="mb-5">
-          <div className="flex justify-between mb-1 text-sm">
-            <span>{translations[skill.key] || skill.key}</span>
-            <span>{progress[idx]}%</span>
-          </div>
-          {renderBar(progress[idx])}
-        </div>
-      ))}
-    </div>
-  );
+  category: "frontend" | "state_data" | "tools" | "backend";
 };
 
-export default function SkillsSection() {
-  const context = useContext(LayoutContext);
-  if (!context) {
-    throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
-    );
-  }
+const allSkills: Skill[] = [
+  { key: "react", category: "frontend" },
+  { key: "next", category: "frontend" },
+  { key: "ts", category: "frontend" },
+  { key: "js", category: "frontend" },
+  { key: "tailwind", category: "frontend" },
+  { key: "astro", category: "frontend" },
+  { key: "html", category: "frontend" },
+  { key: "css", category: "frontend" },
+  { key: "restapi", category: "state_data" },
+  { key: "redux", category: "state_data" },
+  { key: "tanstackQuery", category: "state_data" },
+  { key: "axios", category: "state_data" },
+  { key: "postman", category: "tools" },
+  { key: "swagger", category: "tools" },
+  { key: "git", category: "tools" },
+  { key: "vs", category: "tools" },
+  { key: "figma", category: "tools" },
+  { key: "node", category: "backend" },
+  { key: "mongo", category: "backend" },
+  { key: "firebase", category: "backend" },
+  { key: "cloudinary", category: "backend" },
+];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.04 },
+  },
+};
+
+const tagVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8, y: 15 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.5,
+    transition: { duration: 0.15 },
+  },
+};
+
+export default function SkillsCloud() {
+  const context = useContext(LayoutContext);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  const filteredSkills = useMemo(() => {
+    if (activeFilter === "all") return allSkills;
+    return allSkills.filter((skill) => skill.category === activeFilter);
+  }, [activeFilter]);
+
+  if (!context) return null;
   const { translations, isRTL } = context;
 
-  const [progress, setProgress] = useState<ProgressState>({
-    design: [],
-    tools: [],
-    development: [],
-  });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress({
-        tools: toolskills.map((s) => s.value),
-        design: designSkills.map((s) => s.value),
-        development: devSkills.map((s) => s.value),
-      });
-    }, 300);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const renderBar = (value: number): React.ReactNode => {
-    const barColor =
-      value === 100
-        ? "bg-primary dark:bg-primary"
-        : "bg-[#3f4144] dark:bg-white";
-
-    return (
-      <div className="w-full h-2 overflow-hidden bg-gray-300 rounded dark:bg-gray-700">
-        <div
-          className={`h-2 transition-all duration-1000 ${barColor}`}
-          style={{
-            width: `${value}%`,
-            float: isRTL ? "right" : "left",
-          }}
-        />
-      </div>
-    );
-  };
-
-  // Framer Motion scroll + RTL support
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const movementDistance = 1850;
-
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isRTL ? ["0px", `${movementDistance}px`] : ["0px", `-${movementDistance}px`]
-  );
-
-  const xSpring = useSpring(x, { stiffness: 300, damping: 50 });
-
-  useEffect(() => {
-    const unsubscriber = xSpring.onChange((latestX) => {
-      const numericX = parseInt(latestX, 10);
-      if (
-        (!isRTL && numericX <= -movementDistance) ||
-        (isRTL && numericX >= movementDistance)
-      ) {
-        xSpring.set(isRTL ? `${movementDistance}px` : `-${movementDistance}px`);
-      }
-    });
-
-    return () => {
-      unsubscriber();
-    };
-  }, [xSpring, isRTL]);
+  const filters = [
+    {
+      id: "all",
+      label: translations.skills.all || "All Stack",
+      color: "bg-gray-400",
+    },
+    {
+      id: "frontend",
+      label: translations.skills.frontend || "Frontend",
+      color: "bg-blue-500",
+    },
+    {
+      id: "state_data",
+      label: translations.skills.state_data || "State & API",
+      color: "bg-orange-500",
+    },
+    {
+      id: "tools",
+      label: translations.skills.tools || "Tools",
+      color: "bg-green-500",
+    },
+    {
+      id: "backend",
+      label: translations.skills.backend || "Backend",
+      color: "bg-purple-500",
+    },
+  ];
 
   return (
     <section
-      ref={sectionRef}
       dir={isRTL ? "rtl" : "ltr"}
-      className="w-full py-2 overflow-hidden transition-colors duration-300"
+      className="w-full py-20 px-4 flex flex-col items-center"
     >
-      <h2 className="my-2 md:my-10">
-        {translations.skills.about}
-      </h2>
-      <div className="grid gap-10 md:grid-cols-2">
-        {/* Left Column: Tools + Design */}
-        <div className="space-y-12">
-          <SkillSection
-            skills={toolskills}
-            title={translations.skills.tools}
-            progress={progress.tools}
-            isRTL={isRTL}
-            renderBar={renderBar}
-            translations={translations.skills}
-          />
-          <SkillSection
-            skills={designSkills}
-            title={translations.skills.designTitle}
-            progress={progress.design}
-            isRTL={isRTL}
-            renderBar={renderBar}
-            translations={translations.skills}
-          />
-        </div>
+      <div className="text-center mb-10">
+        <h2 className="mb-4">{translations.skills.about}</h2>
+        <p className="text-gray-500 dark:text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+          A specialized ecosystem of modern technologies focused on creating
+          high-performance web solutions.
+        </p>
+      </div>
 
-        {/* Right Column: Development */}
-        <div>
-          <SkillSection
-            skills={devSkills}
-            title={translations.skills.devTitle}
-            progress={progress.development}
-            isRTL={isRTL}
-            renderBar={renderBar}
-            translations={translations.skills}
-          />
+      <div className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
+        {filters.map((f) => (
+          <button
+            key={f.id}
+            onClick={() => setActiveFilter(f.id)}
+            className={`px-5 py-2.5 rounded-2xl text-xs md:text-sm font-bold transition-all duration-300 ${
+              activeFilter === f.id
+                ? "bg-primary text-white shadow-lg shadow-primary/30"
+                : "text-gray-500 hover:bg-gray-200 dark:hover:bg-zinc-800"
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <motion.div
+        layout
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl min-h-62.5 content-start"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredSkills.map((skill) => (
+            <motion.div
+              layout
+              key={skill.key}
+              variants={tagVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              whileHover={{ scale: 1.08, y: -2 }}
+              className="relative group"
+            >
+              <div className="px-6 py-3 rounded-2xl border bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 shadow-sm flex items-center gap-3 transition-all duration-300 group-hover:border-primary group-hover:shadow-md">
+                <span
+                  className={`w-2 h-2 rounded-full transition-transform group-hover:scale-125 ${
+                    skill.category === "frontend"
+                      ? "bg-blue-500"
+                      : skill.category === "state_data"
+                        ? "bg-orange-500"
+                        : skill.category === "tools"
+                          ? "bg-green-500"
+                          : "bg-purple-500"
+                  }`}
+                />
+                <span className="text-sm md:text-base font-bold dark:text-zinc-200">
+                  {translations.skills[skill.key] || skill.key.toUpperCase()}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      <div className="mt-10 w-full max-w-4xl mx-auto pt-8 dark:border-zinc-800/50 flex flex-col md:flex-row justify-center items-center gap-6 opacity-60">
+        <div className="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-widest">
+          {filters.slice(1).map((f) => (
+            <div
+              key={f.id}
+              className="flex items-center gap-2 group cursor-help"
+            >
+              <span
+                className={`w-2 h-2 rounded-full ${f.color} group-hover:animate-pulse`}
+              />
+              <span className="group-hover:text-primary transition-colors">
+                {f.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

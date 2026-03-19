@@ -1,58 +1,60 @@
-"use client"
+"use client";
 
-import { useContext } from "react"
-import { useTheme } from "next-themes"
-import { Sun, Moon } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useContext } from "react";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuItem,
-  DropdownMenuTrigger,     // <-- নতুন import
-  DropdownMenuContent,     // <-- নতুন import (যদি না থাকে)
-} from "@/components/ui/dropdown-menu"   // আপনার কাস্টম path অনুযায়ী
-import { LayoutContext } from "../context"
-import { MdDarkMode, MdImportantDevices, MdLanguage } from "react-icons/md"
-import { CiLight } from "react-icons/ci"
-import { useState } from "react"
-import Link from "next/link"
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+} from "@/components/ui/dropdown-menu";
+import { LayoutContext } from "../context";
+import { MdDarkMode, MdImportantDevices, MdLanguage } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
+import { useState } from "react";
+import Link from "next/link";
 
 // -------- Types --------
-interface HeaderSection {
-  brand: string
-  home: string
-  projects: string
-  contact: string
-  github: string
-  articles: string
-  scrollMessage: string
-}
+type HeaderSection = {
+  brand: string;
+  home: string;
+  projects: string;
+  contact: string;
+  github: string;
+  articles: string;
+  scrollMessage: string;
+};
 
 type PortfolioJSON = {
-  header: HeaderSection
-  [key: string]: unknown
-}
+  header: HeaderSection;
+  [key: string]: unknown;
+};
 
-interface LayoutContextType {
-  language: string
-  setLanguage: (lang: string) => void
-  translations: PortfolioJSON | null
-  isRTL: boolean
-}
+type LayoutContextType = {
+  language: string;
+  setLanguage: (lang: string) => void;
+  translations: PortfolioJSON | null;
+  isRTL: boolean;
+};
 
-interface UtilityControlsProps {
-  isMobile?: boolean
-}
-
-export default function UtilityControls({ isMobile = false }: UtilityControlsProps) {
-  const context = useContext(LayoutContext) as LayoutContextType | null
+export default function UtilityControls({
+  isMobile = false,
+}: {
+  isMobile?: boolean;
+}) {
+  const context = useContext(LayoutContext) as LayoutContextType | null;
   if (!context) {
-    throw new Error("LayoutContext must be used within a LayoutContext.Provider")
+    throw new Error(
+      "LayoutContext must be used within a LayoutContext.Provider",
+    );
   }
 
-  const { language, setLanguage } = context
-  const { theme, setTheme } = useTheme()
+  const { language, setLanguage } = context;
+  const { theme, setTheme } = useTheme();
 
-  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
   return (
     <div className="flex flex-col md:flex-row gap-3">
@@ -69,7 +71,7 @@ export default function UtilityControls({ isMobile = false }: UtilityControlsPro
           openDropdownId={openDropdownId}
           setOpenDropdownId={setOpenDropdownId}
         >
-          <DropdownMenuTrigger asChild>   {/* <-- asChild দিয়ে Button কে trigger বানানো */}
+          <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
               size="icon"
@@ -126,7 +128,11 @@ export default function UtilityControls({ isMobile = false }: UtilityControlsPro
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <Button asChild size="sm"><Link href="/login" aria-label="Admin login">Admin Login</Link></Button>
+      <Button asChild size="sm">
+        <Link href="/login" aria-label="Admin login">
+          Admin Login
+        </Link>
+      </Button>
     </div>
-  )
+  );
 }
