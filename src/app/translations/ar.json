@@ -24,6 +24,8 @@
     "quata": "التعلم، التعلم والتعلم ........"
   },
   "skills": {
+    "designTitle": "أدوات التصميم",
+    "devTitle": "تقنيات التطوير",
     "about": "نبذة عني",
     "description": "نظام متكامل من التقنيات الحديثة يركز على إنشاء حلول ويب عالية الأداء.",
     "all": "جميع التقنيات",
@@ -31,7 +33,6 @@
     "state_data": "إدارة الحالة وواجهات API",
     "tools": "أدوات التطوير",
     "backend": "الخلفية وقواعد البيانات",
-
     "html": "HTML5",
     "css": "CSS3",
     "js": "جافاسكريبت (ES6+)",
@@ -42,12 +43,10 @@
     "astro": "Astro.js",
     "gulp": "Gulp.js",
     "wp": "تخصيص ووردبريس",
-
     "restapi": "واجهات RESTful",
     "redux": "Redux Toolkit",
     "tanstackQuery": "TanStack Query",
     "axios": "Axios",
-
     "postman": "Postman",
     "swagger": "Swagger UI",
     "git": "Git (إدارة الإصدارات)",
@@ -58,7 +57,6 @@
     "illustrator": "Adobe Illustrator",
     "jetBrains": "JetBrains IDEs",
     "cpanel": "cPanel / الاستضافة",
-
     "node": "Node.js",
     "ex": "Express.js",
     "mongo": "MongoDB",

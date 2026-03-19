@@ -24,6 +24,8 @@
     "quata": "Learning Learning & Learning ........"
   },
   "skills": {
+    "designTitle": "Design Tools",
+    "devTitle": "Development Stack",
     "about": "About Me",
     "description": "A specialized ecosystem of modern technologies focused on creating high-performance web solutions.",
     "all": "All Stack",
@@ -31,7 +33,6 @@
     "state_data": "State & API Management",
     "tools": "Development Tools",
     "backend": "Backend & Database",
-
     "html": "HTML5",
     "css": "CSS3",
     "js": "JavaScript (ES6+)",
@@ -42,12 +43,10 @@
     "astro": "Astro.js",
     "gulp": "Gulp.js",
     "wp": "WordPress Customization",
-
     "restapi": "RESTful APIs",
     "redux": "Redux Toolkit",
     "tanstackQuery": "TanStack Query",
     "axios": "Axios",
-
     "postman": "Postman",
     "swagger": "Swagger UI",
     "git": "Git (Version Control)",
@@ -58,7 +57,6 @@
     "illustrator": "Adobe Illustrator",
     "jetBrains": "JetBrains IDEs",
     "cpanel": "cPanel / Hosting",
-
     "node": "Node.js",
     "ex": "Express.js",
     "mongo": "MongoDB",
