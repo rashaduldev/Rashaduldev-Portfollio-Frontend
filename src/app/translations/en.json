@@ -215,6 +215,18 @@
         "status": "Old"
       },
       {
+        "id": 5,
+        "title": "Hospitalia",
+        "description": "Hospitalia is a modern healthcare web application designed to streamline hospital and patient management. It provides an intuitive interface for managing appointments, patient records, and essential healthcare services. The platform focuses on performance, clean UI/UX, and real-world usability, making it a scalable solution for digital healthcare systems.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1773884992/immfowrkzs7pjkcrvt48.webp",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1773884991/urljjxkn3fwlxsv3ocxu.webp",
+        "techStack": "Nextjs, TypeScript, Tailwind, Tanstack-Query",
+        "endtrac": "Frontend",
+        "githubLink": "#privet-repo",
+        "liveLink": "https://hospitalia-web.dhrubok.xyz/",
+        "status": "Latest"
+      },
+      {
         "id": 13,
         "title": "Optivus (FramerBite clone) Paid Theme",
         "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
@@ -297,18 +309,6 @@
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
         "liveLink": "https://learning.tripleibd.com",
-        "status": "Old"
-      },
-      {
-        "id": 5,
-        "title": "Digital Clock",
-        "description": "A simple yet elegant digital clock built using HTML, CSS, and JavaScript. It dynamically displays the current time and updates every second in real-time. The project focuses on DOM manipulation and time-based functions, making it a great beginner-level JavaScript project.",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350185/resume/projects/o6dhdvvx4amajp2bg3wf.png",
-        "techStack": "HTML5, CSS3, JavaScript",
-        "endtrac": "Frontend",
-        "githubLink": "https://github.com/rashaduldev/Digital-clock",
-        "liveLink": "http://digital-clock.uivibe.me",
         "status": "Old"
       },
       {
@@ -496,7 +496,7 @@
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
     "subscribeSuccess": "Thank you for subscribing with email:",
-    "copyright": "© 2025 rashaduldev. All rights reserved.",
+    "copyright": "© 2026 rashaduldev. All rights reserved.",
     "projects": "Projects"
   },
   "contact": {
