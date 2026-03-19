@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { useState, useContext } from "react";
 import { Input } from "@/components/ui/input";
-import { LayoutContext } from "./context"; 
+import { LayoutContext } from "./context";
 import { FaDev, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,18 +19,48 @@ interface NavLinkItem {
   key: string;
   href: string;
   defaultText: string;
-  translationKey: keyof FooterSection; 
+  translationKey: keyof FooterSection;
 }
 const companyLinks: NavLinkItem[] = [
-  { key: "projects", href: "/projects", defaultText: "Projects", translationKey: "projects" },
-  { key: "contact", href: "/contact", defaultText: "Contact", translationKey: "contact" },
-  { key: "privacy", href: "/cookies-policy", defaultText: "Privacy Policy", translationKey: "privacy" },
-  { key: "terms", href: "/terms", defaultText: "Terms of Service", translationKey: "terms" },
+  {
+    key: "projects",
+    href: "/projects",
+    defaultText: "Projects",
+    translationKey: "projects",
+  },
+  {
+    key: "contact",
+    href: "/contact",
+    defaultText: "Contact",
+    translationKey: "contact",
+  },
+  {
+    key: "privacy",
+    href: "/cookies-policy",
+    defaultText: "Privacy Policy",
+    translationKey: "privacy",
+  },
+  {
+    key: "terms",
+    href: "/terms",
+    defaultText: "Terms of Service",
+    translationKey: "terms",
+  },
 ];
 
 const resourceLinks: NavLinkItem[] = [
-  { key: "articles", href: "/articles", defaultText: "Articles", translationKey: "articles" },
-  { key: "help", href: "/help-center", defaultText: "Help Center", translationKey: "help" },
+  {
+    key: "articles",
+    href: "/articles",
+    defaultText: "Articles",
+    translationKey: "articles",
+  },
+  {
+    key: "help",
+    href: "/help-center",
+    defaultText: "Help Center",
+    translationKey: "help",
+  },
 ];
 interface NavLinkProps {
   href: string;
@@ -58,11 +88,13 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
 
 export default function Footer() {
   const context = useContext<ExpectedLayoutContextValue | undefined>(
-    LayoutContext as unknown as React.Context<ExpectedLayoutContextValue | undefined>
+    LayoutContext as unknown as React.Context<
+      ExpectedLayoutContextValue | undefined
+    >,
   );
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
   const translations = context.translations;
@@ -70,8 +102,8 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   const getTranslation = (
-    key: keyof FooterSection, 
-    defaultText: string
+    key: keyof FooterSection,
+    defaultText: string,
   ): string => translations?.footer?.[key] || defaultText;
 
   const handleEmailSubmit = (e: React.FormEvent) => {
@@ -80,8 +112,8 @@ export default function Footer() {
       alert(
         `${getTranslation(
           "subscribeSuccess",
-          "Thank you for subscribing with email:"
-        )} ${email}`
+          "Thank you for subscribing with email:",
+        )} ${email}`,
       );
       setEmail("");
     }
@@ -90,7 +122,7 @@ export default function Footer() {
   const renderLinkSection = (
     titleKey: keyof FooterSection,
     defaultTitle: string,
-    links: NavLinkItem[]
+    links: NavLinkItem[],
   ) => (
     <div>
       <ul className="space-y-2">
@@ -106,7 +138,6 @@ export default function Footer() {
   return (
     <footer className="w-full py-12 bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 border-t-2">
       <div className="section-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        
         <div className="block md:hidden">
           <div className="flex flex-row gap-8">
             {/* Company - Mobile */}
@@ -122,11 +153,11 @@ export default function Footer() {
                 />
               </Link>
               <ul className="space-y-2 mt-4">
-                  {companyLinks.map((link) => (
-                      <NavLink key={link.key} href={link.href}>
-                          {getTranslation(link.translationKey, link.defaultText)}
-                      </NavLink>
-                  ))}
+                {companyLinks.map((link) => (
+                  <NavLink key={link.key} href={link.href}>
+                    {getTranslation(link.translationKey, link.defaultText)}
+                  </NavLink>
+                ))}
               </ul>
             </div>
             <div className="flex-1">
@@ -135,17 +166,21 @@ export default function Footer() {
           </div>
         </div>
         <div className="hidden md:block">
-            {/* Logo/Brand */}
-            <Link href="/" className="mb-4 block">
-                <Image
-                    src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
-                    width={100}
-                    height={20}
-                    alt="My Brand Logo"
-                    priority
-                />
-            </Link>
-            {renderLinkSection("company", "Company", companyLinks.filter(l => l.key !== "terms"))}
+          {/* Logo/Brand */}
+          <Link href="/" className="mb-4 block">
+            <Image
+              src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
+              width={100}
+              height={20}
+              alt="My Brand Logo"
+              priority
+            />
+          </Link>
+          {renderLinkSection(
+            "company",
+            "Company",
+            companyLinks.filter((l) => l.key !== "terms"),
+          )}
         </div>
 
         {/* Resources - Desktop (Hidden on mobile) */}
@@ -206,7 +241,7 @@ export default function Footer() {
           <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
             {getTranslation(
               "newsletterDesc",
-              "Get the latest updates and offers."
+              "Get the latest updates and offers.",
             )}
           </p>
           <form
@@ -217,7 +252,7 @@ export default function Footer() {
               type="email"
               placeholder={getTranslation(
                 "emailPlaceholder",
-                "Enter your email"
+                "Enter your email",
               )}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -232,10 +267,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-        {getTranslation(
-          "copyright",
-          `© ${new Date().getFullYear()} rashaduldev. All rights reserved.`
-        )}
+        © {new Date().getFullYear()} rashaduldev. All rights reserved.
       </p>
     </footer>
   );
