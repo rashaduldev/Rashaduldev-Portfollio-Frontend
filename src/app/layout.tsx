@@ -2,8 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Script from "next/script";
-import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
+import AppProviders from "@/app/providers/ClientProviders";
+import { Toaster } from "react-hot-toast";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -34,14 +35,15 @@ export default function RootLayout({
       <body className={`${dmSerif.variable} ${dmSans.variable}`}>
         <Script
           defer
-          data-domain="rashaduldev01.vercel.app"
+          data-domain="rashaduldev.vercel.app"
           src="https://plausible.io/js/script.js"
         />
 
-        <ClientProviders>
+        <AppProviders>
           <CookieConsent />
           {children}
-        </ClientProviders>
+          <Toaster position="top-right" reverseOrder={false} />
+        </AppProviders>
       </body>
     </html>
   );

@@ -54,7 +54,7 @@ const ScrollToTopWithProgress: React.FC = () => {
         </div>
 
         {/* Icon Layer */}
-        <ArrowUp className="relative z-10 w-5 h-5 transition-colors duration-200 text-muted dark:text-foreground" />
+        <ArrowUp className="relative z-10 w-5 h-5 transition-colors duration-200 text-foreground" />
       </button>
     )
   );
