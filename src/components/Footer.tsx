@@ -112,14 +112,20 @@ export default function Footer() {
     defaultText: string,
   ): string => translations?.footer?.[key] || defaultText;
 
-  const mutation = useMutation<void, Error, string>({
+  const mutation = useMutation<any, any, string>({
     mutationFn: (email: string) => subscribeNewsletter({ email }),
+
     onSuccess: () => {
       toast.success("Thank you for subscribing!");
       setEmail("");
+      mutation.reset();
     },
-    onError: (error) => {
-      toast.error(error.message || "Something went wrong!");
+
+    onError: (error: any) => {
+      const message =
+        error?.message || error?.cause?.code || "Server connection failed 🚫";
+
+      toast.error(message);
     },
   });
 

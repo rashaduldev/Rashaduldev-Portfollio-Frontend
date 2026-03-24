@@ -45,7 +45,7 @@ export async function apiClient<T = any>({
     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
-      const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`);
+      const url = new URL(`${process.env.NEXT_PUBLIC_BASE_API}${endpoint}`);
 
       // Add query parameters
       if (Object.keys(params).length) {
@@ -102,13 +102,7 @@ export async function apiClient<T = any>({
         { ...data, statusCode: response.status },
       );
 
-      return {
-        status: data.status,
-        success: false,
-        message: data.message || "Something went wrong!",
-        payload: data.payload || null,
-        statusCode: response.status,
-      };
+      throw new Error(data.message || "Something went wrong!");
     } catch (error: any) {
       clearTimeout(timeoutId);
       console.error(
@@ -142,12 +136,7 @@ export async function apiClient<T = any>({
           ? "The request timed out. The server took too long to respond. Please try again."
           : error.message || "Oops! there was an error";
 
-      return {
-        success: false,
-        status: "error",
-        message: friendlyMessage,
-        payload: null,
-      };
+      throw new Error(friendlyMessage);
     }
   };
 
