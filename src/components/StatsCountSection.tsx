@@ -10,7 +10,7 @@ const StatsSection = () => {
   const context = useContext(LayoutContext);
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -28,21 +28,19 @@ const StatsSection = () => {
   return (
     <section ref={ref} className="py-16 transition-colors duration-300">
       <div className="text-center mb-10">
-        <h2 className="mt-2">
-          {statsSection?.title || "Achievements"}
-        </h2>
+        <h2 className="mt-2">{statsSection?.title || "Achievements"}</h2>
       </div>
 
       <div
         className={clsx(
           "grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
-          isRTL ? "direction-rtl text-right" : "text-left"
+          isRTL ? "direction-rtl text-right" : "text-left",
         )}
       >
         {stats?.map((item, idx) => (
           <div
             key={idx}
-            className="rounded border border-gray-300 dark:border-gray-700 p-6 flex flex-col items-center text-center transition-transform hover:scale-105 duration-300"
+            className="rounded border border-gray-300 dark:border-gray-700 p-6 flex flex-col items-center text-center transition-transform hover:scale-105 hover:border-primary duration-300"
           >
             <div className="text-4xl font-bold mb-2">
               {inView ? (

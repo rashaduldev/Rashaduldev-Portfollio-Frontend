@@ -1,5 +1,6 @@
-"use client"
-import React, { useContext } from "react";
+"use client";
+
+import { FC, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -7,34 +8,14 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { LayoutContext } from "./context";
 import Image from "next/image";
+import { LayoutContextType } from "@/types/testimonial.type";
 
-type Testimonial = {
-  image: string;
-  name: string;
-  username: string;
-  quote: string;
-  highlight: string;
-};
-
-type TranslationsType = {
-  testimonialsSection: {
-    testimonialHeading: string;
-    trustedClients: string;
-    testimonials: Testimonial[];
-  };
-};
-
-type LayoutContextType = {
-  translations: TranslationsType;
-  isRTL: boolean;
-};
-
-const TestimonialSection: React.FC = () => {
+const TestimonialSection: FC = () => {
   const context = useContext(LayoutContext) as LayoutContextType;
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
