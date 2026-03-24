@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState, useContext } from "react";
 import { ArrowUp } from "lucide-react";
 import { LayoutContext } from "./context";
@@ -10,7 +10,7 @@ const ScrollToTopWithProgress: React.FC = () => {
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -49,24 +49,12 @@ const ScrollToTopWithProgress: React.FC = () => {
             className="w-full relative"
             style={{ height: `${scrollProgress}%` }}
           >
-            {/* Wave SVG */}
-            <svg
-              className="absolute bottom-0 w-full h-4 animate-wave"
-              viewBox="0 0 100 20"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0 20 Q 25 0 50 20 T 100 20 V 100 H 0 Z"
-                fill="#fb923c"
-                opacity="0.6"
-              />
-            </svg>
             <div className="bg-primary w-full h-full"></div>
           </div>
         </div>
 
         {/* Icon Layer */}
-        <ArrowUp className="relative z-10 w-5 h-5 transition-colors duration-200 group-hover:text-black dark:group-hover:text-gray-100" />
+        <ArrowUp className="relative z-10 w-5 h-5 transition-colors duration-200 text-muted dark:text-foreground" />
       </button>
     )
   );

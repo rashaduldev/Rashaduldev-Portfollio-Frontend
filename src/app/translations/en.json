@@ -380,19 +380,19 @@
   },
   "Educationheading": "Education",
   "education": {
-    "2020": {
+    "2017": {
       "title": "Secondary School Certificate (SSC)",
       "company": "Nawdabash High School",
       "department": "Science",
       "description": "Completed Secondary School Certificate with a focus on general science and foundational computing skills."
     },
-    "2021": {
+    "2019": {
       "title": "Higher Secondary Certificate (HSC)",
       "company": "Kurigram Govt Collage",
       "department": "Science",
       "description": "Passed Higher Secondary Certificate specializing in Science, with strong interest in mathematics and ICT."
     },
-    "2023": {
+    "2021": {
       "title": "Diploma in Engineering (Diploma in CSE)",
       "company": "Dhaka Polytechnic Institute",
       "department": "Computer Science & Technology",
