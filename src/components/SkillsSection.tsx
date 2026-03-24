@@ -105,8 +105,8 @@ export default function SkillsCloud() {
       className="w-full py-20 px-4 flex flex-col items-center"
     >
       <div className="text-center mb-10">
-        <h2 className="mb-4">{translations.skills.about}</h2>
-        <p className="text-gray-500 dark:text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+        <h2 className="mb-2">{translations.skills.about}</h2>
+        <p className="text-gray-500 dark:text-zinc-400 max-w-lg mx-auto text-sm md:text-base">
           A specialized ecosystem of modern technologies focused on creating
           high-performance web solutions.
         </p>
