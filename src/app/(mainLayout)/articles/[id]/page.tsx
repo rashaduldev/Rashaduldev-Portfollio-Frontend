@@ -1,5 +1,10 @@
 import ArticleDetailsClient from "@/components/Articles/ArticlesDetails";
 
+export const metadata = {
+  title: "Rashaduldev - Article Details",
+  description: "Detailed view of the selected article.",
+};
+
 const ArticleDetailsPage = () => {
   return (
     <div>
@@ -9,10 +14,6 @@ const ArticleDetailsPage = () => {
 };
 
 export default ArticleDetailsPage;
-export const metadata = {
-  title: "Rashaduldev| Article Details",
-  description: "Detailed view of the selected article.",
-};
 
 export async function generateStaticParams() {
   const projectIds = ["1", "2", "3"];

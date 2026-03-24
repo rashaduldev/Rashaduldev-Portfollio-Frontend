@@ -9,25 +9,21 @@ import {
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  FaLinkedinIn,
-  FaGithub,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
-// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import "./banner.css";
 import rashadul from "../../public/assets/rashadul-portfollio.png";
 import Image from "next/image";
 import { SiCodewars } from "react-icons/si";
+import { Typography } from "./ui/Typography";
 
 export default function Banner() {
   const context = useContext(LayoutContext);
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -40,7 +36,7 @@ export default function Banner() {
         className="absolute inset-0 bg-fixed bg-center bg-no-repeat bg-cover zoom-bg"
         style={{
           backgroundImage:
-            "url('https://img.freepik.com/free-vector/abstract-horizontal-grid-lines-graph-style-graphic-design_1017-39918.jpg?semt=ais_hybrid&w=740')",
+            "url('https://res.cloudinary.com/de8yddexc/image/upload/v1774346122/nxdr9pyveabjlxw9to89.avif')",
         }}
       />
       {/* Overlay */}
@@ -58,10 +54,19 @@ export default function Banner() {
           transition={{ duration: 0.8 }}
           className={`flex-1 ${isRTL ? "text-right" : "text-left"}`}
         >
-          <span className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
+          <Typography
+            as="span"
+            weight="medium"
+            color="foreground"
+            className="mb-2 text-lg sm:text-xl md:text-2xl "
+          >
             {translations?.main?.subtitle || "Hi there, I'm"}
-          </span>
-          <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl dark:text-white">
+          </Typography>
+          <Typography
+            as="h1"
+            color="foreground"
+            className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl"
+          >
             <TypeAnimation
               sequence={[
                 translations?.main?.title || "Rashadul Islam",
@@ -73,14 +78,17 @@ export default function Banner() {
               speed={50}
               repeat={Infinity}
             />
-          </h1>
-          <p className="mb-6 text-base leading-relaxed text-justify text-gray-600 sm:text-lg dark:text-gray-300 max-w-xl">
+          </Typography>
+          <Typography
+            color="muted_foreground"
+            className="mb-6 text-base leading-relaxed text-justify sm:text-lg max-w-xl"
+          >
             {translations?.main?.description ||
               "I build interactive and responsive web applications using modern web technologies. Let's turn your ideas into reality."}
-          </p>
-          <p className="mb-5 font-semibold text-gray-900 dark:text-gray-200">
+          </Typography>
+          <Typography color="foreground" weight="semiBold" className="mb-5">
             {translations?.main?.quata}
-          </p>
+          </Typography>
 
           {/* Social Icons */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -133,21 +141,21 @@ export default function Banner() {
               </Link>
             </Button>
 
-          <Button variant="outline" asChild>
-            <a
-              href="/assets/Rashadul.pdf"
-              download="Resume of Md Rashadul Islam.pdf"
-              className="flex items-center gap-2"
-              aria-label="Download resume as PDF"
-            >
-              {translations?.main?.resume || "Download Resume"}
-              {isRTL ? (
-                <IoArrowRedoCircleOutline size={20} />
-              ) : (
-                <IoArrowUndoCircleOutline size={20} />
-              )}
-            </a>
-          </Button>
+            <Button variant="outline" asChild>
+              <a
+                href="/assets/Rashadul.pdf"
+                download="Resume of Md Rashadul Islam.pdf"
+                className="flex items-center gap-2"
+                aria-label="Download resume as PDF"
+              >
+                {translations?.main?.resume || "Download Resume"}
+                {isRTL ? (
+                  <IoArrowRedoCircleOutline size={20} />
+                ) : (
+                  <IoArrowUndoCircleOutline size={20} />
+                )}
+              </a>
+            </Button>
           </div>
         </motion.div>
 
@@ -165,13 +173,6 @@ export default function Banner() {
             />
           </div>
         </div>
-
-        {/* <DotLottieReact
-      src="https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie"
-      loop
-      className="h-[400px] w-[800px]"
-      autoplay
-    /> */}
       </div>
     </section>
   );

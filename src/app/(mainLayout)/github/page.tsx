@@ -1,5 +1,10 @@
 import GithubProjects from "@/components/Github/Github";
 
+export const metadata = {
+  title: "Rashaduldev | GitHub Projects",
+  description: "Explore my GitHub projects and contributions.",
+};
+
 const GithubPage = () => {
   return (
     <div className="my-10">
@@ -9,7 +14,3 @@ const GithubPage = () => {
 };
 
 export default GithubPage;
-export const metadata = {
-  title: "Rashaduldev | GitHub Projects",
-  description: "Explore my GitHub projects and contributions.",
-};

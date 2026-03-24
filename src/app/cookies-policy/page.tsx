@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export default function CookiesPolicy() {
+export const metadata = {
+  title: "Rashaduldev - Cookies Policy",
+  description:
+    "Learn about our cookies policy and how we use cookies on our website.",
+};
+
+const CookiesPolicy = () => {
   return (
     <main className="max-w-7xl mx-auto mt-24 rounded overflow-hidden border px-3 md:px-0 my-10">
       {/* Hero Image Section */}
@@ -113,9 +119,6 @@ export default function CookiesPolicy() {
       </section>
     </main>
   );
-}
-export const metadata = {
-  title: "Rashaduldev | Cookies Policy",
-  description:
-    "Learn about our cookies policy and how we use cookies on our website.",
 };
+
+export default CookiesPolicy;
