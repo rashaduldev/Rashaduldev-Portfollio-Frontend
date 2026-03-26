@@ -11,26 +11,22 @@ export default function WorkExperience() {
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
   const { translations, isRTL } = context;
-  const experienceRecord:  ExperienceItem[] =
-    translations?.experience ?? {};
-  const experiences: ExperienceItem[] =
-    Object.values(experienceRecord).flat();
+  const experienceRecord: ExperienceItem[] = translations?.experience ?? {};
+  const experiences: ExperienceItem[] = Object.values(experienceRecord).flat();
 
   // Sort by year desc
   const sortedExperiences = [...experiences].sort(
-    (a, b) => Number(b.year) - Number(a.year)
+    (a, b) => Number(b.year) - Number(a.year),
   );
 
   return (
     <section className="w-full pb-12 overflow-x-hidden">
-      <h2 className="text-center mb-12">
-        {translations.experienceHeading}
-      </h2>
+      <h2 className="text-center mb-12">{translations.experienceHeading}</h2>
 
       <div className="relative">
         {/* Vertical line */}
@@ -65,28 +61,26 @@ export default function WorkExperience() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="p-4 md:p-6 border rounded-lg hover:shadow-lg transition">
+                    <div className="p-4 md:p-6 border rounded-lg hover:shadow-lg hover:border-primary transition">
                       <div className="flex items-center justify-between">
                         <span className="inline-block mb-2 px-3 py-1 text-xs font-semibold rounded-full bg-gray-200 dark:bg-gray-800">
-                        {exp.year}
-                      </span>
-                      <span className="inline-block mb-2 px-3 py-1 text-xs font-semibold rounded-full  dark:bg-gray-800 bg-primary text-white">
-                        {exp.type}
-                      </span>
+                          {exp.year}
+                        </span>
+                        <span className="inline-block mb-2 px-3 py-1 text-xs font-semibold rounded-full  dark:bg-gray-800 bg-primary text-white">
+                          {exp.type}
+                        </span>
                       </div>
 
                       <div className="flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
-                        <p className="font-semibold text-lg">
-                          {exp.title}
-                        </p>
+                        <p className="font-semibold text-lg">{exp.title}</p>
                         <div>
                           <p className="text-sm text-gray-500 flex items-center gap-1">
                             <CiLocationOn />
-                          {exp.location}
-                        </p>
+                            {exp.location}
+                          </p>
                           <p className="text-sm text-gray-500">
-                          {exp.duration}
-                        </p>
+                            {exp.duration}
+                          </p>
                         </div>
                       </div>
 

@@ -4,7 +4,7 @@ import FaqSection from "@/components/FAQ";
 import LatestArticles from "@/components/LatestArticles";
 import ProjectsSection from "@/components/ProjectsSection";
 import ScrollToTopWithProgress from "@/components/ScrollToTopWithProgress";
-// import ServicesCarousel from "@/components/ServicesCarouse";
+import ServicesCarousel from "@/components/ServicesCarouse";
 import SkillsMarquee from "@/components/SkillsMarquee";
 import SkillsSection from "@/components/SkillsSection";
 import StatsSection from "@/components/StatsCountSection";
@@ -25,7 +25,7 @@ const MainLayoutPage = () => {
         <TestimonialSection />
         <WhyChooseMe />
         {/* issue here */}
-        {/* <ServicesCarousel /> */}
+        <ServicesCarousel />
         <EducationSection />
         <LatestArticles />
         <FaqSection />

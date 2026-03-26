@@ -9,11 +9,7 @@ import {
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  FaLinkedinIn,
-  FaGithub,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
@@ -27,7 +23,7 @@ export default function Banner() {
 
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -133,32 +129,32 @@ export default function Banner() {
               </Link>
             </Button>
 
-          <Button variant="outline" asChild>
-            <a
-              href="/assets/Rashadul.pdf"
-              download="Resume of Md Rashadul Islam.pdf"
-              className="flex items-center gap-2"
-              aria-label="Download resume as PDF"
-            >
-              {translations?.main?.resume || "Download Resume"}
-              {isRTL ? (
-                <IoArrowRedoCircleOutline size={20} />
-              ) : (
-                <IoArrowUndoCircleOutline size={20} />
-              )}
-            </a>
-          </Button>
+            <Button variant="outline" asChild>
+              <a
+                href="/assets/Rashadul.pdf"
+                download="Resume of Md Rashadul Islam.pdf"
+                className="flex items-center gap-2"
+                aria-label="Download resume as PDF"
+              >
+                {translations?.main?.resume || "Download Resume"}
+                {isRTL ? (
+                  <IoArrowRedoCircleOutline size={20} />
+                ) : (
+                  <IoArrowUndoCircleOutline size={20} />
+                )}
+              </a>
+            </Button>
           </div>
         </motion.div>
 
         <div className="flex-1 flex justify-center items-center">
-          <div className="relative w-full sm:w-52 md:w-64 lg:w-80 h-auto">
+          <div className="relative w-full sm:w-80 lg:w-96 h-auto">
             {/* Image */}
             <Image
               src={rashadul}
               alt="Md Rashadul Islam profile photo"
-              width={280}
-              height={280}
+              width={420}
+              height={420}
               priority
               fetchPriority="high"
               className="rounded-full"
