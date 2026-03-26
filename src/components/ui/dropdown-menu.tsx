@@ -1,22 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
-import React, { useRef, useEffect } from "react"
-import { CheckIcon, CircleIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
+import React, { useRef, useEffect } from "react";
+import { CheckIcon, CircleIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface DropdownProps {
-  id: string
-  openDropdownId: string | null
-  setOpenDropdownId: (id: string | null) => void
-  children: React.ReactNode
-  className?: string
+type DropdownProps ={
+  id: string;
+  openDropdownId: string | null;
+  setOpenDropdownId: (id: string | null) => void;
+  children: React.ReactNode;
+  className?: string;
 }
 
-interface TriggerProps {
-  children: React.ReactNode
-  className?: string
-  asChild?: boolean
+type TriggerProps ={
+  children: React.ReactNode;
+  className?: string;
+  asChild?: boolean;
 }
 
 export function DropdownMenu({
@@ -26,8 +25,8 @@ export function DropdownMenu({
   children,
   className,
 }: DropdownProps) {
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const isOpen = openDropdownId === id
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const isOpen = openDropdownId === id;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -35,60 +34,60 @@ export function DropdownMenu({
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        if (isOpen) setOpenDropdownId(null)
+        if (isOpen) setOpenDropdownId(null);
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isOpen, setOpenDropdownId])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, setOpenDropdownId]);
 
   const toggle = () => {
-    setOpenDropdownId(isOpen ? null : id)
-  }
+    setOpenDropdownId(isOpen ? null : id);
+  };
 
   return (
     <div ref={dropdownRef} className="relative inline-block text-left">
       {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) return child
+        if (!React.isValidElement(child)) return child;
         if (child.type === DropdownMenuTrigger) {
           const childProps = child.props as TriggerProps & {
-            onClick?: (e: React.MouseEvent<HTMLElement>) => void
-          }
+            onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+          };
           if (childProps.asChild) {
             return React.Children.map(childProps.children, (innerChild) => {
-              if (!React.isValidElement(innerChild)) return innerChild
+              if (!React.isValidElement(innerChild)) return innerChild;
 
-              const originalOnClick = (innerChild.props as any).onClick
+              const originalOnClick = (innerChild.props as any).onClick;
 
               return React.cloneElement(innerChild as React.ReactElement<any>, {
                 onClick: (e: React.MouseEvent<HTMLElement>) => {
-                  originalOnClick?.(e)
-                  toggle()
+                  originalOnClick?.(e);
+                  toggle();
                 },
-              })
-            })
+              });
+            });
           }
-          const originalOnClick = childProps.onClick
+          const originalOnClick = childProps.onClick;
 
           return React.cloneElement(child as React.ReactElement<any>, {
             onClick: (e: React.MouseEvent<HTMLElement>) => {
-              originalOnClick?.(e)
-              toggle()
+              originalOnClick?.(e);
+              toggle();
             },
-          })
+          });
         }
         if ((child.type as any).displayName === "DropdownMenuContent") {
           return React.cloneElement(child as React.ReactElement<any>, {
             isOpen,
             className,
-          })
+          });
         }
 
-        return child
+        return child;
       })}
     </div>
-  )
+  );
 }
 
 /* ================= Trigger ================= */
@@ -100,7 +99,7 @@ export function DropdownMenuTrigger({
   ...props
 }: TriggerProps & React.HTMLAttributes<HTMLDivElement>) {
   if (asChild) {
-    return <>{children}</>
+    return <>{children}</>;
   }
 
   return (
@@ -108,12 +107,12 @@ export function DropdownMenuTrigger({
       {...props}
       className={cn(
         "cursor-pointer select-none flex items-center gap-1",
-        className
+        className,
       )}
     >
       {children}
     </div>
-  )
+  );
 }
 
 /* ================= Content ================= */
@@ -123,9 +122,9 @@ function DropdownMenuContentComponent({
   isOpen = false,
   className,
 }: {
-  children: React.ReactNode
-  isOpen?: boolean
-  className?: string
+  children: React.ReactNode;
+  isOpen?: boolean;
+  className?: string;
 }) {
   return (
     <div
@@ -134,17 +133,17 @@ function DropdownMenuContentComponent({
         isOpen
           ? "opacity-100 scale-100 visible"
           : "opacity-0 scale-95 pointer-events-none invisible",
-        className
+        className,
       )}
     >
       {children}
     </div>
-  )
+  );
 }
 
-DropdownMenuContentComponent.displayName = "DropdownMenuContent"
+DropdownMenuContentComponent.displayName = "DropdownMenuContent";
 
-export const DropdownMenuContent = DropdownMenuContentComponent
+export const DropdownMenuContent = DropdownMenuContentComponent;
 
 /* ================= Items ================= */
 
@@ -153,21 +152,21 @@ export function DropdownMenuItem({
   className,
   onClick,
 }: {
-  children: React.ReactNode
-  className?: string
-  onClick?: () => void
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
 }) {
   return (
     <div
       onClick={onClick}
       className={cn(
         "cursor-pointer px-3 py-2 text-sm rounded flex items-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors",
-        className
+        className,
       )}
     >
       {children}
     </div>
-  )
+  );
 }
 
 export function DropdownMenuCheckboxItem({
@@ -175,9 +174,9 @@ export function DropdownMenuCheckboxItem({
   checked,
   onChange,
 }: {
-  children: React.ReactNode
-  checked?: boolean
-  onChange?: () => void
+  children: React.ReactNode;
+  checked?: boolean;
+  onChange?: () => void;
 }) {
   return (
     <div
@@ -187,15 +186,15 @@ export function DropdownMenuCheckboxItem({
       {checked && <CheckIcon className="w-4 h-4" />}
       {children}
     </div>
-  )
+  );
 }
 
 export function DropdownMenuRadioGroup({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return <div className="flex flex-col">{children}</div>
+  return <div className="flex flex-col">{children}</div>;
 }
 
 export function DropdownMenuRadioItem({
@@ -203,9 +202,9 @@ export function DropdownMenuRadioItem({
   selected,
   onSelect,
 }: {
-  children: React.ReactNode
-  selected?: boolean
-  onSelect?: () => void
+  children: React.ReactNode;
+  selected?: boolean;
+  onSelect?: () => void;
 }) {
   return (
     <div
@@ -215,17 +214,13 @@ export function DropdownMenuRadioItem({
       {selected && <CircleIcon className="w-3 h-3" />}
       {children}
     </div>
-  )
+  );
 }
 
-export function DropdownMenuLabel({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return <div className="px-3 py-1 text-xs text-gray-500">{children}</div>
+export function DropdownMenuLabel({ children }: { children: React.ReactNode }) {
+  return <div className="px-3 py-1 text-xs text-gray-500">{children}</div>;
 }
 
 export function DropdownMenuSeparator() {
-  return <div className="border-t my-1 border-gray-200 dark:border-gray-700" />
+  return <div className="border-t my-1 border-gray-200 dark:border-gray-700" />;
 }

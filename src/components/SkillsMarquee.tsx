@@ -8,6 +8,8 @@ import {
   FaReact,
   FaNodeJs,
 } from "react-icons/fa";
+import { TbBrandAdobeXd, TbBrandAdobePhotoshop } from "react-icons/tb";
+
 import {
   SiFirebase,
   SiJavascript,
@@ -18,9 +20,6 @@ import {
   SiCloudinary,
   SiCpanel,
   SiJetbrains,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
-  SiAdobexd,
   SiPostman,
   SiSwagger,
   SiAxios,
@@ -28,6 +27,7 @@ import {
   SiRedux,
   SiMongodb,
   SiAstro,
+  SiAudiobookshelf,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import Marquee from "react-fast-marquee";
@@ -64,9 +64,9 @@ const SkillsMarquee = () => {
     { name: skills.git, icon: <FaGitAlt /> },
     { name: skills.vs, icon: <VscVscode /> },
     { name: skills.figma, icon: <FaFigma /> },
-    { name: skills.photoshop, icon: <SiAdobephotoshop /> },
-    { name: skills.xd, icon: <SiAdobexd /> },
-    { name: skills.illustrator, icon: <SiAdobeillustrator /> },
+    { name: skills.photoshop, icon: <TbBrandAdobePhotoshop /> },
+    { name: skills.xd, icon: <TbBrandAdobeXd /> },
+    { name: skills.illustrator, icon: <SiAudiobookshelf /> },
   ];
 
   const backend = [

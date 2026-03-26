@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { useContext, useState } from "react";
 import { LayoutContext } from "./context";
 import Image from "next/image";

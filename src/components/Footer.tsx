@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { useState, useContext } from "react";
@@ -10,17 +11,18 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FooterSection } from "@/types/translations";
 import { SiCodewars } from "react-icons/si";
-interface ExpectedLayoutContextValue {
+
+type ExpectedLayoutContextValue = {
   translations: {
     footer: FooterSection;
   } | null;
-}
-interface NavLinkItem {
+};
+type NavLinkItem = {
   key: string;
   href: string;
   defaultText: string;
   translationKey: keyof FooterSection;
-}
+};
 const companyLinks: NavLinkItem[] = [
   {
     key: "projects",
@@ -62,10 +64,10 @@ const resourceLinks: NavLinkItem[] = [
     translationKey: "help",
   },
 ];
-interface NavLinkProps {
+type NavLinkProps = {
   href: string;
   children: React.ReactNode;
-}
+};
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   const pathname = usePathname();
