@@ -10,6 +10,9 @@ export async function subscribeNewsletter({ email }: { email: string }) {
     body: { email },
     params: { email },
   });
+  if (!res.success) {
+    throw new Error(res.message || "Subscription failed");
+  }
 
   return res;
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import defaultTranslations from "@/app/translations/en.json";
 import { PortfolioJSON } from "@/types/translations";
 import { LayoutContext } from "../context";
+import { Toaster } from "react-hot-toast";
 
 export default function ClientProviders({
   children,
@@ -40,6 +41,7 @@ export default function ClientProviders({
       >
         {children}
       </LayoutContext.Provider>
+      <Toaster position="top-right" />
     </ThemeProvider>
   );
 }

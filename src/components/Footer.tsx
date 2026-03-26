@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { useState, useContext } from "react";
@@ -11,7 +10,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FooterSection } from "@/types/translations";
 import { SiCodewars } from "react-icons/si";
-
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { subscribeNewsletter } from "@/actions/subscribers/subscribers";
+import { subscribeSchema } from "@/schema/subscriber.schema";
+import { Typography } from "./ui/Typography";
 type ExpectedLayoutContextValue = {
   translations: {
     footer: FooterSection;
@@ -102,23 +105,44 @@ export default function Footer() {
   const translations = context.translations;
 
   const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const getTranslation = (
     key: keyof FooterSection,
     defaultText: string,
   ): string => translations?.footer?.[key] || defaultText;
 
+  const mutation = useMutation<any, any, string>({
+    mutationFn: (email: string) => subscribeNewsletter({ email }),
+
+    onSuccess: () => {
+      toast.success("Thank you for subscribing!");
+      setEmail("");
+      mutation.reset();
+    },
+
+    onError: (error: any) => {
+      const message =
+        error?.message || error?.cause?.code || "Server connection failed 🚫";
+
+      toast.error(message);
+    },
+  });
+
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      alert(
-        `${getTranslation(
-          "subscribeSuccess",
-          "Thank you for subscribing with email:",
-        )} ${email}`,
-      );
-      setEmail("");
+
+    // Validate using Zod
+    const result = subscribeSchema.safeParse({ email });
+
+    if (!result.success) {
+      const firstError = result.error?.issues?.[0]?.message || "Invalid input";
+      setError(firstError);
+      return;
     }
+
+    setError(null); // clear previous errors
+    mutation.mutate(email);
   };
 
   const renderLinkSection = (
@@ -138,7 +162,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="w-full py-12 bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 border-t-2">
+    <footer className="w-full py-12 bg-background text-foreground border-t-2">
       <div className="section-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div className="block md:hidden">
           <div className="flex flex-row gap-8">
@@ -185,16 +209,19 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Resources - Desktop (Hidden on mobile) */}
         <div className="hidden md:block">
           {renderLinkSection("resources", "Resources", resourceLinks)}
         </div>
-
-        {/* Follow Us - always visible */}
         <div>
-          <h3 className="font-semibold text-lg">
+          <Typography
+            as="h2"
+            size="lg"
+            color="foreground"
+            weight="semiBold"
+            className="mb-2"
+          >
             {getTranslation("follow", "Follow Us")}
-          </h3>
+          </Typography>
           <div className="flex flex-row gap-4 mt-2">
             <Link
               href="https://www.codewars.com/users/rashaduldev"
@@ -237,40 +264,66 @@ export default function Footer() {
 
         {/* Newsletter - always visible */}
         <div>
-          <h3 className="font-semibold text-lg">
+          <Typography
+            as="h3"
+            size="lg"
+            color="foreground"
+            weight="semiBold"
+            className="mb-2"
+          >
             {getTranslation("newsletter", "Subscribe to My Newsletter")}
-          </h3>
-          <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          </Typography>
+          <Typography size="sm" color="foreground" className="mb-4">
             {getTranslation(
               "newsletterDesc",
               "Get the latest updates and offers.",
             )}
-          </p>
+          </Typography>
           <form
             onSubmit={handleEmailSubmit}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Input
-              type="email"
-              placeholder={getTranslation(
-                "emailPlaceholder",
-                "Enter your email",
+            <div>
+              <Input
+                type="email"
+                placeholder={getTranslation(
+                  "emailPlaceholder",
+                  "Enter your email",
+                )}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="px-4 py-2 rounded-md text-gray-900 w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary"
+              />
+              {error && (
+                <Typography size="sm" color="destructive" className="mt-1">
+                  {error}
+                </Typography>
               )}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="px-4 py-2 rounded-md text-gray-900 w-full sm:w-64 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary"
-              required
-            />
-            <Button type="submit" className="h-9">
-              <Mail className="w-4 h-4 mr-2" />
-              {getTranslation("subscribe", "Subscribe")}
+            </div>
+            <Button
+              type="submit"
+              className="h-9 w-fit"
+              disabled={mutation.isPending}
+            >
+              {mutation.isPending ? (
+                "Subscribing..."
+              ) : (
+                <>
+                  <Mail className="h-4 mr-2" />
+                  {getTranslation("subscribe", "Subscribe")}
+                </>
+              )}
             </Button>
           </form>
         </div>
       </div>
-      <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+      <Typography
+        size="sm"
+        color="muted_foreground"
+        className="mt-8 text-center"
+      >
         © {new Date().getFullYear()} rashaduldev. All rights reserved.
-      </p>
+      </Typography>
     </footer>
   );
 }

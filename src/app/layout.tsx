@@ -4,6 +4,7 @@ import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Script from "next/script";
 import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
+import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -39,8 +40,10 @@ export default function RootLayout({
         />
 
         <ClientProviders>
-          <CookieConsent />
-          {children}
+          <AppQueryProvider>
+            <CookieConsent />
+            {children}
+          </AppQueryProvider>
         </ClientProviders>
       </body>
     </html>
