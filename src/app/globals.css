@@ -1,11 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
 [dir="rtl"] {
-  font-family: 'Amiri', serif;
+  font-family: "Amiri", serif;
 }
 
 @theme inline {
@@ -128,15 +128,22 @@
   body {
     @apply bg-background text-foreground font-secondary;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-primary tracking-wide font-bold;
   }
-    .h2,h2 {
-      @apply text-3xl md:text-4xl;
-    }
-    .h4,h4 {
-      @apply text-xl md:text-2xl;
-    }
+  .h2,
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  .h4,
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
 }
 @layer utilities {
   .animate-spin-slow {
@@ -150,29 +157,46 @@
   }
 }
 
-
-.primary_text_color{
+.primary_text_color {
   color: #3f4144;
 }
-.section-container{
+.section-container {
   @apply container mx-auto px-5;
 }
 
 /* banner image css */
 
 @keyframes slide-right {
-  0% { width: 0; left: 0; }
-  100% { width: 100%; left: 0; }
+  0% {
+    width: 0;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
 }
 
 @keyframes slide-left {
-  0% { width: 0; right: 0; }
-  100% { width: 100%; right: 0; }
+  0% {
+    width: 0;
+    right: 0;
+  }
+  100% {
+    width: 100%;
+    right: 0;
+  }
 }
 
 @keyframes slide-down {
-  0% { height: 0; top: 0; }
-  100% { height: 100%; top: 0; }
+  0% {
+    height: 0;
+    top: 0;
+  }
+  100% {
+    height: 100%;
+    top: 0;
+  }
 }
 
 .animated-border-wrapper {
@@ -233,7 +257,9 @@
 .skill-section {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
 }
 
 .skill-section.in-view {
@@ -243,8 +269,12 @@
 
 /* scrol */
 @keyframes marquee {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .animate-marquee {
@@ -287,7 +317,11 @@
     left: 0;
     width: 200%;
     height: 16px;
-    background: radial-gradient(circle at 50% 100%, #cc4e00 20%, transparent 21%);
+    background: radial-gradient(
+      circle at 50% 100%,
+      #cc4e00 20%,
+      transparent 21%
+    );
     background-size: 50% 100%;
     animation: waveMove 2s linear infinite;
     opacity: 0.5;
