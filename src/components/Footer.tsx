@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Input } from "@/components/ui/input";
 import { LayoutContext } from "./context";
 import { FaDev, FaGithub, FaLinkedinIn } from "react-icons/fa";
@@ -10,22 +10,26 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FooterSection } from "@/types/translations";
 import { SiCodewars } from "react-icons/si";
-import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { subscribeNewsletter } from "@/actions/subscribers/subscribers";
 import { subscribeSchema } from "@/schema/subscriber.schema";
 import { Typography } from "./ui/Typography";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 type ExpectedLayoutContextValue = {
   translations: {
     footer: FooterSection;
   } | null;
 };
+
 type NavLinkItem = {
   key: string;
   href: string;
   defaultText: string;
   translationKey: keyof FooterSection;
 };
+
 const companyLinks: NavLinkItem[] = [
   {
     key: "projects",
@@ -67,6 +71,7 @@ const resourceLinks: NavLinkItem[] = [
     translationKey: "help",
   },
 ];
+
 type NavLinkProps = {
   href: string;
   children: React.ReactNode;
@@ -91,58 +96,62 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   );
 };
 
+type NewsletterFormValues = {
+  email: string;
+};
+
 export default function Footer() {
   const context = useContext<ExpectedLayoutContextValue | undefined>(
     LayoutContext as unknown as React.Context<
       ExpectedLayoutContextValue | undefined
     >,
   );
+
   if (!context) {
     throw new Error(
       "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
-  const translations = context.translations;
 
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const translations = context.translations;
 
   const getTranslation = (
     key: keyof FooterSection,
     defaultText: string,
   ): string => translations?.footer?.[key] || defaultText;
 
-  const mutation = useMutation<any, any, string>({
-    mutationFn: (email: string) => subscribeNewsletter({ email }),
-
-    onSuccess: () => {
-      toast.success("Thank you for subscribing!");
-      setEmail("");
-      mutation.reset();
-    },
-
-    onError: (error: any) => {
-      const message =
-        error?.message || error?.cause?.code || "Server connection failed 🚫";
-
-      toast.error(message);
-    },
+  // React Hook Form setup
+  const {
+    handleSubmit,
+    control,
+    setError,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<NewsletterFormValues>({
+    resolver: zodResolver(subscribeSchema),
+    defaultValues: { email: "" },
   });
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: NewsletterFormValues) => {
+    try {
+      const res = await subscribeNewsletter({ email: data.email });
 
-    // Validate using Zod
-    const result = subscribeSchema.safeParse({ email });
+      if (!res.success) {
+        setError("email", {
+          type: "server",
+          message: res.message || "Failed to subscribe",
+        });
+        return;
+      }
 
-    if (!result.success) {
-      const firstError = result.error?.issues?.[0]?.message || "Invalid input";
-      setError(firstError);
-      return;
+      toast.success("Thank you for subscribing!");
+      reset();
+    } catch (err: any) {
+      setError("email", {
+        type: "server",
+        message: err?.message || "Server connection failed 🚫",
+      });
     }
-
-    setError(null); // clear previous errors
-    mutation.mutate(email);
   };
 
   const renderLinkSection = (
@@ -166,9 +175,7 @@ export default function Footer() {
       <div className="section-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div className="block md:hidden">
           <div className="flex flex-row gap-8">
-            {/* Company - Mobile */}
             <div className="flex-1">
-              {/* Logo/Brand */}
               <Link href="/">
                 <Image
                   src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
@@ -191,8 +198,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
         <div className="hidden md:block">
-          {/* Logo/Brand */}
           <Link href="/" className="mb-4 block">
             <Image
               src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
@@ -212,6 +219,7 @@ export default function Footer() {
         <div className="hidden md:block">
           {renderLinkSection("resources", "Resources", resourceLinks)}
         </div>
+
         <div>
           <Typography
             as="h2"
@@ -262,7 +270,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter - always visible */}
+        {/* Newsletter */}
         <div>
           <Typography
             as="h3"
@@ -280,32 +288,33 @@ export default function Footer() {
             )}
           </Typography>
           <form
-            onSubmit={handleEmailSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <div>
-              <Input
-                type="email"
-                placeholder={getTranslation(
-                  "emailPlaceholder",
-                  "Enter your email",
+            <div className="flex-1">
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    type="email"
+                    placeholder={getTranslation(
+                      "emailPlaceholder",
+                      "Enter your email",
+                    )}
+                    {...field}
+                    className="px-4 py-2 rounded-md w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary"
+                  />
                 )}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2 rounded-md text-gray-900 w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary"
               />
-              {error && (
+              {errors.email && (
                 <Typography size="sm" color="destructive" className="mt-1">
-                  {error}
+                  {errors.email.message}
                 </Typography>
               )}
             </div>
-            <Button
-              type="submit"
-              className="h-9 w-fit"
-              disabled={mutation.isPending}
-            >
-              {mutation.isPending ? (
+            <Button type="submit" disabled={isSubmitting} className="h-9 w-fit">
+              {isSubmitting ? (
                 "Subscribing..."
               ) : (
                 <>

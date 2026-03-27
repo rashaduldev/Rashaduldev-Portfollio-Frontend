@@ -1,7 +1,7 @@
 "use server";
 
 import { ApiResponse } from "@/types/user.type";
-import { REQUEST_TIMEOUT_MS } from "./constants";
+import { REQUEST_TIMEOUT_MS } from "@/lib/constants";
 
 type ApiRequestParams = {
   endpoint: string;
