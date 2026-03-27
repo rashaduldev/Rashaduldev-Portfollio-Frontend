@@ -4,49 +4,103 @@ import Image from "next/image";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import { LayoutContext } from "@/components/context";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import emailjs from "emailjs-com";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import { sendContactMessage } from "@/actions/contact/contact";
+import { ControlledPhoneInput } from "../Common/ControlledPhoneInput";
+import { ControlledInput } from "../Common/ControlledInput";
+import { ControlledTextarea } from "../Common/ControlledTextarea";
+import AppButton from "../Common/AppButton";
 
-const SERVICE_ID = "service_4gd61io";
-const TEMPLATE_ID = "template_ckn68lg";
-const PUBLIC_KEY = "r3p7NL-T5QFcUdJy2";
+interface ContactFormValues {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  message: string;
+}
 
 const Contact = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
 
   const context = useContext(LayoutContext);
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
   const { isRTL, translations } = context;
   const t = translations.contact;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
+  // ✅ Zod schema
+  const contactSchema = z.object({
+    name: z.string().min(1, { message: "Name is required" }),
+    email: z
+      .string()
+      .min(1, { message: "Email is required" })
+      .email({ message: "Invalid email address" }),
+    phoneNumber: z
+      .string()
+      .min(1, { message: "Phone is required" })
+      .refine((val) => isValidPhoneNumber(val), {
+        message: "Invalid phone number",
+      }),
+    message: z.string().min(1, { message: "Message is required" }),
+  });
 
-    if (!formRef.current) return;
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    reset,
+    setError, // ✅ important
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phoneNumber: "",
+      message: "",
+    },
+  });
 
-    toast.promise(
-      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY),
-      {
-        loading: "Sending...",
-        success: "Message sent successfully!",
-        error: "Failed to send message.",
+  // ✅ UPDATED SUBMIT HANDLER
+  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
+    try {
+      const res = await sendContactMessage({
+        name: data.name,
+        email: data.email,
+        phone: data.phoneNumber,
+        message: data.message,
+      });
+
+      // ❌ Backend validation error
+      if (!res?.success) {
+        setError("root", {
+          type: "server",
+          message: res?.message || "Failed to send message",
+        });
+        return;
       }
-    );
 
-    formRef.current.reset();
+      // ✅ Success
+      toast.success(res?.message || "Message sent successfully!");
+      reset();
+    } catch (err: any) {
+      // ❌ Server/network error
+      setError("root", {
+        type: "server",
+        message: err?.message || "Server connection failed 🚫",
+      });
+    }
   };
 
   if (!mounted) return null;
@@ -58,7 +112,7 @@ const Contact = () => {
         "min-h-screen transition-colors duration-300",
         resolvedTheme === "dark"
           ? "bg-gray-900 text-gray-100"
-          : "bg-white text-gray-900"
+          : "bg-white text-gray-900",
       )}
     >
       <Toaster position="top-right" />
@@ -93,38 +147,55 @@ const Contact = () => {
 
         {/* Form */}
         <div>
-          <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
-            <input
-              type="text"
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <ControlledInput
               name="name"
-              placeholder={t.namePlaceholder}
-              required
-              className="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-800 dark:border-gray-700"
+              requiredMark="*"
+              label="Name"
+              control={control}
+              placeholder="Enter your name"
             />
-            <input
-              type="text"
-              name="phone"
-              placeholder={t.phonePlaceholder}
-              required
-              className="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-800 dark:border-gray-700"
-            />
-            <input
-              type="email"
+
+            <ControlledInput
               name="email"
-              placeholder={t.emailPlaceholder}
-              required
-              className="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-800 dark:border-gray-700"
+              requiredMark="*"
+              label="Email"
+              control={control}
+              placeholder="Enter your email"
             />
-            <textarea
+
+            <ControlledPhoneInput
+              name="phoneNumber"
+              control={control}
+              requiredMark="*"
+              label={t.phonePlaceholder}
+              setValue={setValue}
+              defaultCountry="BD"
+              readOnlyCountryCode
+            />
+
+            <ControlledTextarea
               name="message"
-              rows={4}
-              placeholder={t.messagePlaceholder}
-              required
-              className="w-full px-4 py-2 border rounded-md bg-white dark:bg-gray-800 dark:border-gray-700"
-            ></textarea>
-            <Button type="submit" className="cursor-pointer">
-              {t.sendButton}
-            </Button>
+              requiredMark="*"
+              control={control}
+              label="Message"
+              placeholder="Enter your message"
+            />
+
+            {/* 🔴 GLOBAL ERROR (ABOVE BUTTON) */}
+            {errors.root && (
+              <p className="text-red-500 text-sm font-medium">
+                {errors.root.message}
+              </p>
+            )}
+
+            <AppButton
+              type="submit"
+              disabled={isSubmitting}
+              className="cursor-pointer"
+            >
+              {isSubmitting ? "Sending..." : t.sendButton}
+            </AppButton>
           </form>
         </div>
       </section>
