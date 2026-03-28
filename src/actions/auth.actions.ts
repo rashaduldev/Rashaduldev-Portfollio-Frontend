@@ -68,17 +68,14 @@ export const register = async ({
 export async function login({
   email,
   password,
-  lang,
 }: {
   email: string;
   password: string;
-  lang?: string;
 }) {
   const res = await apiClient<LoginResponseData>({
     endpoint: "/auth/login",
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    params: lang ? { lang } : undefined,
     body: { email, password },
   });
 

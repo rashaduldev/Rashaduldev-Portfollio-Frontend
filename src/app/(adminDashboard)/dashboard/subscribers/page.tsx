@@ -26,6 +26,7 @@ import {
   getAllSubscribers,
   sendNewsletter,
 } from "@/actions/subscribers/subscribers";
+import GlobalLoading from "@/app/loading";
 
 // Type for a subscriber
 type Subscriber = {
@@ -77,7 +78,7 @@ export default function SubscribersPage() {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <GlobalLoading/>;
 
   return (
     <div className="p-6">

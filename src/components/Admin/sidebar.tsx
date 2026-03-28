@@ -13,6 +13,7 @@ import {
   FolderCode,
   ArrowLeft,
   X,
+  Subscript,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,7 @@ const menuItems = [
   { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
   { icon: FolderCode, label: "Projects", href: "/dashboard/projects" },
   { icon: User, label: "Profile", href: "/dashboard/profile" },
+  { icon: Subscript, label: "Subscribers", href: "/dashboard/subscribers" },
   { icon: MessageSquare, label: "Messages", href: "/dashboard/messages" },
   { icon: BarChart3, label: "Analytics", href: "/dashboard/analytics" },
   { icon: Globe, label: "Localization", href: "/dashboard/localization" },
