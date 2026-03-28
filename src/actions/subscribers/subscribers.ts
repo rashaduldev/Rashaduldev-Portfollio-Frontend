@@ -27,6 +27,28 @@ export async function getAllSubscribers({ isActive }: { isActive?: boolean }) {
   return res;
 }
 
+// send newsletter to all subscribers (admin)
+export async function sendNewsletter({
+  subject,
+  content,
+}: {
+  subject: string;
+  content: string;
+}) {
+  const token = await getAccessToken();
+
+  const res = await apiClient({
+    endpoint: "/subscribers/send-newsletter",
+    method: "POST",
+    body: { subject, content },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res;
+}
+
 // delete subscriber - admin
 export async function deleteSubscriber({ id }: { id: string }) {
   const token = await getAccessToken();
