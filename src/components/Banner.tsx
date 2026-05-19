@@ -31,16 +31,16 @@ export default function Banner() {
 
   return (
     <section className="relative w-full min-h-screen pt-5 overflow-hidden">
-      {/* Background Image with Zoom Animation */}
+      {/* Background Image with Zoom Animation — animates transform only (GPU-composited) */}
       <div
-        className="absolute inset-0 bg-fixed bg-center bg-no-repeat bg-cover zoom-bg"
+        className="absolute inset-0 bg-center bg-no-repeat bg-cover zoom-bg"
         style={{
           backgroundImage:
             "url('https://img.freepik.com/free-vector/abstract-horizontal-grid-lines-graph-style-graphic-design_1017-39918.jpg?semt=ais_hybrid&w=740')",
         }}
       />
-      {/* Overlay */}
-      <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/70 backdrop-blur-sm" />
+      {/* Overlay — flat color, no backdrop-filter (full-viewport blur is expensive) */}
+      <div className="absolute inset-0 z-10 bg-white/70 dark:bg-black/75" />
 
       <div
         className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 section-container min-h-screen ${

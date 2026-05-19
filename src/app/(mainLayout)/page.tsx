@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Banner from "@/components/Banner";
+import DeferRender from "@/components/Common/DeferRender";
 import EducationSection from "@/components/Education";
 import FaqSection from "@/components/FAQ";
 import LatestArticles from "@/components/LatestArticles";
@@ -12,6 +14,18 @@ import TestimonialSection from "@/components/TestimonialSection";
 import WhyChooseMe from "@/components/WhyChooseMe";
 import WorkExperience from "@/components/WorkExperience";
 
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
+  openGraph: {
+    title: "Md Rashadul Islam – Portfolio",
+    description:
+      "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
+    type: "website",
+  },
+};
+
 const MainLayoutPage = () => {
   return (
     <>
@@ -22,12 +36,17 @@ const MainLayoutPage = () => {
         <WorkExperience />
         <ProjectsSection />
         <StatsSection />
-        <TestimonialSection />
+        <DeferRender minHeight="500px">
+          <TestimonialSection />
+        </DeferRender>
         <WhyChooseMe />
-        {/* issue here */}
-        <ServicesCarousel />
+        <DeferRender minHeight="400px">
+          <ServicesCarousel />
+        </DeferRender>
         <EducationSection />
-        <LatestArticles />
+        <DeferRender minHeight="400px">
+          <LatestArticles />
+        </DeferRender>
         <FaqSection />
       </div>
       <ScrollToTopWithProgress />

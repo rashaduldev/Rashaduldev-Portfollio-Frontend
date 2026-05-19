@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+
+export const metadata: Metadata = {
+  title: "SEO Settings",
+  robots: { index: false, follow: false },
+};
 
 export default function SEOSettings() {
   return (

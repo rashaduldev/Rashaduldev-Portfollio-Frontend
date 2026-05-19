@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus, Pencil, Trash2 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Resume",
+  robots: { index: false, follow: false },
+};
 
 export default function ResumePage() {
   return (

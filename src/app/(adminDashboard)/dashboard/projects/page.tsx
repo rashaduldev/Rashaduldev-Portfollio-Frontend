@@ -1,9 +1,15 @@
+import type { Metadata } from "next"
 import { Plus, ExternalLink, Github, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "Projects",
+  robots: { index: false, follow: false },
+}
 
 const projects = [
   {

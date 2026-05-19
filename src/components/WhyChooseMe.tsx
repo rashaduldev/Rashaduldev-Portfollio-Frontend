@@ -46,6 +46,7 @@ export default function WhyChooseMe() {
             alt="why choose me"
             width={400}
             height={300}
+            sizes="(max-width: 768px) 100vw, 400px"
           />
           <p className="leading-relaxed text-justify max-w-xl">
             {section.description}

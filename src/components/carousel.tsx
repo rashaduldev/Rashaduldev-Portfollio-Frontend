@@ -48,7 +48,15 @@ export default function CarouselDemo() {
               >
                 <div className="p-1">
                   <div className="aspect-square">
-                    <img className="rounded-lg object-cover" src={image} />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className="rounded-lg object-cover h-full w-full"
+                      src={image}
+                      alt={`Abstract 3D shape ${index + 1}`}
+                      width={400}
+                      height={400}
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </CarouselItem>

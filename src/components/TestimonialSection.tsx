@@ -50,8 +50,8 @@ const TestimonialSection: React.FC = () => {
       }}
       dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-white/50 dark:bg-black/70 backdrop-blur-sm z-0" />
+      {/* Overlay — flat color; backdrop-blur on full-section element is too costly */}
+      <div className="absolute inset-0 bg-white/65 dark:bg-black/75 z-0" />
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <h2 className="mb-4 transition-colors duration-500">
@@ -97,6 +97,7 @@ const TestimonialSection: React.FC = () => {
                   alt={testimonial.name || "Client testimonial image"}
                   width={128}
                   height={128}
+                  sizes="128px"
                   className="w-full h-full object-cover opacity-80 dark:opacity-70 transition-opacity duration-500"
                 />
               </div>

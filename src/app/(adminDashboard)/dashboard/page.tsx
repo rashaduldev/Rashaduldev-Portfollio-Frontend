@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Briefcase, MessageSquare, Eye } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  robots: { index: false, follow: false },
+};
 
 const stats = [
   { label: "Total Visitors", value: "12,450", icon: Users, color: "text-blue-600" },

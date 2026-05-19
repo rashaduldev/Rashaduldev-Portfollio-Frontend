@@ -70,26 +70,34 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    // Handle header shadow/background on scroll
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    let rafId = 0;
+    let lastProgress = -1;
 
-  // Scroll progress effect
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(scrolled);
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        const scrollTop = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        // Only re-render when the value changed by ~1% — caps re-renders at ~100/full scroll.
+        const rounded = Math.round(progress);
+        if (rounded !== lastProgress) {
+          lastProgress = rounded;
+          setScrollProgress(rounded);
+        }
+        setScrolled(scrollTop > 20);
+      });
     };
 
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
   
   const getLabel = (key: keyof HeaderSection, fallback: string) => {

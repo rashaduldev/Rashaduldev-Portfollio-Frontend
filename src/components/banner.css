@@ -1,6 +1,6 @@
 @keyframes zoomInOut {
   0%, 100% {
-    transform: scale(1.3);
+    transform: scale(1.15);
   }
   50% {
     transform: scale(1);
@@ -8,5 +8,14 @@
 }
 
 .zoom-bg {
-  animation: zoomInOut 10s ease-in-out infinite;
+  animation: zoomInOut 20s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-bg {
+    animation: none;
+  }
 }

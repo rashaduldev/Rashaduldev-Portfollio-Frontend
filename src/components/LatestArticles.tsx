@@ -65,6 +65,7 @@ export default function LatestArticles() {
               alt={article.title}
               width={600}
               height={400}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-48 object-cover"
             />
             <div className="p-4 flex-1 flex flex-col justify-between">
