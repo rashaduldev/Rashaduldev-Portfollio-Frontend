@@ -1,20 +1,26 @@
 "use client";
 
 import { useContext, useMemo, useState } from "react";
-import Image from "next/image";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { LayoutContext } from "@/components/context";
-import { FaGithub, FaInfoCircle, FaLink } from "react-icons/fa";
-import Link from "next/link";
 import { Project } from "@/types/translations";
+import ProjectCard from "./ProjectCard";
 
 type SortOption = "title-asc" | "title-desc" | "endtrac-asc" | "endtrac-desc";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
 
 const Projects = () => {
   const context = useContext(LayoutContext);
   if (!context) {
     throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
+      "LayoutContext must be used within a LayoutContext.Provider",
     );
   }
 
@@ -44,8 +50,8 @@ const Projects = () => {
     if (selectedTechs.length > 0) {
       filtered = filtered.filter((p) =>
         selectedTechs.every((tech) =>
-          p.techStack.toLowerCase().includes(tech.toLowerCase())
-        )
+          p.techStack.toLowerCase().includes(tech.toLowerCase()),
+        ),
       );
     }
 
@@ -68,7 +74,7 @@ const Projects = () => {
 
   const toggleTech = (tech: string) => {
     setSelectedTechs((prev) =>
-      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
+      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
     );
   };
 
@@ -78,52 +84,62 @@ const Projects = () => {
       className="transition-colors duration-300"
     >
       {/* Header */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6, ease: EASE }}
         className={clsx(
           "flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 gap-4",
-          isRTL ? "text-right" : "text-left"
+          isRTL ? "text-right" : "text-left",
         )}
       >
-        <div className="flex items-center">
-          <div className="w-4 h-4 rounded-full bg-primary mr-2"></div>
-          <span className="text-sm text-primary uppercase tracking-wide font-semibold">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          <span className="text-[11px] font-bold uppercase tracking-[.2em] text-primary">
             {projectsSection.projectsHeading || "Projects"}
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold flex-1">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight flex-1">
           {projectsSection.AllProjects || "All Projects"}
         </h1>
-      </div>
+      </motion.div>
 
       {/* Filters and Sorting */}
       <div
         className={clsx(
-          "flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 flex-wrap",
-          isRTL ? "text-right" : "text-left"
+          "flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4 flex-wrap",
+          isRTL ? "text-right" : "text-left",
         )}
       >
         <div className="flex flex-wrap gap-2 w-full sm:max-w-2xl">
-          {techStacks.map((tech) => (
-            <button
-              key={tech}
-              onClick={() => toggleTech(tech)}
-              className={clsx(
-                "px-3 py-1 rounded-full border text-sm transition-colors cursor-pointer",
-                selectedTechs.includes(tech)
-                  ? "bg-primary text-white border-orange-500"
-                  : "bg-transparent text-primary border-orange-500 hover:bg-primary hover:text-white"
-              )}
-            >
-              {tech}
-            </button>
-          ))}
+          {techStacks.map((tech) => {
+            const active = selectedTechs.includes(tech);
+            return (
+              <button
+                key={tech}
+                onClick={() => toggleTech(tech)}
+                className={clsx(
+                  "px-3 py-1 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer",
+                  active
+                    ? "bg-primary text-white border-primary shadow-sm shadow-primary/30"
+                    : "bg-transparent text-primary border-primary/40 hover:bg-primary hover:text-white hover:border-primary",
+                )}
+              >
+                {tech}
+              </button>
+            );
+          })}
         </div>
 
-        <div>
+        <div className="flex items-center gap-2">
           <label
             htmlFor="sort"
-            className="mr-2 font-semibold text-gray-700 dark:text-gray-300"
+            className="text-[12px] font-semibold text-gray-700 dark:text-gray-300"
           >
             Sort By:
           </label>
@@ -131,7 +147,7 @@ const Projects = () => {
             id="sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="rounded-md border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1"
+            className="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-[#17171d] text-gray-800 dark:text-gray-200 px-3 py-1.5 text-[12px] focus:outline-none focus:ring-2 focus:ring-primary/40"
           >
             <option value="endtrac-desc">End Date (Newest)</option>
             <option value="endtrac-asc">End Date (Oldest)</option>
@@ -142,108 +158,32 @@ const Projects = () => {
       </div>
 
       {/* Projects Grid */}
-      <div
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
         className={clsx(
-          "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
-          isRTL ? "direction-rtl text-right" : "text-left"
+          "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5",
+          isRTL ? "direction-rtl text-right" : "text-left",
         )}
       >
         {filteredProjects.map((item, idx) => (
-          <div
+          <ProjectCard
             key={item.id}
-            className="group relative bg-gray-100 dark:bg-gray-800 rounded-xl shadow hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col h-full"
-          >
-            <div className="flex flex-col grow">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 truncate max-w-full">
-                  {item.title}
-                </h3>
-                <span className="text-xs font-medium bg-primary/10 text-primary dark:bg-primary dark:text-p-200 px-3 py-1 rounded-full select-none whitespace-nowrap">
-                  {item.endtrac}
-                </span>
-              </div>
-
-              {/* Images - responsive flex */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                <div className="relative w-full sm:w-2/3 h-40 rounded-lg overflow-hidden shadow-sm">
-                  <Image
-                    src={item.desktopimage}
-                    alt={`${item.title} desktop`}
-                    fill
-                    className="object-cover"
-                    priority={idx < 3}
-                  />
-                </div>
-                <div className="relative w-full sm:w-1/3 h-40 rounded-lg overflow-hidden shadow-sm">
-                  <Image
-                    src={item.mobileimage}
-                    alt={`${item.title} mobile`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 grow line-clamp-4">
-                {item.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {item.techStack
-                  .split(",")
-                  .map((tech) => tech.trim())
-                  .map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium px-2 py-0.5 rounded-full select-none"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-              </div>
-            </div>
-
-            {/* Footer icons */}
-            <div className="flex justify-end gap-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <Link
-                href={`/projects/${item.id}`}
-                className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-                aria-label={`Details about ${item.title}`}
-              >
-                <FaInfoCircle size={20} />
-              </Link>
-              {item.githubLink && (
-                <Link
-                  href={item.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-                  aria-label={`${item.title} GitHub repository`}
-                >
-                  <FaGithub size={20} />
-                </Link>
-              )}
-              {item.liveLink && (
-                <Link
-                  href={item.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-                  aria-label={`${item.title} live site`}
-                >
-                  <FaLink size={20} />
-                </Link>
-              )}
-            </div>
-          </div>
+            item={item}
+            index={idx}
+            showIndex
+            priority={idx < 3}
+          />
         ))}
 
         {filteredProjects.length === 0 && (
-          <p className="text-center col-span-full text-gray-500 dark:text-gray-400">
+          <p className="text-center col-span-full text-gray-500 dark:text-gray-400 py-16">
             No projects found for selected filters.
           </p>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };
