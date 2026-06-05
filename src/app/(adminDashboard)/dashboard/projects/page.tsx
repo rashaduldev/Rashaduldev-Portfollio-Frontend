@@ -1,50 +1,173 @@
-import type { Metadata } from "next"
-import { Plus, ExternalLink, Github, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import { Card } from "@/components/ui/card"
+"use client";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  robots: { index: false, follow: false },
-}
+import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Plus, Star, Pencil, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import toast from "react-hot-toast";
+import {
+  getAdminProjects,
+  createProject,
+  updateProject,
+  deleteProject,
+} from "@/actions/projects/projects";
+import GlobalLoading from "@/app/loading";
 
-const projects = [
-  {
-    id: "1",
-    name: "E-Commerce Platform",
-    category: "Web",
-    stack: ["Next.js", "Prisma", "Stripe"],
-    isFeatured: true,
-    status: "Published"
-  },
-  {
-    id: "2",
-    name: "AI SaaS Wrapper",
-    category: "AI",
-    stack: ["OpenAI", "Tailwind"],
-    isFeatured: false,
-    status: "Draft"
-  }
-]
+type Project = {
+  _id: string;
+  title: string;
+  description: string;
+  shortDescription?: string;
+  category?: string;
+  techStack?: string[];
+  tags?: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  isFeatured?: boolean;
+  isPublished?: boolean;
+};
+
+const emptyForm = {
+  title: "",
+  description: "",
+  shortDescription: "",
+  category: "",
+  techStack: "",
+  tags: "",
+  liveUrl: "",
+  githubUrl: "",
+  isFeatured: false,
+  isPublished: true,
+};
 
 export default function ProjectsListPage() {
+  const queryClient = useQueryClient();
+  const [open, setOpen] = useState(false);
+  const [editing, setEditing] = useState<Project | null>(null);
+  const [form, setForm] = useState({ ...emptyForm });
+  const [files, setFiles] = useState<FileList | null>(null);
+
+  const { data: res, isLoading } = useQuery({
+    queryKey: ["admin-projects"],
+    queryFn: () => getAdminProjects(),
+  });
+  const projects: Project[] = res?.payload ?? [];
+
+  const buildFormData = () => {
+    const fd = new FormData();
+    fd.append("title", form.title);
+    fd.append("description", form.description);
+    if (form.shortDescription) fd.append("shortDescription", form.shortDescription);
+    if (form.category) fd.append("category", form.category);
+    fd.append("isFeatured", String(form.isFeatured));
+    fd.append("isPublished", String(form.isPublished));
+    if (form.liveUrl) fd.append("liveUrl", form.liveUrl);
+    if (form.githubUrl) fd.append("githubUrl", form.githubUrl);
+    form.techStack
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .forEach((s) => fd.append("techStack", s));
+    form.tags
+      .split(",")
+      .map((s) => s.trim().toLowerCase())
+      .filter(Boolean)
+      .forEach((s) => fd.append("tags", s));
+    if (files) Array.from(files).forEach((f) => fd.append("images", f));
+    return fd;
+  };
+
+  const saveMutation = useMutation({
+    mutationFn: async () => {
+      const fd = buildFormData();
+      return editing ? updateProject(editing._id, fd) : createProject(fd);
+    },
+    onSuccess: (r) => {
+      if (!r.success) {
+        toast.error(r.message || "Failed to save project");
+        return;
+      }
+      toast.success(editing ? "Project updated" : "Project created");
+      queryClient.invalidateQueries({ queryKey: ["admin-projects"] });
+      closeDialog();
+    },
+    onError: () => toast.error("Failed to save project"),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => deleteProject(id),
+    onSuccess: () => {
+      toast.success("Project deleted");
+      queryClient.invalidateQueries({ queryKey: ["admin-projects"] });
+    },
+    onError: () => toast.error("Failed to delete project"),
+  });
+
+  const openCreate = () => {
+    setEditing(null);
+    setForm({ ...emptyForm });
+    setFiles(null);
+    setOpen(true);
+  };
+
+  const openEdit = (p: Project) => {
+    setEditing(p);
+    setForm({
+      title: p.title ?? "",
+      description: p.description ?? "",
+      shortDescription: p.shortDescription ?? "",
+      category: p.category ?? "",
+      techStack: (p.techStack ?? []).join(", "),
+      tags: (p.tags ?? []).join(", "),
+      liveUrl: p.liveUrl ?? "",
+      githubUrl: p.githubUrl ?? "",
+      isFeatured: !!p.isFeatured,
+      isPublished: p.isPublished ?? true,
+    });
+    setFiles(null);
+    setOpen(true);
+  };
+
+  const closeDialog = () => {
+    setOpen(false);
+    setEditing(null);
+  };
+
+  if (isLoading) return <GlobalLoading />;
+
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Projects Portfolio</h1>
-        <Link href="/admin/projects/new">
-          <Button><Plus className="mr-2 h-4 w-4" /> Create Project</Button>
-        </Link>
+        <Button onClick={openCreate}>
+          <Plus className="mr-2 h-4 w-4" /> Create Project
+        </Button>
       </div>
 
       <Card>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Project Name</TableHead>
+              <TableHead>Project</TableHead>
               <TableHead>Category</TableHead>
               <TableHead>Tech Stack</TableHead>
               <TableHead>Status</TableHead>
@@ -52,37 +175,143 @@ export default function ProjectsListPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {projects.map((project) => (
-              <TableRow key={project.id}>
+            {projects.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center text-muted-foreground">
+                  No projects yet. Create your first one.
+                </TableCell>
+              </TableRow>
+            )}
+            {projects.map((p) => (
+              <TableRow key={p._id}>
                 <TableCell className="font-medium">
                   <div className="flex items-center gap-2">
-                    {project.name}
-                    {project.isFeatured && <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />}
+                    {p.title}
+                    {p.isFeatured && (
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    )}
                   </div>
                 </TableCell>
-                <TableCell><Badge variant="outline">{project.category}</Badge></TableCell>
                 <TableCell>
-                  <div className="flex gap-1">
-                    {project.stack.slice(0, 2).map(s => (
-                      <span key={s} className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded">{s}</span>
+                  {p.category ? <Badge variant="outline">{p.category}</Badge> : "—"}
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    {(p.techStack ?? []).slice(0, 3).map((s) => (
+                      <span key={s} className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px]">
+                        {s}
+                      </span>
                     ))}
                   </div>
                 </TableCell>
                 <TableCell>
-                  <Badge className={project.status === "Published" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-700"}>
-                    {project.status}
+                  <Badge className={p.isPublished ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-700"}>
+                    {p.isPublished ? "Published" : "Draft"}
                   </Badge>
                 </TableCell>
-                <TableCell className="text-right space-x-2">
-                  <Button variant="ghost" size="icon"><Github className="h-4 w-4"/></Button>
-                  <Button variant="ghost" size="icon"><ExternalLink className="h-4 w-4"/></Button>
-                  <Button variant="outline" size="sm">Edit</Button>
+                <TableCell className="space-x-2 text-right">
+                  <Button variant="outline" size="icon" onClick={() => openEdit(p)}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-red-500"
+                    onClick={() => {
+                      if (confirm(`Delete "${p.title}"?`)) deleteMutation.mutate(p._id);
+                    }}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </Card>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>{editing ? "Edit Project" : "Create Project"}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3">
+            <Input
+              placeholder="Title *"
+              value={form.title}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+            />
+            <Textarea
+              placeholder="Description *"
+              value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
+            />
+            <Input
+              placeholder="Short description"
+              value={form.shortDescription}
+              onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
+            />
+            <Input
+              placeholder="Category"
+              value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
+            />
+            <Input
+              placeholder="Tech stack (comma separated)"
+              value={form.techStack}
+              onChange={(e) => setForm({ ...form, techStack: e.target.value })}
+            />
+            <Input
+              placeholder="Tags (comma separated)"
+              value={form.tags}
+              onChange={(e) => setForm({ ...form, tags: e.target.value })}
+            />
+            <Input
+              placeholder="Live URL"
+              value={form.liveUrl}
+              onChange={(e) => setForm({ ...form, liveUrl: e.target.value })}
+            />
+            <Input
+              placeholder="GitHub URL"
+              value={form.githubUrl}
+              onChange={(e) => setForm({ ...form, githubUrl: e.target.value })}
+            />
+            <div>
+              <label className="text-sm font-medium">Images</label>
+              <Input type="file" multiple accept="image/*" onChange={(e) => setFiles(e.target.files)} />
+            </div>
+            <div className="flex gap-6">
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={form.isFeatured}
+                  onChange={(e) => setForm({ ...form, isFeatured: e.target.checked })}
+                />
+                Featured
+              </label>
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={form.isPublished}
+                  onChange={(e) => setForm({ ...form, isPublished: e.target.checked })}
+                />
+                Published
+              </label>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={closeDialog}>
+              Cancel
+            </Button>
+            <Button
+              onClick={() => saveMutation.mutate()}
+              disabled={!form.title || !form.description || saveMutation.isPending}
+            >
+              {saveMutation.isPending ? "Saving..." : "Save"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
-  )
+  );
 }

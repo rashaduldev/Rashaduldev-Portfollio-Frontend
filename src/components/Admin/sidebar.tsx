@@ -8,12 +8,12 @@ import {
   User,
   MessageSquare,
   Settings,
-  BarChart3,
-  Globe,
   FolderCode,
   ArrowLeft,
   X,
   Subscript,
+  Wrench,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,11 +21,11 @@ const menuItems = [
   { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
   { icon: FolderCode, label: "Projects", href: "/dashboard/projects" },
   { icon: User, label: "Profile", href: "/dashboard/profile" },
+  { icon: Wrench, label: "Skills", href: "/dashboard/skills" },
+  { icon: FileText, label: "Resume", href: "/dashboard/resume" },
   { icon: Subscript, label: "Subscribers", href: "/dashboard/subscribers" },
   { icon: MessageSquare, label: "Messages", href: "/dashboard/messages" },
-  { icon: BarChart3, label: "Analytics", href: "/dashboard/analytics" },
-  { icon: Globe, label: "Localization", href: "/dashboard/localization" },
-  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
+  { icon: Settings, label: "SEO Settings", href: "/dashboard/settings/seo" },
   { icon: ArrowLeft, label: "Back To Home", href: "/" },
 ];
 

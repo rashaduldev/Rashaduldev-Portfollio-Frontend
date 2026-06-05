@@ -16,11 +16,21 @@ export type Country = {
   flag: string;
 };
 
+export type PaginationMeta = {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+};
+
 export type ApiResponse<T> = {
   success: boolean;
   status: "success" | "error";
   message: string;
   payload: T | null;
+  meta?: PaginationMeta | null;
   error?: string | null;
   statusCode?: number;
 };

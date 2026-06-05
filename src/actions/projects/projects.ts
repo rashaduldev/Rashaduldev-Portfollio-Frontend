@@ -25,6 +25,29 @@ export async function getProjects(params?: {
 }
 
 /* ------------------------------------------
+   GET ALL PROJECTS (ADMIN — includes drafts)
+------------------------------------------ */
+export async function getAdminProjects(params?: {
+  search?: string;
+  page?: number;
+  limit?: number;
+}) {
+  const token = await getAccessToken();
+  const res = await apiClient({
+    endpoint: "/projects",
+    method: "GET",
+    params: {
+      limit: String(params?.limit ?? 100),
+      ...(params?.search && { search: params.search }),
+      ...(params?.page && { page: String(params.page) }),
+    },
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  return res;
+}
+
+/* ------------------------------------------
    GET SINGLE PROJECT
 ------------------------------------------ */
 export async function getProjectById(id: string) {
@@ -39,19 +62,15 @@ export async function getProjectById(id: string) {
 /* ------------------------------------------
    CREATE PROJECT (AUTH)
 ------------------------------------------ */
-export async function createProject(data: {
-  title: string;
-  description: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  images?: string[]; // or File[] depending on your setup
-}) {
+// Accepts FormData because the backend route uses multipart upload for images.
+// Build the FormData in the page (text fields + repeated `images` files).
+export async function createProject(formData: FormData) {
   const token = await getAccessToken();
 
   const res = await apiClient({
     endpoint: "/projects",
     method: "POST",
-    body: data,
+    body: formData,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -63,21 +82,13 @@ export async function createProject(data: {
 /* ------------------------------------------
    UPDATE PROJECT (AUTH)
 ------------------------------------------ */
-export async function updateProject(
-  id: string,
-  data: Partial<{
-    title: string;
-    description: string;
-    liveUrl: string;
-    githubUrl: string;
-  }>,
-) {
+export async function updateProject(id: string, formData: FormData) {
   const token = await getAccessToken();
 
   const res = await apiClient({
     endpoint: `/projects/${id}`,
     method: "PATCH",
-    body: data,
+    body: formData,
     headers: {
       Authorization: `Bearer ${token}`,
     },

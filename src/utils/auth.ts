@@ -6,7 +6,8 @@ export type CurrentUser = {
 };
 
 export function getCurrentUser(): CurrentUser | null {
-  const token = Cookies.get("token");
+  // Login stores the JWT in the `accessToken` cookie (see auth.actions.ts).
+  const token = Cookies.get("accessToken") ?? Cookies.get("token");
   if (!token) return null;
 
   return {

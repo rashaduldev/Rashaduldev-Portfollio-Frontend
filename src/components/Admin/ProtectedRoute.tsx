@@ -9,8 +9,9 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    const cookieToken = Cookies.get("token");
+    // Login stores the JWT in the `accessToken` cookie (see auth.actions.ts).
+    const cookieToken = Cookies.get("accessToken");
+    const localToken = localStorage.getItem("accessToken");
 
     if (!localToken && !cookieToken) {
       router.push("/login");

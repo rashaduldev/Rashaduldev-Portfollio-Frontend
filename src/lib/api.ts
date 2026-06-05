@@ -55,11 +55,14 @@ export async function apiClient<T = any>({
         ).toString();
       }
 
+      const isFormData = body instanceof FormData;
+
       const requestOptions: RequestInit = {
         cache: "no-store",
         method,
         headers: {
-          "Content-Type": "application/json",
+          // Let fetch set the multipart boundary for FormData uploads.
+          ...(isFormData ? {} : { "Content-Type": "application/json" }),
           ...headers,
         },
         next: {
@@ -70,8 +73,9 @@ export async function apiClient<T = any>({
 
       // Attach body
       if (body) {
-        requestOptions.body =
-          body instanceof FormData ? body : JSON.stringify(body) || null;
+        requestOptions.body = isFormData
+          ? (body as FormData)
+          : JSON.stringify(body) || null;
       }
 
       console.info(`API Call Started: ${url.toString()} (Attempt: ${attempt})`);
@@ -94,7 +98,16 @@ export async function apiClient<T = any>({
 
       if (response.ok) {
         console.info("API Success:", { ...data, statusCode: response.status });
-        return { ...data, statusCode: response.status };
+        // Backend envelope uses `data`; the app reads `.payload`. Normalize here
+        // so every action/page can consistently use `res.payload` / `res.meta`.
+        return {
+          success: true,
+          status: "success",
+          message: data.message ?? "Success",
+          payload: data.data ?? data.payload ?? null,
+          meta: data.meta ?? null,
+          statusCode: response.status,
+        } as ApiResponse<T>;
       }
 
       // API error response
