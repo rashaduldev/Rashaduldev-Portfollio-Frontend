@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Mail, Trash2, Loader2, Send } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -11,15 +12,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
-  DialogTrigger,
 } from "@/components/ui/dialog";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import {
   deleteSubscriber,
@@ -28,7 +34,6 @@ import {
 } from "@/actions/subscribers/subscribers";
 import GlobalLoading from "@/app/loading";
 
-// Type for a subscriber
 type Subscriber = {
   id: string;
   email: string;
@@ -38,142 +43,187 @@ type Subscriber = {
 export default function SubscribersPage() {
   const queryClient = useQueryClient();
 
-  // Newsletter form state
-  const [newsletterContent, setNewsletterContent] = useState({
-    subject: "",
-    content: "",
-  });
+  const [newsletterOpen, setNewsletterOpen] = useState(false);
+  const [newsletterContent, setNewsletterContent] = useState({ subject: "", content: "" });
+  const [toDelete, setToDelete] = useState<Subscriber | null>(null);
 
-  // Fetch subscribers
   const { data: subscribersResponse, isLoading } = useQuery({
     queryKey: ["subscribers"] as const,
     queryFn: () => getAllSubscribers({}),
   });
-
-  // Extract the array of subscribers safely
   const subscribers: Subscriber[] = subscribersResponse?.payload || [];
 
-  // Delete mutation
   const deleteMutation = useMutation({
     mutationFn: ({ id }: { id: string }) => deleteSubscriber({ id }),
     onSuccess: () => {
-      toast.success("Subscriber deleted successfully");
+      toast.success("Subscriber deleted");
       queryClient.invalidateQueries({ queryKey: ["subscribers"] });
+      setToDelete(null);
     },
-    onError: () => {
-      toast.error("Failed to delete subscriber");
-    },
+    onError: () => toast.error("Failed to delete subscriber"),
   });
 
-  // Send newsletter mutation
   const sendMutation = useMutation({
-    mutationFn: (payload: { subject: string; content: string }) =>
-      sendNewsletter(payload),
-    onSuccess: () => {
-      toast.success("Newsletter sent successfully");
+    mutationFn: (payload: { subject: string; content: string }) => sendNewsletter(payload),
+    onSuccess: (r) => {
+      if (r && (r as any).success === false) {
+        toast.error((r as any).message || "Failed to send newsletter");
+        return;
+      }
+      toast.success("Newsletter sent");
       setNewsletterContent({ subject: "", content: "" });
+      setNewsletterOpen(false);
     },
-    onError: () => {
-      toast.error("Failed to send newsletter");
-    },
+    onError: () => toast.error("Failed to send newsletter"),
   });
 
-  if (isLoading) return <GlobalLoading/>;
+  if (isLoading) return <GlobalLoading />;
+
+  const active = subscribers.filter((s) => s.isActive).length;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Subscribers</h1>
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Subscribers</h1>
+          <p className="text-sm text-muted-foreground">
+            {subscribers.length} total · {active} active
+          </p>
+        </div>
+        <Button onClick={() => setNewsletterOpen(true)}>
+          <Send className="mr-2 h-4 w-4" /> Send Newsletter
+        </Button>
+      </div>
 
-      {/* Send Newsletter Dialog */}
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button className="mb-4">Send Newsletter</Button>
-        </DialogTrigger>
+      <Card>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Email</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {subscribers.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={3} className="py-10 text-center text-muted-foreground">
+                  No subscribers yet.
+                </TableCell>
+              </TableRow>
+            )}
+            {subscribers.map((subscriber) => (
+              <TableRow key={subscriber.id}>
+                <TableCell className="font-medium">
+                  <span className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    {subscriber.email}
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <Badge
+                    className={
+                      subscriber.isActive
+                        ? "bg-green-100 text-green-700"
+                        : "bg-gray-100 text-gray-600"
+                    }
+                  >
+                    {subscriber.isActive ? "Active" : "Unsubscribed"}
+                  </Badge>
+                </TableCell>
+                <TableCell className="text-right">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    title="Delete"
+                    className="text-red-500 hover:bg-red-50 hover:text-red-600"
+                    onClick={() => setToDelete(subscriber)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Card>
+
+      {/* Send Newsletter modal */}
+      <Dialog open={newsletterOpen} onOpenChange={(o) => !sendMutation.isPending && setNewsletterOpen(o)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>Send Newsletter</DialogTitle>
+            <DialogDescription>
+              This email will be sent to all {active} active subscriber{active === 1 ? "" : "s"}.
+            </DialogDescription>
           </DialogHeader>
-          <div className="space-y-4">
-            <Input
-              placeholder="Subject"
-              value={newsletterContent.subject}
-              onChange={(e) =>
-                setNewsletterContent((prev) => ({
-                  ...prev,
-                  subject: e.target.value,
-                }))
-              }
-            />
-            <Input
-              placeholder="Content"
-              value={newsletterContent.content}
-              onChange={(e) =>
-                setNewsletterContent((prev) => ({
-                  ...prev,
-                  content: e.target.value,
-                }))
-              }
-            />
+          <div className="space-y-4 py-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="subject">
+                Subject <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="subject"
+                placeholder="Newsletter subject"
+                value={newsletterContent.subject}
+                onChange={(e) =>
+                  setNewsletterContent((p) => ({ ...p, subject: e.target.value }))
+                }
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="content">
+                Content <span className="text-red-500">*</span>
+              </Label>
+              <Textarea
+                id="content"
+                rows={6}
+                placeholder="Write your newsletter…"
+                value={newsletterContent.content}
+                onChange={(e) =>
+                  setNewsletterContent((p) => ({ ...p, content: e.target.value }))
+                }
+              />
+            </div>
           </div>
           <DialogFooter>
             <Button
+              variant="outline"
+              onClick={() => setNewsletterOpen(false)}
+              disabled={sendMutation.isPending}
+            >
+              Cancel
+            </Button>
+            <Button
               onClick={() => sendMutation.mutate({ ...newsletterContent })}
               disabled={
-                !newsletterContent.subject || !newsletterContent.content
+                !newsletterContent.subject ||
+                !newsletterContent.content ||
+                sendMutation.isPending
               }
             >
-              Send
+              {sendMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Send newsletter
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      {/* Subscribers Table */}
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Email</TableHead>
-            <TableHead>Active</TableHead>
-            <TableHead>Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {subscribers.map((subscriber) => (
-            <TableRow key={subscriber.id}>
-              <TableCell>{subscriber.email}</TableCell>
-              <TableCell>{subscriber.isActive ? "Yes" : "No"}</TableCell>
-              <TableCell className="flex gap-2">
-                {/* Delete Subscriber Dialog */}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="destructive" size="sm">
-                      Delete
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-sm">
-                    <DialogHeader>
-                      <DialogTitle>Confirm Delete</DialogTitle>
-                    </DialogHeader>
-                    <div>
-                      Are you sure you want to delete {subscriber.email}?
-                    </div>
-                    <DialogFooter>
-                      <Button
-                        variant="destructive"
-                        onClick={() =>
-                          deleteMutation.mutate({ id: subscriber.id })
-                        }
-                      >
-                        Delete
-                      </Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      {/* Delete confirmation */}
+      <ConfirmDialog
+        open={!!toDelete}
+        onOpenChange={(o) => !o && setToDelete(null)}
+        title="Delete subscriber"
+        description={
+          <>
+            Remove <span className="font-semibold">{toDelete?.email}</span> from your
+            subscriber list? This action cannot be undone.
+          </>
+        }
+        confirmText="Delete subscriber"
+        loading={deleteMutation.isPending}
+        onConfirm={() => toDelete && deleteMutation.mutate({ id: toDelete.id })}
+      />
     </div>
   );
 }

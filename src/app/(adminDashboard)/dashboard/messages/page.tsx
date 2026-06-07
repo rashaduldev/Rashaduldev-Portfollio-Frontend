@@ -19,7 +19,9 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import toast from "react-hot-toast";
 import {
   getMessages,
@@ -42,6 +44,7 @@ type Message = {
 export default function MessagesPage() {
   const queryClient = useQueryClient();
   const [selected, setSelected] = useState<Message | null>(null);
+  const [toDelete, setToDelete] = useState<Message | null>(null);
 
   const { data: res, isLoading } = useQuery({
     queryKey: ["messages"],
@@ -59,6 +62,7 @@ export default function MessagesPage() {
     onSuccess: () => {
       toast.success("Message deleted");
       queryClient.invalidateQueries({ queryKey: ["messages"] });
+      setToDelete(null);
     },
     onError: () => toast.error("Failed to delete"),
   });
@@ -122,8 +126,9 @@ export default function MessagesPage() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-red-500"
-                    onClick={() => confirm("Delete this message?") && delMutation.mutate(m._id)}
+                    title="Delete"
+                    className="text-red-500 hover:bg-red-50 hover:text-red-600"
+                    onClick={() => setToDelete(m)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -138,6 +143,11 @@ export default function MessagesPage() {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>{selected?.name}</DialogTitle>
+            {selected?.createdAt && (
+              <DialogDescription>
+                Received {new Date(selected.createdAt).toLocaleString()}
+              </DialogDescription>
+            )}
           </DialogHeader>
           <div className="space-y-2 text-sm">
             <p><span className="text-muted-foreground">Email:</span> {selected?.email}</p>
@@ -151,6 +161,23 @@ export default function MessagesPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Delete confirmation */}
+      <ConfirmDialog
+        open={!!toDelete}
+        onOpenChange={(o) => !o && setToDelete(null)}
+        title="Delete message"
+        description={
+          <>
+            Delete the message from{" "}
+            <span className="font-semibold">{toDelete?.name}</span>? This action
+            cannot be undone.
+          </>
+        }
+        confirmText="Delete message"
+        loading={delMutation.isPending}
+        onConfirm={() => toDelete && delMutation.mutate(toDelete._id)}
+      />
     </div>
   );
 }

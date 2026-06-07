@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,8 +12,10 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import toast from "react-hot-toast";
 import {
   getExperience,
@@ -55,6 +57,7 @@ export default function ResumePage() {
   const [kind, setKind] = useState<Kind>("experience");
   const [editing, setEditing] = useState<Entry | null>(null);
   const [form, setForm] = useState<Record<string, any>>({});
+  const [toDelete, setToDelete] = useState<{ k: Kind; id: string; label: string } | null>(null);
 
   const invalidate = (k: Kind) =>
     queryClient.invalidateQueries({ queryKey: [k === "experience" ? "experience" : "education"] });
@@ -91,6 +94,7 @@ export default function ResumePage() {
     onSuccess: (_r, { k }) => {
       toast.success("Deleted");
       invalidate(k);
+      setToDelete(null);
     },
     onError: () => toast.error("Failed to delete"),
   });
@@ -147,7 +151,9 @@ export default function ResumePage() {
               title={`${e.role} @ ${e.company}`}
               subtitle={`${toDateInput(e.startDate)} — ${e.current ? "Present" : toDateInput(e.endDate) || "—"}`}
               onEdit={() => openEdit("experience", e)}
-              onDelete={() => confirm("Delete this entry?") && delMutation.mutate({ k: "experience", id: e._id })}
+              onDelete={() =>
+                setToDelete({ k: "experience", id: e._id, label: `${e.role} @ ${e.company}` })
+              }
             />
           ))}
         </CardContent>
@@ -171,7 +177,9 @@ export default function ResumePage() {
               title={`${e.degree} — ${e.institution}`}
               subtitle={`${toDateInput(e.startDate)} — ${e.current ? "Present" : toDateInput(e.endDate) || "—"}`}
               onEdit={() => openEdit("education", e)}
-              onDelete={() => confirm("Delete this entry?") && delMutation.mutate({ k: "education", id: e._id })}
+              onDelete={() =>
+                setToDelete({ k: "education", id: e._id, label: `${e.degree} — ${e.institution}` })
+              }
             />
           ))}
         </CardContent>
@@ -184,6 +192,11 @@ export default function ResumePage() {
             <DialogTitle>
               {editing ? "Edit" : "Add"} {kind === "experience" ? "Experience" : "Education"}
             </DialogTitle>
+            <DialogDescription>
+              {kind === "experience"
+                ? "Add a role you've held to your resume."
+                : "Add a qualification to your resume."}
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-3">
             {kind === "experience" ? (
@@ -216,7 +229,9 @@ export default function ResumePage() {
             <Textarea placeholder="Description" value={form.description ?? ""} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="outline" onClick={() => setOpen(false)} disabled={saveMutation.isPending}>
+              Cancel
+            </Button>
             <Button
               onClick={() => saveMutation.mutate()}
               disabled={
@@ -225,11 +240,29 @@ export default function ResumePage() {
                 (kind === "experience" ? !form.role || !form.company : !form.degree || !form.institution)
               }
             >
-              {saveMutation.isPending ? "Saving..." : "Save"}
+              {saveMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {editing ? "Save changes" : "Add entry"}
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Delete confirmation */}
+      <ConfirmDialog
+        open={!!toDelete}
+        onOpenChange={(o) => !o && setToDelete(null)}
+        title={`Delete ${toDelete?.k === "education" ? "education" : "experience"} entry`}
+        description={
+          <>
+            This will permanently delete{" "}
+            <span className="font-semibold">{toDelete?.label}</span>. This action
+            cannot be undone.
+          </>
+        }
+        confirmText="Delete entry"
+        loading={delMutation.isPending}
+        onConfirm={() => toDelete && delMutation.mutate({ k: toDelete.k, id: toDelete.id })}
+      />
     </div>
   );
 }
