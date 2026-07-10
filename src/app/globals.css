@@ -60,6 +60,101 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: #cc4e00;
   --primary-foreground: oklch(0.985 0 0);
+  --text-primary: #3f4144;
+  --text-strong: #111827;
+  --text-muted: #4b5563;
+  --text-muted-light: #d1d5db;
+  --text-on-dark: #ffffff;
+  --surface-muted: #e5e7eb;
+  --surface-muted-dark: #374151;
+  --surface-overlay: rgba(255, 255, 255, 0.8);
+  --surface-overlay-dark: rgba(0, 0, 0, 0.85);
+  --link-primary: #2563eb;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --warning: #facc15;
+  --black: #000000;
+  --white: #ffffff;
+  --animated-border-fallback: #3f4144;
+  --animated-border-dark-fallback: #e5e7eb;
+  --surface-dark: #17171d;
+  --surface-dark-soft: #1f1f27;
+  --wave-fill: #fb923c;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --gray-950: #030712;
+  --slate-50: #f8fafc;
+  --slate-100: #f8fafc;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+  --zinc-200: #e4e4e7;
+  --zinc-400: #a1a1aa;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --blue-50: #eff6ff;
+  --blue-800: #1e40af;
+  --red-50: #fef2f2;
+  --red-600: #dc2626;
+  --green-50: #ecfdf5;
+  --green-400: #4ade80;
+  --green-800: #166534;
+  --violet-200: #c7d2fe;
+  --rose-100: #ffe4e6;
+  --rose-300: #fda4af;
+  --rose-500: #f43f5e;
+  --rose-700: #be123c;
+  --indigo-400: #818cf8;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a8a;
+  --blue-950: #0c4a6e;
+  --red-100: #fee2e2;
+  --red-500: #ef4444;
+  --red-950: #4b0102;
+  --orange-500: #f97316;
+  --green-100: #dcfce7;
+  --green-500: #22c55e;
+  --green-900: #14532d;
+  --yellow-400: #facc15;
+  --pink-600: #db2777;
+  --purple-100: #f3e8ff;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-950: #581c87;
+  --emerald-100: #d1fae5;
+  --emerald-300: #6ee7b7;
+  --emerald-600: #16a34a;
+  --emerald-700: #15803d;
+  --sky-100: #e0f2fe;
+  --sky-300: #7dd3fc;
+  --sky-500: #0ea5e9;
+  --sky-700: #0284c7;
+  --violet-300: #c4b5fd;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --amber-600: #d97706;
+  --marquee-bg: #ffffff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -111,14 +206,89 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --black: #000000;
+  --white: #ffffff;
+  --gray-50: #0f172a;
+  --gray-100: #111827;
+  --gray-200: #1f2937;
+  --gray-300: #374151;
+  --gray-400: #4b5563;
+  --gray-500: #6b7280;
+  --gray-600: #9ca3af;
+  --gray-700: #d1d5db;
+  --gray-800: #e5e7eb;
+  --gray-900: #f3f4f6;
+  --gray-950: #fafafc;
+  --slate-50: #020617;
+  --slate-100: #020617;
+  --slate-200: #0f172a;
+  --slate-300: #334155;
+  --slate-400: #475569;
+  --slate-500: #64748b;
+  --slate-600: #94a3b8;
+  --slate-700: #cbd5e1;
+  --slate-800: #475569;
+  --slate-900: #64748b;
+  --slate-950: #94a3b8;
+  --zinc-200: #71717a;
+  --zinc-400: #a1a1aa;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --blue-50: #0f172a;
+  --blue-800: #0c4a6e;
+  --red-50: #4c0101;
+  --red-600: #ef4444;
+  --green-50: #052e16;
+  --green-400: #047857;
+  --green-800: #0f766e;
+  --violet-200: #7c3aed;
+  --rose-100: #3f0d12;
+  --rose-300: #7c172b;
+  --rose-500: #f43f5e;
+  --rose-700: #be123c;
+  --indigo-400: #818cf8;
+  --blue-100: #0f172a;
+  --blue-200: #1e3a8a;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #0c4a6e;
+  --blue-950: #0c4a6e;
+  --red-100: #7f1d1d;
+  --red-500: #ef4444;
+  --red-950: #610b0b;
+  --orange-500: #ea580c;
+  --green-100: #14532d;
+  --green-500: #22c55e;
+  --green-900: #052e16;
+  --yellow-400: #f59e0b;
+  --pink-600: #be185d;
+  --purple-100: #4c1d95;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-950: #581c87;
+  --emerald-100: #064e3b;
+  --emerald-300: #047857;
+  --emerald-600: #16a34a;
+  --emerald-700: #14532d;
+  --sky-100: #0c4a6e;
+  --sky-300: #0ea5e9;
+  --sky-500: #38bdf8;
+  --sky-700: #7dd3fc;
+  --violet-300: #7c3aed;
+  --violet-400: #8b5cf6;
+  --violet-500: #a78bfa;
+  --violet-600: #c4b5fd;
+  --violet-700: #ddd6fe;
+  --amber-600: #d97706;
+  --surface-muted: #1f2937;
+  --surface-muted-dark: #111827;
+  --surface-overlay: rgba(255, 255, 255, 0.08);
+  --surface-overlay-dark: rgba(255, 255, 255, 0.12);
+  --surface-dark: #17171d;
+  --surface-dark-soft: #1f1f27;
+  --marquee-bg: #09090b;
 }
 
 @layer base {
@@ -158,7 +328,7 @@
 }
 
 .primary_text_color {
-  color: #3f4144;
+  color: var(--text-primary);
 }
 .section-container {
   @apply container mx-auto px-5;
@@ -209,7 +379,7 @@
 .animated-border-wrapper.rtl::before {
   content: "";
   position: absolute;
-  background-color: #3f4144; /* fallback */
+  background-color: var(--animated-border-fallback);
   animation-delay: 1s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -217,7 +387,7 @@
 
 .dark .animated-border-wrapper::after,
 .dark .animated-border-wrapper::before {
-  background-color: #e5e7eb; /* gray-200 */
+  background-color: var(--animated-border-dark-fallback);
 }
 
 /* LTR styles */
@@ -319,7 +489,7 @@
     height: 16px;
     background: radial-gradient(
       circle at 50% 100%,
-      #cc4e00 20%,
+      var(--primary) 20%,
       transparent 21%
     );
     background-size: 50% 100%;

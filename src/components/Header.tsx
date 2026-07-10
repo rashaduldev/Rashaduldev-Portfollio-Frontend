@@ -108,7 +108,7 @@ export default function Header() {
     <>
       <div className="fixed top-0 left-0 w-full z-9999 h-1.25 bg-transparent">
         <div
-          className="h-full transition-all duration-100 ease-linear bg-[#3f4144] dark:bg-primary"
+          className="h-full transition-all duration-100 ease-linear bg-[var(--text-primary)] dark:bg-primary"
           style={{
             width: `${scrollProgress}%`,
             opacity: scrollProgress > 0 && scrollProgress < 100 ? 1 : 0, 

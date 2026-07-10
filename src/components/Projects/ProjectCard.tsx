@@ -119,7 +119,7 @@ export default function ProjectCard({
       }}
       className={clsx(
         "group relative rounded-2xl flex flex-col h-full",
-        "bg-white dark:bg-[#17171d]",
+        "bg-white dark:bg-[var(--surface-dark)]",
         "border border-black/8 dark:border-white/10",
         "shadow-sm hover:shadow-2xl hover:shadow-primary/10",
         "transition-[box-shadow,border-color,transform] duration-500",
@@ -147,7 +147,7 @@ export default function ProjectCard({
       </span>
 
       {/* ── Image area ── */}
-      <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-[#1f1f27]">
+      <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-[var(--surface-dark-soft)]">
         {/* shimmer placeholder */}
         <div
           className={clsx(
@@ -178,7 +178,7 @@ export default function ProjectCard({
           className={clsx(
             "absolute bottom-0 left-0 right-0 h-20 pointer-events-none",
             "bg-gradient-to-t from-white via-white/40 to-transparent",
-            "dark:from-[#17171d] dark:via-[#17171d]/50 dark:to-transparent",
+            "dark:from-[var(--surface-dark)] dark:via-[var(--surface-dark-50)] dark:to-transparent",
           )}
         />
 

@@ -123,14 +123,6 @@ const SkillsMarquee = () => {
         {renderLine(backend, oppositeDir, 40)}
       </div>
 
-      <style jsx global>{`
-        :root {
-          --marquee-bg: #ffffff;
-        }
-        .dark {
-          --marquee-bg: #09090b;
-        } /* zinc-950 or your bg color */
-      `}</style>
     </div>
   );
 };

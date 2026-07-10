@@ -147,7 +147,7 @@ const Projects = () => {
             id="sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-[#17171d] text-gray-800 dark:text-gray-200 px-3 py-1.5 text-[12px] focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-[var(--surface-dark)] text-gray-800 dark:text-gray-200 px-3 py-1.5 text-[12px] focus:outline-none focus:ring-2 focus:ring-primary/40"
           >
             <option value="endtrac-desc">End Date (Newest)</option>
             <option value="endtrac-asc">End Date (Oldest)</option>

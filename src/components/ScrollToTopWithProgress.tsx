@@ -73,7 +73,7 @@ const ScrollToTopWithProgress: React.FC = () => {
             >
               <path
                 d="M0 20 Q 25 0 50 20 T 100 20 V 100 H 0 Z"
-                fill="#fb923c"
+                style={{ fill: "var(--wave-fill)" }}
                 opacity="0.6"
               />
             </svg>
