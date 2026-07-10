@@ -127,7 +127,7 @@ export default function Banner() {
 
             <Button variant="outline" asChild>
               <a
-                href="/assets/Rashadul.pdf"
+                href="/assets/Resume of Md Rashadul Islam.pdf"
                 download="Resume of Md Rashadul Islam.pdf"
                 className="flex items-center gap-2"
                 aria-label="Download resume as PDF"

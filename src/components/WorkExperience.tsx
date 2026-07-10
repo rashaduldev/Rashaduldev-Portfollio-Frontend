@@ -25,7 +25,7 @@ export default function WorkExperience() {
   );
 
   return (
-    <section className="w-full pb-12 overflow-x-hidden">
+    <section className="w-full pb-12 overflow-x-hidden" data-aos="fade-up" data-aos-duration="1000">
       <h2 className="text-center mb-12">{translations.experienceHeading}</h2>
 
       <div className="relative">

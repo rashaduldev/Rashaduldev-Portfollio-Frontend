@@ -32,14 +32,6 @@ const allSkills: Skill[] = [
   { key: "cloudinary", category: "backend" },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.04 },
-  },
-};
-
 const tagVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 15 },
   visible: {
@@ -104,15 +96,14 @@ export default function SkillsCloud() {
       dir={isRTL ? "rtl" : "ltr"}
       className="w-full py-20 px-4 flex flex-col items-center"
     >
-      <div className="text-center mb-10">
+      <div className="text-center mb-10" data-aos="fade-up" data-aos-duration="1000">
         <h2 className="mb-4">{translations.skills.about}</h2>
         <p className="text-gray-500 dark:text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
-          A specialized ecosystem of modern technologies focused on creating
-          high-performance web solutions.
+          {translations.skills.description}
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
+      <div data-aos="fade-up" data-aos-duration="1000" className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
         {filters.map((f) => (
           <button
             key={f.id}
@@ -128,12 +119,8 @@ export default function SkillsCloud() {
         ))}
       </div>
 
-      <motion.div
-        layout
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+      <div
+        data-aos="fade-up" data-aos-duration="1000"
         className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl min-h-62.5 content-start"
       >
         <AnimatePresence mode="popLayout">
@@ -167,9 +154,9 @@ export default function SkillsCloud() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
 
-      <div className="mt-10 w-full max-w-4xl mx-auto pt-8 dark:border-zinc-800/50 flex flex-col md:flex-row justify-center items-center gap-6 opacity-60">
+      <div data-aos="fade-up" data-aos-duration="1000" className="mt-10 w-full max-w-4xl mx-auto pt-8 dark:border-zinc-800/50 flex flex-col md:flex-row justify-center items-center gap-6 opacity-60">
         <div className="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-widest">
           {filters.slice(1).map((f) => (
             <div

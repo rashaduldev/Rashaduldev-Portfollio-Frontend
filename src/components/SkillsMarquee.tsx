@@ -113,7 +113,7 @@ const SkillsMarquee = () => {
   const oppositeDir = isRTL ? "left" : "right";
 
   return (
-    <div className="relative w-full mb-20 overflow-hidden">
+    <div data-aos="fade-up" data-aos-duration="1000" className="relative w-full mb-20 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full pointer-events-none" />
 
       <div className="relative z-10 flex flex-col gap-2">
