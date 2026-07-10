@@ -90,13 +90,28 @@ export default function UtilityControls({
           </DropdownMenuTrigger>
 
           <DropdownMenuContent>
-            <DropdownMenuItem onClick={() => setTheme("system")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setTheme("system");
+                setOpenDropdownId(null);
+              }}
+            >
               <MdImportantDevices className="mr-2" /> Device Default
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("light")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setTheme("light");
+                setOpenDropdownId(null);
+              }}
+            >
               <CiLight className="mr-2" /> Light Mode
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setTheme("dark");
+                setOpenDropdownId(null);
+              }}
+            >
               <MdDarkMode className="mr-2" /> Dark Mode
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -116,13 +131,28 @@ export default function UtilityControls({
           </DropdownMenuTrigger>
 
           <DropdownMenuContent>
-            <DropdownMenuItem onClick={() => setLanguage("en")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setLanguage("en");
+                setOpenDropdownId(null);
+              }}
+            >
               English
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setLanguage("bn")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setLanguage("bn");
+                setOpenDropdownId(null);
+              }}
+            >
               বাংলা
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setLanguage("ar")}>
+            <DropdownMenuItem
+              onClick={() => {
+                setLanguage("ar");
+                setOpenDropdownId(null);
+              }}
+            >
               العربية
             </DropdownMenuItem>
           </DropdownMenuContent>
