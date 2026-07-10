@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import "./banner.css";
 import rashadul from "../../public/assets/rashadul-portfollio.png";
@@ -40,7 +39,7 @@ export default function Banner() {
         }}
       />
       {/* Overlay — flat color, no backdrop-filter (full-viewport blur is expensive) */}
-      <div className="absolute inset-0 z-10 bg-white/70 dark:bg-black/75" />
+      <div className="absolute inset-0 z-10 bg-white/80 dark:bg-black/85" />
 
       <div
         className={`relative z-10 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 px-4 md:px-0 py-16 md:py-24 section-container min-h-screen ${
@@ -48,10 +47,7 @@ export default function Banner() {
         }`}
       >
         {/* Left Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <div data-aos="fade-down" data-aos-duration="1000"
           className={`flex-1 ${isRTL ? "text-right" : "text-left"}`}
         >
           <span className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
@@ -66,7 +62,7 @@ export default function Banner() {
                 1000,
               ]}
               wrapper="span"
-              speed={50}
+              speed={30}
               repeat={Infinity}
             />
           </h1>
@@ -145,16 +141,16 @@ export default function Banner() {
               </a>
             </Button>
           </div>
-        </motion.div>
+        </div>
 
-        <div className="flex-1 flex justify-center items-center">
+        <div className="flex-1 flex justify-center items-center" data-aos="fade-up" data-aos-duration="1000">
           <div className="relative w-full sm:w-80 lg:w-96 h-auto">
             {/* Image */}
             <Image
               src={rashadul}
               alt="Md Rashadul Islam profile photo"
-              width={420}
-              height={420}
+              width={520}
+              height={520}
               priority
               fetchPriority="high"
               className="rounded-full"

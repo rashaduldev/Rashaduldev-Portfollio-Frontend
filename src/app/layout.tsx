@@ -5,6 +5,7 @@ import Script from "next/script";
 import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
+import AosInitializer from "@/components/AosInitializer";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSerif.variable} ${dmSans.variable}`}>
+        <AosInitializer />
         <Script
           defer
           data-domain="rashaduldev01.vercel.app"
