@@ -10,6 +10,6 @@ const GithubPage = () => {
 
 export default GithubPage;
 export const metadata = {
-  title: "Rashaduldev | GitHub Projects",
+  title: "Rashaduldev - GitHub Projects",
   description: "Explore my GitHub projects and contributions.",
 };

@@ -10,7 +10,7 @@ const ArticleDetailsPage = () => {
 
 export default ArticleDetailsPage;
 export const metadata = {
-  title: "Rashaduldev| Article Details",
+  title: "Rashaduldev - Article Details",
   description: "Detailed view of the selected article.",
 };
 

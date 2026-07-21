@@ -9,17 +9,17 @@ import ScrollToTopWithProgress from "@/components/ScrollToTopWithProgress";
 import ServicesCarousel from "@/components/ServicesCarouse";
 import SkillsMarquee from "@/components/SkillsMarquee";
 import SkillsSection from "@/components/SkillsSection";
-import StatsSection from "@/components/StatsCountSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import WhyChooseMe from "@/components/WhyChooseMe";
 import WorkExperience from "@/components/WorkExperience";
+import Achievements from "@/components/Achievements";
 
 export const metadata: Metadata = {
   title: "Home",
   description:
     "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
   openGraph: {
-    title: "Md Rashadul Islam – Portfolio",
+    title: "Rashaduldev – Home",
     description:
       "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
     type: "website",
@@ -35,7 +35,7 @@ const MainLayoutPage = () => {
         <SkillsMarquee />
         <WorkExperience />
         <ProjectsSection />
-        <StatsSection />
+        <Achievements />
         <DeferRender minHeight="500px">
           <TestimonialSection />
         </DeferRender>

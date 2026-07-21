@@ -63,13 +63,13 @@
     "firebase": "Firebase",
     "cloudinary": "Cloudinary"
   },
-  "statsSection": {
+  "achievements": {
     "title": "Achievements",
     "stats": [
-      { "value": 29, "label": "Project Completed" },
+      { "value": 48, "label": "Project Completed" },
       { "value": 6, "label": "Award Winner" },
       { "value": 99, "label": "Client Satisfaction" },
-      { "value": 1.6, "label": "Years of Experience" }
+      { "value": 2, "label": "Years of Experience" }
     ]
   },
   "experienceHeading": "Work Experience",
@@ -380,25 +380,25 @@
   },
   "Educationheading": "Education",
   "education": {
-    "2020": {
+    "2017": {
       "title": "Secondary School Certificate (SSC)",
       "company": "Nawdabash High School",
       "department": "Science",
       "description": "Completed Secondary School Certificate with a focus on general science and foundational computing skills."
     },
-    "2021": {
+    "2019": {
       "title": "Higher Secondary Certificate (HSC)",
       "company": "Kurigram Govt Collage",
       "department": "Science",
       "description": "Passed Higher Secondary Certificate specializing in Science, with strong interest in mathematics and ICT."
     },
-    "2023": {
+    "2021": {
       "title": "Diploma in Engineering (Diploma in CSE)",
       "company": "Dhaka Polytechnic Institute",
       "department": "Computer Science & Technology",
       "description": "Gained hands-on experience in programming, networking, and database management during a 4-year diploma program."
     },
-    "2025": {
+    "2026": {
       "title": "Bachelor of Science (BSC)",
       "company": "Green University of Bangladesh",
       "department": "BSc in CSE",

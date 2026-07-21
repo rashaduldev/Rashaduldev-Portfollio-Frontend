@@ -11,7 +11,7 @@ export type PortfolioJSON = {
   footer: FooterSection;
   projectsSection: ProjectsSection;
   testimonialsSection: TestimonialSection;
-  statsSection: StatsSectionType;
+  achievements: StatsSectionType;
   whyChooseMeSection: WhyChooseMeSectionType;
   latestArticlesSection: LatestArticlesSectionType;
   experienceHeading:string;

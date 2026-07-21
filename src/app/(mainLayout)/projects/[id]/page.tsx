@@ -5,7 +5,7 @@ export default function ProjectDetailsPage({ params }: any) {
 
 // Metadata
 export const metadata = {
-  title: "Rashaduldev | Project Details",
+  title: "Rashaduldev - Project Details",
   description: "Detailed view of the selected project.",
 };
 

@@ -5,7 +5,7 @@ import ProjectsSection from "../ProjectsSection";
 import ServicesCarousel from "../ServicesCarouse";
 import SkillsMarquee from "../SkillsMarquee";
 import SkillsSection from "../SkillsSection";
-import StatsSection from "../StatsCountSection";
+import StatsSection from "../Achievements";
 import TestimonialSection from "../TestimonialSection";
 import WhyChooseMe from "../WhyChooseMe";
 import WorkExperience from "../WorkExperience";

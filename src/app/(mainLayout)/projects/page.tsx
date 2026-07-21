@@ -10,6 +10,6 @@ const ProjectsPage = () => {
 
 export default ProjectsPage;
 export const metadata = {
-  title: "Rashaduldev | Projects",
+  title: "Rashaduldev - Projects",
   description: "Explore my projects and contributions.",
 };

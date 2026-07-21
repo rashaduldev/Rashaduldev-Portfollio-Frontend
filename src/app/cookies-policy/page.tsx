@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CookiesPolicy() {
   return (
@@ -72,14 +73,14 @@ export default function CookiesPolicy() {
           <p className="leading-relaxed">
             For more information on how to manage cookies in popular browsers,
             visit{" "}
-            <a
+            <Link
               href="https://www.aboutcookies.org"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
               aboutcookies.org
-            </a>
+            </Link>
             .
           </p>
         </div>
@@ -101,12 +102,12 @@ export default function CookiesPolicy() {
           </h2>
           <p className="leading-relaxed">
             If you have questions about our Cookies Policy, please contact us at{" "}
-            <a
+            <Link
               href="mailto:rashadul.dev@gmail.com"
               className="text-primary hover:underline"
             >
               rashadul.dev@gmail.com
-            </a>
+            </Link>
             .
           </p>
         </div>
@@ -115,7 +116,7 @@ export default function CookiesPolicy() {
   );
 }
 export const metadata = {
-  title: "Rashaduldev | Cookies Policy",
+  title: "Rashaduldev - Cookies Policy",
   description:
-    "Learn about our cookies policy and how we use cookies on our website.",
+    "Learn about our cookies policy and how use cookies on my website.",
 };

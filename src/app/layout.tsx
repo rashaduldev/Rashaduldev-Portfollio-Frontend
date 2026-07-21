@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Md Rashadul Islam – Portfolio",
+  title: "Rashaduldev – Home",
   description: "Frontend Developer Portfolio",
 };
 
@@ -32,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${dmSerif.variable} ${dmSans.variable}`}>
+    <html suppressHydrationWarning={true} lang="en" className="scroll-smooth">
+      <body suppressHydrationWarning={true} className={`${dmSerif.variable} ${dmSans.variable}`}>
         <AosInitializer />
         <Script
           defer

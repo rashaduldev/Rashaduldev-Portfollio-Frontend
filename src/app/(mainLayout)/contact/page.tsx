@@ -10,6 +10,6 @@ const ContactPage = () => {
 
 export default ContactPage;
 export const metadata = {
-  title: "Rashaduldev | Contact",
+  title: "Rashaduldev - Contact",
   description: "Get in touch with us for any inquiries or feedback.",
 };
