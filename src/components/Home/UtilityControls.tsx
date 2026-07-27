@@ -1,8 +1,6 @@
 "use client";
 
 import { useContext } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,8 +9,7 @@ import {
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
 import { LayoutContext } from "../context";
-import { MdDarkMode, MdImportantDevices, MdLanguage } from "react-icons/md";
-import { CiLight } from "react-icons/ci";
+import { MdLanguage } from "react-icons/md";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -52,8 +49,6 @@ export default function UtilityControls({
   }
 
   const { language, setLanguage } = context;
-  const { theme, setTheme } = useTheme();
-
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
   return (
@@ -65,58 +60,6 @@ export default function UtilityControls({
             : ""
         }`}
       >
-        {/* -------- Theme Dropdown -------- */}
-        <DropdownMenu
-          id="theme"
-          openDropdownId={openDropdownId}
-          setOpenDropdownId={setOpenDropdownId}
-        >
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              aria-label={
-                theme === "dark"
-                  ? "Switch to light mode"
-                  : "Switch to dark mode"
-              }
-            >
-              {theme === "dark" ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" />
-              )}
-            </Button>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent>
-            <DropdownMenuItem
-              onClick={() => {
-                setTheme("system");
-                setOpenDropdownId(null);
-              }}
-            >
-              <MdImportantDevices className="mr-2" /> Device Default
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                setTheme("light");
-                setOpenDropdownId(null);
-              }}
-            >
-              <CiLight className="mr-2" /> Light Mode
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                setTheme("dark");
-                setOpenDropdownId(null);
-              }}
-            >
-              <MdDarkMode className="mr-2" /> Dark Mode
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
         {/* -------- Language Dropdown -------- */}
         <DropdownMenu
           id="language"

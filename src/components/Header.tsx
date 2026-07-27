@@ -8,6 +8,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutContext } from "./context"; 
 import UtilityControls from "./Home/UtilityControls";
+import DayNightToggle from "./Home/DayNightToggle";
 import { HeaderSection } from "@/types/translations";
 
 type PortfolioJSON = {
@@ -156,6 +157,8 @@ export default function Header() {
                 ))}
               </div>
             </nav>
+
+            <DayNightToggle size={36} />
 
             {/* Desktop Utility Controls */}
             <div className="hidden md:flex">
