@@ -177,14 +177,14 @@ export default function Footer() {
         <div className="block md:hidden">
           <div className="flex flex-row gap-8">
             <div className="flex-1">
-              <Link href="/">
+              <Link href="/" className="flex w-fit justify-start">
                 <Image
-                  src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
+                  src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
                   width={100}
-                  height={20}
-                  style={{ width: 100, height: 20 }}
+                  height={75}
                   alt="My Brand Logo"
                   priority
+                  className="ml-0 flex justify-start"
                 />
               </Link>
               <ul className="space-y-2 mt-4">
@@ -202,12 +202,12 @@ export default function Footer() {
         </div>
 
         <div className="hidden md:block">
-          <Link href="/" className="mb-4 block">
+          <Link href="/" className="mb-4 flex w-fit justify-start">
             <Image
-              src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
-              width={100}
-              height={20}
-              style={{ width: 100, height: 20 }}
+              src="https://res.cloudinary.com/de8yddexc/image/upload/c_crop,g_north_west,h_31,w_36,x_10,y_3/v1765567136/vwleekmngplrdpdo1q9s.svg"
+              width={300}
+              height={75}
+              style={{ width: 300, height: 75 }}
               alt="My Brand Logo"
               priority
             />
