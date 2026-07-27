@@ -2,9 +2,9 @@ import Articles from "@/components/Articles/Articles";
 
 const ArticlesPage = () => {
   return (
-    <div>
+    <>
       <Articles />
-    </div>
+    </>
   );
 };
 
