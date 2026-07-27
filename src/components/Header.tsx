@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -132,6 +131,7 @@ export default function Header() {
                 src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
                 width={100} 
                 height={20} 
+                style={{ width: 100, height: 20 }}
                 alt={getLabel("brand", "My Brand Logo")}
                 priority
               />
@@ -169,14 +169,35 @@ export default function Header() {
             <div className="md:hidden">
               <Button
                 variant="ghost"
-                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                size="icon"
+                onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                className="relative h-10 w-10"
               >
-                {isMobileMenuOpen ? (
-                  <X className="w-5 h-5" />
-                ) : (
-                  <Menu className="w-5 h-5" />
-                )}
+                <span className="sr-only">Toggle navigation menu</span>
+                <span
+                  aria-hidden="true"
+                  className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+                    isMobileMenuOpen
+                      ? "translate-y-0 rotate-45"
+                      : "-translate-y-1.5"
+                  }`}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out ${
+                    isMobileMenuOpen ? "scale-x-0 opacity-0" : "opacity-100"
+                  }`}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+                    isMobileMenuOpen
+                      ? "translate-y-0 -rotate-45"
+                      : "translate-y-1.5"
+                  }`}
+                />
               </Button>
             </div>
           </div>

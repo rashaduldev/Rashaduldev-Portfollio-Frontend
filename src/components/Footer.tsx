@@ -182,6 +182,7 @@ export default function Footer() {
                   src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
                   width={100}
                   height={20}
+                  style={{ width: 100, height: 20 }}
                   alt="My Brand Logo"
                   priority
                 />
@@ -206,6 +207,7 @@ export default function Footer() {
               src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
               width={100}
               height={20}
+              style={{ width: 100, height: 20 }}
               alt="My Brand Logo"
               priority
             />

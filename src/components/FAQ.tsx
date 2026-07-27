@@ -6,13 +6,12 @@ import { FaChevronDown } from "react-icons/fa";
 import { FAQ } from "@/types/translations";
 import { motion, Variants } from "framer-motion";
 
-// Framer Motion variants for FAQ items
 const faqItemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }, // cubic-bezier
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
 
@@ -117,7 +116,7 @@ function AnimatedFAQItem({ faq, isOpen, onClick, isRTL }: FAQItemProps) {
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ height }}
       >
-        <div className="p-4 break-words">
+        <div className="p-4 wrap-break-word">
           {faq.answer}
         </div>
       </div>
