@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { motion } from "framer-motion";
 import { FeatureItem } from "@/types/translations";
 import { LayoutContext } from "./context";
-import { Button } from "./ui/button";
+import BlobsButton from "./Common/Blobsbutton";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -91,9 +91,9 @@ export default function WhyChooseMe() {
         <h2 className="my-5">
           {section?.contactdescription}
         </h2>
-        <Button className="cursor-pointer px-5 py-3 text-base">
+        <BlobsButton asChild className="cursor-pointer px-5 py-3 text-base">
           <Link href="/contact">{section?.contactbutton}</Link>
-        </Button>
+        </BlobsButton>
       </div>
     </section>
   );

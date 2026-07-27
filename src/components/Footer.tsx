@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import BlobsButton from "@/components/Common/Blobsbutton";
 import { Mail } from "lucide-react";
 import { useContext } from "react";
 import { Input } from "@/components/ui/input";
@@ -302,7 +302,7 @@ export default function Footer() {
                 </Typography>
               )}
             </div>
-            <Button type="submit" disabled={isSubmitting} className="h-9 w-fit">
+            <BlobsButton type="submit" disabled={isSubmitting} className="h-9 w-fit px-4">
               {isSubmitting ? (
                 "Subscribing..."
               ) : (
@@ -311,7 +311,7 @@ export default function Footer() {
                   {getTranslation("subscribe", "Subscribe")}
                 </>
               )}
-            </Button>
+            </BlobsButton>
           </form>
         </div>
       </div>

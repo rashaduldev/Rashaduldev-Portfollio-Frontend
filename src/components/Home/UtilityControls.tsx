@@ -12,6 +12,7 @@ import { LayoutContext } from "../context";
 import { MdLanguage } from "react-icons/md";
 import { useState } from "react";
 import Link from "next/link";
+import BlobsButton from "../Common/Blobsbutton";
 
 // -------- Types --------
 type HeaderSection = {
@@ -101,11 +102,11 @@ export default function UtilityControls({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <Button asChild size="sm">
+      <BlobsButton asChild className="px-3 py-1.5 text-xs">
         <Link href="/login" aria-label="Admin login">
           Admin Login
         </Link>
-      </Button>
+      </BlobsButton>
     </div>
   );
 }

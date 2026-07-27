@@ -4,7 +4,7 @@ import { useContext, useEffect, useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { LayoutContext } from "@/components/context";
-import { Button } from "../ui/button";
+import BlobsButton from "../Common/Blobsbutton";
 import { Input } from "../ui/input";
 import toast from "react-hot-toast";
 
@@ -146,21 +146,21 @@ export default function ArticleDetailsClient() {
       </p>
 
       <div className="flex items-center gap-4 mt-4">
-        <button
+        <BlobsButton
           onClick={handleLike}
           aria-label={`Like article, ${likes} likes`}
-          className="px-4 py-2 bg-primary text-white rounded hover:bg-primary"
+          className="px-4 py-2"
         >
           ❤️ Like ({likes})
-        </button>
+        </BlobsButton>
 
-        <button
+        <BlobsButton
           onClick={handleShare}
           aria-label="Share article"
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2"
         >
           🔗 Share
-        </button>
+        </BlobsButton>
       </div>
 
       <div className="mt-8">
@@ -186,11 +186,9 @@ export default function ArticleDetailsClient() {
             placeholder="Write a comment..."
             aria-label="Comment input"
           />
-          <Button
-            onClick={handleComment}
-          >
+          <BlobsButton onClick={handleComment} className="px-4 py-2">
             Comment
-          </Button>
+          </BlobsButton>
         </div>
       </div>
     </div>

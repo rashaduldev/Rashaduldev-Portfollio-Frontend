@@ -7,7 +7,7 @@ import { FaGithub, FaLink, FaHeart, FaShareAlt } from "react-icons/fa";
 import { Project } from "@/types/translations";
 import Link from "next/link";
 import { LayoutContext } from "../context";
-import { Button } from "../ui/button";
+import BlobsButton from "../Common/Blobsbutton";
 
 type Comment = {
   name: string;
@@ -122,9 +122,9 @@ export default function ProjectDetailsClient({ projectId }: Props) {
           <input type="text" name="name" placeholder="Name" required value={commentData.name} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <input type="email" name="email" placeholder="Email" required value={commentData.email} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <textarea name="message" placeholder="Your Comment" required value={commentData.message} onChange={handleChange} className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900"></textarea>
-          <Button type="submit" className="col-span-2">
+          <BlobsButton type="submit" className="col-span-2 px-5 py-2.5">
             Submit Comment
-          </Button>
+          </BlobsButton>
         </form>
 
         <div className="mt-8 space-y-4">

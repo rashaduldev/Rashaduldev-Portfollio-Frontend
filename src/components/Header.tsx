@@ -108,7 +108,7 @@ export default function Header() {
     <>
       <div className="fixed top-0 left-0 w-full z-9999 h-1.25 bg-transparent">
         <div
-          className="h-full transition-all duration-100 ease-linear bg-[var(--text-primary)] dark:bg-primary"
+          className="h-full transition-all duration-100 ease-linear bg-(--text-primary) dark:bg-primary"
           style={{
             width: `${scrollProgress}%`,
             opacity: scrollProgress > 0 && scrollProgress < 100 ? 1 : 0, 
@@ -123,15 +123,15 @@ export default function Header() {
             : ""
         }`}
       >
-        <div className="flex items-center justify-between py-1 section-container">
+        <div className="flex items-center justify-between py-2 section-container">
           {/* 1. Logo (Left) */}
           <div className="shrink-0">
             <Link href="/">
               <Image 
                 src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
-                width={100} 
-                height={20} 
-                style={{ width: 100, height: 20 }}
+                width={110}
+                height={18}
+                // style={{ width: 140, height: 28 }}
                 alt={getLabel("brand", "My Brand Logo")}
                 priority
               />

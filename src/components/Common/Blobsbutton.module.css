@@ -1,0 +1,79 @@
+.button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--blob-color);
+  border-radius: 0.875rem;
+  background: transparent;
+  color: var(--blob-color);
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+.button:hover {
+  color: white;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--blob-background);
+}
+
+.blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--blob-color);
+  transform: translate3d(0, 150%, 0) scale(1.4);
+  transition: transform 0.45s ease;
+}
+
+.blob:nth-child(1) { left: 0; transition-delay: 0s; }
+.blob:nth-child(2) { left: 30%; transition-delay: 0.08s; }
+.blob:nth-child(3) { left: 60%; transition-delay: 0.16s; }
+.blob:nth-child(4) { left: 90%; transition-delay: 0.24s; }
+
+.button:hover .blob {
+  transform: translate3d(0, 0, 0) scale(1.4);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}

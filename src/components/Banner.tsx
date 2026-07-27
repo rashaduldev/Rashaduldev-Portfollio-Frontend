@@ -7,7 +7,6 @@ import {
   IoArrowRedoCircleOutline,
   IoArrowUndoCircleOutline,
 } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -17,6 +16,7 @@ import rashadul from "../../public/assets/rashadul-portfollio.png";
 import Image from "next/image";
 import { SiCodewars } from "react-icons/si";
 import CelebrationButton from "./Common/CelebrationButton";
+import BlobsButton from "./Common/Blobsbutton";
 
 export default function Banner() {
   const context = useContext(LayoutContext);
@@ -107,14 +107,14 @@ export default function Banner() {
               isRTL ? "justify-start" : ""
             }`}
           >
-            <Button variant="outline" asChild>
+            <BlobsButton asChild className="px-5 py-2.5">
               <Link href="/contact" className="flex items-center gap-2">
                 {translations?.main?.leftbutton || "Let's go"}
                 <CiLocationArrow1 size={20} />
               </Link>
-            </Button>
+            </BlobsButton>
 
-            <Button variant="outline" asChild>
+            <BlobsButton asChild className="px-5 py-2.5">
               <a
                 href="/assets/Resume of Md Rashadul Islam.pdf"
                 download="Resume of Md Rashadul Islam.pdf"
@@ -128,7 +128,7 @@ export default function Banner() {
                   <IoArrowUndoCircleOutline size={20} />
                 )}
               </a>
-            </Button>
+            </BlobsButton>
           </div>
         </div>
 

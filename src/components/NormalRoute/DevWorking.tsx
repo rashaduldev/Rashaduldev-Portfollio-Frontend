@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
 import { LayoutContext } from "../context";
-import { Button } from "../ui/button";
+import BlobsButton from "../Common/Blobsbutton";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -36,9 +36,9 @@ export default function DeveloperIsWorking() {
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
           {t.description}
         </p>
-        <Button className=" cursor-pointer">
+        <BlobsButton asChild className="cursor-pointer px-5 py-2.5">
           <Link href="/">{t.backToHome}</Link>
-        </Button>
+        </BlobsButton>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 import { login } from "@/actions/auth.actions";
 
-import { Button } from "@/components/ui/button";
+import BlobsButton from "@/components/Common/Blobsbutton";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -149,13 +149,13 @@ export default function LoginForm() {
           </div>
 
           {/* Submit */}
-          <Button
+          <BlobsButton
             type="submit"
             disabled={!recaptchaOk || isSubmitting}
-            className="w-full"
+            className="w-full py-2.5"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
-          </Button>
+          </BlobsButton>
         </form>
       </Form>
     </div>

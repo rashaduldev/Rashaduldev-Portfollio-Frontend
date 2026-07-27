@@ -14,7 +14,7 @@ import { sendContactMessage } from "@/actions/contact/contact";
 import { ControlledPhoneInput } from "../Common/ControlledPhoneInput";
 import { ControlledInput } from "../Common/ControlledInput";
 import { ControlledTextarea } from "../Common/ControlledTextarea";
-import AppButton from "../Common/AppButton";
+import BlobsButton from "../Common/Blobsbutton";
 
 interface ContactFormValues {
   name: string;
@@ -189,13 +189,13 @@ const Contact = () => {
               </p>
             )}
 
-            <AppButton
+            <BlobsButton
               type="submit"
               disabled={isSubmitting}
-              className="cursor-pointer"
+              className="cursor-pointer px-5 py-2.5"
             >
               {isSubmitting ? "Sending..." : t.sendButton}
-            </AppButton>
+            </BlobsButton>
           </form>
         </div>
       </section>
