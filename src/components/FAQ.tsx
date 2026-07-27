@@ -4,7 +4,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { LayoutContext } from "@/components/context";
 import { FaChevronDown } from "react-icons/fa";
 import { FAQ } from "@/types/translations";
-import { TypeAnimation } from "react-type-animation";
 import { motion, Variants } from "framer-motion";
 
 // Framer Motion variants for FAQ items
@@ -118,16 +117,8 @@ function AnimatedFAQItem({ faq, isOpen, onClick, isRTL }: FAQItemProps) {
         className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ height }}
       >
-        <div className="p-4">
-          {isOpen && (
-            <TypeAnimation
-              sequence={[faq.answer, 1000]}
-              wrapper="span"
-              speed={50}
-              repeat={0}
-              cursor={true}
-            />
-          )}
+        <div className="p-4 break-words">
+          {faq.answer}
         </div>
       </div>
     </motion.div>

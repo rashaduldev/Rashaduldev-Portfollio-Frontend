@@ -12,6 +12,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { Project } from "@/types/translations";
+import CelebrationButton from "../Common/CelebrationButton";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -67,31 +68,37 @@ function ActionBtn({
   label,
   icon,
   delay,
+  hoverBackgroundClassName = "bg-primary",
   external = true,
 }: {
   href: string;
   label: string;
   icon: React.ReactNode;
   delay: string;
+  hoverBackgroundClassName?: string;
   external?: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      aria-label={label}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className={clsx(
-        "flex items-center justify-center w-10 h-10 rounded-full",
-        "bg-white/10 backdrop-blur-md border border-white/25 text-white",
-        "hover:bg-primary hover:border-primary hover:scale-110",
-        "translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
-        "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-        delay,
-      )}
+    <CelebrationButton
+      className="h-10 w-10 rounded-full bg-white/10 backdrop-blur-md border border-white/25"
+      hoverBackgroundClassName={hoverBackgroundClassName}
     >
-      {icon}
-    </Link>
+      <Link
+        href={href}
+        aria-label={label}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className={clsx(
+          "flex h-full w-full items-center justify-center rounded-full text-white",
+          "hover:scale-110 group-hover:border-transparent",
+          "translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
+          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          delay,
+        )}
+      >
+        {icon}
+      </Link>
+    </CelebrationButton>
   );
 }
 
@@ -113,10 +120,6 @@ export default function ProjectCard({
   return (
     <motion.article
       variants={cardVariants}
-      whileHover={{
-        y: -8,
-        transition: { type: "spring", stiffness: 260, damping: 22 },
-      }}
       className={clsx(
         "group relative rounded-2xl flex flex-col h-full",
         "bg-white dark:bg-[var(--surface-dark)]",
@@ -221,6 +224,7 @@ export default function ProjectCard({
             label={`Details – ${item.title}`}
             icon={<FaInfoCircle size={15} />}
             delay="delay-0"
+            hoverBackgroundClassName="bg-primary"
             external={false}
           />
           {item.githubLink && (
@@ -229,6 +233,7 @@ export default function ProjectCard({
               label={`GitHub – ${item.title}`}
               icon={<FaGithub size={15} />}
               delay="delay-[60ms]"
+              hoverBackgroundClassName="bg-gray-900"
             />
           )}
           {item.liveLink && (
@@ -237,6 +242,7 @@ export default function ProjectCard({
               label={`Live – ${item.title}`}
               icon={<FaExternalLinkAlt size={13} />}
               delay="delay-[120ms]"
+              hoverBackgroundClassName="bg-sky-500"
             />
           )}
         </div>

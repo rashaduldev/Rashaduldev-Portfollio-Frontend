@@ -351,6 +351,20 @@ const DayNightToggle = ({
         #checkbox:checked + .sky #stars {
           transform: unset;
         }
+
+        /* Mirror the switch's travel direction for Arabic (RTL) layouts. */
+        html[dir="rtl"] #sun_wrapper {
+          margin-left: 0;
+          margin-right: 0.45%;
+        }
+
+        html[dir="rtl"] #moon {
+          transform: translateX(-100%);
+        }
+
+        html[dir="rtl"] #checkbox:checked + .sky #sun_wrapper {
+          transform: translateX(-152.1%);
+        }
       `}
       </style>
       <input

@@ -16,6 +16,7 @@ import "./banner.css";
 import rashadul from "../../public/assets/rashadul-portfollio.png";
 import Image from "next/image";
 import { SiCodewars } from "react-icons/si";
+import CelebrationButton from "./Common/CelebrationButton";
 
 export default function Banner() {
   const context = useContext(LayoutContext);
@@ -76,40 +77,28 @@ export default function Banner() {
 
           {/* Social Icons */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <Link
-              href="https://linkedin.com/in/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my LinkedIn profile"
-              className="flex items-center justify-center text-blue-600 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-blue-600 hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-blue-500"
-            >
-              <FaLinkedinIn size={16} />
-            </Link>
-            <Link
-              href="https://github.com/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my GitHub profile"
-              className="flex items-center justify-center text-gray-900 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-gray-900 hover:text-white dark:bg-gray-700 dark:text-white"
-            >
-              <FaGithub size={16} />
-            </Link>
-            <Link
-              href="mailto:rashadul.dev@gmail.com"
-              aria-label="Send me an email"
-              className="flex items-center justify-center text-green-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-green-500 hover:text-white dark:bg-gray-700 dark:text-white"
-            >
-              <FaEnvelope size={16} />
-            </Link>
-            <Link
-              href="https://www.codewars.com/users/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my Codewars profile"
-              className="flex items-center justify-center text-red-500 transition bg-gray-200 rounded-full w-9 h-9 hover:bg-red-500 hover:text-white dark:bg-gray-700 dark:text-white"
-            >
-              <SiCodewars size={16} />
-            </Link>
+            {[
+              { href: "https://linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn size={16} />, color: "bg-blue-600 dark:bg-blue-500", iconColor: "text-blue-600" },
+              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub size={16} />, color: "bg-gray-900", iconColor: "text-gray-900 dark:text-white" },
+              { href: "mailto:rashadul.dev@gmail.com", label: "Send me an email", icon: <FaEnvelope size={16} />, color: "bg-green-500", iconColor: "text-green-500" },
+              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars size={16} />, color: "bg-red-500", iconColor: "text-red-500" },
+            ].map(({ href, label, icon, color, iconColor }) => (
+              <CelebrationButton
+                key={href}
+                className="h-9 w-9 rounded-full bg-gray-200 dark:bg-gray-700"
+                hoverBackgroundClassName={color}
+              >
+                <Link
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={label}
+                  className={`flex h-full w-full items-center justify-center transition-colors group-hover:text-white ${iconColor}`}
+                >
+                  {icon}
+                </Link>
+              </CelebrationButton>
+            ))}
           </div>
 
           {/* Buttons */}

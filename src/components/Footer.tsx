@@ -16,6 +16,7 @@ import { subscribeSchema } from "@/schema/subscriber.schema";
 import { Typography } from "./ui/Typography";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import CelebrationButton from "./Common/CelebrationButton";
 
 type ExpectedLayoutContextValue = {
   translations: {
@@ -231,42 +232,28 @@ export default function Footer() {
             {getTranslation("follow", "Follow Us")}
           </Typography>
           <div className="flex flex-row gap-4 mt-2">
-            <Link
-              href="https://www.codewars.com/users/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my Codewars profile"
-              className="hover:text-primary-hover transition-colors duration-200"
-            >
-              <SiCodewars className="text-xl" />
-            </Link>
-            <Link
-              href="https://github.com/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my GitHub profile"
-              className="hover:text-primary-hover transition-colors duration-200"
-            >
-              <FaGithub className="text-xl" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my LinkedIn profile"
-              className="hover:text-primary-hover transition-colors duration-200"
-            >
-              <FaLinkedinIn className="text-xl" />
-            </Link>
-            <Link
-              href="https://app.daily.dev/rashaduldev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my daily dev profile"
-              className="hover:text-primary-hover transition-colors duration-200"
-            >
-              <FaDev className="text-xl" />
-            </Link>
+            {[
+              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars className="text-xl" />, color: "bg-red-500" },
+              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub className="text-xl" />, color: "bg-gray-900" },
+              { href: "https://www.linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn className="text-xl" />, color: "bg-blue-600" },
+              { href: "https://app.daily.dev/rashaduldev", label: "Visit my daily dev profile", icon: <FaDev className="text-xl" />, color: "bg-black" },
+            ].map(({ href, label, icon, color }) => (
+              <CelebrationButton
+                key={href}
+                className="h-9 w-9 rounded-full bg-muted"
+                hoverBackgroundClassName={color}
+              >
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-full w-full items-center justify-center text-foreground transition-colors group-hover:text-white"
+                >
+                  {icon}
+                </Link>
+              </CelebrationButton>
+            ))}
           </div>
         </div>
 
