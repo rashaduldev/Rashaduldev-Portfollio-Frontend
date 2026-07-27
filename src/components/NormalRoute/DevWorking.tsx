@@ -36,7 +36,7 @@ export default function DeveloperIsWorking() {
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">
           {t.description}
         </p>
-        <BlobsButton asChild className="cursor-pointer px-5 py-2.5">
+        <BlobsButton asChild className="cursor-pointer px-5 py-1">
           <Link href="/">{t.backToHome}</Link>
         </BlobsButton>
       </div>

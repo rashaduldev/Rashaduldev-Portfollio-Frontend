@@ -122,7 +122,7 @@ export default function ProjectDetailsClient({ projectId }: Props) {
           <input type="text" name="name" placeholder="Name" required value={commentData.name} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <input type="email" name="email" placeholder="Email" required value={commentData.email} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
           <textarea name="message" placeholder="Your Comment" required value={commentData.message} onChange={handleChange} className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900"></textarea>
-          <BlobsButton type="submit" className="col-span-2 px-5 py-2.5">
+          <BlobsButton type="submit" className="col-span-2 px-5 py-1">
             Submit Comment
           </BlobsButton>
         </form>

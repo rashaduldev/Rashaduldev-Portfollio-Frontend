@@ -102,7 +102,7 @@ export default function UtilityControls({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <BlobsButton asChild className="px-3 py-1.5 text-xs">
+      <BlobsButton asChild className="px-5 py-1">
         <Link href="/login" aria-label="Admin login">
           Admin Login
         </Link>

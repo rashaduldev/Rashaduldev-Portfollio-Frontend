@@ -91,7 +91,7 @@ export default function WhyChooseMe() {
         <h2 className="my-5">
           {section?.contactdescription}
         </h2>
-        <BlobsButton asChild className="cursor-pointer px-5 py-3 text-base">
+        <BlobsButton asChild className="cursor-pointer px-5 py-1">
           <Link href="/contact">{section?.contactbutton}</Link>
         </BlobsButton>
       </div>

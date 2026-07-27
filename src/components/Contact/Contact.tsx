@@ -192,7 +192,7 @@ const Contact = () => {
             <BlobsButton
               type="submit"
               disabled={isSubmitting}
-              className="cursor-pointer px-5 py-2.5"
+              className="cursor-pointer px-5 py-1"
             >
               {isSubmitting ? "Sending..." : t.sendButton}
             </BlobsButton>

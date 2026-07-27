@@ -149,7 +149,7 @@ export default function ArticleDetailsClient() {
         <BlobsButton
           onClick={handleLike}
           aria-label={`Like article, ${likes} likes`}
-          className="px-4 py-2"
+          className="px-5 py-1"
         >
           ❤️ Like ({likes})
         </BlobsButton>
@@ -157,7 +157,7 @@ export default function ArticleDetailsClient() {
         <BlobsButton
           onClick={handleShare}
           aria-label="Share article"
-          className="px-4 py-2"
+          className="px-5 py-1"
         >
           🔗 Share
         </BlobsButton>
@@ -186,7 +186,7 @@ export default function ArticleDetailsClient() {
             placeholder="Write a comment..."
             aria-label="Comment input"
           />
-          <BlobsButton onClick={handleComment} className="px-4 py-2">
+          <BlobsButton onClick={handleComment} className="px-5 py-1">
             Comment
           </BlobsButton>
         </div>

@@ -152,7 +152,7 @@ export default function LoginForm() {
           <BlobsButton
             type="submit"
             disabled={!recaptchaOk || isSubmitting}
-            className="w-full py-2.5"
+            className="w-full px-5 py-1"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
           </BlobsButton>

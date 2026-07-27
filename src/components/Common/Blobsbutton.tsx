@@ -75,7 +75,6 @@ export default function BlobsButton({
       style={buttonStyle}
     >
       {animation}
-      <span className={styles.content}>{children}</span>
     </button>
   );
 }

@@ -107,14 +107,14 @@ export default function Banner() {
               isRTL ? "justify-start" : ""
             }`}
           >
-            <BlobsButton asChild className="px-5 py-2.5">
+            <BlobsButton asChild className="px-5 py-1">
               <Link href="/contact" className="flex items-center gap-2">
                 {translations?.main?.leftbutton || "Let's go"}
                 <CiLocationArrow1 size={20} />
               </Link>
             </BlobsButton>
 
-            <BlobsButton asChild className="px-5 py-2.5">
+            <BlobsButton asChild className="px-5 py-1">
               <a
                 href="/assets/Resume of Md Rashadul Islam.pdf"
                 download="Resume of Md Rashadul Islam.pdf"

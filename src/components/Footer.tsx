@@ -302,7 +302,7 @@ export default function Footer() {
                 </Typography>
               )}
             </div>
-            <BlobsButton type="submit" disabled={isSubmitting} className="h-9 w-fit px-4">
+            <BlobsButton type="submit" disabled={isSubmitting} className="w-fit px-5 py-1">
               {isSubmitting ? (
                 "Subscribing..."
               ) : (
