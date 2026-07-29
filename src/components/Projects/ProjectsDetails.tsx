@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useEffect, useState, ChangeEvent, FormEvent } from "react";
-// import { LayoutContext } from "@/components/Layout/context";
 import Image from "next/image";
 import { FaGithub, FaLink, FaHeart, FaShareAlt } from "react-icons/fa";
 import { Project } from "@/types/translations";
@@ -38,12 +37,18 @@ export default function ProjectDetailsClient({ projectId }: Props) {
 
   const project = projects.find((p) => String(p.id) === projectId);
 
+  // 1. Safe localStorage reading with try...catch
   useEffect(() => {
     if (!projectId) return;
-    const storedLikes = localStorage.getItem(`likes-${projectId}`);
-    const storedComments = localStorage.getItem(`comments-${projectId}`);
-    if (storedLikes) setLikes(parseInt(storedLikes));
-    if (storedComments) setComments(JSON.parse(storedComments));
+    try {
+      const storedLikes = localStorage.getItem(`likes-${projectId}`);
+      const storedComments = localStorage.getItem(`comments-${projectId}`);
+
+      if (storedLikes) setLikes(parseInt(storedLikes, 10));
+      if (storedComments) setComments(JSON.parse(storedComments));
+    } catch (error) {
+      console.error("Error reading from localStorage:", error);
+    }
   }, [projectId]);
 
   if (!project) {
@@ -78,23 +83,24 @@ export default function ProjectDetailsClient({ projectId }: Props) {
       <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{project.techStack}</p>
 
+      {/* 2. Responsive Next.js Images with fill & sizes */}
       <div className="flex gap-6 flex-col sm:flex-row mb-10">
         <div className="relative w-full sm:w-2/3 h-64">
           <Image
-            height={300}
-            width={500}
+            fill
             src={project.desktopimage}
             alt={project.title}
-            className="rounded-lg w-full h-full object-cover"
+            sizes="(max-width: 640px) 100vw, 66vw"
+            className="rounded-lg object-cover"
           />
         </div>
         <div className="relative w-full sm:w-1/3 h-64">
           <Image
-            height={300}
-            width={300}
+            fill
             src={project.mobileimage}
             alt={project.title}
-            className="rounded-lg w-full h-full object-cover"
+            sizes="(max-width: 640px) 100vw, 33vw"
+            className="rounded-lg object-cover"
           />
         </div>
       </div>
@@ -118,10 +124,35 @@ export default function ProjectDetailsClient({ projectId }: Props) {
       {/* Comment Section */}
       <div className="mt-10">
         <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Leave a Comment</h3>
+        
+        {/* 3. Dark Mode Fixed Form Inputs */}
         <form onSubmit={handleCommentSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input type="text" name="name" placeholder="Name" required value={commentData.name} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
-          <input type="email" name="email" placeholder="Email" required value={commentData.email} onChange={handleChange} className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900" />
-          <textarea name="message" placeholder="Your Comment" required value={commentData.message} onChange={handleChange} className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900"></textarea>
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Name" 
+            required 
+            value={commentData.name} 
+            onChange={handleChange} 
+            className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" 
+          />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            required 
+            value={commentData.email} 
+            onChange={handleChange} 
+            className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" 
+          />
+          <textarea 
+            name="message" 
+            placeholder="Your Comment" 
+            required 
+            value={commentData.message} 
+            onChange={handleChange} 
+            className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          ></textarea>
           <BlobsButton type="submit" className="col-span-2 px-5 py-1">
             Submit Comment
           </BlobsButton>

@@ -204,7 +204,7 @@
     "projects": [
       {
         "id": 12,
-        "title": "Optivus[Gulpjs] (FramerBite clone) Paid Theme",
+        "title": "Optivus[Gulpjs] (FramerBite clone) premium Theme",
         "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
@@ -222,8 +222,8 @@
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1773884991/urljjxkn3fwlxsv3ocxu.webp",
         "techStack": "Nextjs, TypeScript, Tailwind, Tanstack-Query",
         "endtrac": "Frontend",
-        "githubLink": "#privet-repo",
-        "liveLink": "https://hospitalia-web.dhrubok.xyz/",
+        "githubLink": "https://github.com/rashaduldev/hospitalia-web",
+        "liveLink": "https://hospitalia-web.vercel.app",
         "status": "Latest"
       },
       {

@@ -1,6 +1,13 @@
 import ProjectDetailsClient from "@/components/Projects/ProjectsDetails";
-export default function ProjectDetailsPage({ params }: any) {
-  return <ProjectDetailsClient projectId={params.id} />;
+
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ProjectDetailsPage({ params }: Props) {
+  const resolvedParams = await params;
+
+  return <ProjectDetailsClient projectId={resolvedParams.id} />;
 }
 
 // Metadata
@@ -27,5 +34,6 @@ export async function generateStaticParams() {
     "13",
     "14",
   ];
+
   return projectIds.map((id) => ({ id }));
 }
