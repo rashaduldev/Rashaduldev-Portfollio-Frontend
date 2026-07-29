@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { LayoutContext } from "./context";
 import clsx from "clsx";
 import Link from "next/link";
-import { FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ProjectCard from "./Projects/ProjectCard";
 
@@ -63,12 +62,12 @@ const ProjectsSection = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          <span className="text-[11px] font-bold uppercase tracking-[.2em] text-primary dark:text-primary">
+          <span className="text-primary dark:text-primary">
             {ps.projectsHeading || "Projects"}
           </span>
         </div>
 
-        <h2 className="flex-1 text-center text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h2>
           {ps.trustedProjects || "Latest Projects"}
         </h2>
 
@@ -77,10 +76,9 @@ const ProjectsSection = () => {
             href="/projects"
             className="inline-flex items-center gap-1.5 text-[13px] font-medium
                        text-primary dark:text-primary hover:underline
-                       hover:opacity-75 transition-opacity duration-200"
+                       hover:opacity-75 transition-opacity duration-200 underline"
           >
             {ps.viewallproject || "View All Projects"}
-            <FaExternalLinkAlt size={9} />
           </Link>
         </div>
       </motion.div>

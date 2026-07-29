@@ -40,7 +40,7 @@ export default function ServicesCarousel() {
 
   return (
     <section className="w-full py-12 mx-auto">
-      <h2 className="mb-8 text-center text-2xl font-semibold">
+      <h2 className="mb-8 text-center">
         {translations.services?.title || "Services I Offer"}
       </h2>
 

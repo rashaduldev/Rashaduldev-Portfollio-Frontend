@@ -1,4 +1,5 @@
 "use client";
+
 import BlobsButton from "@/components/Common/Blobsbutton";
 import { Mail } from "lucide-react";
 import { useContext } from "react";
@@ -179,7 +180,7 @@ export default function Footer() {
             <div className="flex-1">
               <Link href="/" className="flex w-fit justify-start">
                 <Image
-                  src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg" 
+                  src="https://res.cloudinary.com/de8yddexc/image/upload/v1765567136/vwleekmngplrdpdo1q9s.svg"
                   width={100}
                   height={75}
                   alt="My Brand Logo"
@@ -278,9 +279,9 @@ export default function Footer() {
           </Typography>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row items-start gap-4"
           >
-            <div className="flex-1">
+            <div className="flex-1 w-full sm:w-auto">
               <Controller
                 name="email"
                 control={control}
@@ -302,7 +303,11 @@ export default function Footer() {
                 </Typography>
               )}
             </div>
-            <BlobsButton type="submit" disabled={isSubmitting} className="w-fit px-5 py-1">
+            <BlobsButton 
+              type="submit" 
+              disabled={isSubmitting} 
+              className="w-fit px-5 py-1 self-start flex items-center justify-center"
+            >
               {isSubmitting ? (
                 "Subscribing..."
               ) : (
