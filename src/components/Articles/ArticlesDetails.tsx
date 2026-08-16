@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { LayoutContext } from "@/components/context";
 import BlobsButton from "../Common/Blobsbutton";
 import { FiClock, FiUser, FiShare2 } from "react-icons/fi";
 import { Input } from "../ui/input";
@@ -28,6 +29,8 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
   const params = useParams();
   const routeId = propId ?? (Array.isArray(params.id) ? params.id[0] : params.id);
   const related = relatedArticles || [];
+  const context = useContext(LayoutContext);
+  const fallbackArticle = context?.translations.latestArticlesSection?.articles.find((item) => String(item.id) === String(routeId));
 
   const [article, setArticle] = useState<ArticleItem | null>(null);
   const [likes, setLikes] = useState<number>(0);
@@ -42,11 +45,11 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
       setLikes((initialArticle as any).likes ?? 0);
       setComments(((initialArticle as any).comments || []).map((c: any) => c.content));
     } else {
-      setArticle(null);
-      setLikes(0);
+      setArticle(fallbackArticle ?? null);
+      setLikes((fallbackArticle as any)?.likes ?? 0);
       setComments([]);
     }
-  }, [routeId, initialArticle]);
+  }, [routeId, initialArticle, fallbackArticle]);
 
   const handleLike = () => {
     if (!routeId) return;

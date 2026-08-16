@@ -1,8 +1,8 @@
 import ArticleDetailsClient from "@/components/Articles/ArticlesDetails";
 import { getArticleById, getRelatedArticles } from "@/actions/articles/articles";
 
-const ArticleDetailsPage = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
+const ArticleDetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const id = (await params).id;
 
   let initialArticle = null;
   try {
