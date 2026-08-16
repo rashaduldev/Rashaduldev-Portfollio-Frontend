@@ -191,7 +191,8 @@ export interface ArticleItem {
   date: string;
   imageUrl: string;
   id: number;
-  description: string
+  description: string;
+  content?: string;
 }
 export interface ContactTranslations {
   heroTitle: string;

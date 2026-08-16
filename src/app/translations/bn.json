@@ -14,7 +14,7 @@
     "accept": "গ্রহণ করুন",
     "terms": "শর্তাবলি"
   },
-"main": {
+  "main": {
     "subtitle": "হ্যালো, আমি",
     "title": "মোঃ রাশাদুল ইসলাম",
     "stack": "জুনিয়র সফটওয়্যার ইঞ্জিনিয়ার",
@@ -431,6 +431,7 @@
         "date": "৫ মে, ২০২৫",
         "imageUrl": "https://res.cloudinary.com/de8yddexc/image/upload/v1747043199/resume/article-1.jpg",
         "id": 1,
+        "content": "React Hooks ব্যবহার করে class component ছাড়াই stateful ও interactive component তৈরি করা যায়। সবচেয়ে পরিচিত hook হলো useState। এটি form field, menu, toggle, loading indicator এবং user action-এর পরে বদলে যাওয়া যেকোনো UI-এর জন্য local state তৈরি করে। State ছোট রাখা, পরিষ্কার নাম দেওয়া এবং নির্দিষ্ট event handler দিয়ে update করা ভালো অভ্যাস।\n\nuseEffect render-এর বাইরের কাজ পরিচালনা করে; যেমন data fetch করা, browser event subscribe করা, document metadata update করা বা কোনো external service-এর সাথে সংযোগ করা। Dependency list খুব গুরুত্বপূর্ণ, কারণ effect যে value ব্যবহার করে তা সেখানে থাকলে value বদলালে React আবার effect চালায়। Timer, listener ও subscription-এর cleanup করলে memory leak এড়ানো যায়।\n\nProject বড় হলে custom hook বারবার ব্যবহৃত stateful behavior আলাদা করতে সাহায্য করে। Data fetching, form validation, local storage, media query বা authentication state custom hook-এ রাখা যায়। প্রতিটি কাজের জন্য hook বানানোর দরকার নেই; বরং পরিষ্কার উদ্দেশ্যসহ পুনর্ব্যবহারযোগ্য behavior বের করে আনলেই component সহজে test ও maintain করা যায়।",
         "description": "React Hooks যেমন useState, useEffect এবং কাস্টম হুক ব্যবহার করে কিভাবে পরিষ্কার ও পুনঃব্যবহারযোগ্য কম্পোনেন্ট তৈরি করবেন শিখুন।"
       },
       {
@@ -439,6 +440,7 @@
         "date": "৩ মে, ২০২৫",
         "imageUrl": "https://res.cloudinary.com/de8yddexc/image/upload/v1748272192/resume/articles/bliichmqowukhyzyzs3u.jpg",
         "id": 2,
+        "content": "Server Component আধুনিক Next.js application-এর গুরুত্বপূর্ণ অংশ। এটি default হিসেবে server-এ render হয়, তাই database বা secure environment variable ব্যবহার করে browser-এ অপ্রয়োজনীয় JavaScript পাঠানো ছাড়াই HTML তৈরি করা যায়। এর ফলে initial load কমে এবং page দ্রুত responsive মনে হয়।\n\nPage, layout, database query এবং এমন content-এর জন্য Server Component উপযোগী যেখানে সরাসরি browser interaction দরকার নেই। অন্যদিকে event handler, local state, browser API বা interactive control দরকার হলে Client Component ব্যবহার করতে হয়। Client boundary ছোট রাখলে bundle size কমে এবং performance ভালো থাকে।\n\nবাস্তবে দুই ধরনের component একসঙ্গে ব্যবহার করাই সবচেয়ে কার্যকর। Server Component-এ data fetch ও prepare করে প্রয়োজনীয় props ছোট Client Component-এ পাঠান। সেখানে filter, form বা button-এর মতো interaction রাখুন। এতে sensitive কাজ server-এ থাকে, request waterfall কমে এবং data loading ও UI interaction-এর দায়িত্ব আলাদা থাকে।",
         "description": "Next.js-এ সার্ভার কম্পোনেন্টের শক্তি এবং কিভাবে এগুলো সার্ভারে রেন্ডার করে পারফরম্যান্স অপটিমাইজ করে তা বুঝুন।"
       },
       {
@@ -447,6 +449,7 @@
         "date": "২৮ এপ্রিল, ২০২৫",
         "imageUrl": "https://res.cloudinary.com/de8yddexc/image/upload/v1748272192/resume/articles/ga2yimlzvnltnw7kefew.jpg",
         "id": 3,
+        "content": "Website performance কোনো একক optimization নয়; design, code, asset এবং hosting-এর অনেক ছোট সিদ্ধান্তের সম্মিলিত ফল। Lighthouse, browser performance tool এবং Core Web Vitals দিয়ে বাস্তব page মাপা শুরু করুন। এতে বোঝা যায় visitor বড় image, render-blocking CSS, unused JavaScript, slow API response নাকি অতিরিক্ত third-party script-এর জন্য অপেক্ষা করছে।\n\nবেশির ভাগ page-এ image সবচেয়ে বড় resource। Responsive size, WebP বা AVIF-এর মতো modern format এবং below-the-fold content-এর জন্য lazy loading ব্যবহার করুন। JavaScript-এর ক্ষেত্রে বড় feature ছোট chunk-এ ভাগ করুন এবং প্রয়োজন হলেই optional UI load করুন। Unused dependency বাদ দেওয়া, initial render-এর ভারী কাজ কমানো ও উপযুক্ত caching page interactive হওয়ার সময় কমায়।\n\nPerformance-কে শেষের polish হিসেবে না দেখে development workflow-এর অংশ করুন। Performance budget ঠিক করুন, ধীর device ও network-এ পরীক্ষা করুন এবং নতুন feature যোগ করার সময় bundle change review করুন। দ্রুত website accessibility, search visibility, conversion এবং visitor-এর বিশ্বাস—সবকিছু উন্নত করে।",
         "description": "আপনার ওয়েবসাইটের গতি উন্নত করার জন্য নতুন কৌশল ও টুলস যেমন lazy loading, কোড স্প্লিটিং, এবং ইমেজ অপ্টিমাইজেশন নিয়ে আলোচনা।"
       }
     ]
