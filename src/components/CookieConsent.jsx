@@ -3,7 +3,9 @@
 import { useState, useEffect, useContext } from "react";
 import { LayoutContext } from "@/components/context";
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
+import AppButton from "@/components/Common/AppButton";
+import BlobsButton from "./Common/Blobsbutton";
+import Link from "next/link";
 
 const CookieConsent = () => {
   const context = useContext(LayoutContext);
@@ -65,19 +67,20 @@ const CookieConsent = () => {
           isRTL ? "justify-start flex-row-reverse" : "justify-between"
         }`}
       >
-        <Button
-          onClick={acceptCookies}
-          className="bg-primary hover:bg-primary text-white dark:bg-primary dark:hover:bg-primary dark:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        <BlobsButton asChild onClick={acceptCookies}
+          variant="default"
+          className="px-5 py-1"
         >
           {translations.cookieConsent.accept}
-        </Button>
-
-        <Button
-          onClick={goToTerms}
-          className="bg-gray-700 hover:bg-gray-800 text-white dark:bg-gray-200 dark:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+              </BlobsButton>
+               <BlobsButton onClick={goToTerms} asChild
+          variant="default"
+          className="px-5 py-1"
         >
+          <Link href="/cookies-policy" className="w-full h-full flex items-center justify-center">
           {translations.cookieConsent.terms || "Terms & Conditions"}
-        </Button>
+          </Link>
+              </BlobsButton>
       </div>
     </div>
   );

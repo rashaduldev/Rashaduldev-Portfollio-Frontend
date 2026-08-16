@@ -8,7 +8,9 @@ const PUBLIC_ROUTES = [
   "/contact",
   "/github",
   "/articles",
-  "/articles/:id"
+  "/articles/:id",
+  "/projects/:id",
+  "/cookies-policy",
 ];
 
 // Regex to match public routes and any sub-paths

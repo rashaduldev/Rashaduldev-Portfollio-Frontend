@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Rashaduldev – Home",
+  title: "Rashaduldev – Portfolio",
   description: "Frontend Developer Portfolio",
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
         <AosInitializer />
         <Script
           defer
-          data-domain="rashaduldev01.vercel.app"
+          data-domain="rashaduldev.vercel.app"
           src="https://plausible.io/js/script.js"
         />
 

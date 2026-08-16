@@ -1,173 +1,58 @@
 "use client";
 
-import { useContext, useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
-import { FaGithub, FaLink, FaHeart, FaShareAlt } from "react-icons/fa";
-import { Project } from "@/types/translations";
 import Link from "next/link";
-import { LayoutContext } from "../context";
+import { FaGithub, FaHeart, FaLink, FaShareAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 import BlobsButton from "../Common/Blobsbutton";
 
-type Comment = {
-  name: string;
-  email: string;
-  message: string;
-};
+const api = (path: string) => `${process.env.NEXT_PUBLIC_API_URL}/api${path}`;
+type Comment = { _id?: string; name: string; content: string; createdAt: string };
+type Project = { _id: string; title: string; description: string; techStack?: string[]; images?: { url: string }[]; githubUrl?: string; liveUrl?: string; likes?: number; comments?: Comment[] };
 
-interface Props {
-  projectId: string;
-}
-
-export default function ProjectDetailsClient({ projectId }: Props) {
-  const context = useContext(LayoutContext);
-  if (!context) {
-    throw new Error("LayoutContext must be used within a LayoutContext.Provider");
-  }
-
-  const { translations, isRTL } = context;
-  const projects: Project[] = translations.projectsSection?.projects || [];
-
-  const [likes, setLikes] = useState<number>(0);
+export default function ProjectDetailsClient({ projectId }: { projectId: string }) {
+  const [project, setProject] = useState<Project | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [commentData, setCommentData] = useState<Comment>({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", content: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const project = projects.find((p) => String(p.id) === projectId);
-
-  // 1. Safe localStorage reading with try...catch
   useEffect(() => {
-    if (!projectId) return;
-    try {
-      const storedLikes = localStorage.getItem(`likes-${projectId}`);
-      const storedComments = localStorage.getItem(`comments-${projectId}`);
-
-      if (storedLikes) setLikes(parseInt(storedLikes, 10));
-      if (storedComments) setComments(JSON.parse(storedComments));
-    } catch (error) {
-      console.error("Error reading from localStorage:", error);
-    }
+    fetch(api(`/projects/${projectId}`)).then((res) => res.json()).then((data) => {
+      setProject(data.data ?? null);
+      setComments(data.data?.comments ?? []);
+    }).catch(() => toast.error("Unable to load this project."));
   }, [projectId]);
 
-  if (!project) {
-    return (
-      <div className="mt-24 text-center text-gray-700 dark:text-gray-300">
-        Project not found.
-      </div>
-    );
-  }
-
-  const handleLike = () => {
-    const newLikes = likes + 1;
-    setLikes(newLikes);
-    localStorage.setItem(`likes-${projectId}`, newLikes.toString());
+  const handleLike = async () => {
+    const res = await fetch(api(`/projects/${projectId}/like`), { method: "POST" });
+    const data = await res.json();
+    if (data.data?.likes !== undefined) setProject((current) => current ? { ...current, likes: data.data.likes } : current);
   };
 
-  const handleCommentSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newComments = [...comments, commentData];
-    setComments(newComments);
-    localStorage.setItem(`comments-${projectId}`, JSON.stringify(newComments));
-    setCommentData({ name: "", email: "", message: "" });
+  const submitComment = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); setSubmitting(true);
+    try {
+      const res = await fetch(api(`/projects/${projectId}/comments`), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message);
+      setComments(data.data); setForm({ name: "", content: "" }); toast.success("Comment submitted.");
+    } catch (error) { toast.error(error instanceof Error ? error.message : "Could not submit comment."); }
+    finally { setSubmitting(false); }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setCommentData({ ...commentData, [e.target.name]: e.target.value });
+  const share = async () => {
+    if (navigator.share) await navigator.share({ title: project?.title, url: window.location.href });
+    else { await navigator.clipboard.writeText(window.location.href); toast.success("Link copied to clipboard."); }
   };
 
-  return (
-    <div className={`max-w-5xl md:mx-auto mx-3 min-h-screen transition-colors duration-300 ${isRTL ? "text-right" : "text-left"}`}>
-      <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">{project.title}</h1>
-      <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{project.techStack}</p>
-
-      {/* 2. Responsive Next.js Images with fill & sizes */}
-      <div className="flex gap-6 flex-col sm:flex-row mb-10">
-        <div className="relative w-full sm:w-2/3 h-64">
-          <Image
-            fill
-            src={project.desktopimage}
-            alt={project.title}
-            sizes="(max-width: 640px) 100vw, 66vw"
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <div className="relative w-full sm:w-1/3 h-64">
-          <Image
-            fill
-            src={project.mobileimage}
-            alt={project.title}
-            sizes="(max-width: 640px) 100vw, 33vw"
-            className="rounded-lg object-cover"
-          />
-        </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex gap-6 items-center mb-8">
-        <button onClick={handleLike} className="flex items-center gap-2 text-red-600 dark:text-red-400 hover:scale-105 transition">
-          <FaHeart /> {likes}
-        </button>
-        <Link href={project.githubLink || "#"} target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-gray-100">
-          <FaGithub size={20} />
-        </Link>
-        <Link href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-          <FaLink size={20} />
-        </Link>
-        <button className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100">
-          <FaShareAlt size={20} />
-        </button>
-      </div>
-
-      {/* Comment Section */}
-      <div className="mt-10">
-        <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Leave a Comment</h3>
-        
-        {/* 3. Dark Mode Fixed Form Inputs */}
-        <form onSubmit={handleCommentSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input 
-            type="text" 
-            name="name" 
-            placeholder="Name" 
-            required 
-            value={commentData.name} 
-            onChange={handleChange} 
-            className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" 
-          />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" 
-            required 
-            value={commentData.email} 
-            onChange={handleChange} 
-            className="p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" 
-          />
-          <textarea 
-            name="message" 
-            placeholder="Your Comment" 
-            required 
-            value={commentData.message} 
-            onChange={handleChange} 
-            className="sm:col-span-2 p-2 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-          ></textarea>
-          <BlobsButton type="submit" className="col-span-2 px-5 py-1">
-            Submit Comment
-          </BlobsButton>
-        </form>
-
-        <div className="mt-8 space-y-4">
-          {comments.map((cmt, index) => (
-            <div key={index} className="border dark:border-gray-700 rounded-md p-4 bg-gray-50 dark:bg-gray-900">
-              <p className="font-semibold text-gray-900 dark:text-gray-100">{cmt.name}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{cmt.email}</p>
-              <p className="text-gray-700 dark:text-gray-300 mt-2">{cmt.message}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+  if (!project) return <div className="mt-24 text-center">Loading project...</div>;
+  const images = project.images ?? [];
+  return <div className="max-w-5xl md:mx-auto mx-3 min-h-screen">
+    <h1 className="text-3xl font-bold mb-4">{project.title}</h1><p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
+    {!!project.techStack?.length && <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{project.techStack.join(", ")}</p>}
+    {!!images.length && <div className="grid gap-6 sm:grid-cols-2 mb-10">{images.map((image, index) => <div key={image.url} className="relative h-64"><Image fill src={image.url} alt={`${project.title} screenshot ${index + 1}`} sizes="(max-width: 640px) 100vw, 50vw" className="rounded-lg object-cover" /></div>)}</div>}
+    <div className="flex gap-6 items-center mb-8"><button onClick={handleLike} className="flex items-center gap-2 text-red-600"><FaHeart /> {project.likes ?? 0}</button>{project.githubUrl && <Link href={project.githubUrl} target="_blank"><FaGithub size={20} /></Link>}{project.liveUrl && <Link href={project.liveUrl} target="_blank"><FaLink size={20} /></Link>}<button onClick={share}><FaShareAlt size={20} /></button></div>
+    <section className="mt-10"><h2 className="text-xl font-semibold mb-4">Comments ({comments.length})</h2><form onSubmit={submitComment} className="grid gap-4"><input required value={form.name} onChange={(e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })} placeholder="Name" className="p-2 rounded-md border bg-white dark:bg-gray-800" /><textarea required value={form.content} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setForm({ ...form, content: e.target.value })} placeholder="Your comment" className="p-2 rounded-md border bg-white dark:bg-gray-800" /><BlobsButton disabled={submitting} type="submit" className="px-5 py-1">{submitting ? "Submitting..." : "Submit comment"}</BlobsButton></form><div className="mt-8 space-y-4">{comments.map((comment) => <div key={comment._id ?? `${comment.name}-${comment.createdAt}`} className="border rounded-md p-4"><p className="font-semibold">{comment.name}</p><p className="mt-2">{comment.content}</p><time className="text-xs text-gray-500">{new Date(comment.createdAt).toLocaleDateString()}</time></div>)}</div></section>
+  </div>;
 }

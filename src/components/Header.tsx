@@ -124,7 +124,7 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between py-2 section-container">
-          {/* 1. Logo (Left) */}
+          {/* Logo (Left) */}
           <div className="shrink-0">
             <Link href="/">
               <Image 
@@ -202,7 +202,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-
+      {/* mobile menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div

@@ -11,6 +11,7 @@ export type SiteSettings = {
   ogImage?: string;
   enableSitemap?: boolean;
   googleAnalyticsId?: string;
+  cookiePolicy?: { title?: string; bannerImage?: string; content?: string };
 };
 
 // GET /settings — public, returns the singleton settings document
