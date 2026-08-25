@@ -204,14 +204,14 @@
     "projects": [
       {
         "id": 12,
-        "title": "Optivus[Gulpjs] (FramerBite clone) premium Theme",
+        "title": "Optivus premium Theme",
         "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
         "techStack": "HTML5, CSS3, Tailwind, JavaScript, Gulpjs",
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Optivus-gulpjs",
-        "liveLink": "http://optivus.uivibe.me",
+        "liveLink": "https://optivus-nextplate.vercel.app",
         "status": "Old"
       },
       {
@@ -228,7 +228,7 @@
       },
       {
         "id": 13,
-        "title": "Optivus (FramerBite clone) Paid Theme",
+        "title": "Optivus premium Theme",
         "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1754924031/header_kvsoek.avif",
@@ -240,7 +240,7 @@
       },
       {
         "id": 14,
-        "title": "Ena-Ema Technologies (Company Website)",
+        "title": "Ena-Ema Technologies Landing Page",
         "description": "Developed a professional, fully responsive frontend project using Nextjs for modern React-based development and server-side rendering. Delivered clean, maintainable code with modular components and a user-focused design. Implemented optimized logic for performance, SEO, and fast page loads. Ensured 100% mobile responsiveness with a polished, professional experience across all devices.",
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814005/ena-ema_desktop_hmyed1.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814004/ena-ema_mobile_n2ibte.png",
@@ -249,10 +249,22 @@
         "githubLink": "https://github.com/rashaduldev/ena-ema-frontend-task",
         "liveLink": "https://ena-ema-landing.vercel.app",
         "status": "Latest"
+      }, 
+      {
+        "id": 15,
+        "title": "Cerrajeria-Urgente-Quito",
+        "description": "Professional 24/7 mobile locksmith service. Lock opening, key duplication, RFID card and tag cloning, vehicles, safes, and more in Quito.",
+        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1787495615/ndyiqa8tdrnrtx7cgm4u.png",
+        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1787495615/ndyiqa8tdrnrtx7cgm4u.png",
+        "techStack": "HTML5, CSS3, JavaScript",
+        "endtrac": "Frontend",
+        "githubLink": "#private",
+        "liveLink": "https://cerrajeria-urgente-quito.vercel.app",
+        "status": "Latest"
       },
       {
         "id": 11,
-        "title": "HTML Tailwind Dashboard",
+        "title": "CEM Dashboard",
         "description": "A fully responsive CRM dashboard built with pure HTML and Tailwind CSS—no frameworks or libraries used. Clean UI, mobile-friendly layout, and lightweight design focused on frontend presentation only.",
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859245/html-tailwind-dashboard-vercel-app_dregzi.jpg",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750859408/53bc20bf-3f99-4128-a240-d299dff8554c.png",
@@ -306,7 +318,6 @@
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748169533/resume/projects/qdmydctclgsjll5kgq53.png",
         "techStack": "HTML5, CSS3, React.js, JavaScript",
-
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Course-learning-Front-end",
         "liveLink": "https://learning.tripleibd.com",

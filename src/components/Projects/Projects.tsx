@@ -16,6 +16,14 @@ const containerVariants = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
+const normalizeTech = (tech: string) => tech.trim().toLocaleLowerCase();
+
+const getProjectTechs = (techStack: string) =>
+  techStack
+    .split(",")
+    .map(normalizeTech)
+    .filter(Boolean);
+
 const Projects = () => {
   const context = useContext(LayoutContext);
   if (!context) {
@@ -41,18 +49,21 @@ const Projects = () => {
     return Array.from(set).sort();
   }, [projects]);
 
-  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+  // Store normalized values so toggling is unaffected by casing or whitespace
+  // differences in project data.
+  const [selectedTechs, setSelectedTechs] = useState<Set<string>>(
+    () => new Set(),
+  );
   const [sortBy, setSortBy] = useState<SortOption>("endtrac-desc");
 
   const filteredProjects = useMemo(() => {
     let filtered = [...projects];
 
-    if (selectedTechs.length > 0) {
-      filtered = filtered.filter((p) =>
-        selectedTechs.every((tech) =>
-          p.techStack.toLowerCase().includes(tech.toLowerCase()),
-        ),
-      );
+    if (selectedTechs.size > 0) {
+      filtered = filtered.filter((p) => {
+        const projectTechs = new Set(getProjectTechs(p.techStack));
+        return Array.from(selectedTechs).every((tech) => projectTechs.has(tech));
+      });
     }
 
     filtered.sort((a, b) => {
@@ -73,9 +84,19 @@ const Projects = () => {
   }, [projects, selectedTechs, sortBy]);
 
   const toggleTech = (tech: string) => {
-    setSelectedTechs((prev) =>
-      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
-    );
+    const normalizedTech = normalizeTech(tech);
+
+    setSelectedTechs((previous) => {
+      const next = new Set(previous);
+
+      if (next.has(normalizedTech)) {
+        next.delete(normalizedTech);
+      } else {
+        next.add(normalizedTech);
+      }
+
+      return next;
+    });
   };
 
   return (
@@ -118,11 +139,13 @@ const Projects = () => {
       >
         <div className="flex flex-wrap gap-2 w-full sm:max-w-2xl">
           {techStacks.map((tech) => {
-            const active = selectedTechs.includes(tech);
+            const active = selectedTechs.has(normalizeTech(tech));
             return (
               <button
                 key={tech}
+                type="button"
                 onClick={() => toggleTech(tech)}
+                aria-pressed={active}
                 className={clsx(
                   "px-3 py-1 rounded-full border text-[12px] font-medium transition-all duration-200 cursor-pointer",
                   active
@@ -134,6 +157,15 @@ const Projects = () => {
               </button>
             );
           })}
+          {selectedTechs.size > 0 && (
+            <button
+              type="button"
+              onClick={() => setSelectedTechs(new Set())}
+              className="px-3 py-1 rounded-full border border-gray-300 dark:border-white/20 text-[12px] font-medium text-gray-600 dark:text-gray-300 transition-colors hover:border-primary hover:text-primary"
+            >
+              Clear filters
+            </button>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
@@ -159,10 +191,12 @@ const Projects = () => {
 
       {/* Projects Grid */}
       <motion.div
+        // Changing filters can mount cards that were previously hidden. Remount
+        // the stagger container so every visible card receives its "show" state.
+        key={filteredProjects.map((project) => project.id).join("-") || "empty"}
         variants={containerVariants}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.05 }}
+        animate="show"
         className={clsx(
           "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5",
           isRTL ? "direction-rtl text-right" : "text-left",
