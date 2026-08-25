@@ -14,12 +14,14 @@ import {
   Subscript,
   Wrench,
   FileText,
+  Newspaper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
   { icon: FolderCode, label: "Projects", href: "/dashboard/projects" },
+  { icon: Newspaper, label: "Articles", href: "/dashboard/articles" },
   { icon: User, label: "Profile", href: "/dashboard/profile" },
   { icon: Wrench, label: "Skills", href: "/dashboard/skills" },
   { icon: FileText, label: "Resume", href: "/dashboard/resume" },

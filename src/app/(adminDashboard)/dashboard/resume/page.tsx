@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Plus, Pencil, Trash2, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Loader2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -43,6 +43,7 @@ type Entry = {
   endDate?: string | null;
   current?: boolean;
   description?: string;
+  isActive?: boolean;
 };
 
 const toDateInput = (d?: string | null) => (d ? d.slice(0, 10) : "");
@@ -102,7 +103,7 @@ export default function ResumePage() {
   const openCreate = (k: Kind) => {
     setKind(k);
     setEditing(null);
-    setForm({ current: false });
+    setForm({ current: false, isActive: true });
     setOpen(true);
   };
 
@@ -119,6 +120,7 @@ export default function ResumePage() {
       startDate: toDateInput(e.startDate),
       endDate: toDateInput(e.endDate),
       current: !!e.current,
+      isActive: e.isActive ?? true,
       description: e.description ?? "",
     });
     setOpen(true);
@@ -150,6 +152,8 @@ export default function ResumePage() {
               key={e._id}
               title={`${e.role} @ ${e.company}`}
               subtitle={`${toDateInput(e.startDate)} — ${e.current ? "Present" : toDateInput(e.endDate) || "—"}`}
+              isActive={e.isActive ?? true}
+              onToggleActive={() => updateExperience(e._id, { isActive: !(e.isActive ?? true) }).then(() => invalidate("experience"))}
               onEdit={() => openEdit("experience", e)}
               onDelete={() =>
                 setToDelete({ k: "experience", id: e._id, label: `${e.role} @ ${e.company}` })
@@ -176,6 +180,8 @@ export default function ResumePage() {
               key={e._id}
               title={`${e.degree} — ${e.institution}`}
               subtitle={`${toDateInput(e.startDate)} — ${e.current ? "Present" : toDateInput(e.endDate) || "—"}`}
+              isActive={e.isActive ?? true}
+              onToggleActive={() => updateEducation(e._id, { isActive: !(e.isActive ?? true) }).then(() => invalidate("education"))}
               onEdit={() => openEdit("education", e)}
               onDelete={() =>
                 setToDelete({ k: "education", id: e._id, label: `${e.degree} — ${e.institution}` })
@@ -226,6 +232,10 @@ export default function ResumePage() {
               <input type="checkbox" checked={!!form.current} onChange={(e) => setForm({ ...form, current: e.target.checked })} />
               Currently ongoing
             </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" checked={form.isActive ?? true} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} />
+              Show on website
+            </label>
             <Textarea placeholder="Description" value={form.description ?? ""} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           </div>
           <DialogFooter>
@@ -270,11 +280,15 @@ export default function ResumePage() {
 function Row({
   title,
   subtitle,
+  isActive,
+  onToggleActive,
   onEdit,
   onDelete,
 }: {
   title: string;
   subtitle: string;
+  isActive: boolean;
+  onToggleActive: () => void;
   onEdit: () => void;
   onDelete: () => void;
 }) {
@@ -285,6 +299,9 @@ function Row({
         <p className="text-sm text-slate-500">{subtitle}</p>
       </div>
       <div className="flex gap-2">
+        <Button variant="ghost" size="icon" title={isActive ? "Hide from website" : "Show on website"} onClick={onToggleActive}>
+          {isActive ? <Eye className="h-4 w-4 text-emerald-600" /> : <EyeOff className="h-4 w-4 text-slate-400" />}
+        </Button>
         <Button variant="ghost" size="icon" onClick={onEdit}>
           <Pencil className="h-4 w-4" />
         </Button>

@@ -1,13 +1,26 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { LayoutContext } from "@/components/context";
 import Link from "next/link";
 import Image from "next/image";
 import { ArticleItem } from "@/types/translations";
+import { getArticles } from "@/actions/articles/articles";
 
 export default function Articles() {
   const context = useContext(LayoutContext);
-  const articles = context?.translations?.latestArticlesSection?.articles || [];
+  const fallbackArticles = context?.translations?.latestArticlesSection?.articles || [];
+  const { data: articlesResponse } = useQuery({ queryKey: ["public-articles"], queryFn: () => getArticles({ limit: 100 }) });
+  const articles: ArticleItem[] = useMemo(() => {
+    const managedArticles = articlesResponse?.payload;
+    if (!Array.isArray(managedArticles) || managedArticles.length === 0) return fallbackArticles;
+    return managedArticles.map((article: any) => ({
+      id: article._id, title: article.title, category: article.category ?? "Article",
+      date: article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : "",
+      imageUrl: article.coverImage?.url ?? "https://placehold.co/1200x720/png?text=Article",
+      description: article.excerpt ?? "",
+    }));
+  }, [articlesResponse?.payload, fallbackArticles]);
 
   if (articles.length === 0)
     return <p className="text-center my-28">No articles found.</p>;

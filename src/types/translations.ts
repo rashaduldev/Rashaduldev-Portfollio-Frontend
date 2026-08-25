@@ -126,7 +126,7 @@ export interface Project {
   mobileimage: string;
   techStack: string;
   endtrac: string;
-  id: number;
+  id: number | string;
   githubLink: string;
   liveLink: string;
   status: string;
@@ -190,7 +190,7 @@ export interface ArticleItem {
   category: string;
   date: string;
   imageUrl: string;
-  id: number;
+  id: number | string;
   description: string;
   content?: string;
 }

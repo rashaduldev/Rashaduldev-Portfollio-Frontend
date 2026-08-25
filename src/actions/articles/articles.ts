@@ -46,6 +46,17 @@ export async function getArticles(params?: {
   return res;
 }
 
+// Authenticated listing, used by the dashboard to include draft and archived posts.
+export async function getAdminArticles() {
+  const token = await getAccessToken();
+  return apiClient({
+    endpoint: "/articles",
+    method: "GET",
+    params: { limit: "100" },
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
 /* ------------------------------------------
    GET ARTICLE BY ID
 ------------------------------------------ */
@@ -93,6 +104,7 @@ export async function createArticle(data: {
   tags?: string[];
   category?: string;
   status?: string;
+  isFeatured?: boolean;
   coverImage?: File; // important
 }) {
   const token = await getAccessToken();
@@ -106,6 +118,7 @@ export async function createArticle(data: {
   if (data.contentType) formData.append("contentType", data.contentType);
   if (data.category) formData.append("category", data.category);
   if (data.status) formData.append("status", data.status);
+  if (data.isFeatured !== undefined) formData.append("isFeatured", String(data.isFeatured));
 
   // tags array
   if (data.tags?.length) {
@@ -142,6 +155,7 @@ export async function updateArticle(
     tags: string[];
     category: string;
     status: string;
+    isFeatured: boolean;
     coverImage: File;
   }>
 ) {

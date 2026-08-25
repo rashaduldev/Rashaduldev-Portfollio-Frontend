@@ -11,6 +11,7 @@ export type ExperienceInput = {
   endDate?: string | null;
   current?: boolean;
   description?: string;
+  isActive?: boolean;
   order?: number;
 };
 
@@ -22,6 +23,7 @@ export type EducationInput = {
   endDate?: string | null;
   current?: boolean;
   description?: string;
+  isActive?: boolean;
   order?: number;
 };
 
@@ -32,7 +34,7 @@ async function authHeaders() {
 
 // ─── Experience ─────────────────────────────────────────────────────────────
 export async function getExperience() {
-  return apiClient({ endpoint: "/resume/experience", method: "GET" });
+  return apiClient({ endpoint: "/resume/experience", method: "GET", headers: await authHeaders() });
 }
 
 export async function createExperience(data: ExperienceInput) {
@@ -63,7 +65,7 @@ export async function deleteExperience(id: string) {
 
 // ─── Education ──────────────────────────────────────────────────────────────
 export async function getEducation() {
-  return apiClient({ endpoint: "/resume/education", method: "GET" });
+  return apiClient({ endpoint: "/resume/education", method: "GET", headers: await authHeaders() });
 }
 
 export async function createEducation(data: EducationInput) {

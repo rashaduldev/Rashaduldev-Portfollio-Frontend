@@ -11,7 +11,7 @@ import { Input } from "../ui/input";
 import toast from "react-hot-toast";
 
 type ArticleItem = {
-  id: number;
+  id: number | string;
   title: string;
   imageUrl: string;
   category: string;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Plus, Star, Pencil, Trash2, Loader2 } from "lucide-react";
+import { Plus, Star, Pencil, Trash2, Loader2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -127,6 +127,20 @@ export default function ProjectsListPage() {
     onError: () => toast.error("Failed to delete project"),
   });
 
+  const toggleProjectMutation = useMutation({
+    mutationFn: ({ id, changes }: { id: string; changes: Pick<Project, "isPublished" | "isFeatured"> }) => {
+      const data = new FormData();
+      if (changes.isPublished !== undefined) data.append("isPublished", String(changes.isPublished));
+      if (changes.isFeatured !== undefined) data.append("isFeatured", String(changes.isFeatured));
+      return updateProject(id, data);
+    },
+    onSuccess: (r) => {
+      if (!r.success) return toast.error(r.message || "Could not update project");
+      queryClient.invalidateQueries({ queryKey: ["admin-projects"] });
+    },
+    onError: () => toast.error("Could not update project"),
+  });
+
   const openCreate = () => {
     setEditing(null);
     setForm({ ...emptyForm });
@@ -231,6 +245,24 @@ export default function ProjectsListPage() {
                   </Badge>
                 </TableCell>
                 <TableCell className="space-x-2 text-right">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    title={p.isPublished ? "Hide from website" : "Publish project"}
+                    onClick={() => toggleProjectMutation.mutate({ id: p._id, changes: { isPublished: !(p.isPublished ?? true) } })}
+                    disabled={toggleProjectMutation.isPending}
+                  >
+                    {p.isPublished ? <Eye className="h-4 w-4 text-emerald-600" /> : <EyeOff className="h-4 w-4 text-slate-400" />}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    title={p.isFeatured ? "Remove featured status" : "Mark as featured"}
+                    onClick={() => toggleProjectMutation.mutate({ id: p._id, changes: { isFeatured: !p.isFeatured } })}
+                    disabled={toggleProjectMutation.isPending}
+                  >
+                    <Star className={p.isFeatured ? "h-4 w-4 fill-yellow-400 text-yellow-400" : "h-4 w-4 text-slate-400"} />
+                  </Button>
                   <Button
                     variant="outline"
                     size="icon"
