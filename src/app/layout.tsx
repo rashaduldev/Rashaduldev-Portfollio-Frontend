@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from '@vercel/analytics/next';
 import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
@@ -47,6 +48,7 @@ export default function RootLayout({
             {children}
           </AppQueryProvider>
         </ClientProviders>
+        <Analytics />
       </body>
     </html>
   );
