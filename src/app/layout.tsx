@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning={true} lang="en" className="scroll-smooth">
+    <html suppressHydrationWarning={true} lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body suppressHydrationWarning={true} className={`${dmSerif.variable} ${dmSans.variable}`}>
         <AosInitializer />
         <Script

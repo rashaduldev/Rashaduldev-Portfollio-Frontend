@@ -9,9 +9,9 @@ import { getArticles } from "@/actions/articles/articles";
 
 export default function Articles() {
   const context = useContext(LayoutContext);
-  const fallbackArticles = context?.translations?.latestArticlesSection?.articles || [];
   const { data: articlesResponse } = useQuery({ queryKey: ["public-articles"], queryFn: () => getArticles({ limit: 100 }) });
   const articles: ArticleItem[] = useMemo(() => {
+    const fallbackArticles = context?.translations?.latestArticlesSection?.articles || [];
     const managedArticles = articlesResponse?.payload;
     if (!Array.isArray(managedArticles) || managedArticles.length === 0) return fallbackArticles;
     return managedArticles.map((article: any) => ({
@@ -20,7 +20,7 @@ export default function Articles() {
       imageUrl: article.coverImage?.url ?? "https://placehold.co/1200x720/png?text=Article",
       description: article.excerpt ?? "",
     }));
-  }, [articlesResponse?.payload, fallbackArticles]);
+  }, [articlesResponse?.payload, context?.translations?.latestArticlesSection?.articles]);
 
   if (articles.length === 0)
     return <p className="text-center my-28">No articles found.</p>;
@@ -42,6 +42,7 @@ export default function Articles() {
                 src={article.imageUrl}
                 alt={article.title}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover"
               />
             </div>

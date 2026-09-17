@@ -25,7 +25,9 @@ type LoginValues = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
   const router = useRouter();
-  const [recaptchaOk, setRecaptchaOk] = useState(false);
+  const siteKey = process.env.NEXT_PUBLIC_RECAPCHA_CLIENT_KEY as string;
+  const requiresCaptcha = process.env.NODE_ENV === "production";
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<LoginValues>({
@@ -46,27 +48,26 @@ export default function LoginForm() {
   // ✅ reCAPTCHA handler
   const handleCaptcha = async (token: string | null) => {
     if (!token) {
-      setRecaptchaOk(false);
+      setCaptchaToken(null);
       return;
     }
 
     try {
-      // optional: verify from backend
-      setRecaptchaOk(true);
+      setCaptchaToken(token);
     } catch {
-      setRecaptchaOk(false);
+      setCaptchaToken(null);
     }
   };
 
   // ✅ Submit
   const onSubmit = async (values: LoginValues) => {
-    if (!recaptchaOk) {
+    if (requiresCaptcha && !captchaToken) {
       toast.error("Please verify reCAPTCHA");
       return;
     }
 
     try {
-      const res = await login(values);
+      const res = await login({ ...values, captchaToken });
 
       if (!res.success) {
         setError("root", {
@@ -83,8 +84,6 @@ export default function LoginForm() {
       toast.error("Something went wrong");
     }
   };
-
-  const siteKey = process.env.NEXT_PUBLIC_RECAPCHA_CLIENT_KEY as string;
 
   return (
     <div className="space-y-6">
@@ -136,14 +135,14 @@ export default function LoginForm() {
           )}
 
           {/* reCAPTCHA */}
-          <div className="flex justify-center">
+          {requiresCaptcha && <div className="flex justify-center">
             <ReCAPTCHA sitekey={siteKey} onChange={handleCaptcha} />
-          </div>
+          </div>}
 
           {/* Submit */}
           <BlobsButton
             type="submit"
-            disabled={!recaptchaOk || isSubmitting}
+            disabled={(requiresCaptcha && !captchaToken) || isSubmitting}
             className="w-full px-5 py-1"
           >
             {isSubmitting ? "Signing in..." : "Sign In"}

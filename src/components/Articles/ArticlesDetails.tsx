@@ -10,6 +10,8 @@ import { FiClock, FiUser, FiShare2 } from "react-icons/fi";
 import { Input } from "../ui/input";
 import toast from "react-hot-toast";
 
+const api = (path: string) => `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, "")}/api${path}`;
+
 type ArticleItem = {
   id: number | string;
   title: string;
@@ -55,7 +57,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
     if (!routeId) return;
     (async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/id/${routeId}/like`, { method: 'POST' });
+        const res = await fetch(api(`/articles/id/${routeId}/like`), { method: 'POST' });
         const data = await res.json();
         if (data?.data?.likes !== undefined) setLikes(data.data.likes);
       } catch (err) {
@@ -92,7 +94,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
     }
     (async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/articles/id/${routeId}/comments`, {
+        const res = await fetch(api(`/articles/id/${routeId}/comments`), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: 'Anonymous', content: newComment.trim() }),
@@ -167,7 +169,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {related.map((r) => (
                   <Link key={r.id} href={`/articles/${r.id}`} className="block border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-full h-36"><Image src={r.imageUrl} alt={r.title} fill className="object-cover" /></div>
+                    <div className="relative w-full h-36"><Image src={r.imageUrl} alt={r.title} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" /></div>
                     <div className="p-3"><h4 className="text-sm font-medium">{r.title}</h4><div className="text-xs text-gray-500">{r.date}</div></div>
                   </Link>
                 ))}

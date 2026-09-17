@@ -15,7 +15,7 @@ export const setAuthCookies = async (
 
   if (accessToken) {
     cookieStore.set("accessToken", accessToken, {
-      httpOnly: process.env.NODE_ENV === "production",
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
@@ -25,7 +25,7 @@ export const setAuthCookies = async (
 
   if (refreshToken) {
     cookieStore.set("refreshToken", refreshToken, {
-      httpOnly: process.env.NODE_ENV === "production",
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
@@ -60,7 +60,7 @@ export const register = async ({
     method: "POST",
     headers: { "Content-Type": "application/json" },
     params: lang ? { lang } : undefined,
-    body: { name, email, phone, password },
+    body: { name, email, phone, password, confirmPassword: password },
   });
 };
 
@@ -68,10 +68,30 @@ export const register = async ({
 export async function login({
   email,
   password,
+  captchaToken,
 }: {
   email: string;
   password: string;
+  captchaToken?: string | null;
 }) {
+  if (process.env.NODE_ENV === "production") {
+    const secret = process.env.RECAPTCHA_SERVER_KEY ?? process.env.NEXT_PUBLIC_RECAPCHA_SERVER_KEY;
+    if (!secret || !captchaToken) {
+      return { success: false, status: "error", message: "Please complete the reCAPTCHA challenge.", payload: null };
+    }
+
+    const verification = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: captchaToken }),
+      cache: "no-store",
+    }).then((response) => response.json() as Promise<{ success?: boolean }>);
+
+    if (!verification.success) {
+      return { success: false, status: "error", message: "reCAPTCHA verification failed. Please try again.", payload: null };
+    }
+  }
+
   const res = await apiClient<LoginResponseData>({
     endpoint: "/auth/login",
     method: "POST",
@@ -90,16 +110,15 @@ export async function login({
 }
 
 // Logout
-export async function handleLogout({ lang }: { lang: string }) {
+export async function handleLogout() {
   const token = await getAccessToken();
   await apiClient({
     endpoint: "/auth/logout",
-    method: "GET",
+    method: "POST",
     headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-    params: { lang },
   });
   await deleteAuthCookies();
-  redirect("/");
+  redirect("/login");
 }
 
 // Forgot password
@@ -124,21 +143,17 @@ export const forgotPassword = async ({
 
 // Reset Password
 export const resetPassword = async ({
-  email,
+  token,
   newPassword,
-  lang,
 }: {
-  email: string;
-  otp: string;
+  token: string;
   newPassword: string;
-  lang: string;
 }) => {
   const res = await apiClient({
-    endpoint: "/api/auth/reset-password",
-    method: "POST",
+    endpoint: `/auth/reset-password/${token}`,
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    params: { lang },
-    body: { email, newPassword },
+    body: { password: newPassword, confirmPassword: newPassword },
   });
 
   return res;

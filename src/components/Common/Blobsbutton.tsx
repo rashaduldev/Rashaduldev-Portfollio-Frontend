@@ -60,10 +60,30 @@ export default function BlobsButton({
 
   if (asChild) {
     return (
-      <span className={`${styles.button} ${className}`} style={buttonStyle}>
-        {animation}
-        <Slot className={styles.link}>{children}</Slot>
-      </span>
+      <Slot
+        {...props}
+        className={`${styles.button} ${styles.link} ${className}`}
+        style={buttonStyle}
+      >
+        <span className={styles.inner} aria-hidden="true">
+          <span className={styles.blobs} style={{ filter: `url(#${filterId})` }}>
+            <span className={styles.blob} />
+            <span className={styles.blob} />
+            <span className={styles.blob} />
+            <span className={styles.blob} />
+          </span>
+        </span>
+        <Slottable>{children}</Slottable>
+        <svg className={styles.filter} aria-hidden="true">
+          <defs>
+            <filter id={filterId}>
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo" />
+              <feBlend in2="goo" in="SourceGraphic" result="mix" />
+            </filter>
+          </defs>
+        </svg>
+      </Slot>
     );
   }
 

@@ -2,12 +2,15 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, FileText, MessageSquare, Users, Eye } from "lucide-react";
+import { Briefcase, FileText, MessageSquare, Users, Eye, TrendingUp } from "lucide-react";
 import {
   getDashboardStats,
   getRecentActivity,
+  getGrowthData,
+  getViewsOverview,
 } from "@/actions/dashboard/dashboard";
 import GlobalLoading from "@/app/loading";
+import { Button } from "@/components/ui/button";
 
 type Stats = {
   projects: { total: number; published: number; featured: number };
@@ -24,20 +27,56 @@ type Activity = {
   recentSubscribers: { _id: string; email: string; isActive: boolean; subscribedAt: string }[];
 };
 
+type Views = {
+  topProjects: { _id?: string; title: string; views: number }[];
+  topArticles: { _id?: string; title: string; slug: string; views: number }[];
+};
+
+type Growth = {
+  subscriberGrowth: { _id: string; count: number }[];
+  messageGrowth: { _id: string; count: number }[];
+};
+
 export default function DashboardPage() {
-  const { data: statsRes, isLoading } = useQuery({
+  const statsQuery = useQuery({
     queryKey: ["dashboard", "stats"],
     queryFn: getDashboardStats,
   });
-  const { data: activityRes } = useQuery({
+  const activityQuery = useQuery({
     queryKey: ["dashboard", "activity"],
     queryFn: getRecentActivity,
   });
+  const viewsQuery = useQuery({
+    queryKey: ["dashboard", "views"],
+    queryFn: getViewsOverview,
+  });
+  const growthQuery = useQuery({
+    queryKey: ["dashboard", "growth"],
+    queryFn: getGrowthData,
+  });
 
-  if (isLoading) return <GlobalLoading />;
+  const queries = [statsQuery, activityQuery, viewsQuery, growthQuery];
+  if (queries.some((query) => query.isLoading)) return <GlobalLoading />;
 
-  const stats = (statsRes?.payload as Stats) ?? null;
-  const activity = (activityRes?.payload as Activity) ?? null;
+  const failed = queries.find((query) => query.isError || query.data?.success === false);
+  if (failed) {
+    return (
+      <Card className="mx-auto max-w-xl">
+        <CardHeader><CardTitle>Dashboard data is unavailable</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-sm text-muted-foreground">Your session may have expired, or the API could not be reached.</p>
+          <Button onClick={() => queries.forEach((query) => query.refetch())}>Try again</Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const stats = (statsQuery.data?.payload as Stats) ?? null;
+  const activity = (activityQuery.data?.payload as Activity) ?? null;
+  const views = (viewsQuery.data?.payload as Views) ?? null;
+  const growth = (growthQuery.data?.payload as Growth) ?? null;
+  const newSubscribers = growth?.subscriberGrowth.reduce((sum, point) => sum + point.count, 0) ?? 0;
+  const newMessages = growth?.messageGrowth.reduce((sum, point) => sum + point.count, 0) ?? 0;
 
   const cards = [
     { label: "Subscribers", value: stats?.subscribers.total ?? 0, sub: `${stats?.subscribers.active ?? 0} active`, icon: Users, color: "text-blue-600" },
@@ -65,7 +104,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 xl:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
@@ -111,6 +150,39 @@ export default function DashboardPage() {
               <p className="text-sm text-muted-foreground">No projects yet.</p>
             )}
           </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-6 xl:grid-cols-3">
+        <Card>
+          <CardHeader><CardTitle className="flex items-center gap-2 text-base"><TrendingUp className="h-4 w-4" /> Last 30 days</CardTitle></CardHeader>
+          <CardContent className="grid grid-cols-2 gap-4">
+            <div><p className="text-2xl font-bold">{newSubscribers}</p><p className="text-xs text-muted-foreground">New subscribers</p></div>
+            <div><p className="text-2xl font-bold">{newMessages}</p><p className="text-xs text-muted-foreground">New messages</p></div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader><CardTitle className="text-base">Most viewed projects</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {views?.topProjects.length ? views.topProjects.map((item) => <div key={item._id ?? item.title} className="flex justify-between gap-4 text-sm"><span className="truncate">{item.title}</span><span className="font-medium">{item.views}</span></div>) : <p className="text-sm text-muted-foreground">No view data yet.</p>}
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader><CardTitle className="text-base">Most viewed articles</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {views?.topArticles.length ? views.topArticles.map((item) => <div key={item._id ?? item.slug} className="flex justify-between gap-4 text-sm"><span className="truncate">{item.title}</span><span className="font-medium">{item.views}</span></div>) : <p className="text-sm text-muted-foreground">No view data yet.</p>}
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-6 xl:grid-cols-2">
+        <Card>
+          <CardHeader><CardTitle className="text-base">Recent articles</CardTitle></CardHeader>
+          <CardContent className="space-y-3">{activity?.recentArticles?.length ? activity.recentArticles.map((item) => <div key={item._id} className="flex justify-between gap-4 text-sm"><span className="truncate">{item.title}</span><span className="capitalize text-muted-foreground">{item.status}</span></div>) : <p className="text-sm text-muted-foreground">No articles yet.</p>}</CardContent>
+        </Card>
+        <Card>
+          <CardHeader><CardTitle className="text-base">Recent subscribers</CardTitle></CardHeader>
+          <CardContent className="space-y-3">{activity?.recentSubscribers?.length ? activity.recentSubscribers.map((item) => <div key={item._id} className="flex justify-between gap-4 text-sm"><span className="truncate">{item.email}</span><span className={item.isActive ? "text-emerald-600" : "text-muted-foreground"}>{item.isActive ? "Active" : "Inactive"}</span></div>) : <p className="text-sm text-muted-foreground">No subscribers yet.</p>}</CardContent>
         </Card>
       </div>
     </div>

@@ -3,7 +3,6 @@
 import { useState, useEffect, useContext } from "react";
 import { LayoutContext } from "@/components/context";
 import { useRouter } from "next/navigation";
-import AppButton from "@/components/Common/AppButton";
 import BlobsButton from "./Common/Blobsbutton";
 import Link from "next/link";
 
@@ -67,7 +66,7 @@ const CookieConsent = () => {
           isRTL ? "justify-start flex-row-reverse" : "justify-between"
         }`}
       >
-        <BlobsButton asChild onClick={acceptCookies}
+        <BlobsButton onClick={acceptCookies}
           variant="default"
           className="px-5 py-1"
         >

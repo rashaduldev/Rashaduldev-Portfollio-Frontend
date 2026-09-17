@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { handleLogout } from "@/actions/auth.actions";
 
 import { Button } from "../ui/button";
 import { Bell, Menu, Search } from "lucide-react";
@@ -24,17 +24,18 @@ export function AdminHeader({
   onMenuClick: () => void;
 }) {
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
+  const [isLoggingOut, startLogout] = useTransition();
   const router = useRouter();
 
-  const handleLogout = () => {
-    // Remove token from cookies
-    Cookies.remove("token");
-
-    // Show toast notification
-    toast.success("Logged out successfully!");
-
-    // Redirect to login page
-    router.push("/login");
+  const logout = () => {
+    startLogout(async () => {
+      try {
+        await handleLogout();
+      } catch (error) {
+        if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) return;
+        toast.error("Unable to log out. Please try again.");
+      }
+    });
   };
 
   return (
@@ -92,14 +93,14 @@ export function AdminHeader({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile Settings</DropdownMenuItem>
-            <DropdownMenuItem>Theme Selection</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/dashboard/profile")}>Profile Settings</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/dashboard/settings/seo")}>SEO Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-red-600 focus:text-red-600"
-              onClick={handleLogout}
+              onClick={logout}
             >
-              Log out
+              {isLoggingOut ? "Logging out…" : "Log out"}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
