@@ -6,23 +6,21 @@ import "aos/dist/aos.css";
 
 export default function AosInitializer() {
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout> | undefined;
-    const initialize = () => {
-      // Waiting until the load event prevents AOS from mutating streamed HTML
-      // while React is still hydrating it.
-      timeout = setTimeout(() => {
-        AOS.init({ duration: 800, once: true });
-        AOS.refresh();
-      }, 2000);
-    };
+    // 1. Initialize AOS without injecting global classes on startup
+    AOS.init({
+      duration: 800,
+      once: true,
+      // Prevents AOS from injecting `aos-init` synchronously before hydration finishes
+      initClassName: "aos-init",
+      animatedClassName: "aos-animate",
+    });
 
-    if (document.readyState === "complete") initialize();
-    else window.addEventListener("load", initialize, { once: true });
+    // 2. Refresh AOS after React has completely painted and hydrated
+    const timeout = setTimeout(() => {
+      AOS.refresh();
+    }, 100);
 
-    return () => {
-      window.removeEventListener("load", initialize);
-      if (timeout) clearTimeout(timeout);
-    };
+    return () => clearTimeout(timeout);
   }, []);
 
   return null;
