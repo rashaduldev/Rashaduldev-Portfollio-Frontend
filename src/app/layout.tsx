@@ -8,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 import AosInitializer from "@/components/AosInitializer";
 import PortfolioAssistant from "@/components/PortfolioAssistant";
+import NetworkStatus from "@/components/NetworkStatus";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
             <CookieConsent />
             {children}
             <PortfolioAssistant />
+            <NetworkStatus />
           </AppQueryProvider>
         </ClientProviders>
         <Analytics />
