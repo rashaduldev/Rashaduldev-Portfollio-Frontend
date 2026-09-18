@@ -18,6 +18,7 @@ import { Typography } from "./ui/Typography";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CelebrationButton from "./Common/CelebrationButton";
+import SystemStatus from "./SystemStatus";
 
 type ExpectedLayoutContextValue = {
   translations: {
@@ -319,6 +320,9 @@ export default function Footer() {
             </BlobsButton>
           </form>
         </div>
+      </div>
+      <div className="section-container mt-10">
+        <SystemStatus />
       </div>
       <Typography
         size="sm"
