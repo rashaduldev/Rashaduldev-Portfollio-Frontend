@@ -12,7 +12,7 @@ import WorkExperience from "../WorkExperience";
 import EducationSection from "../Education";
 import Header from "../Header";
 import Footer from "../Footer";
-import ScrollToTopWithProgress from "../ScrollToTopWithProgress";
+// import ScrollToTopWithProgress from "../ScrollToTopWithProgress";
 
 const NormalRoute = () => {
   return (
@@ -34,7 +34,7 @@ const NormalRoute = () => {
         <FaqSection />
       </div>
       <Footer />
-      <ScrollToTopWithProgress />
+      {/* Temporarily disabled: <ScrollToTopWithProgress /> */}
     </>
   );
 };

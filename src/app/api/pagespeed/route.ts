@@ -64,12 +64,10 @@ export async function GET() {
       desktop,
     });
   } catch (error) {
+    console.error("PageSpeed audit failed:", error);
     return NextResponse.json(
       {
-        message:
-          error instanceof Error
-            ? error.message
-            : "PageSpeed Insights is temporarily unavailable",
+        message: "Google PageSpeed Insights is temporarily unavailable",
       },
       { status: 503 },
     );

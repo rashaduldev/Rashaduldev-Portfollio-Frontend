@@ -5,7 +5,7 @@ import EducationSection from "@/components/Education";
 import FaqSection from "@/components/FAQ";
 import LatestArticles from "@/components/LatestArticles";
 import ProjectsSection from "@/components/ProjectsSection";
-import ScrollToTopWithProgress from "@/components/ScrollToTopWithProgress";
+// import ScrollToTopWithProgress from "@/components/ScrollToTopWithProgress";
 import ServicesCarousel from "@/components/ServicesCarouse";
 import SkillsMarquee from "@/components/SkillsMarquee";
 import SkillsSection from "@/components/SkillsSection";
@@ -49,7 +49,7 @@ const MainLayoutPage = () => {
         </DeferRender>
         <FaqSection />
       </div>
-      <ScrollToTopWithProgress />
+      {/* Temporarily disabled: <ScrollToTopWithProgress /> */}
     </>
   );
 };

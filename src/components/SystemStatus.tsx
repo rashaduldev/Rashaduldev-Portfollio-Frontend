@@ -4,9 +4,6 @@ import {
   Activity,
   ExternalLink,
   Gauge,
-  GitBranch,
-  GitCommitHorizontal,
-  Globe2,
   Laptop,
   MousePointerClick,
   RefreshCw,
@@ -26,9 +23,6 @@ import {
 
 const LIVE_URL = "https://rashaduldev.vercel.app";
 const PAGESPEED_URL = `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(LIVE_URL)}`;
-const COMMIT_SHA = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || "local";
-const GIT_BRANCH = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || "main";
-const DEPLOYMENT_ENV = process.env.NEXT_PUBLIC_VERCEL_ENV || "development";
 
 type HealthMetrics = {
   latency: number | null;
@@ -320,9 +314,13 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
                 {[0, 1, 2, 3].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-white/[0.06]" />)}
               </div>
             ) : pageSpeedError ? (
-              <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/[0.07] p-3 text-xs text-amber-200">
-                <p>Live PageSpeed data is temporarily unavailable. No placeholder scores are shown.</p>
-                <button type="button" onClick={() => void loadPageSpeed()} className="mt-2 font-semibold text-amber-300 underline underline-offset-4">Retry Google audit</button>
+              <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/[0.07] p-3 text-xs text-amber-100">
+                <p className="font-medium">Google’s live audit service is busy right now.</p>
+                <p className="mt-1 text-amber-200/70">Scores will appear here automatically as soon as the audit quota is available.</p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <button type="button" onClick={() => void loadPageSpeed()} className="font-semibold text-amber-300 underline underline-offset-4">Try again</button>
+                  <a href={PAGESPEED_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-white underline underline-offset-4">View official report <ExternalLink className="h-3 w-3" /></a>
+                </div>
               </div>
             ) : pageSpeed ? (
               <>
@@ -340,39 +338,16 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
             ) : null}
           </section>
 
-          <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.025]">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-              <span className="flex items-center gap-2 text-xs text-zinc-400"><GitBranch className="h-3.5 w-3.5" /> Branch</span>
-              <span className="font-mono text-xs text-zinc-200">{GIT_BRANCH}</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-              <span className="flex items-center gap-2 text-xs text-zinc-400"><GitCommitHorizontal className="h-3.5 w-3.5" /> Commit</span>
-              <span className="font-mono text-xs text-zinc-200">{COMMIT_SHA}</span>
-            </div>
-            <div className="flex items-center justify-between px-4 py-3">
-              <span className="flex items-center gap-2 text-xs text-zinc-400"><Globe2 className="h-3.5 w-3.5" /> Environment</span>
-              <span className="font-mono text-xs capitalize text-zinc-200">{DEPLOYMENT_ENV}</span>
-            </div>
-          </div>
-
-          <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+          <div className="mt-5 flex justify-center">
             <button
               type="button"
               onClick={() => void checkHealth()}
               disabled={checking}
-              className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-4 text-xs font-semibold text-zinc-200 transition hover:bg-zinc-800 disabled:cursor-wait disabled:opacity-60"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-5 text-xs font-semibold text-zinc-200 transition hover:bg-zinc-800 disabled:cursor-wait disabled:opacity-60"
             >
               <RefreshCw className={`h-3.5 w-3.5 ${checking ? "animate-spin" : ""}`} />
-              {checking ? "Checking…" : "Refresh metrics"}
+              {checking ? "Checking…" : "Refresh live health"}
             </button>
-            <a
-              href={LIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-xs font-semibold text-primary-foreground transition hover:brightness-110"
-            >
-              Open live site <ExternalLink className="h-3.5 w-3.5" />
-            </a>
           </div>
 
           <p className="mt-4 text-center text-[10px] text-zinc-600">
