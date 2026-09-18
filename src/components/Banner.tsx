@@ -31,8 +31,8 @@ export default function Banner() {
 
   return (
     <section className="relative w-full min-h-screen pt-5 overflow-hidden">
-      {/* CSS-only background avoids an extra render-blocking third-party image request. */}
-      <div className="hero-grid-bg absolute inset-0" aria-hidden="true" />
+      {/* Decorative hero artwork keeps the original slow zoom effect. */}
+      <div className="hero-image-bg absolute inset-0" aria-hidden="true" />
       {/* Overlay — flat color, no backdrop-filter (full-viewport blur is expensive) */}
       <div className="absolute inset-0 z-10 bg-white/80 dark:bg-black/85" />
 

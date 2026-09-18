@@ -1,16 +1,27 @@
-.hero-grid-bg {
-  background-color: #fff7ed;
-  background-image:
-    linear-gradient(rgba(204, 78, 0, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(204, 78, 0, 0.07) 1px, transparent 1px),
-    radial-gradient(circle at 70% 30%, rgba(204, 78, 0, 0.14), transparent 42%);
-  background-size: 42px 42px, 42px 42px, 100% 100%;
+.hero-image-bg {
+  background-image: url("https://img.freepik.com/free-vector/abstract-horizontal-grid-lines-graph-style-graphic-design_1017-39918.jpg?semt=ais_hybrid&w=740");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: heroZoomInOut 20s ease-in-out infinite;
+  backface-visibility: hidden;
+  transform: scale(1.15) translateZ(0);
+  will-change: transform;
 }
 
-.dark .hero-grid-bg {
-  background-color: #09090b;
-  background-image:
-    linear-gradient(rgba(251, 146, 60, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(251, 146, 60, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 70% 30%, rgba(204, 78, 0, 0.18), transparent 42%);
+@keyframes heroZoomInOut {
+  0%,
+  100% {
+    transform: scale(1.15) translateZ(0);
+  }
+
+  50% {
+    transform: scale(1) translateZ(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-bg {
+    animation: none;
+  }
 }
