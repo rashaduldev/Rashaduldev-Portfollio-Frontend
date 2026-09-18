@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SystemStatus from "@/components/SystemStatus";
 
 export const metadata: Metadata = {
   title: {
@@ -19,6 +20,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </div>
       <Footer />
+      <SystemStatus variant="floating" />
     </>
   );
 };

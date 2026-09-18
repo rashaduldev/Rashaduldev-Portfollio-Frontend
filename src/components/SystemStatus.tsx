@@ -109,7 +109,7 @@ function ScoreCard({ label, score }: { label: string; score: number | null }) {
   );
 }
 
-export default function SystemStatus() {
+export default function SystemStatus({ variant = "footer" }: { variant?: "footer" | "floating" }) {
   const [open, setOpen] = useState(false);
   const [checking, setChecking] = useState(false);
   const [metrics, setMetrics] = useState<HealthMetrics>(initialMetrics);
@@ -208,38 +208,55 @@ export default function SystemStatus() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button
-          type="button"
-          className="group relative mx-auto flex w-full max-w-xl items-center justify-between gap-3 rounded-xl border border-zinc-800 bg-zinc-950 px-3.5 py-3 text-left text-white shadow-lg shadow-black/10 transition hover:border-zinc-700 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-4"
-          aria-label="Open live system status"
-        >
-          <span className="flex min-w-0 items-center gap-3">
-            <span className="relative flex h-2.5 w-2.5 shrink-0">
-              <span
-                className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-70 ${metrics.operational ? "bg-emerald-400" : "bg-red-400"}`}
-              />
-              <span
-                className={`relative inline-flex h-2.5 w-2.5 rounded-full ${metrics.operational ? "bg-emerald-500" : "bg-red-500"}`}
-              />
+        {variant === "floating" ? (
+          <button
+            type="button"
+            className="group fixed bottom-5 left-4 z-40 flex items-center gap-2.5 overflow-hidden rounded-full border border-zinc-700/80 bg-zinc-950 px-3.5 py-2.5 text-xs font-semibold text-white shadow-xl shadow-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:left-6 sm:px-4"
+            aria-label="Open live health details"
+          >
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[spin_3s_linear_infinite] rounded-full bg-[conic-gradient(from_0deg,transparent_0deg,transparent_245deg,var(--primary)_315deg,transparent_360deg)] motion-reduce:animate-none" />
+            <span aria-hidden="true" className="pointer-events-none absolute inset-px rounded-full bg-zinc-950/95 backdrop-blur-xl" />
+            <span className="relative z-10 flex h-2.5 w-2.5 shrink-0">
+              <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-70 ${metrics.operational ? "bg-emerald-400" : "bg-red-400"}`} />
+              <span className={`relative inline-flex h-2.5 w-2.5 rounded-full ${metrics.operational ? "bg-emerald-500" : "bg-red-500"}`} />
             </span>
-            <span className="min-w-0">
-              <span className="block truncate text-xs font-semibold sm:text-sm">
-                {metrics.operational ? "All Systems Operational" : "Connection Interrupted"}
+            <span className="relative z-10">Live Health</span>
+            <Activity className="relative z-10 h-3.5 w-3.5 animate-pulse text-primary motion-reduce:animate-none" />
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="group relative mx-auto flex w-full max-w-xl items-center justify-between gap-3 rounded-xl border border-zinc-800 bg-zinc-950 px-3.5 py-3 text-left text-white shadow-lg shadow-black/10 transition hover:border-zinc-700 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-4"
+            aria-label="Open live system status"
+          >
+            <span className="flex min-w-0 items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span
+                  className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-70 ${metrics.operational ? "bg-emerald-400" : "bg-red-400"}`}
+                />
+                <span
+                  className={`relative inline-flex h-2.5 w-2.5 rounded-full ${metrics.operational ? "bg-emerald-500" : "bg-red-500"}`}
+                />
               </span>
-              <span className="block truncate text-[10px] text-zinc-500 sm:text-xs">rashaduldev.vercel.app</span>
+              <span className="min-w-0">
+                <span className="block truncate text-xs font-semibold sm:text-sm">
+                  {metrics.operational ? "All Systems Operational" : "Connection Interrupted"}
+                </span>
+                <span className="block truncate text-[10px] text-zinc-500 sm:text-xs">rashaduldev.vercel.app</span>
+              </span>
             </span>
-          </span>
 
-          <span className="flex shrink-0 items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-2 py-1 font-mono text-[10px] text-zinc-300 sm:text-xs">
-            <Gauge className="h-3.5 w-3.5 text-primary" />
-            {metrics.renderTime === null ? "LIVE" : `${metrics.renderTime}ms`}
-          </span>
-          <span className="absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-primary-foreground shadow-lg shadow-primary/25 transition group-hover:-translate-y-0.5 sm:text-[11px]">
-            <Sparkles className="h-3 w-3 animate-pulse" />
-            Click here to see live details
-            <MousePointerClick className="h-3.5 w-3.5 transition group-hover:rotate-[-10deg] group-hover:scale-110" />
-          </span>
-        </button>
+            <span className="flex shrink-0 items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-2 py-1 font-mono text-[10px] text-zinc-300 sm:text-xs">
+              <Gauge className="h-3.5 w-3.5 text-primary" />
+              {metrics.renderTime === null ? "LIVE" : `${metrics.renderTime}ms`}
+            </span>
+            <span className="absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-primary-foreground shadow-lg shadow-primary/25 transition group-hover:-translate-y-0.5 sm:text-[11px]">
+              <Sparkles className="h-3 w-3 animate-pulse" />
+              Click here to see live health details
+              <MousePointerClick className="h-3.5 w-3.5 transition group-hover:rotate-[-10deg] group-hover:scale-110" />
+            </span>
+          </button>
+        )}
       </DialogTrigger>
 
       <DialogContent className="max-h-[90vh] gap-0 overflow-y-auto border-zinc-800 bg-[#0b0b0d] p-0 text-white shadow-2xl sm:max-w-xl">
