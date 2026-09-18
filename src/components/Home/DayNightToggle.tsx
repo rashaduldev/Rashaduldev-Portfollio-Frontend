@@ -372,11 +372,11 @@ const DayNightToggle = ({
         type="checkbox"
         checked={isDark}
         onChange={(event) => setTheme(event.target.checked ? "dark" : "light")}
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       />
       <label
         htmlFor="checkbox"
         className="sky"
-        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       >
         <div id="sun_wrapper">
           <div className="ray"></div>

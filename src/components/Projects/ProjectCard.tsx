@@ -167,6 +167,7 @@ export default function ProjectCard({
           fill
           sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
           priority={priority}
+          quality={65}
           className={clsx(
             "object-cover transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
             "group-hover:scale-110",

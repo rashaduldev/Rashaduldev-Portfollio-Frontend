@@ -258,7 +258,7 @@ export default function PortfolioAssistant() {
           onClick={() => setOpen((current) => !current)}
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.96 }}
-          aria-label={open ? "Close AI portfolio assistant" : "Open AI portfolio assistant"}
+          aria-label={open ? "Close AI portfolio assistant" : "Ask AI — open portfolio assistant"}
           aria-expanded={open}
           className="group flex h-14 items-center gap-2 rounded-full bg-zinc-950 px-4 text-white shadow-xl shadow-black/25 ring-1 ring-white/10 transition hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cc4e00] dark:bg-white dark:text-zinc-950"
         >

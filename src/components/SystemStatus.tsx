@@ -206,7 +206,6 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
           <button
             type="button"
             className="group fixed bottom-5 left-4 z-40 flex items-center gap-2.5 overflow-hidden rounded-full border border-zinc-700/80 bg-zinc-950 px-3.5 py-2.5 text-xs font-semibold text-white shadow-xl shadow-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:left-6 sm:px-4"
-            aria-label="Open live health details"
           >
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 animate-[spin_3s_linear_infinite] rounded-full bg-[conic-gradient(from_0deg,transparent_0deg,transparent_245deg,var(--primary)_315deg,transparent_360deg)] motion-reduce:animate-none" />
             <span aria-hidden="true" className="pointer-events-none absolute inset-px rounded-full bg-zinc-950/95 backdrop-blur-xl" />
@@ -221,7 +220,6 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
           <button
             type="button"
             className="group relative mx-auto flex w-full max-w-xl items-center justify-between gap-3 rounded-xl border border-zinc-800 bg-zinc-950 px-3.5 py-3 text-left text-white shadow-lg shadow-black/10 transition hover:border-zinc-700 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-4"
-            aria-label="Open live system status"
           >
             <span className="flex min-w-0 items-center gap-3">
               <span className="relative flex h-2.5 w-2.5 shrink-0">
@@ -236,7 +234,7 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
                 <span className="block truncate text-xs font-semibold sm:text-sm">
                   {metrics.operational ? "All Systems Operational" : "Connection Interrupted"}
                 </span>
-                <span className="block truncate text-[10px] text-zinc-500 sm:text-xs">rashaduldev.vercel.app</span>
+                <span className="block truncate text-[10px] text-zinc-300 sm:text-xs">rashaduldev.vercel.app</span>
               </span>
             </span>
 
@@ -244,7 +242,7 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
               <Gauge className="h-3.5 w-3.5 text-primary" />
               {metrics.renderTime === null ? "LIVE" : `${metrics.renderTime}ms`}
             </span>
-            <span className="absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/30 bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-primary-foreground shadow-lg shadow-primary/25 transition group-hover:-translate-y-0.5 sm:text-[11px]">
+            <span className="absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border border-orange-300/40 bg-[#963900] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-lg shadow-primary/25 transition group-hover:-translate-y-0.5 sm:text-[11px]">
               <Sparkles className="h-3 w-3 animate-pulse" />
               Click here to see live health details
               <MousePointerClick className="h-3.5 w-3.5 transition group-hover:rotate-[-10deg] group-hover:scale-110" />

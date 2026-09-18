@@ -31,14 +31,8 @@ export default function Banner() {
 
   return (
     <section className="relative w-full min-h-screen pt-5 overflow-hidden">
-      {/* Background Image with Zoom Animation — animates transform only (GPU-composited) */}
-      <div
-        className="absolute inset-0 bg-center bg-no-repeat bg-cover zoom-bg"
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/free-vector/abstract-horizontal-grid-lines-graph-style-graphic-design_1017-39918.jpg?semt=ais_hybrid&w=740')",
-        }}
-      />
+      {/* CSS-only background avoids an extra render-blocking third-party image request. */}
+      <div className="hero-grid-bg absolute inset-0" aria-hidden="true" />
       {/* Overlay — flat color, no backdrop-filter (full-viewport blur is expensive) */}
       <div className="absolute inset-0 z-10 bg-white/80 dark:bg-black/85" />
 
@@ -48,7 +42,7 @@ export default function Banner() {
         }`}
       >
         {/* Left Content */}
-        <div suppressHydrationWarning data-aos="fade-down" data-aos-duration="1000"
+        <div suppressHydrationWarning
           className={`flex-1 ${isRTL ? "text-right" : "text-left"}`}
         >
           <span className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
@@ -78,10 +72,10 @@ export default function Banner() {
           {/* Social Icons */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
             {[
-              { href: "https://linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn size={16} />, color: "bg-blue-600 dark:bg-blue-500", iconColor: "text-blue-600" },
-              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub size={16} />, color: "bg-gray-900", iconColor: "text-gray-900 dark:text-white" },
-              { href: "mailto:rashadul.dev@gmail.com", label: "Send me an email", icon: <FaEnvelope size={16} />, color: "bg-green-500", iconColor: "text-green-500" },
-              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars size={16} />, color: "bg-red-500", iconColor: "text-red-500" },
+              { href: "https://www.linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn aria-hidden="true" size={16} />, color: "bg-blue-600 dark:bg-blue-500", iconColor: "text-blue-600" },
+              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub aria-hidden="true" size={16} />, color: "bg-gray-900", iconColor: "text-gray-900 dark:text-white" },
+              { href: "mailto:rashadul.dev@gmail.com", label: "Send me an email", icon: <FaEnvelope aria-hidden="true" size={16} />, color: "bg-green-500", iconColor: "text-green-500" },
+              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars aria-hidden="true" size={16} />, color: "bg-red-500", iconColor: "text-red-500" },
             ].map(({ href, label, icon, color, iconColor }) => (
               <CelebrationButton
                 key={href}
@@ -132,7 +126,7 @@ export default function Banner() {
           </div>
         </div>
 
-        <div suppressHydrationWarning className="flex-1 flex justify-center items-center" data-aos="fade-up" data-aos-duration="1000">
+        <div suppressHydrationWarning className="flex-1 flex justify-center items-center">
           <div className="relative w-full sm:w-80 lg:w-96 h-auto">
             {/* Image */}
             <Image
@@ -142,6 +136,8 @@ export default function Banner() {
               height={520}
               priority
               fetchPriority="high"
+              quality={60}
+              sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 320px, 384px"
               className="rounded-full"
             />
           </div>

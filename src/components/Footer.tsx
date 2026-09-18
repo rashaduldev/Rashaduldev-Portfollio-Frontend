@@ -237,10 +237,10 @@ export default function Footer() {
           </Typography>
           <div className="flex flex-row gap-4 mt-2">
             {[
-              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars className="text-xl" />, color: "bg-red-500" },
-              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub className="text-xl" />, color: "bg-gray-900" },
-              { href: "https://www.linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn className="text-xl" />, color: "bg-blue-600" },
-              { href: "https://app.daily.dev/rashaduldev", label: "Visit my daily dev profile", icon: <FaDev className="text-xl" />, color: "bg-black" },
+              { href: "https://www.codewars.com/users/rashaduldev", label: "Visit my Codewars profile", icon: <SiCodewars aria-hidden="true" className="text-xl" />, color: "bg-red-500" },
+              { href: "https://github.com/rashaduldev", label: "Visit my GitHub profile", icon: <FaGithub aria-hidden="true" className="text-xl" />, color: "bg-gray-900" },
+              { href: "https://www.linkedin.com/in/rashaduldev", label: "Visit my LinkedIn profile", icon: <FaLinkedinIn aria-hidden="true" className="text-xl" />, color: "bg-blue-600" },
+              { href: "https://app.daily.dev/rashaduldev", label: "Visit my daily dev profile", icon: <FaDev aria-hidden="true" className="text-xl" />, color: "bg-black" },
             ].map(({ href, label, icon, color }) => (
               <CelebrationButton
                 key={href}

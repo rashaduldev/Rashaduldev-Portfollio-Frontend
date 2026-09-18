@@ -1,5 +1,5 @@
 "use client";
-import React, { JSX, useContext } from "react";
+import React, { cloneElement, JSX, useContext } from "react";
 import {
   FaGitAlt,
   FaFigma,
@@ -98,7 +98,7 @@ const SkillsMarquee = () => {
             className="group flex items-center gap-4 mx-4 px-6 py-3 rounded-2xl bg-white/50 dark:bg-zinc-900/50 border border-gray-200/50 dark:border-zinc-800/50 hover:border-primary/50 hover:bg-white dark:hover:bg-zinc-800                       transition-all duration-300"
           >
             <span className="text-2xl sm:text-3xl text-gray-600 dark:text-zinc-400 group-hover:text-primary group-hover:scale-110 transition-all duration-300">
-              {item.icon}
+              {cloneElement(item.icon, { "aria-hidden": true, focusable: false })}
             </span>
             <span className="text-sm sm:text-base font-bold text-gray-700 dark:text-zinc-200 group-hover:text-primary tracking-tight">
               {item.name}

@@ -6,7 +6,6 @@ import { Analytics } from '@vercel/analytics/next';
 import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
-import AosInitializer from "@/components/AosInitializer";
 import PortfolioAssistant from "@/components/PortfolioAssistant";
 import NetworkStatus from "@/components/NetworkStatus";
 
@@ -37,7 +36,6 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning={true} lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body suppressHydrationWarning={true} className={`${dmSerif.variable} ${dmSans.variable}`}>
-        <AosInitializer />
         <Script
           defer
           data-domain="rashaduldev.vercel.app"
