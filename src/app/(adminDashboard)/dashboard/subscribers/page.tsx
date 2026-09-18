@@ -35,7 +35,8 @@ import {
 import GlobalLoading from "@/app/loading";
 
 type Subscriber = {
-  id: string;
+  _id?: string;
+  id?: string;
   email: string;
   isActive: boolean;
 };
@@ -113,7 +114,7 @@ export default function SubscribersPage() {
               </TableRow>
             )}
             {subscribers.map((subscriber) => (
-              <TableRow key={subscriber.id}>
+              <TableRow key={subscriber._id ?? subscriber.id ?? subscriber.email}>
                 <TableCell className="font-medium">
                   <span className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-muted-foreground" />
@@ -138,6 +139,7 @@ export default function SubscribersPage() {
                     title="Delete"
                     className="text-red-500 hover:bg-red-50 hover:text-red-600"
                     onClick={() => setToDelete(subscriber)}
+                    disabled={!subscriber._id && !subscriber.id}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -222,7 +224,10 @@ export default function SubscribersPage() {
         }
         confirmText="Delete subscriber"
         loading={deleteMutation.isPending}
-        onConfirm={() => toDelete && deleteMutation.mutate({ id: toDelete.id })}
+        onConfirm={() => {
+          const id = toDelete?._id ?? toDelete?.id;
+          if (id) deleteMutation.mutate({ id });
+        }}
       />
     </div>
   );

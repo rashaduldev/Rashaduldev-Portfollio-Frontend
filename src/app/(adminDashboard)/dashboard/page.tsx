@@ -2,7 +2,16 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, FileText, MessageSquare, Users, Eye, TrendingUp } from "lucide-react";
+import {
+  Briefcase,
+  FileText,
+  FolderKanban,
+  GraduationCap,
+  MessageSquare,
+  Users,
+  Eye,
+  TrendingUp,
+} from "lucide-react";
 import {
   getDashboardStats,
   getRecentActivity,
@@ -11,6 +20,12 @@ import {
 } from "@/actions/dashboard/dashboard";
 import GlobalLoading from "@/app/loading";
 import { Button } from "@/components/ui/button";
+import { getEducation, getExperience } from "@/actions/resume/resume";
+import {
+  languageCount,
+  translationCoverage,
+  websiteContent,
+} from "@/lib/contentInventory";
 
 type Stats = {
   projects: { total: number; published: number; featured: number };
@@ -54,8 +69,23 @@ export default function DashboardPage() {
     queryKey: ["dashboard", "growth"],
     queryFn: getGrowthData,
   });
+  const experienceQuery = useQuery({
+    queryKey: ["experience"],
+    queryFn: getExperience,
+  });
+  const educationQuery = useQuery({
+    queryKey: ["education"],
+    queryFn: getEducation,
+  });
 
-  const queries = [statsQuery, activityQuery, viewsQuery, growthQuery];
+  const queries = [
+    statsQuery,
+    activityQuery,
+    viewsQuery,
+    growthQuery,
+    experienceQuery,
+    educationQuery,
+  ];
   if (queries.some((query) => query.isLoading)) return <GlobalLoading />;
 
   const failed = queries.find((query) => query.isError || query.data?.success === false);
@@ -75,12 +105,38 @@ export default function DashboardPage() {
   const activity = (activityQuery.data?.payload as Activity) ?? null;
   const views = (viewsQuery.data?.payload as Views) ?? null;
   const growth = (growthQuery.data?.payload as Growth) ?? null;
+  const databaseExperience = Array.isArray(experienceQuery.data?.payload)
+    ? experienceQuery.data.payload.length
+    : 0;
+  const databaseEducation = Array.isArray(educationQuery.data?.payload)
+    ? educationQuery.data.payload.length
+    : 0;
   const newSubscribers = growth?.subscriberGrowth.reduce((sum, point) => sum + point.count, 0) ?? 0;
   const newMessages = growth?.messageGrowth.reduce((sum, point) => sum + point.count, 0) ?? 0;
 
   const cards = [
     { label: "Subscribers", value: stats?.subscribers.total ?? 0, sub: `${stats?.subscribers.active ?? 0} active`, icon: Users, color: "text-blue-600" },
-    { label: "Projects", value: stats?.projects.total ?? 0, sub: `${stats?.projects.published ?? 0} published`, icon: Briefcase, color: "text-emerald-600" },
+    {
+      label: "Website Projects",
+      value: websiteContent.projects.length,
+      sub: `${stats?.projects.total ?? 0} database records · BN ${translationCoverage.bn.projects} · AR ${translationCoverage.ar.projects}`,
+      icon: FolderKanban,
+      color: "text-emerald-600",
+    },
+    {
+      label: "Experience",
+      value: websiteContent.experience.length,
+      sub: `${databaseExperience} database records · ${languageCount} languages`,
+      icon: Briefcase,
+      color: "text-amber-600",
+    },
+    {
+      label: "Education",
+      value: websiteContent.education.length,
+      sub: `${databaseEducation} database records · ${languageCount} languages`,
+      icon: GraduationCap,
+      color: "text-cyan-600",
+    },
     { label: "Articles", value: stats?.articles.total ?? 0, sub: `${stats?.articles.drafts ?? 0} drafts`, icon: FileText, color: "text-primary" },
     { label: "Messages", value: stats?.messages.total ?? 0, sub: `${stats?.messages.unread ?? 0} unread`, icon: MessageSquare, color: "text-purple-600" },
   ];
@@ -89,7 +145,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">Dashboard Overview</h1>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {cards.map((c) => (
           <Card key={c.label}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -133,7 +189,7 @@ export default function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <Eye className="h-4 w-4" /> Recent Projects
+              <Eye className="h-4 w-4" /> Recent Database Projects
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">

@@ -34,6 +34,11 @@ import {
   deleteProject,
 } from "@/actions/projects/projects";
 import GlobalLoading from "@/app/loading";
+import {
+  localizedProjects,
+  translationCoverage,
+  websiteContent,
+} from "@/lib/contentInventory";
 
 type Project = {
   _id: string;
@@ -75,6 +80,7 @@ export default function ProjectsListPage() {
     queryFn: () => getAdminProjects(),
   });
   const projects: Project[] = res?.payload ?? [];
+  const websiteProjects = websiteContent.projects;
 
   const buildFormData = () => {
     const fd = new FormData();
@@ -180,7 +186,8 @@ export default function ProjectsListPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Projects Portfolio</h1>
           <p className="text-sm text-muted-foreground">
-            {projects.length} project{projects.length === 1 ? "" : "s"} total
+            {websiteProjects.length} website projects from translations · {projects.length}{" "}
+            database record{projects.length === 1 ? "" : "s"}
           </p>
         </div>
         <Button onClick={openCreate}>
@@ -189,6 +196,85 @@ export default function ProjectsListPage() {
       </div>
 
       <Card>
+        <div className="border-b p-4">
+          <h2 className="font-semibold">Website projects (translation JSON)</h2>
+          <p className="text-xs text-muted-foreground">
+            English is the canonical inventory. Coverage: EN {translationCoverage.en.projects},
+            BN {translationCoverage.bn.projects}, AR {translationCoverage.ar.projects}.
+          </p>
+        </div>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Project</TableHead>
+              <TableHead>Tech Stack</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Translations</TableHead>
+              <TableHead className="text-right">Source</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {websiteProjects.map((project) => {
+              const locales = (["en", "bn", "ar"] as const).filter((locale) =>
+                localizedProjects[locale].some(
+                  (localizedProject) => String(localizedProject.id) === String(project.id),
+                ),
+              );
+
+              return (
+                <TableRow key={project.id}>
+                  <TableCell className="font-medium">
+                    <p>{project.title}</p>
+                    <p className="mt-0.5 max-w-md truncate text-xs text-muted-foreground">
+                      {project.description}
+                    </p>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex max-w-sm flex-wrap gap-1">
+                      {project.techStack
+                        .split(",")
+                        .map((item) => item.trim())
+                        .filter(Boolean)
+                        .slice(0, 4)
+                        .map((item) => (
+                          <span
+                            key={item}
+                            className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] dark:bg-slate-800"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline">{project.status}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex gap-1">
+                      {locales.map((locale) => (
+                        <Badge key={locale} variant="secondary" className="uppercase">
+                          {locale}
+                        </Badge>
+                      ))}
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Badge variant="secondary">JSON</Badge>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Card>
+
+      <Card>
+        <div className="border-b p-4">
+          <h2 className="font-semibold">Database projects</h2>
+          <p className="text-xs text-muted-foreground">
+            These records are managed through the API and can be created, edited, published, or deleted here.
+          </p>
+        </div>
         <Table>
           <TableHeader>
             <TableRow>

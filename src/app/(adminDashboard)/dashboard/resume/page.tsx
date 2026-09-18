@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Pencil, Trash2, Loader2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -28,6 +29,11 @@ import {
   deleteEducation,
 } from "@/actions/resume/resume";
 import GlobalLoading from "@/app/loading";
+import {
+  languageCount,
+  translationCoverage,
+  websiteContent,
+} from "@/lib/contentInventory";
 
 type Kind = "experience" | "education";
 
@@ -133,12 +139,52 @@ export default function ResumePage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Experience &amp; Education</h1>
+      <div>
+        <h1 className="text-3xl font-bold">Experience &amp; Education</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {websiteContent.experience.length} website experience entries and{" "}
+          {websiteContent.education.length} education entries from {languageCount} translation files ·{" "}
+          {experience.length + education.length} database records
+        </p>
+      </div>
 
-      {/* Experience */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-wrap items-center justify-between gap-2">
+            <span>Website Work Experience</span>
+            <Badge variant="secondary">Translation JSON</Badge>
+          </CardTitle>
+          <p className="text-xs text-muted-foreground">
+            Coverage: EN {translationCoverage.en.experience}, BN {translationCoverage.bn.experience},
+            AR {translationCoverage.ar.experience}. Edit the translation files to change website content.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {websiteContent.experience.map((item, index) => (
+            <div
+              key={`${item.year}-${item.company}-${index}`}
+              className="flex flex-col justify-between gap-2 rounded-lg border p-4 sm:flex-row sm:items-center"
+            >
+              <div>
+                <p className="font-semibold">{item.title} @ {item.company}</p>
+                <p className="text-sm text-muted-foreground">{item.duration}</p>
+                <p className="text-xs text-muted-foreground">{item.type} · {item.location}</p>
+              </div>
+              <Badge variant="outline">{item.year}</Badge>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      {/* Database Experience */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Work Experience</CardTitle>
+          <div>
+            <CardTitle>Database Experience</CardTitle>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {experience.length} API-managed record{experience.length === 1 ? "" : "s"}
+            </p>
+          </div>
           <Button size="sm" onClick={() => openCreate("experience")}>
             <Plus className="mr-2 h-4 w-4" /> Add
           </Button>
@@ -163,10 +209,42 @@ export default function ResumePage() {
         </CardContent>
       </Card>
 
-      {/* Education */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-wrap items-center justify-between gap-2">
+            <span>Website Education</span>
+            <Badge variant="secondary">Translation JSON</Badge>
+          </CardTitle>
+          <p className="text-xs text-muted-foreground">
+            Coverage: EN {translationCoverage.en.education}, BN {translationCoverage.bn.education},
+            AR {translationCoverage.ar.education}.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {websiteContent.education.map((item) => (
+            <div
+              key={item.year}
+              className="flex flex-col justify-between gap-2 rounded-lg border p-4 sm:flex-row sm:items-center"
+            >
+              <div>
+                <p className="font-semibold">{item.title} — {item.company}</p>
+                <p className="text-sm text-muted-foreground">{item.department}</p>
+              </div>
+              <Badge variant="outline">{item.year}</Badge>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      {/* Database Education */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Education</CardTitle>
+          <div>
+            <CardTitle>Database Education</CardTitle>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {education.length} API-managed record{education.length === 1 ? "" : "s"}
+            </p>
+          </div>
           <Button size="sm" onClick={() => openCreate("education")}>
             <Plus className="mr-2 h-4 w-4" /> Add
           </Button>
@@ -295,7 +373,7 @@ function Row({
   return (
     <div className="flex items-center justify-between rounded-lg border p-4">
       <div>
-        <h2 className="font-bold">{title}</h2>
+        <p className="font-semibold">{title}</p>
         <p className="text-sm text-slate-500">{subtitle}</p>
       </div>
       <div className="flex gap-2">
