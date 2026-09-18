@@ -3,11 +3,9 @@
 import { useContext, useMemo, useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
 import { LayoutContext } from "@/components/context";
 import { Project } from "@/types/translations";
 import ProjectCard from "./ProjectCard";
-import { getProjects } from "@/actions/projects/projects";
 
 type SortOption = "title-asc" | "title-desc" | "endtrac-asc" | "endtrac-desc";
 
@@ -37,23 +35,9 @@ const Projects = () => {
   const { translations, isRTL } = context;
   const projectsSection = translations.projectsSection || {};
 
-  const { data: projectsResponse } = useQuery({ queryKey: ["public-projects"], queryFn: () => getProjects({ limit: 100 }) });
   const projects: Project[] = useMemo(() => {
-    const managedProjects = projectsResponse?.payload;
-    if (!Array.isArray(managedProjects) || managedProjects.length === 0) return (projectsSection.projects || []) as Project[];
-    return managedProjects.map((project: any) => ({
-      id: project._id,
-      title: project.title,
-      description: project.description,
-      desktopimage: project.images?.[0]?.url ?? "https://placehold.co/1200x720/png?text=Project",
-      mobileimage: project.images?.[1]?.url ?? project.images?.[0]?.url ?? "https://placehold.co/1200x720/png?text=Project",
-      techStack: (project.techStack ?? []).join(", "),
-      endtrac: new Date(project.createdAt).toLocaleDateString(),
-      githubLink: project.githubUrl ?? "",
-      liveLink: project.liveUrl ?? "",
-      status: project.isFeatured ? "Featured" : "Project",
-    })) as Project[];
-  }, [projectsResponse?.payload, projectsSection.projects]);
+    return (projectsSection.projects || []) as Project[];
+  }, [projectsSection.projects]);
 
   const techStacks = useMemo(() => {
     const set = new Set<string>();

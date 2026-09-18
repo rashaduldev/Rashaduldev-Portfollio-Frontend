@@ -48,7 +48,7 @@ export default function Banner() {
         }`}
       >
         {/* Left Content */}
-        <div data-aos="fade-down" data-aos-duration="1000"
+        <div suppressHydrationWarning data-aos="fade-down" data-aos-duration="1000"
           className={`flex-1 ${isRTL ? "text-right" : "text-left"}`}
         >
           <span className="mb-2 text-lg font-medium text-gray-700 sm:text-xl md:text-2xl dark:text-gray-300">
@@ -132,7 +132,7 @@ export default function Banner() {
           </div>
         </div>
 
-        <div className="flex-1 flex justify-center items-center" data-aos="fade-up" data-aos-duration="1000">
+        <div suppressHydrationWarning className="flex-1 flex justify-center items-center" data-aos="fade-up" data-aos-duration="1000">
           <div className="relative w-full sm:w-80 lg:w-96 h-auto">
             {/* Image */}
             <Image

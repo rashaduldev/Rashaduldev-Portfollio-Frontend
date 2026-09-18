@@ -6,19 +6,16 @@ import "aos/dist/aos.css";
 
 export default function AosInitializer() {
   useEffect(() => {
-    // 1. Initialize AOS without injecting global classes on startup
-    AOS.init({
-      duration: 800,
-      once: true,
-      // Prevents AOS from injecting `aos-init` synchronously before hydration finishes
-      initClassName: "aos-init",
-      animatedClassName: "aos-animate",
-    });
-
-    // 2. Refresh AOS after React has completely painted and hydrated
+    // AOS mutates every `data-aos` element by adding classes. Defer that DOM
+    // mutation until after React has had time to hydrate the whole page,
+    // including its streamed/Suspense boundaries.
     const timeout = setTimeout(() => {
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
       AOS.refresh();
-    }, 100);
+    }, 250);
 
     return () => clearTimeout(timeout);
   }, []);

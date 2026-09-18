@@ -96,14 +96,14 @@ export default function SkillsCloud() {
       dir={isRTL ? "rtl" : "ltr"}
       className="w-full py-20 px-4 flex flex-col items-center"
     >
-      <div className="text-center mb-10" data-aos="fade-up" data-aos-duration="1000">
+      <div suppressHydrationWarning className="text-center mb-10" data-aos="fade-up" data-aos-duration="1000">
         <h2 className="mb-4">{translations.skills.about}</h2>
         <p className="text-gray-500 dark:text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
           {translations.skills.description}
         </p>
       </div>
 
-      <div data-aos="fade-up" data-aos-duration="1000" className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
+      <div suppressHydrationWarning data-aos="fade-up" data-aos-duration="1000" className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
         {filters.map((f) => (
           <button
             key={f.id}
@@ -120,6 +120,7 @@ export default function SkillsCloud() {
       </div>
 
       <div
+        suppressHydrationWarning
         data-aos="fade-up" data-aos-duration="1000"
         className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl min-h-62.5 content-start"
       >
@@ -156,7 +157,7 @@ export default function SkillsCloud() {
         </AnimatePresence>
       </div>
 
-      <div data-aos="fade-up" data-aos-duration="1000" className="mt-10 w-full max-w-4xl mx-auto pt-8 dark:border-zinc-800/50 flex flex-col md:flex-row justify-center items-center gap-6 opacity-60">
+      <div suppressHydrationWarning data-aos="fade-up" data-aos-duration="1000" className="mt-10 w-full max-w-4xl mx-auto pt-8 dark:border-zinc-800/50 flex flex-col md:flex-row justify-center items-center gap-6 opacity-60">
         <div className="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-widest">
           {filters.slice(1).map((f) => (
             <div
