@@ -1,20 +1,10 @@
 "use client"
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
-import { LayoutContext } from "./context";
 
 const ScrollToTopWithProgress: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const context = useContext(LayoutContext);
-
-  if (!context) {
-    throw new Error(
-      "LayoutContext must be used within a LayoutContext.Provider"
-    );
-  }
-
-  const { isRTL } = context;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -54,9 +44,7 @@ const ScrollToTopWithProgress: React.FC = () => {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 z-50 w-14 h-14 rounded-full cursor-pointer border-2 border-gray-300 dark:border-gray-600 overflow-hidden shadow-lg bg-white dark:bg-gray-800 flex items-center justify-center group transition-transform hover:scale-110 ${
-          isRTL ? "left-6" : "right-6"
-        }`}
+        className="fixed bottom-24 left-5 z-50 flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-gray-300 bg-white shadow-lg transition-transform hover:scale-110 dark:border-gray-600 dark:bg-gray-800 sm:bottom-24 sm:left-7"
         aria-label="Scroll to top"
       >
         {/* Progress Layer with Wave */}

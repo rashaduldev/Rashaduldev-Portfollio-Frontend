@@ -7,6 +7,7 @@ import ClientProviders from "@/components/providers/ClientProviders";
 import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 import AosInitializer from "@/components/AosInitializer";
+import PortfolioAssistant from "@/components/PortfolioAssistant";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({
           <AppQueryProvider>
             <CookieConsent />
             {children}
+            <PortfolioAssistant />
           </AppQueryProvider>
         </ClientProviders>
         <Analytics />
