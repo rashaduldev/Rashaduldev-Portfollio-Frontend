@@ -9,23 +9,37 @@ interface ProjectPreviewModalProps { open: boolean; onOpenChange: (open: boolean
 
 export default function ProjectPreviewModal({ open, onOpenChange, title, url }: ProjectPreviewModalProps) {
   const previewRef = useRef<HTMLDivElement>(null);
+  const automaticRetryAttempted = useRef(false);
   const [viewport, setViewport] = useState<PreviewViewport>("desktop");
   const [refreshKey, setRefreshKey] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useLayoutEffect(() => {
     if (!open) return;
+    automaticRetryAttempted.current = false;
     setViewport("desktop");
     setLoading(true);
   }, [open, url]);
 
   useEffect(() => {
     if (!open || !loading) return;
-    const timeout = window.setTimeout(() => setLoading(false), 6000);
-    return () => window.clearTimeout(timeout);
+    const recoveryTimeout = window.setTimeout(() => {
+      if (automaticRetryAttempted.current) return;
+      automaticRetryAttempted.current = true;
+      setRefreshKey((key) => key + 1);
+    }, 2500);
+    const fallbackTimeout = window.setTimeout(() => setLoading(false), 9000);
+    return () => {
+      window.clearTimeout(recoveryTimeout);
+      window.clearTimeout(fallbackTimeout);
+    };
   }, [loading, open, refreshKey]);
 
-  const refresh = () => { setLoading(true); setRefreshKey((key) => key + 1); };
+  const refresh = () => {
+    automaticRetryAttempted.current = true;
+    setLoading(true);
+    setRefreshKey((key) => key + 1);
+  };
   const toggleFullscreen = async () => {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();

@@ -4,21 +4,38 @@ import ProjectDetailsClient from "@/components/Projects/ProjectsDetails";
 import JsonLd from "@/components/Seo/JsonLd";
 import { getProjectById } from "@/actions/projects/projects";
 import { createPageMetadata, SITE_URL } from "@/lib/seo";
+import defaultTranslations from "@/app/translations/defaultTranslations";
 
-const loadProject = cache(async (id: string) => (await getProjectById(id)).payload);
+const isTranslationProjectId = (id: string) => /^\d+$/.test(id);
+const findTranslationProject = (id: string) =>
+  defaultTranslations.projectsSection.projects.find((project) => String(project.id) === id);
+const loadProject = cache(async (id: string) => {
+  if (isTranslationProjectId(id)) return null;
+  return (await getProjectById(id)).payload;
+});
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const project = await loadProject(id);
-  if (!project) return createPageMetadata({ title: "Project", description: "Portfolio project details.", path: `/projects/${id}` });
-  return createPageMetadata({ title: project.title, description: project.description, path: `/projects/${id}`, keywords: project.techStack });
+  const managedProject = await loadProject(id);
+  const staticProject = findTranslationProject(id);
+  const title = managedProject?.title ?? staticProject?.title;
+  const description = managedProject?.description ?? staticProject?.description;
+  const keywords = managedProject?.techStack ?? staticProject?.techStack.split(", ");
+  return createPageMetadata({ title: title ?? "Project", description: description ?? "Portfolio project details.", path: `/projects/${id}`, keywords });
 }
 
 export default async function ProjectDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const project = await loadProject(id);
+  const staticProject = findTranslationProject(id);
+  const schemaProject = project ?? (staticProject ? {
+    title: staticProject.title,
+    description: staticProject.description,
+    githubUrl: staticProject.githubLink,
+    liveUrl: staticProject.liveLink,
+  } : null);
   return <>
-    {project && <JsonLd data={{ "@context": "https://schema.org", "@type": "SoftwareApplication", name: project.title, description: project.description, url: `${SITE_URL}/projects/${id}`, applicationCategory: "WebApplication", operatingSystem: "Web", sameAs: [project.githubUrl, project.liveUrl].filter(Boolean) }} />}
+    {schemaProject && <JsonLd data={{ "@context": "https://schema.org", "@type": "SoftwareApplication", name: schemaProject.title, description: schemaProject.description, url: `${SITE_URL}/projects/${id}`, applicationCategory: "WebApplication", operatingSystem: "Web", sameAs: [schemaProject.githubUrl, schemaProject.liveUrl].filter(Boolean) }} />}
     <ProjectDetailsClient projectId={id} initialProject={project} />
   </>;
 }
