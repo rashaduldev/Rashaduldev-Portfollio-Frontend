@@ -308,8 +308,25 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
             </div>
 
             {pageSpeedLoading ? (
-              <div className="mt-4 grid grid-cols-4 gap-2" aria-label="Loading PageSpeed scores">
-                {[0, 1, 2, 3].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-white/[0.06]" />)}
+              <div className="mt-4" role="status" aria-live="polite">
+                <div className="flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/[0.07] p-3.5">
+                  <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                    <Gauge className="h-5 w-5 animate-pulse" aria-hidden="true" />
+                    <span className="absolute inset-0 animate-ping rounded-lg border border-primary/25" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-white">
+                      Checking real PageSpeed data
+                      <RefreshCw className="h-3.5 w-3.5 animate-spin text-primary" aria-hidden="true" />
+                    </p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-zinc-400">
+                      Google is running live mobile and desktop Lighthouse audits. This may take 20–60 seconds—please wait.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-hidden="true">
+                  {[0, 1, 2, 3].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-white/[0.06]" />)}
+                </div>
               </div>
             ) : pageSpeedError ? (
               <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/[0.07] p-3 text-xs text-amber-100">
