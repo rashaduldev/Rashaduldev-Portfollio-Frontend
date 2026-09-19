@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ExternalLink, ShieldAlert } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import PreviewLoading from "./_components/PreviewLoading";
@@ -17,6 +18,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
   const [viewport, setViewport] = useState<PreviewViewport>("desktop");
   const [refreshKey, setRefreshKey] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [previewBlocked, setPreviewBlocked] = useState(false);
   const [customWidth, setCustomWidth] = useState<number | null>(null);
   const [renderedWidth, setRenderedWidth] = useState(0);
   const [maximumWidth, setMaximumWidth] = useState(320);
@@ -28,6 +30,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
     setViewport("desktop");
     setCustomWidth(null);
     setLoading(true);
+    setPreviewBlocked(false);
   }, [open, url]);
 
   useEffect(() => {
@@ -59,7 +62,10 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
       automaticRetryAttempted.current = true;
       setRefreshKey((key) => key + 1);
     }, 2500);
-    const fallbackTimeout = window.setTimeout(() => setLoading(false), 9000);
+    const fallbackTimeout = window.setTimeout(() => {
+      setLoading(false);
+      setPreviewBlocked(true);
+    }, 9000);
     return () => {
       window.clearTimeout(recoveryTimeout);
       window.clearTimeout(fallbackTimeout);
@@ -69,6 +75,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
   const refresh = () => {
     automaticRetryAttempted.current = true;
     setLoading(true);
+    setPreviewBlocked(false);
     setRefreshKey((key) => key + 1);
   };
   const changeViewport = (value: PreviewViewport) => {
@@ -97,7 +104,8 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
             <PreviewResizeControls width={renderedWidth} maxWidth={maximumWidth} dragging={dragging} onWidthChange={resizePreview} onDraggingChange={setDragging} />
             {dragging && <div className="absolute inset-0 z-30 cursor-ew-resize" aria-hidden="true" />}
             {loading && <PreviewLoading />}
-            <iframe key={`${url}-${refreshKey}`} src={url} title={`${title} live project preview`} className="h-full w-full bg-white" onLoad={() => setLoading(false)} allow="fullscreen; clipboard-read; clipboard-write" referrerPolicy="strict-origin-when-cross-origin" />
+            {previewBlocked && <div className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/95 p-6 text-center text-zinc-200"><div className="flex max-w-sm flex-col items-center"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-amber-400/10 text-amber-300"><ShieldAlert className="h-7 w-7" /></span><h3 className="mt-4 text-base font-semibold">Embedded preview unavailable</h3><p className="mt-2 text-xs leading-relaxed text-zinc-400">This project blocks embedded previews for security. Open it in a new tab to view the live website.</p><div className="mt-5 flex flex-wrap justify-center gap-2"><a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90">Open live site <ExternalLink className="h-3.5 w-3.5" /></a><button type="button" onClick={refresh} className="rounded-lg border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10">Try preview again</button></div></div></div>}
+            <iframe key={`${url}-${refreshKey}`} src={url} title={`${title} live project preview`} className="h-full w-full bg-white" onLoad={() => { setLoading(false); setPreviewBlocked(false); }} allow="fullscreen; clipboard-read; clipboard-write" referrerPolicy="strict-origin-when-cross-origin" />
           </div>
         </div>
       </DialogContent>
