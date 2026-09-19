@@ -1,51 +1,25 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaHeart, FaLink, FaShareAlt } from "react-icons/fa";
+import { FaGithub, FaLink, FaShareAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
-import BlobsButton from "../Common/Blobsbutton";
 import { LayoutContext } from "../context";
+import ContentEngagement from "../Engagement/ContentEngagement";
 import type { Project as StaticProject } from "@/types/translations";
-import type { ManagedProject, ProjectComment } from "@/types/project";
-
-const api = (path: string) => `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, "")}/api${path}`;
+import type { ManagedProject } from "@/types/project";
 interface ProjectDetailsClientProps { projectId: string; initialProject: ManagedProject | null }
 
 export default function ProjectDetailsClient({ projectId, initialProject }: ProjectDetailsClientProps) {
   const context = useContext(LayoutContext);
   const fallbackProject = context?.translations.projectsSection?.projects.find((item: StaticProject) => String(item.id) === projectId);
-  const [project, setProject] = useState<ManagedProject | null>(initialProject);
-  const [comments, setComments] = useState<ProjectComment[]>(initialProject?.comments ?? []);
-  const [form, setForm] = useState({ name: "", content: "" });
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleLike = async () => {
-    if (!project) return;
-    if (fallbackProject && !project._id) return setProject({ ...project, likes: (project.likes ?? 0) + 1 });
-    const res = await fetch(api(`/projects/${projectId}/like`), { method: "POST" });
-    const data = await res.json();
-    if (data.data?.likes !== undefined) setProject((current) => current ? { ...current, likes: data.data.likes } : current);
-  };
-
-  const submitComment = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); setSubmitting(true);
-    try {
-      const res = await fetch(api(`/projects/${projectId}/comments`), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
-      setComments(data.data); setForm({ name: "", content: "" }); toast.success("Comment submitted.");
-    } catch (error) { toast.error(error instanceof Error ? error.message : "Could not submit comment."); }
-    finally { setSubmitting(false); }
-  };
-
   const share = async () => {
-    if (navigator.share) await navigator.share({ title: project?.title, url: window.location.href });
+    if (navigator.share) await navigator.share({ title: initialProject?.title ?? fallbackProject?.title, url: window.location.href });
     else { await navigator.clipboard.writeText(window.location.href); toast.success("Link copied to clipboard."); }
   };
 
-  const displayedProject = project ?? (fallbackProject ? { _id: "", title: fallbackProject.title, description: fallbackProject.description, techStack: fallbackProject.techStack.split(", "), images: [{ url: fallbackProject.desktopimage }, { url: fallbackProject.mobileimage }], githubUrl: fallbackProject.githubLink, liveUrl: fallbackProject.liveLink } : null);
+  const displayedProject = initialProject ?? (fallbackProject ? { _id: "", title: fallbackProject.title, description: fallbackProject.description, techStack: fallbackProject.techStack.split(", "), images: [{ url: fallbackProject.desktopimage }, { url: fallbackProject.mobileimage }], githubUrl: fallbackProject.githubLink, liveUrl: fallbackProject.liveLink } : null);
   if (!displayedProject) return <div className="mt-24 text-center">Project not found.</div>;
   const displayed = displayedProject;
   const images = displayed.images ?? [];
@@ -53,7 +27,7 @@ export default function ProjectDetailsClient({ projectId, initialProject }: Proj
     <h1 className="text-3xl font-bold mb-4">{displayed.title}</h1><p className="text-gray-700 dark:text-gray-300 mb-4">{displayed.description}</p>
     {!!displayed.techStack?.length && <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{displayed.techStack.join(", ")}</p>}
     {!!images.length && <div className="grid gap-6 sm:grid-cols-2 mb-10">{images.map((image, index) => <div key={image.url} className="relative h-64"><Image fill src={image.url} alt={`${displayed.title} screenshot ${index + 1}`} sizes="(max-width: 640px) 100vw, 50vw" className="rounded-lg object-cover" /></div>)}</div>}
-    <div className="flex gap-6 items-center mb-8"><button onClick={handleLike} className="flex items-center gap-2 text-red-600"><FaHeart /> {displayed.likes ?? 0}</button>{displayed.githubUrl && <Link href={displayed.githubUrl} target="_blank"><FaGithub size={20} /></Link>}{displayed.liveUrl && <Link href={displayed.liveUrl} target="_blank"><FaLink size={20} /></Link>}<button onClick={share}><FaShareAlt size={20} /></button></div>
-    <section className="mt-10"><h2 className="text-xl font-semibold mb-4">Comments ({comments.length})</h2><form onSubmit={submitComment} className="grid gap-4"><input required value={form.name} onChange={(e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })} placeholder="Name" className="p-2 rounded-md border bg-white dark:bg-gray-800" /><textarea required value={form.content} onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setForm({ ...form, content: e.target.value })} placeholder="Your comment" className="p-2 rounded-md border bg-white dark:bg-gray-800" /><BlobsButton disabled={submitting} type="submit" className="px-5 py-1">{submitting ? "Submitting..." : "Submit comment"}</BlobsButton></form><div className="mt-8 space-y-4">{comments.map((comment) => <div key={comment._id ?? `${comment.name}-${comment.createdAt}`} className="border rounded-md p-4"><p className="font-semibold">{comment.name}</p><p className="mt-2">{comment.content}</p><time className="text-xs text-gray-500">{new Date(comment.createdAt).toLocaleDateString()}</time></div>)}</div></section>
+    <div className="flex gap-6 items-center mb-8">{displayed.githubUrl && <Link href={displayed.githubUrl} target="_blank"><FaGithub size={20} /></Link>}{displayed.liveUrl && <Link href={displayed.liveUrl} target="_blank"><FaLink size={20} /></Link>}<button onClick={share} aria-label="Share project"><FaShareAlt size={20} /></button></div>
+    <ContentEngagement resource="projects" resourceId={projectId} initialLikes={displayed.likes} initialComments={displayed.comments} />
   </div>;
 }

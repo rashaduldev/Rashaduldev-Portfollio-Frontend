@@ -6,11 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { LayoutContext } from "@/components/context";
 import BlobsButton from "../Common/Blobsbutton";
+import ContentEngagement, { type PublicComment } from "../Engagement/ContentEngagement";
 import { FiClock, FiUser, FiShare2 } from "react-icons/fi";
-import { Input } from "../ui/input";
 import toast from "react-hot-toast";
-
-const api = (path: string) => `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, "")}/api${path}`;
 
 type ArticleItem = {
   id: number | string;
@@ -20,7 +18,7 @@ type ArticleItem = {
   date: string;
   content?: string;
   likes?: number;
-  comments?: Array<{ content: string }>;
+  comments?: PublicComment[];
   user?: { name?: string; bio?: string };
 };
 
@@ -38,36 +36,16 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
   const fallbackArticle = context?.translations.latestArticlesSection?.articles.find((item) => String(item.id) === String(routeId));
 
   const [article, setArticle] = useState<ArticleItem | null>(null);
-  const [likes, setLikes] = useState<number>(0);
-  const [comments, setComments] = useState<string[]>([]);
-  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     if (!routeId) return;
 
     if (initialArticle) {
       setArticle(initialArticle);
-      setLikes(initialArticle.likes ?? 0);
-      setComments((initialArticle.comments ?? []).map((comment) => comment.content));
     } else {
       setArticle(fallbackArticle ?? null);
-      setLikes(0);
-      setComments([]);
     }
   }, [routeId, initialArticle, fallbackArticle]);
-
-  const handleLike = () => {
-    if (!routeId) return;
-    (async () => {
-      try {
-        const res = await fetch(api(`/articles/id/${routeId}/like`), { method: 'POST' });
-        const data = await res.json();
-        if (data?.data?.likes !== undefined) setLikes(data.data.likes);
-      } catch (err) {
-        console.error('Error sending like:', err);
-      }
-    })();
-  };
 
   const handleShare = async () => {
     const shareData = {
@@ -88,30 +66,6 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
         console.error("Error copying to clipboard:", error);
       }
     }
-  };
-
-  const handleComment = () => {
-    if (!routeId || newComment.trim() === "" || newComment.length > 500) {
-      toast.error("Comment must be between 1 and 500 characters.");
-      return;
-    }
-    (async () => {
-      try {
-        const res = await fetch(api(`/articles/id/${routeId}/comments`), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: 'Anonymous', content: newComment.trim() }),
-        });
-        const data = await res.json();
-        if (data?.data) {
-          setComments((data.data as Array<{ content: string }>).map((comment) => comment.content));
-        }
-      } catch (err) {
-        console.error('Error adding comment:', err);
-        toast.error('Failed to add comment.');
-      }
-      setNewComment("");
-    })();
   };
 
   if (!routeId) {
@@ -151,19 +105,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
             <p>{article.content || "This is the article content placeholder."}</p>
           </article>
 
-          <section>
-            <h3 className="text-xl font-semibold mb-3">Comments ({comments.length})</h3>
-            <div className="space-y-3">
-              {comments.map((cmt, idx) => (
-                <div key={idx} className="bg-gray-100 dark:bg-gray-800 p-3 rounded shadow-sm">{cmt}</div>
-              ))}
-            </div>
-
-            <div className="mt-4 flex gap-2">
-              <Input type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Write a comment..." aria-label="Comment input" />
-              <BlobsButton onClick={handleComment} className="px-5 py-1">Comment</BlobsButton>
-            </div>
-          </section>
+          <ContentEngagement resource="articles" resourceId={String(routeId)} initialLikes={article.likes} initialComments={article.comments} />
 
           {related && related.length > 0 && (
             <section className="mt-10">
@@ -185,10 +127,9 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
             <div className="p-4 border rounded-lg bg-white/70 dark:bg-gray-900/60">
               <div className="flex items-center justify-between">
                 <div className="text-sm text-gray-600 dark:text-gray-300">Engage</div>
-                <div className="text-sm text-gray-500">{likes} likes</div>
+                <div className="text-sm text-gray-500">Comments and likes are synced live</div>
               </div>
               <div className="mt-3 flex gap-3">
-                <BlobsButton onClick={handleLike} aria-label={`Like article, ${likes} likes`} className="px-4 py-2">❤️ Like</BlobsButton>
                 <BlobsButton onClick={handleShare} aria-label="Share article" className="px-4 py-2"><FiShare2 /></BlobsButton>
               </div>
             </div>
