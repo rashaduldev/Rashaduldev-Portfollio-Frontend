@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { Project } from "@/types/translations";
 import CelebrationButton from "../Common/CelebrationButton";
+import ProjectPreviewModal from "./ProjectPreviewModal";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -116,6 +117,7 @@ export default function ProjectCard({
   priority = false,
 }: ProjectCardProps) {
   const [loaded, setLoaded] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   return (
     <motion.article
@@ -238,13 +240,19 @@ export default function ProjectCard({
             />
           )}
           {item.liveLink && (
-            <ActionBtn
-              href={item.liveLink}
-              label={`Live – ${item.title}`}
-              icon={<FaExternalLinkAlt size={13} />}
-              delay="delay-[120ms]"
+            <CelebrationButton
+              className="h-10 w-10 rounded-full border border-white/25 bg-white/10 backdrop-blur-md"
               hoverBackgroundClassName="bg-sky-500"
-            />
+            >
+              <button
+                type="button"
+                onClick={() => setPreviewOpen(true)}
+                aria-label={`Preview live project – ${item.title}`}
+                className="flex h-full w-full translate-y-3 items-center justify-center rounded-full text-white opacity-0 transition-all duration-500 delay-[120ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110 group-hover:translate-y-0 group-hover:opacity-100 group-hover:border-transparent"
+              >
+                <FaExternalLinkAlt size={13} />
+              </button>
+            </CelebrationButton>
           )}
         </div>
       </div>
@@ -294,22 +302,41 @@ export default function ProjectCard({
           <span className="text-[11px] font-semibold text-violet-600 dark:text-violet-400">
             {item.endtrac}
           </span>
-          <Link
-            href={`/projects/${item.id}`}
-            aria-label={`View details for ${item.title}`}
-            className="group/btn inline-flex items-center gap-1.5 text-[11px] font-semibold
-                       text-gray-500 dark:text-gray-400
-                       hover:text-primary dark:hover:text-primary
-                       transition-colors duration-200"
-          >
-            View details
-            <FaArrowRight
-              size={9}
-              className="transition-transform duration-300 group-hover/btn:translate-x-1"
-            />
-          </Link>
+          <div className="flex items-center gap-3">
+            {item.liveLink && (
+              <button
+                type="button"
+                onClick={() => setPreviewOpen(true)}
+                className="text-[11px] font-semibold text-sky-600 transition-colors hover:text-sky-500 dark:text-sky-400"
+              >
+                Live demo
+              </button>
+            )}
+            <Link
+              href={`/projects/${item.id}`}
+              aria-label={`View details for ${item.title}`}
+              className="group/btn inline-flex items-center gap-1.5 text-[11px] font-semibold
+                         text-gray-500 dark:text-gray-400
+                         hover:text-primary dark:hover:text-primary
+                         transition-colors duration-200"
+            >
+              Details
+              <FaArrowRight
+                size={9}
+                className="transition-transform duration-300 group-hover/btn:translate-x-1"
+              />
+            </Link>
+          </div>
         </div>
       </div>
+      {item.liveLink && (
+        <ProjectPreviewModal
+          open={previewOpen}
+          onOpenChange={setPreviewOpen}
+          title={item.title}
+          url={item.liveLink}
+        />
+      )}
     </motion.article>
   );
 }
