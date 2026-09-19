@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaHeart, FaLink, FaShareAlt } from "react-icons/fa";
@@ -8,26 +8,18 @@ import toast from "react-hot-toast";
 import BlobsButton from "../Common/Blobsbutton";
 import { LayoutContext } from "../context";
 import type { Project as StaticProject } from "@/types/translations";
+import type { ManagedProject, ProjectComment } from "@/types/project";
 
 const api = (path: string) => `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, "")}/api${path}`;
-type Comment = { _id?: string; name: string; content: string; createdAt: string };
-type Project = { _id: string; title: string; description: string; techStack?: string[]; images?: { url: string }[]; githubUrl?: string; liveUrl?: string; likes?: number; comments?: Comment[] };
+interface ProjectDetailsClientProps { projectId: string; initialProject: ManagedProject | null }
 
-export default function ProjectDetailsClient({ projectId }: { projectId: string }) {
+export default function ProjectDetailsClient({ projectId, initialProject }: ProjectDetailsClientProps) {
   const context = useContext(LayoutContext);
   const fallbackProject = context?.translations.projectsSection?.projects.find((item: StaticProject) => String(item.id) === projectId);
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [project, setProject] = useState<ManagedProject | null>(initialProject);
+  const [comments, setComments] = useState<ProjectComment[]>(initialProject?.comments ?? []);
   const [form, setForm] = useState({ name: "", content: "" });
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    fetch(api(`/projects/${projectId}`)).then((res) => res.ok ? res.json() : null).then((data) => {
-      setProject(data?.data ?? null);
-      setComments(data?.data?.comments ?? []);
-    }).catch(() => setProject(null)).finally(() => setLoading(false));
-  }, [projectId]);
 
   const handleLike = async () => {
     if (!project) return;
@@ -54,7 +46,7 @@ export default function ProjectDetailsClient({ projectId }: { projectId: string 
   };
 
   const displayedProject = project ?? (fallbackProject ? { _id: "", title: fallbackProject.title, description: fallbackProject.description, techStack: fallbackProject.techStack.split(", "), images: [{ url: fallbackProject.desktopimage }, { url: fallbackProject.mobileimage }], githubUrl: fallbackProject.githubLink, liveUrl: fallbackProject.liveLink } : null);
-  if (!displayedProject) return <div className="mt-24 text-center">{loading ? "Loading project..." : "Project not found."}</div>;
+  if (!displayedProject) return <div className="mt-24 text-center">Project not found.</div>;
   const displayed = displayedProject;
   const images = displayed.images ?? [];
   return <div className="max-w-5xl md:mx-auto mx-3 min-h-screen">

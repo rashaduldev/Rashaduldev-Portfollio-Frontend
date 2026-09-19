@@ -2,6 +2,7 @@
 
 import { apiClient } from "@/lib/api";
 import { getAccessToken } from "../auth";
+import type { ManagedProject } from "@/types/project";
 
 /* ------------------------------------------
    GET ALL PROJECTS (with query support)
@@ -51,7 +52,7 @@ export async function getAdminProjects(params?: {
    GET SINGLE PROJECT
 ------------------------------------------ */
 export async function getProjectById(id: string) {
-  const res = await apiClient({
+  const res = await apiClient<ManagedProject>({
     endpoint: `/projects/${id}`,
     method: "GET",
   });

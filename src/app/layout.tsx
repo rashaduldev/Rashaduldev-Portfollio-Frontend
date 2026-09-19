@@ -8,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 import PortfolioAssistant from "@/components/PortfolioAssistant";
 import NetworkStatus from "@/components/NetworkStatus";
+import { DEFAULT_DESCRIPTION, DEFAULT_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -24,8 +25,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Rashaduldev – Portfolio",
-  description: "Frontend Developer Portfolio",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: DEFAULT_DESCRIPTION,
+  keywords: DEFAULT_KEYWORDS,
+  authors: [{ name: "Md Rashadul Islam", url: SITE_URL }],
+  creator: "Md Rashadul Islam",
+  openGraph: { title: SITE_NAME, description: DEFAULT_DESCRIPTION, url: SITE_URL, siteName: SITE_NAME, type: "website", locale: "en_US" },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
 export default function RootLayout({

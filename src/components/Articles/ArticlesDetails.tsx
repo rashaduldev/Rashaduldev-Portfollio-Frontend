@@ -19,6 +19,9 @@ type ArticleItem = {
   category: string;
   date: string;
   content?: string;
+  likes?: number;
+  comments?: Array<{ content: string }>;
+  user?: { name?: string; bio?: string };
 };
 
 type Props = {
@@ -44,11 +47,11 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
 
     if (initialArticle) {
       setArticle(initialArticle);
-      setLikes((initialArticle as any).likes ?? 0);
-      setComments(((initialArticle as any).comments || []).map((c: any) => c.content));
+      setLikes(initialArticle.likes ?? 0);
+      setComments((initialArticle.comments ?? []).map((comment) => comment.content));
     } else {
       setArticle(fallbackArticle ?? null);
-      setLikes((fallbackArticle as any)?.likes ?? 0);
+      setLikes(0);
       setComments([]);
     }
   }, [routeId, initialArticle, fallbackArticle]);
@@ -101,8 +104,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
         });
         const data = await res.json();
         if (data?.data) {
-          // data.data is the full comments array
-          setComments((data.data as any).map((c: any) => c.content));
+          setComments((data.data as Array<{ content: string }>).map((comment) => comment.content));
         }
       } catch (err) {
         console.error('Error adding comment:', err);
@@ -135,7 +137,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
           <header>
             <h1 className="text-4xl font-extrabold leading-tight">{article.title}</h1>
             <div className="mt-2 flex items-center gap-4 text-sm text-gray-500">
-              <span className="flex items-center gap-1"><FiUser /> {(article as any).user?.name || 'Author'}</span>
+              <span className="flex items-center gap-1"><FiUser /> {article.user?.name || 'Author'}</span>
               <span className="flex items-center gap-1"><FiClock /> {estimateReadTime(article.content)} • {article.date}</span>
               <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">{article.category}</span>
             </div>
@@ -194,8 +196,8 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
             <div className="p-4 border rounded-lg bg-white/70 dark:bg-gray-900/60">
               <div className="text-sm text-gray-500">About the author</div>
               <div className="mt-3">
-                <div className="font-medium">{(article as any).user?.name || 'Author'}</div>
-                <div className="text-xs text-gray-500">{(article as any).user?.bio || 'Full-stack developer and writer.'}</div>
+                <div className="font-medium">{article.user?.name || 'Author'}</div>
+                <div className="text-xs text-gray-500">{article.user?.bio || 'Full-stack developer and writer.'}</div>
               </div>
             </div>
           </div>

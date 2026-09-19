@@ -5,7 +5,6 @@ import EducationSection from "@/components/Education";
 import FaqSection from "@/components/FAQ";
 import LatestArticles from "@/components/LatestArticles";
 import ProjectsSection from "@/components/ProjectsSection";
-// import ScrollToTopWithProgress from "@/components/ScrollToTopWithProgress";
 import ServicesCarousel from "@/components/ServicesCarouse";
 import SkillsMarquee from "@/components/SkillsMarquee";
 import SkillsSection from "@/components/SkillsSection";
@@ -13,22 +12,15 @@ import TestimonialSection from "@/components/TestimonialSection";
 import WhyChooseMe from "@/components/WhyChooseMe";
 import WorkExperience from "@/components/WorkExperience";
 import Achievements from "@/components/Achievements";
+import JsonLd from "@/components/Seo/JsonLd";
+import { createPageMetadata, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Home",
-  description:
-    "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
-  openGraph: {
-    title: "Rashaduldev – Home",
-    description:
-      "Frontend developer building interactive, responsive web applications with React, Next.js, and modern web technologies.",
-    type: "website",
-  },
-};
+export const metadata: Metadata = createPageMetadata({ title: "Home", description: "Frontend developer building interactive, responsive web applications with React, Next.js, TypeScript, and modern web technologies.", path: "/" });
 
 const MainLayoutPage = () => {
   return (
     <>
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Person", name: "Md Rashadul Islam", url: SITE_URL, jobTitle: "Frontend and Full-Stack Developer", sameAs: ["https://github.com/rashaduldev", "https://www.linkedin.com/in/rashaduldev"], knowsAbout: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "UI/UX", "Web Performance"] }} />
       <Banner />
       <div className="section-container">
         <SkillsSection />
@@ -49,7 +41,6 @@ const MainLayoutPage = () => {
         </DeferRender>
         <FaqSection />
       </div>
-      {/* Temporarily disabled: <ScrollToTopWithProgress /> */}
     </>
   );
 };
