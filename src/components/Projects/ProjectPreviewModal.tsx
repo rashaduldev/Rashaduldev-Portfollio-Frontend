@@ -75,6 +75,10 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
     setViewport(value);
     setCustomWidth(null);
   };
+  const resizePreview = (width: number) => {
+    setCustomWidth(width);
+    setViewport(width <= 480 ? "mobile" : width <= 1024 ? "tablet" : "desktop");
+  };
   const toggleFullscreen = async () => {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
@@ -90,7 +94,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
         <PreviewToolbar title={title} url={url} viewport={viewport} loading={loading} onViewportChange={changeViewport} onRefresh={refresh} onFullscreen={() => void toggleFullscreen()} onClose={() => onOpenChange(false)} />
         <div ref={previewAreaRef} className="relative flex min-h-0 flex-1 justify-center overflow-auto bg-[radial-gradient(circle_at_top,#27272a_0%,#09090b_58%)] p-2 sm:p-4">
           <div ref={frameRef} className={cn("relative h-full max-w-full overflow-hidden rounded-lg border border-white/10 bg-white shadow-2xl shadow-black/50 ease-[cubic-bezier(0.16,1,0.3,1)]", dragging ? "transition-none" : "transition-[width] duration-500")} style={{ width: customWidth ?? PREVIEW_VIEWPORTS[viewport].width }}>
-            <PreviewResizeControls width={renderedWidth} maxWidth={maximumWidth} dragging={dragging} onWidthChange={setCustomWidth} onDraggingChange={setDragging} />
+            <PreviewResizeControls width={renderedWidth} maxWidth={maximumWidth} dragging={dragging} onWidthChange={resizePreview} onDraggingChange={setDragging} />
             {dragging && <div className="absolute inset-0 z-30 cursor-ew-resize" aria-hidden="true" />}
             {loading && <PreviewLoading />}
             <iframe key={`${url}-${refreshKey}`} src={url} title={`${title} live project preview`} className="h-full w-full bg-white" onLoad={() => setLoading(false)} allow="fullscreen; clipboard-read; clipboard-write" referrerPolicy="strict-origin-when-cross-origin" />
