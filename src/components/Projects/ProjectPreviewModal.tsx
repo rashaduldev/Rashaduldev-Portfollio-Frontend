@@ -10,6 +10,13 @@ import PreviewToolbar, { PREVIEW_VIEWPORTS, type PreviewViewport } from "./_comp
 
 interface ProjectPreviewModalProps { open: boolean; onOpenChange: (open: boolean) => void; title: string; url: string; }
 
+const NON_EMBEDDABLE_HOSTS = new Set(["hospitalia-web.vercel.app"]);
+
+function isKnownBlockedPreview(url: string) {
+  try { return NON_EMBEDDABLE_HOSTS.has(new URL(url).hostname); }
+  catch { return true; }
+}
+
 export default function ProjectPreviewModal({ open, onOpenChange, title, url }: ProjectPreviewModalProps) {
   const previewRef = useRef<HTMLDivElement>(null);
   const previewAreaRef = useRef<HTMLDivElement>(null);
@@ -23,6 +30,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
   const [renderedWidth, setRenderedWidth] = useState(0);
   const [maximumWidth, setMaximumWidth] = useState(320);
   const [dragging, setDragging] = useState(false);
+  const knownBlocked = isKnownBlockedPreview(url);
 
   useLayoutEffect(() => {
     if (!open) return;
@@ -30,9 +38,9 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
     const availableWidth = previewRef.current?.clientWidth ?? window.innerWidth;
     setViewport(availableWidth <= 480 ? "mobile" : availableWidth <= 1024 ? "tablet" : "desktop");
     setCustomWidth(null);
-    setLoading(true);
-    setPreviewBlocked(false);
-  }, [open, url]);
+    setLoading(!knownBlocked);
+    setPreviewBlocked(knownBlocked);
+  }, [knownBlocked, open, url]);
 
   useEffect(() => {
     if (!open) return;
@@ -74,6 +82,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
   }, [loading, open, refreshKey]);
 
   const refresh = () => {
+    if (knownBlocked) return;
     automaticRetryAttempted.current = true;
     setLoading(true);
     setPreviewBlocked(false);
@@ -105,8 +114,8 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
             <PreviewResizeControls width={renderedWidth} maxWidth={maximumWidth} dragging={dragging} onWidthChange={resizePreview} onDraggingChange={setDragging} />
             {dragging && <div className="absolute inset-0 z-30 cursor-ew-resize" aria-hidden="true" />}
             {loading && <PreviewLoading />}
-            {previewBlocked && <div className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/95 p-6 text-center text-zinc-200"><div className="flex max-w-sm flex-col items-center"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-amber-400/10 text-amber-300"><ShieldAlert className="h-7 w-7" /></span><h3 className="mt-4 text-base font-semibold">Embedded preview unavailable</h3><p className="mt-2 text-xs leading-relaxed text-zinc-400">This project blocks embedded previews for security. Open it in a new tab to view the live website.</p><div className="mt-5 flex flex-wrap justify-center gap-2"><a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90">Open live site <ExternalLink className="h-3.5 w-3.5" /></a><button type="button" onClick={refresh} className="rounded-lg border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10">Try preview again</button></div></div></div>}
-            <iframe key={`${url}-${refreshKey}`} src={url} title={`${title} live project preview`} className="h-full w-full bg-white" onLoad={() => { setLoading(false); setPreviewBlocked(false); }} allow="fullscreen; clipboard-read; clipboard-write" referrerPolicy="strict-origin-when-cross-origin" />
+            {previewBlocked && <div className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/95 p-6 text-center text-zinc-200"><div className="flex max-w-sm flex-col items-center"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-amber-400/10 text-amber-300"><ShieldAlert className="h-7 w-7" /></span><h3 className="mt-4 text-base font-semibold">Embedded preview unavailable</h3><p className="mt-2 text-xs leading-relaxed text-zinc-400">This project blocks embedded previews for security. Open it in a new tab to view the live website.</p><div className="mt-5 flex flex-wrap justify-center gap-2"><a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:opacity-90">Open live site <ExternalLink className="h-3.5 w-3.5" /></a>{!knownBlocked && <button type="button" onClick={refresh} className="rounded-lg border border-white/15 px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:bg-white/10">Try preview again</button>}</div></div></div>}
+            {!knownBlocked && <iframe key={`${url}-${refreshKey}`} src={url} title={`${title} live project preview`} className="h-full w-full bg-white" onLoad={() => { setLoading(false); setPreviewBlocked(false); }} allow="fullscreen; clipboard-read; clipboard-write" referrerPolicy="strict-origin-when-cross-origin" />}
           </div>
         </div>
       </DialogContent>

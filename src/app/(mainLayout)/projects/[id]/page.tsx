@@ -14,6 +14,10 @@ const loadProject = cache(async (id: string) => {
   return (await getProjectById(id)).payload;
 });
 
+export function generateStaticParams() {
+  return defaultTranslations.projectsSection.projects.map((project) => ({ id: String(project.id) }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const managedProject = await loadProject(id);
@@ -36,6 +40,6 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
   } : null);
   return <>
     {schemaProject && <JsonLd data={{ "@context": "https://schema.org", "@type": "SoftwareApplication", name: schemaProject.title, description: schemaProject.description, url: `${SITE_URL}/projects/${id}`, applicationCategory: "WebApplication", operatingSystem: "Web", sameAs: [schemaProject.githubUrl, schemaProject.liveUrl].filter(Boolean) }} />}
-    <ProjectDetailsClient projectId={id} initialProject={project} />
+    <ProjectDetailsClient projectId={id} initialProject={project} staticProject={staticProject} />
   </>;
 }
