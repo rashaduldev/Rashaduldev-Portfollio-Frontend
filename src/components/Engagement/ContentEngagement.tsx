@@ -28,6 +28,11 @@ export default function ContentEngagement({ resource, resourceId, initialLikes =
     queryKey,
     queryFn: () => request<Engagement>(`${basePath}/engagement`),
     initialData: { likes: initialLikes, comments: initialComments },
+    initialDataUpdatedAt: 0,
+    staleTime: 0,
+    refetchOnMount: "always",
+    refetchOnWindowFocus: true,
+    refetchInterval: 15_000,
     retry: 1,
   });
 
