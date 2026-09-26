@@ -27,7 +27,8 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
   useLayoutEffect(() => {
     if (!open) return;
     automaticRetryAttempted.current = false;
-    setViewport("desktop");
+    const availableWidth = previewRef.current?.clientWidth ?? window.innerWidth;
+    setViewport(availableWidth <= 480 ? "mobile" : availableWidth <= 1024 ? "tablet" : "desktop");
     setCustomWidth(null);
     setLoading(true);
     setPreviewBlocked(false);
@@ -99,7 +100,7 @@ export default function ProjectPreviewModal({ open, onOpenChange, title, url }: 
         <DialogTitle className="sr-only">Preview {title}</DialogTitle>
         <DialogDescription className="sr-only">Interactive preview of {title} at {url}</DialogDescription>
         <PreviewToolbar title={title} url={url} viewport={viewport} loading={loading} onViewportChange={changeViewport} onRefresh={refresh} onFullscreen={() => void toggleFullscreen()} onClose={() => onOpenChange(false)} />
-        <div ref={previewAreaRef} className="relative flex min-h-0 flex-1 justify-center overflow-auto bg-[radial-gradient(circle_at_top,#27272a_0%,#09090b_58%)] p-2 sm:p-4">
+        <div ref={previewAreaRef} className="relative flex min-h-0 flex-1 justify-center overflow-hidden bg-[radial-gradient(circle_at_top,#27272a_0%,#09090b_58%)] p-2 sm:p-4">
           <div ref={frameRef} className={cn("relative h-full max-w-full overflow-hidden rounded-lg border border-white/10 bg-white shadow-2xl shadow-black/50 ease-[cubic-bezier(0.16,1,0.3,1)]", dragging ? "transition-none" : "transition-[width] duration-500")} style={{ width: customWidth ?? PREVIEW_VIEWPORTS[viewport].width }}>
             <PreviewResizeControls width={renderedWidth} maxWidth={maximumWidth} dragging={dragging} onWidthChange={resizePreview} onDraggingChange={setDragging} />
             {dragging && <div className="absolute inset-0 z-30 cursor-ew-resize" aria-hidden="true" />}

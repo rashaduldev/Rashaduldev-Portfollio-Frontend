@@ -46,7 +46,7 @@ export default function PreviewResizeControls({ width, maxWidth, dragging, onWid
       onPointerMove={moveDrag}
       onPointerUp={stopDrag}
       onPointerCancel={stopDrag}
-      className={cn("absolute inset-y-0 z-40 flex w-5 touch-none cursor-ew-resize items-center justify-center text-white/70 outline-none transition hover:bg-primary/25 hover:text-white focus-visible:bg-primary/25 focus-visible:text-white", direction === -1 ? "left-0" : "right-0", dragging && "bg-primary/20")}
+      className={cn("absolute top-1/2 z-40 flex h-24 w-3 -translate-y-1/2 touch-none cursor-ew-resize items-center justify-center rounded-full bg-zinc-950/55 text-white/70 outline-none transition hover:bg-primary/60 hover:text-white focus-visible:bg-primary/60 focus-visible:text-white sm:w-4", direction === -1 ? "left-0" : "right-0", dragging && "bg-primary/60")}
     ><GripVertical className="h-6 w-4 drop-shadow" aria-hidden="true" /></button>)}
   </>;
 }
