@@ -232,7 +232,7 @@ export default function SystemStatus({ variant = "footer" }: { variant?: "footer
               </span>
               <span className="min-w-0">
                 <span className="block truncate text-xs font-semibold sm:text-sm">
-                  {metrics.operational ? "All Systems Operational" : "Connection Interrupted"}
+                  {metrics.operational ? "Portfolio Live & Ready" : "Connection Interrupted"}
                 </span>
                 <span className="block truncate text-[10px] text-zinc-300 sm:text-xs">rashaduldev.vercel.app</span>
               </span>
