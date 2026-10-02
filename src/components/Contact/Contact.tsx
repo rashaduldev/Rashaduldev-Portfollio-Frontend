@@ -15,6 +15,9 @@ import { ControlledPhoneInput } from "../Common/ControlledPhoneInput";
 import { ControlledInput } from "../Common/ControlledInput";
 import { ControlledTextarea } from "../Common/ControlledTextarea";
 import BlobsButton from "../Common/Blobsbutton";
+import LottieAnimation from "../Common/LottieAnimation";
+
+const CONTACT_LOTTIE = "https://assets1.lottiefiles.com/packages/lf20_ojgw1ksr.json";
 
 interface ContactFormValues {
   name: string;
@@ -143,6 +146,10 @@ const Contact = () => {
             <p>📞 {t.phone}: +8801603010103</p>
             <p>📍 {t.address}: Mirpur Dhaka, Bangladesh</p>
           </div>
+          <LottieAnimation
+            src={CONTACT_LOTTIE}
+            className="mx-auto mt-8 h-40 w-40 rounded-3xl bg-primary/5 p-2 md:mx-0 md:h-48 md:w-48"
+          />
         </div>
 
         {/* Form */}

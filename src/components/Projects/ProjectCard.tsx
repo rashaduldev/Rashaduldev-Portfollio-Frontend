@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { Project } from "@/types/translations";
 import CelebrationButton from "../Common/CelebrationButton";
-import ProjectPreviewModal from "./ProjectPreviewModal";
+import ProjectPreviewModal, { isKnownBlockedPreview } from "./ProjectPreviewModal";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -118,6 +118,15 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const [loaded, setLoaded] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const previewBlocked = item.liveLink ? isKnownBlockedPreview(item.liveLink) : false;
+  const openLiveProject = () => {
+    if (!item.liveLink) return;
+    if (previewBlocked) {
+      window.open(item.liveLink, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setPreviewOpen(true);
+  };
 
   return (
     <motion.article
@@ -246,8 +255,8 @@ export default function ProjectCard({
             >
               <button
                 type="button"
-                onClick={() => setPreviewOpen(true)}
-                aria-label={`Preview live project – ${item.title}`}
+                onClick={openLiveProject}
+                aria-label={`${previewBlocked ? "Open" : "Preview"} live project – ${item.title}`}
                 className="flex h-full w-full translate-y-3 items-center justify-center rounded-full text-white opacity-0 transition-all duration-500 delay-[120ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110 group-hover:translate-y-0 group-hover:opacity-100 group-hover:border-transparent"
               >
                 <FaExternalLinkAlt size={13} />
@@ -306,7 +315,7 @@ export default function ProjectCard({
             {item.liveLink && (
               <button
                 type="button"
-                onClick={() => setPreviewOpen(true)}
+                onClick={openLiveProject}
                 className="text-[11px] font-semibold text-sky-600 transition-colors hover:text-sky-500 dark:text-sky-400"
               >
                 Live demo

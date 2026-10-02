@@ -17,6 +17,9 @@ import Image from "next/image";
 import { SiCodewars } from "react-icons/si";
 import CelebrationButton from "./Common/CelebrationButton";
 import BlobsButton from "./Common/Blobsbutton";
+// import LottieAnimation from "./Common/LottieAnimation";
+
+// const HERO_LOTTIE = "https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie";
 
 export default function Banner() {
   const context = useContext(LayoutContext);
@@ -140,15 +143,12 @@ export default function Banner() {
               sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 320px, 384px"
               className="rounded-full"
             />
+            {/* <LottieAnimation
+              src={HERO_LOTTIE}
+              className="absolute -bottom-5 -right-2 h-28 w-28 rounded-3xl border border-primary/15 bg-background/80 p-1 shadow-xl backdrop-blur sm:h-36 sm:w-36"
+            /> */}
           </div>
         </div>
-
-        {/* <DotLottieReact
-      src="https://lottie.host/dd41f228-5379-497a-961e-051787531156/xOoltcD2od.lottie"
-      loop
-      className="h-[400px] w-[800px]"
-      autoplay
-    /> */}
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ interface ProjectPreviewModalProps { open: boolean; onOpenChange: (open: boolean
 
 const NON_EMBEDDABLE_HOSTS = new Set(["hospitalia-web.vercel.app"]);
 
-function isKnownBlockedPreview(url: string) {
+export function isKnownBlockedPreview(url: string) {
   try { return NON_EMBEDDABLE_HOSTS.has(new URL(url).hostname); }
   catch { return true; }
 }

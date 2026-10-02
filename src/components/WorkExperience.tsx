@@ -1,12 +1,10 @@
 "use client";
 
-import { useContext, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 import { LayoutContext } from "./context";
 import { motion } from "framer-motion";
 import { ExperienceItem } from "@/types/translations";
 import { CiLocationOn } from "react-icons/ci";
-import { getExperience } from "@/actions/resume/resume";
 
 export default function WorkExperience() {
   const context = useContext(LayoutContext);
@@ -18,19 +16,7 @@ export default function WorkExperience() {
   }
 
   const { translations, isRTL } = context;
-  const experienceRecord: ExperienceItem[] = translations?.experience ?? {};
-  const fallbackExperiences: ExperienceItem[] = Object.values(experienceRecord).flat();
-  const { data: experienceResponse } = useQuery({ queryKey: ["public-experience"], queryFn: getExperience });
-  const experiences: ExperienceItem[] = useMemo(() => {
-    const managedExperiences = experienceResponse?.payload;
-    if (!Array.isArray(managedExperiences) || managedExperiences.length === 0) return fallbackExperiences;
-    return managedExperiences.map((experience: any) => ({
-      year: new Date(experience.startDate).getFullYear().toString(), title: experience.role,
-      company: experience.company, department: "", description: experience.description ?? "",
-      duration: `${new Date(experience.startDate).getFullYear()} — ${experience.current ? "Present" : new Date(experience.endDate).getFullYear()}`,
-      type: "Experience", location: experience.location ?? "",
-    }));
-  }, [experienceResponse?.payload, fallbackExperiences]);
+  const experiences: ExperienceItem[] = translations?.experience ?? [];
 
   // Sort by year desc
   const sortedExperiences = [...experiences].sort(
