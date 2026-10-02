@@ -10,7 +10,10 @@ import PreviewToolbar, { PREVIEW_VIEWPORTS, type PreviewViewport } from "./_comp
 
 interface ProjectPreviewModalProps { open: boolean; onOpenChange: (open: boolean) => void; title: string; url: string; }
 
-const NON_EMBEDDABLE_HOSTS = new Set(["hospitalia-web.vercel.app"]);
+const NON_EMBEDDABLE_HOSTS = new Set([
+  "hospitalia-web.vercel.app",
+  "temporary-dishwashing-facility-for-lease.com",
+]);
 
 export function isKnownBlockedPreview(url: string) {
   try { return NON_EMBEDDABLE_HOSTS.has(new URL(url).hostname); }

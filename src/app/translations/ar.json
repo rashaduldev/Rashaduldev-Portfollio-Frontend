@@ -203,6 +203,54 @@
     "viewallproject": "عرض جميع المشاريع",
     "projects": [
       {
+        "id": 19,
+        "title": "هوم كويست أسترو",
+        "description": "منصة عقارية متقنة ومتجاوبة بالكامل مبنية باستخدام Astro وTailwind CSS. توفر اكتشاف العقارات وصفحات الوكلاء والشركة وتفاصيل الخدمات والصفحات القانونية وحركات سلسة وتجربة حديثة تركز على الهاتف المحمول.",
+        "desktopimage": "/assets/projects/homequest-astro.png",
+        "mobileimage": "/assets/projects/homequest-astro.png",
+        "techStack": "Astro, TypeScript, Tailwind CSS, React, AOS",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/homequest-astro",
+        "liveLink": "https://homequest-astro.vercel.app",
+        "status": "أحدث"
+      },
+      {
+        "id": 18,
+        "title": "منصة بايت سبيس التعليمية",
+        "description": "منصة تعليمية دقيقة التصميم ومتجاوبة بالكامل تم تنفيذها من تصميم Figma احترافي. تشمل اكتشاف الدورات وملفات المنشئين والبحث وصفحات الدورات التفصيلية ومكونات قابلة لإعادة الاستخدام تركز على الأداء.",
+        "desktopimage": "/assets/projects/bytespace.png",
+        "mobileimage": "/assets/projects/bytespace.png",
+        "techStack": "Next.js, TypeScript, Tailwind CSS, React, Radix UI",
+        "endtrac": "2026-10-01",
+        "githubLink": "https://github.com/rashaduldev/bytespace-new",
+        "liveLink": "https://rashaduldev-bytespace-new.vercel.app",
+        "status": "أحدث"
+      },
+      {
+        "id": 17,
+        "title": "تأجير شاحنات الطعام",
+        "description": "موقع إنتاجي لتأجير شاحنات الطعام على مستوى البلاد، يتضمن اكتشاف الخدمات وصفحات هبوط إقليمية ومحتوى SEO منظماً وتنقلاً متجاوباً ودعوات واضحة للتواصل وعرضاً ثابتاً محسناً.",
+        "desktopimage": "/assets/projects/food-truck-rentals.png",
+        "mobileimage": "/assets/projects/food-truck-rentals.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/food-truck-rentals",
+        "liveLink": "https://food-truck-rentals.com",
+        "status": "أحدث"
+      },
+      {
+        "id": 16,
+        "title": "منشأة غسيل أطباق مؤقتة",
+        "description": "منصة وطنية لتأجير منشآت غسيل الأطباق التجارية المؤقتة. تتضمن المخزون وأدلة مناطق الخدمة وصفحات الصناعات وحاسبة تفاعلية ومسارات تحويل للطوارئ وبنية SEO شاملة.",
+        "desktopimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "mobileimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/temporary-dishwashing-facility",
+        "liveLink": "https://temporary-dishwashing-facility-for-lease.com",
+        "status": "أحدث"
+      },
+      {
         "id": 11,
         "title": "لوحة تحكم HTML وTailwind",
         "description": "لوحة تحكم CRM متجاوبة بالكامل مبنية باستخدام HTML وTailwind CSS فقط، بدون إطار عمل أو مكتبات. واجهة مستخدم نظيفة، تصميم متجاوب مع الأجهزة المحمولة، وتصميم خفيف الوزن يركز على العرض الأمامي فقط.",
@@ -224,7 +272,7 @@
         "endtrac": "Mern-Stack",
         "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
         "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "أحدث"
+        "status": "قديم"
       },
       {
         "id": 2,

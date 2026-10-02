@@ -203,6 +203,54 @@
     "viewallproject": "View All Projects",
     "projects": [
       {
+        "id": 19,
+        "title": "HomeQuest Astro",
+        "description": "A polished, responsive real-estate platform built with Astro and Tailwind CSS. It delivers property discovery, agent and company pages, service details, legal pages, smooth animations, and a modern mobile-first browsing experience.",
+        "desktopimage": "/assets/projects/homequest-astro.png",
+        "mobileimage": "/assets/projects/homequest-astro.png",
+        "techStack": "Astro, TypeScript, Tailwind CSS, React, AOS",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/homequest-astro",
+        "liveLink": "https://homequest-astro.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 18,
+        "title": "ByteSpace Learning Platform",
+        "description": "A pixel-accurate, fully responsive learning platform recreated from a professional Figma design. It includes course discovery, creator profiles, search, detailed course pages, and performance-focused reusable components.",
+        "desktopimage": "/assets/projects/bytespace.png",
+        "mobileimage": "/assets/projects/bytespace.png",
+        "techStack": "Next.js, TypeScript, Tailwind CSS, React, Radix UI",
+        "endtrac": "2026-10-01",
+        "githubLink": "https://github.com/rashaduldev/bytespace-new",
+        "liveLink": "https://rashaduldev-bytespace-new.vercel.app",
+        "status": "Latest"
+      },
+      {
+        "id": 17,
+        "title": "Food Truck Rentals",
+        "description": "A production-ready nationwide food-truck rental website with service discovery, regional landing pages, structured SEO content, responsive navigation, lead-generation calls to action, and optimized static rendering.",
+        "desktopimage": "/assets/projects/food-truck-rentals.png",
+        "mobileimage": "/assets/projects/food-truck-rentals.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/food-truck-rentals",
+        "liveLink": "https://food-truck-rentals.com",
+        "status": "Latest"
+      },
+      {
+        "id": 16,
+        "title": "Temporary Dishwashing Facility",
+        "description": "A nationwide rental and leasing platform for temporary commercial dishwashing facilities. It features inventory, service-area directories, industry pages, an interactive calculator, emergency conversion flows, and comprehensive SEO architecture.",
+        "desktopimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "mobileimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/temporary-dishwashing-facility",
+        "liveLink": "https://temporary-dishwashing-facility-for-lease.com",
+        "status": "Latest"
+      },
+      {
         "id": 12,
         "title": "Optivus premium Theme",
         "description": "Developed a professional, fully responsive frontend project using Gulp.js for workflow automation. Delivered clean, maintainable code and a modern, user-focused design with optimized logic for performance. Ensured 100% mobile responsiveness with a polished, professional mobile experience across all devices.",
@@ -284,7 +332,7 @@
         "endtrac": "Mern-Stack",
         "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
         "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "Latest"
+        "status": "Old"
       },
       {
         "id": 2,

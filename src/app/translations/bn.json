@@ -203,6 +203,54 @@
     "viewallproject": "সব প্রজেক্ট দেখুন",
     "projects": [
       {
+        "id": 19,
+        "title": "হোমকোয়েস্ট অ্যাস্ট্রো",
+        "description": "Astro ও Tailwind CSS দিয়ে তৈরি একটি পরিপাটি ও সম্পূর্ণ রেসপনসিভ রিয়েল-এস্টেট প্ল্যাটফর্ম। এতে সম্পত্তি খোঁজা, এজেন্ট ও কোম্পানি পেজ, সার্ভিস ডিটেইলস, লিগ্যাল পেজ, মসৃণ অ্যানিমেশন এবং আধুনিক মোবাইল-ফার্স্ট অভিজ্ঞতা রয়েছে।",
+        "desktopimage": "/assets/projects/homequest-astro.png",
+        "mobileimage": "/assets/projects/homequest-astro.png",
+        "techStack": "Astro, TypeScript, Tailwind CSS, React, AOS",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/homequest-astro",
+        "liveLink": "https://homequest-astro.vercel.app",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 18,
+        "title": "বাইটস্পেস লার্নিং প্ল্যাটফর্ম",
+        "description": "পেশাদার Figma ডিজাইন থেকে তৈরি একটি পিক্সেল-নির্ভুল ও সম্পূর্ণ রেসপনসিভ লার্নিং প্ল্যাটফর্ম। এতে কোর্স খোঁজা, ক্রিয়েটর প্রোফাইল, সার্চ, বিস্তারিত কোর্স পেজ এবং পারফরম্যান্স-কেন্দ্রিক পুনর্ব্যবহারযোগ্য কম্পোনেন্ট রয়েছে।",
+        "desktopimage": "/assets/projects/bytespace.png",
+        "mobileimage": "/assets/projects/bytespace.png",
+        "techStack": "Next.js, TypeScript, Tailwind CSS, React, Radix UI",
+        "endtrac": "2026-10-01",
+        "githubLink": "https://github.com/rashaduldev/bytespace-new",
+        "liveLink": "https://rashaduldev-bytespace-new.vercel.app",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 17,
+        "title": "ফুড ট্রাক রেন্টালস",
+        "description": "সার্ভিস খোঁজা, আঞ্চলিক ল্যান্ডিং পেজ, স্ট্রাকচার্ড SEO কন্টেন্ট, রেসপনসিভ নেভিগেশন, লিড-জেনারেশন কল-টু-অ্যাকশন এবং অপ্টিমাইজড স্ট্যাটিক রেন্ডারিংসহ একটি প্রোডাকশন-রেডি দেশব্যাপী ফুড ট্রাক রেন্টাল ওয়েবসাইট।",
+        "desktopimage": "/assets/projects/food-truck-rentals.png",
+        "mobileimage": "/assets/projects/food-truck-rentals.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/food-truck-rentals",
+        "liveLink": "https://food-truck-rentals.com",
+        "status": "সাম্প্রতিক"
+      },
+      {
+        "id": 16,
+        "title": "টেম্পোরারি ডিশওয়াশিং ফ্যাসিলিটি",
+        "description": "অস্থায়ী বাণিজ্যিক ডিশওয়াশিং ফ্যাসিলিটি ভাড়া ও লিজের জন্য একটি দেশব্যাপী প্ল্যাটফর্ম। এতে ইনভেন্টরি, সার্ভিস-এরিয়া ডিরেক্টরি, ইন্ডাস্ট্রি পেজ, ইন্টারঅ্যাকটিভ ক্যালকুলেটর, জরুরি কনভার্সন ফ্লো এবং বিস্তৃত SEO আর্কিটেকচার রয়েছে।",
+        "desktopimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "mobileimage": "/assets/projects/temporary-dishwashing-facility.png",
+        "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
+        "endtrac": "2026-09-30",
+        "githubLink": "https://github.com/rashaduldev/temporary-dishwashing-facility",
+        "liveLink": "https://temporary-dishwashing-facility-for-lease.com",
+        "status": "সাম্প্রতিক"
+      },
+      {
         "id": 12,
         "title": "অপটিভাস (FramerBite ক্লোন) পেইড থিম",
         "description": "Gulp.js ব্যবহার করে ওয়ার্কফ্লো অটোমেশন সহ একটি পেশাদার, সম্পূর্ণ রেসপনসিভ ফ্রন্টএন্ড প্রজেক্ট তৈরি করা হয়েছে। পরিষ্কার, রক্ষণাবেক্ষণযোগ্য কোড এবং আধুনিক, ব্যবহারকারী-কেন্দ্রিক ডিজাইন প্রদান করা হয়েছে, যা পারফরম্যান্সের জন্য অপ্টিমাইজড লজিক দ্বারা সমৃদ্ধ। ১০০% মোবাইল রেসপনসিভনেস নিশ্চিত করা হয়েছে, যা সব ডিভাইসে পরিপাটি ও পেশাদার মোবাইল অভিজ্ঞতা প্রদান করে।",
@@ -236,7 +284,7 @@
         "endtrac": "Mern-Stack",
         "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
         "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "সাম্প্রতিক"
+        "status": "পুরানো"
       },
       {
         "id": 2,
