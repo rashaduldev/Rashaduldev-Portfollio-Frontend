@@ -2,9 +2,9 @@
 import React, { useState, useContext, useMemo } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { LayoutContext } from "./context";
-import LottieAnimation from "./Common/LottieAnimation";
+// import LottieAnimation from "./Common/LottieAnimation";
 
-const ABOUT_LOTTIE = "https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie";
+// const ABOUT_LOTTIE = "https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie";
 
 type Skill = {
   key: string;
@@ -99,14 +99,12 @@ export default function SkillsCloud() {
       dir={isRTL ? "rtl" : "ltr"}
       className="w-full py-20 px-4 flex flex-col items-center"
     >
-      <div suppressHydrationWarning className="mb-10 flex max-w-3xl items-center justify-center gap-4 text-left" data-aos="fade-up" data-aos-duration="1000">
-        <LottieAnimation src={ABOUT_LOTTIE} className="hidden h-28 w-28 shrink-0 rounded-3xl bg-primary/5 p-2 sm:block" />
-        <div className={isRTL ? "text-right" : "text-left"}>
-          <h2 className="mb-4">{translations.skills.about}</h2>
-          <p className="max-w-xl text-sm text-gray-500 dark:text-zinc-400 md:text-base">
-            {translations.skills.description}
-          </p>
-        </div>
+      <div suppressHydrationWarning className="text-center mb-10" data-aos="fade-up" data-aos-duration="1000">
+        {/* <LottieAnimation src={ABOUT_LOTTIE} className="hidden h-28 w-28 shrink-0 rounded-3xl bg-primary/5 p-2 sm:block" /> */}
+        <h2 className="mb-4">{translations.skills.about}</h2>
+        <p className="text-gray-500 dark:text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+          {translations.skills.description}
+        </p>
       </div>
 
       <div suppressHydrationWarning data-aos="fade-up" data-aos-duration="1000" className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800">
