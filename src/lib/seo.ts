@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://rashaduldev.vercel.app";
-export const SITE_NAME = "Md Rashadul Islam — Frontend Developer";
-export const DEFAULT_DESCRIPTION = "Portfolio of Md Rashadul Islam, a frontend and full-stack developer specializing in React, Next.js, TypeScript, accessible UI, and performance optimization.";
-export const DEFAULT_KEYWORDS = ["Md Rashadul Islam", "frontend developer", "Next.js developer", "React developer", "TypeScript", "web developer portfolio", "Bangladesh developer"];
+export const SITE_NAME = "Md Rashadul Islam | Full Stack & MERN Developer";
+export const DEFAULT_DESCRIPTION = "Portfolio of Md Rashadul Islam, a Full Stack Developer specializing in MERN stack, Next.js, TypeScript, and modern web application architecture.";
+export const DEFAULT_KEYWORDS = ["Md Rashadul Islam", "Md Rashadul Islam Portfolio", "Full Stack Developer Bangladesh", "MERN Stack Developer", "Next.js Developer"];
+export const SOCIAL_PROFILES = [
+  "https://github.com/rashaduldev",
+  "https://www.linkedin.com/in/rashaduldev",
+  "https://app.daily.dev/rashaduldev",
+  "https://www.codewars.com/users/rashaduldev",
+];
 
 interface PageMetadataInput { title: string; description: string; path: string; keywords?: string[] }
 

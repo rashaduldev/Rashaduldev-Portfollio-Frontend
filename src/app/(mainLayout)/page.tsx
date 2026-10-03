@@ -12,15 +12,16 @@ import TestimonialSection from "@/components/TestimonialSection";
 import WhyChooseMe from "@/components/WhyChooseMe";
 import WorkExperience from "@/components/WorkExperience";
 import Achievements from "@/components/Achievements";
-import JsonLd from "@/components/Seo/JsonLd";
-import { createPageMetadata, SITE_URL } from "@/lib/seo";
+import { createPageMetadata, DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({ title: "Home", description: "Frontend developer building interactive, responsive web applications with React, Next.js, TypeScript, and modern web technologies.", path: "/" });
+export const metadata: Metadata = {
+  ...createPageMetadata({ title: SITE_NAME, description: DEFAULT_DESCRIPTION, path: "/" }),
+  title: { absolute: SITE_NAME },
+};
 
 const MainLayoutPage = () => {
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Person", name: "Md Rashadul Islam", url: SITE_URL, jobTitle: "Frontend and Full-Stack Developer", sameAs: ["https://github.com/rashaduldev", "https://www.linkedin.com/in/rashaduldev"], knowsAbout: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "UI/UX", "Web Performance"] }} />
       <Banner />
       <div className="section-container">
         <SkillsSection />

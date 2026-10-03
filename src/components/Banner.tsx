@@ -9,7 +9,6 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
-import { TypeAnimation } from "react-type-animation";
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import "./banner.css";
 import rashadul from "../../public/assets/rashadul-portfollio.png";
@@ -52,17 +51,7 @@ export default function Banner() {
             {translations?.main?.subtitle || "Hi there, I'm"}
           </span>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl dark:text-white">
-            <TypeAnimation
-              sequence={[
-                translations?.main?.title || "Rashadul Islam",
-                1000,
-                translations?.main?.stack || "Frontend Developer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={30}
-              repeat={Infinity}
-            />
+            Md Rashadul Islam — Full Stack &amp; MERN Developer
           </h1>
           <p className="mb-6 text-base leading-relaxed text-justify text-gray-600 sm:text-lg dark:text-gray-300 max-w-xl">
             {translations?.main?.description ||

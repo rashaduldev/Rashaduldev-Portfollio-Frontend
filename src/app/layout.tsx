@@ -9,6 +9,7 @@ import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 import PortfolioAssistant from "@/components/PortfolioAssistant";
 import NetworkStatus from "@/components/NetworkStatus";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import PersonSchema from "@/components/Seo/PersonSchema";
 import { DEFAULT_DESCRIPTION, DEFAULT_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const dmSerif = DM_Serif_Display({
@@ -25,15 +26,23 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const googleSiteVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  "x0s4392Ddo2xFRRNMDtcNwPAx9yhPns2lyMlQV7sWBw";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
   description: DEFAULT_DESCRIPTION,
   keywords: DEFAULT_KEYWORDS,
+  alternates: { canonical: SITE_URL },
   authors: [{ name: "Md Rashadul Islam", url: SITE_URL }],
   creator: "Md Rashadul Islam",
-  openGraph: { title: SITE_NAME, description: DEFAULT_DESCRIPTION, url: SITE_URL, siteName: SITE_NAME, type: "website", locale: "en_US" },
-  twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION },
+  publisher: "Md Rashadul Islam",
+  category: "technology",
+  openGraph: { title: SITE_NAME, description: DEFAULT_DESCRIPTION, url: SITE_URL, siteName: SITE_NAME, type: "website", locale: "en_US", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Md Rashadul Islam — Full Stack and MERN Developer" }] },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description: DEFAULT_DESCRIPTION, images: ["/opengraph-image"] },
+  verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
@@ -45,6 +54,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning={true} lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body suppressHydrationWarning={true} className={`${dmSerif.variable} ${dmSans.variable}`}>
+        <PersonSchema />
         <Script
           defer
           data-domain="rashaduldev.vercel.app"

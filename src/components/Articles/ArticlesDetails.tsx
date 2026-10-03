@@ -67,7 +67,7 @@ export default function ArticleDetailsClient({ id: propId, initialArticle, relat
         {related.length > 0 && <section className="mt-16 border-t border-border pt-10">
           <div className="mb-6 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-primary">Keep exploring</p><h2 className="mt-2 text-2xl font-black">Related insights</h2></div><Link href="/articles" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">All articles <ArrowUpRight className="h-4 w-4" /></Link></div>
           <div className="grid gap-5 sm:grid-cols-2">{related.map((item) => <Link key={item.id} href={`/articles/${item.id}`} className="group overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl">
-            <div className="relative h-44 overflow-hidden"><Image src={item.imageUrl} alt="" fill sizes="(max-width: 640px) 100vw, 40vw" className="object-cover transition duration-500 group-hover:scale-105" /></div>
+            <div className="relative h-44 overflow-hidden"><Image src={item.imageUrl} alt={`${item.title} article cover`} fill sizes="(max-width: 640px) 100vw, 40vw" className="object-cover transition duration-500 group-hover:scale-105" /></div>
             <div className="p-5"><p className="text-xs font-bold uppercase tracking-wider text-primary">{item.category}</p><h3 className="mt-2 text-lg font-black leading-7">{item.title}</h3><p className="mt-3 text-sm text-muted-foreground">{item.date}</p></div>
           </Link>)}</div>
         </section>}
