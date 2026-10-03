@@ -66,10 +66,22 @@
   "achievements": {
     "title": "সাফল্য",
     "stats": [
-      { "value": 45, "label": "সম্পন্ন প্রজেক্ট" },
-      { "value": 6, "label": "পুরস্কারপ্রাপ্ত" },
-      { "value": 99, "label": "ক্লায়েন্ট সন্তুষ্টি" },
-      { "value": 2, "label": "কর্মজীবনের বছর" }
+      {
+        "value": 45,
+        "label": "সম্পন্ন প্রজেক্ট"
+      },
+      {
+        "value": 6,
+        "label": "পুরস্কারপ্রাপ্ত"
+      },
+      {
+        "value": 99,
+        "label": "ক্লায়েন্ট সন্তুষ্টি"
+      },
+      {
+        "value": 2,
+        "label": "কর্মজীবনের বছর"
+      }
     ]
   },
   "experienceHeading": "কর্মঅভিজ্ঞতা",
@@ -203,6 +215,54 @@
     "viewallproject": "সব প্রজেক্ট দেখুন",
     "projects": [
       {
+        "id": 20,
+        "title": "পোর্টফোলিও প্ল্যাটফর্ম API",
+        "description": "নিরাপদ অ্যাডমিন ব্যবস্থাপনা, প্রজেক্ট, আর্টিকেল, মিডিয়া আপলোড, এনগেজমেন্ট, মেসেজ, নিউজলেটার, ড্যাশবোর্ড রিপোর্টিং এবং সম্মতিভিত্তিক ফার্স্ট-পার্টি অ্যানালিটিক্সসহ একটি প্রোডাকশন-রেডি REST API।",
+        "desktopimage": "/assets/projects/portfolio-backend-api.svg",
+        "mobileimage": "/assets/projects/portfolio-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Cloudinary, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/portfollio-backend",
+        "liveLink": "https://rashaduldev-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 21,
+        "title": "Hospitalia Healthcare API",
+        "description": "রোগী, ডাক্তার, সেক্রেটারি, হাসপাতাল ও অ্যাডমিনদের জন্য মাল্টি-রোল হেলথকেয়ার সেবা; এতে সংঘর্ষ-নিরাপদ অ্যাপয়েন্টমেন্ট বুকিং, প্রোভাইডার সার্চ, অ্যাভেইলেবিলিটি, নিরাপদ মেসেজিং এবং লাইভ OpenAPI ডকুমেন্টেশন রয়েছে।",
+        "desktopimage": "/assets/projects/hospitalia-backend-api.svg",
+        "mobileimage": "/assets/projects/hospitalia-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Hospitalia-web-Backend",
+        "liveLink": "https://hospitalia-web-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 22,
+        "title": "A to Z Authentication API",
+        "description": "ই-কমার্স অ্যাপ্লিকেশনের জন্য TypeScript ও Express-ভিত্তিক অথেন্টিকেশন সেবা, যেখানে রেজিস্ট্রেশন, bcrypt পাসওয়ার্ড সুরক্ষা, HttpOnly JWT কুকি সেশন, ক্রস-অরিজিন ক্রেডেনশিয়াল এবং ইউজার ব্যবস্থাপনা রয়েছে।",
+        "desktopimage": "/assets/projects/atoz-backend-api.svg",
+        "mobileimage": "/assets/projects/atoz-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, bcrypt, JWT",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/a-to-z-backend",
+        "liveLink": "https://a-to-z-backend.vercel.app/",
+        "status": "Latest"
+      },
+      {
+        "id": 23,
+        "title": "UIvibe Commerce Operations API",
+        "description": "ক্যাটালগ, অর্ডার, কাস্টমার, সাপ্লায়ার, ক্রয়, ইনভয়েস, ইনভেন্টরি, রিপোর্টিং ও সাপোর্টের জন্য বৃহৎ Laravel API; এতে cookie JWT, RBAC, ট্রানজ্যাকশনাল স্টক আপডেট, OpenAPI এবং বিস্তৃত টেস্ট রয়েছে।",
+        "desktopimage": "/assets/projects/uivibe-commerce-api.svg",
+        "mobileimage": "/assets/projects/uivibe-commerce-api.svg",
+        "techStack": "PHP, Laravel, MySQL, Eloquent ORM, JWT, PHPUnit, Swagger OpenAPI",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/uivibe-commerce-backend",
+        "liveLink": "",
+        "status": "Latest"
+      },
+      {
         "id": 19,
         "title": "হোমকোয়েস্ট অ্যাস্ট্রো",
         "description": "Astro ও Tailwind CSS দিয়ে তৈরি একটি পরিপাটি ও সম্পূর্ণ রেসপনসিভ রিয়েল-এস্টেট প্ল্যাটফর্ম। এতে সম্পত্তি খোঁজা, এজেন্ট ও কোম্পানি পেজ, সার্ভিস ডিটেইলস, লিগ্যাল পেজ, মসৃণ অ্যানিমেশন এবং আধুনিক মোবাইল-ফার্স্ট অভিজ্ঞতা রয়েছে।",
@@ -273,18 +333,6 @@
         "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
         "liveLink": "https://html-tailwind-dashboard.vercel.app",
         "status": "সাম্প্রতিক"
-      },
-      {
-        "id": 1,
-        "title": "ট্যুরিজম অ্যান্ড ট্রাভেলস",
-        "description": "একটি MERN-স্ট্যাক ওয়েব অ্যাপ্লিকেশন যা MongoDB, Express.js, React, এবং Node.js ব্যবহার করে তৈরি করা হয়েছে, যা নিরবচ্ছিন্ন বুকিং, গন্তব্য অন্বেষণ এবং ব্যবহারকারী ব্যবস্থাপনা প্রদান করে। বৈশিষ্ট্যগুলির মধ্যে রয়েছে গতিশীল ট্যুর প্যাকেজ, নিরাপদ প্রমাণীকরণ, ব্যবহারকারী-বান্ধব ইন্টারফেস এবং উন্নত ভ্রমণ পরিকল্পনার জন্য প্রতিক্রিয়াশীল ডিজাইন।",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-        "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
-        "endtrac": "Mern-Stack",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-        "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "পুরানো"
       },
       {
         "id": 2,
@@ -381,18 +429,6 @@
         "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
         "liveLink": "https://zippy-trouble.surge.sh",
         "status": "পুরানো"
-      },
-      {
-        "id": 10,
-        "title": "ট্যুরিস্ট গাইড সার্ভার",
-        "description": "ট্যুরিস্ট গাইড সার্ভার হল একটি ভ্রমণ পরিকল্পনা প্ল্যাটফর্মের জন্য একটি শক্তিশালী ব্যাকএন্ড, যা নিরবচ্ছিন্ন ভ্রমণসূচি ব্যবস্থাপনা এবং ব্যবহারকারী প্রমাণীকরণ সক্ষম করে। Node.js, Express এবং MongoDB ব্যবহার করে তৈরি, এটি দক্ষ ডেটা হ্যান্ডলিংয়ের জন্য Mongoose এবং নিরাপদ প্রমাণীকরণের জন্য JWT ব্যবহার করে।",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
-        "endtrac": "Backend",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-        "status": "সাম্প্রতিক"
       }
     ]
   },

@@ -66,10 +66,22 @@
   "achievements": {
     "title": "الإنجازات",
     "stats": [
-      { "value": 45, "label": "مشروع مكتمل" },
-      { "value": 6, "label": "جائزة فائز" },
-      { "value": 99, "label": "رضا العملاء" },
-      { "value": 2, "label": "سنوات الخبرة" }
+      {
+        "value": 45,
+        "label": "مشروع مكتمل"
+      },
+      {
+        "value": 6,
+        "label": "جائزة فائز"
+      },
+      {
+        "value": 99,
+        "label": "رضا العملاء"
+      },
+      {
+        "value": 2,
+        "label": "سنوات الخبرة"
+      }
     ]
   },
   "experienceHeading": "الخبرة العملية",
@@ -203,6 +215,54 @@
     "viewallproject": "عرض جميع المشاريع",
     "projects": [
       {
+        "id": 20,
+        "title": "واجهة برمجة منصة المحفظة",
+        "description": "واجهة REST جاهزة للإنتاج تجمع الإدارة الآمنة والمشاريع والمقالات ورفع الوسائط والتفاعل والرسائل والنشرات والتقارير والتحليلات المبنية على موافقة المستخدم ضمن بنية TypeScript صارمة.",
+        "desktopimage": "/assets/projects/portfolio-backend-api.svg",
+        "mobileimage": "/assets/projects/portfolio-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Cloudinary, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/portfollio-backend",
+        "liveLink": "https://rashaduldev-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 21,
+        "title": "واجهة Hospitalia للرعاية الصحية",
+        "description": "خدمة صحية متعددة الأدوار للمرضى والأطباء والسكرتارية والمستشفيات والإدارة، مع حجز مواعيد آمن من التعارض وإدارة التوافر والمراسلة والصلاحيات وتوثيق OpenAPI مباشر.",
+        "desktopimage": "/assets/projects/hospitalia-backend-api.svg",
+        "mobileimage": "/assets/projects/hospitalia-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Hospitalia-web-Backend",
+        "liveLink": "https://hospitalia-web-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 22,
+        "title": "واجهة مصادقة A to Z",
+        "description": "خدمة مصادقة مركزة لمتجر إلكتروني مبنية بـ TypeScript وExpress، وتوفر التسجيل وتشفير كلمات المرور وجلسات JWT عبر ملفات HttpOnly ودعم الاعتمادات بين النطاقات وإدارة المستخدمين.",
+        "desktopimage": "/assets/projects/atoz-backend-api.svg",
+        "mobileimage": "/assets/projects/atoz-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, bcrypt, JWT",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/a-to-z-backend",
+        "liveLink": "https://a-to-z-backend.vercel.app/",
+        "status": "Latest"
+      },
+      {
+        "id": 23,
+        "title": "واجهة عمليات UIvibe Commerce",
+        "description": "واجهة Laravel واسعة لعمليات التجارة تشمل الكتالوج والطلبات والعملاء والموردين والمشتريات والفواتير والمخزون والتقارير والدعم، مع JWT بالكوكيز وRBAC ومعاملات مخزون وتوثيق OpenAPI واختبارات شاملة.",
+        "desktopimage": "/assets/projects/uivibe-commerce-api.svg",
+        "mobileimage": "/assets/projects/uivibe-commerce-api.svg",
+        "techStack": "PHP, Laravel, MySQL, Eloquent ORM, JWT, PHPUnit, Swagger OpenAPI",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/uivibe-commerce-backend",
+        "liveLink": "",
+        "status": "Latest"
+      },
+      {
         "id": 19,
         "title": "هوم كويست أسترو",
         "description": "منصة عقارية متقنة ومتجاوبة بالكامل مبنية باستخدام Astro وTailwind CSS. توفر اكتشاف العقارات وصفحات الوكلاء والشركة وتفاصيل الخدمات والصفحات القانونية وحركات سلسة وتجربة حديثة تركز على الهاتف المحمول.",
@@ -261,18 +321,6 @@
         "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
         "liveLink": "https://html-tailwind-dashboard.vercel.app",
         "status": "أحدث"
-      },
-      {
-        "id": 1,
-        "title": "السياحة والسفر",
-        "description": "تطبيق ويب متكامل تم تطويره باستخدام حزمة MERN (MongoDB، Express.js، React، Node.js)، يوفر حجزًا سلسًا، استكشاف الوجهات، وإدارة المستخدمين. تشمل الميزات حزم جولات ديناميكية، مصادقة آمنة، واجهة سهلة الاستخدام، وتصميم متجاوب لتجربة تخطيط سفر محسّنة.",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-        "techStack": "MongoDB, Express, React.js, Node.js, Tailwind, Firebase",
-        "endtrac": "Mern-Stack",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-        "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "قديم"
       },
       {
         "id": 2,
@@ -369,18 +417,6 @@
         "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
         "liveLink": "https://zippy-trouble.surge.sh",
         "status": "قديم"
-      },
-      {
-        "id": 10,
-        "title": "خادم دليل السائح",
-        "description": "خادم دليل السائح هو خلفية قوية لمنصة تخطيط السفر، تمكن من إدارة الجداول الزمنية والمصادقة بسلاسة. مبني باستخدام Node.js، Express، وMongoDB، ويستخدم Mongoose لمعالجة البيانات بكفاءة وJWT للمصادقة الآمنة.",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "techStack": "Node.js, Express, JWT, MongoDB, Mongoose",
-        "endtrac": "Backend",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-        "status": "أحدث"
       }
     ]
   },

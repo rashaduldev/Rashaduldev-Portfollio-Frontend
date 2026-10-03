@@ -1,5 +1,6 @@
 import { CheckCircle2, Code2, Compass, Lightbulb, ShieldCheck, Sparkles, Target, Wrench } from "lucide-react";
 import type { ProjectCaseStudy } from "@/lib/projectCaseStudies";
+import ProjectApiDocumentation from "./ProjectApiDocumentation";
 
 const iconClass = "h-5 w-5 text-primary";
 
@@ -24,6 +25,8 @@ export default function ProjectCaseStudyView({ study, title, description }: { st
       <Heading eyebrow="Engineering" title="Architecture and implementation approach" description="The code is organized to keep page composition, content and interactive behaviour understandable as the project grows." />
       <div className="grid gap-4 md:grid-cols-2">{study.architecture.map((item, index) => <div key={item} className="rounded-2xl border border-white/10 bg-white/[.04] p-5"><div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-primary/20 font-mono text-sm font-bold text-primary">0{index + 1}</div><p className="leading-7 text-zinc-300">{item}</p></div>)}</div>
     </section>
+
+    <ProjectApiDocumentation study={study} />
 
     <section><Heading eyebrow="Technology decisions" title="Why each technology was used" description="Every tool has a defined responsibility instead of being included only for trend value." /><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{study.technologyReasons.map(({ name, reason }) => <article key={name} className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"><Code2 className={`${iconClass} mb-4 transition group-hover:scale-110`} /><h3 className="font-bold">{name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{reason}</p></article>)}</div></section>
 

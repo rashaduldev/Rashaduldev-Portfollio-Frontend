@@ -66,10 +66,22 @@
   "achievements": {
     "title": "Achievements",
     "stats": [
-      { "value": 48, "label": "Project Completed" },
-      { "value": 6, "label": "Award Winner" },
-      { "value": 99, "label": "Client Satisfaction" },
-      { "value": 2, "label": "Years of Experience" }
+      {
+        "value": 48,
+        "label": "Project Completed"
+      },
+      {
+        "value": 6,
+        "label": "Award Winner"
+      },
+      {
+        "value": 99,
+        "label": "Client Satisfaction"
+      },
+      {
+        "value": 2,
+        "label": "Years of Experience"
+      }
     ]
   },
   "experienceHeading": "Work Experience",
@@ -203,6 +215,54 @@
     "viewallproject": "View All Projects",
     "projects": [
       {
+        "id": 20,
+        "title": "Portfolio Platform API",
+        "description": "A production-ready portfolio content platform that combines secure administration, projects, articles, media uploads, engagement, messaging, newsletters, dashboard reporting, and consent-based first-party analytics behind a strictly typed REST API.",
+        "desktopimage": "/assets/projects/portfolio-backend-api.svg",
+        "mobileimage": "/assets/projects/portfolio-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Cloudinary, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/portfollio-backend",
+        "liveLink": "https://rashaduldev-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 21,
+        "title": "Hospitalia Healthcare API",
+        "description": "A multi-role healthcare service for patients, doctors, secretaries, hospitals, and administrators, featuring collision-safe appointment booking, provider discovery, availability management, secure messaging, role-aware access, and a live OpenAPI contract.",
+        "desktopimage": "/assets/projects/hospitalia-backend-api.svg",
+        "mobileimage": "/assets/projects/hospitalia-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Swagger",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/Hospitalia-web-Backend",
+        "liveLink": "https://hospitalia-web-backend.vercel.app/api-docs",
+        "status": "Latest"
+      },
+      {
+        "id": 22,
+        "title": "A to Z Authentication API",
+        "description": "A focused TypeScript and Express authentication service for an e-commerce application, providing account registration, bcrypt password protection, HttpOnly JWT cookie sessions, cross-origin credential support, user administration, and protected identity retrieval.",
+        "desktopimage": "/assets/projects/atoz-backend-api.svg",
+        "mobileimage": "/assets/projects/atoz-backend-api.svg",
+        "techStack": "Node.js, Express, TypeScript, MongoDB, Mongoose, bcrypt, JWT",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/a-to-z-backend",
+        "liveLink": "https://a-to-z-backend.vercel.app/",
+        "status": "Latest"
+      },
+      {
+        "id": 23,
+        "title": "UIvibe Commerce Operations API",
+        "description": "A large Laravel commerce operations API spanning catalogues, orders, customers, suppliers, purchasing, invoices, inventory, reporting, settings, and support. It uses cookie JWT sessions, RBAC, transactional stock updates, generated OpenAPI documentation, and broad feature-test coverage.",
+        "desktopimage": "/assets/projects/uivibe-commerce-api.svg",
+        "mobileimage": "/assets/projects/uivibe-commerce-api.svg",
+        "techStack": "PHP, Laravel, MySQL, Eloquent ORM, JWT, PHPUnit, Swagger OpenAPI",
+        "endtrac": "Backend",
+        "githubLink": "https://github.com/rashaduldev/uivibe-commerce-backend",
+        "liveLink": "",
+        "status": "Latest"
+      },
+      {
         "id": 19,
         "title": "HomeQuest Astro",
         "description": "A polished, responsive real-estate platform built with Astro and Tailwind CSS. It delivers property discovery, agent and company pages, service details, legal pages, smooth animations, and a modern mobile-first browsing experience.",
@@ -297,7 +357,7 @@
         "githubLink": "https://github.com/rashaduldev/ena-ema-frontend-task",
         "liveLink": "https://ena-ema-landing.vercel.app",
         "status": "Latest"
-      }, 
+      },
       {
         "id": 15,
         "title": "Cerrajeria-Urgente-Quito",
@@ -321,18 +381,6 @@
         "githubLink": "https://github.com/rashaduldev/HTML_tailwind_dashboard",
         "liveLink": "https://html-tailwind-dashboard.vercel.app",
         "status": "Latest"
-      },
-      {
-        "id": 1,
-        "title": "Tourisom & Travels",
-        "description": "A MERN-Stack web application built with the MERN stack (MongoDB, Express.js, React, Node.js), offering seamless booking, destination exploration, and user management. Features include dynamic tour packages, secure authentication, a user-friendly interface, and responsive design for an enhanced travel planning experience.",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033657/resume/tour-desktop.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1747033652/resume/tour-mobile.png",
-        "techStack": "MongoDB,Express,React.js,Node.js,Tailwind,Firebase",
-        "endtrac": "Mern-Stack",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Client",
-        "liveLink": "https://tour-guide-theta.vercel.app",
-        "status": "Old"
       },
       {
         "id": 2,
@@ -378,7 +426,6 @@
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271515/resume/projects/desktop.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748271561/resume/projects/mobile.png",
         "techStack": "Nextjs, Tailwind, TypeScript",
-
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Functional-Portfollio-Frontend",
         "liveLink": "https://functional-portfollio-frontend-rash.vercel.app",
@@ -391,7 +438,6 @@
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1757814723/pass_tvbxop.png",
         "techStack": "HTML5, CSS3, JavaScript",
-
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Password-Generator-Js",
         "liveLink": "https://password-generator-bd.vercel.app",
@@ -404,7 +450,6 @@
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748168335/resume/projects/a%20to%20z.png",
         "techStack": "React.js, MongoDB",
-
         "endtrac": "Frontend",
         "githubLink": "",
         "liveLink": "https://a-to-z-ecommerce.vercel.app",
@@ -417,24 +462,10 @@
         "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
         "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1748350186/resume/projects/xibwsr65tdfjifvy3nd5.png",
         "techStack": "React.js",
-
         "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/Airbook-Front-end-Project",
         "liveLink": "https://zippy-trouble.surge.sh",
         "status": "Old"
-      },
-      {
-        "id": 10,
-        "title": "Tourist-Guide-Server",
-        "description": "The Tourist-Guide-Server is a robust backend for a travel planning platform, enabling seamless itinerary management and user authentication. Built with Node.js, Express, and MongoDB, it uses Mongoose for efficient data handling and JWT for secure authentication.",
-        "desktopimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "mobileimage": "https://res.cloudinary.com/de8yddexc/image/upload/v1750858561/4125f1f9-dc21-44c1-91f5-6c901b9b7996.png",
-        "techStack": "Node.js,Express,JWT,MongoDB,Mongoose",
-
-        "endtrac": "Backend",
-        "githubLink": "https://github.com/rashaduldev/Tourist-Guide-Server",
-        "liveLink": "https://tourist-guide-server-tawny.vercel.app",
-        "status": "Latest"
       }
     ]
   },
