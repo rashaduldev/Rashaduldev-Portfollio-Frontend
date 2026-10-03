@@ -6,8 +6,11 @@ import clsx from "clsx";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ProjectCard from "./Projects/ProjectCard";
+import defaultTranslations from "@/app/translations/defaultTranslations";
+import type { Project } from "@/types/translations";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const FEATURED_PROJECT_IDS = [13, 19, 5, 21, 14, 16, 20, 15] as const;
 
 const containerVariants = {
   hidden: {},
@@ -19,19 +22,18 @@ const ProjectsSection = () => {
   if (!context)
     throw new Error("LayoutContext must be within a LayoutContext.Provider");
 
-  const { translations, isRTL, language } = context;
+  const { translations, isRTL } = context;
   const ps = translations.projectsSection || {};
 
-  const statusMap: Record<string, string> = {
-    en: "Latest",
-    ar: "أحدث",
-    bn: "সাম্প্রতিক",
-  };
-  const filteredStatus = statusMap[language] || "Latest";
+  const localizedProjects = (ps.projects || []) as Project[];
+  const canonicalProjects = defaultTranslations.projectsSection.projects;
+  const projects = FEATURED_PROJECT_IDS.flatMap((id) => {
+    const canonical = canonicalProjects.find((project) => project.id === id);
+    const localized = localizedProjects.find((project) => project.id === id);
 
-  const projects = (ps.projects || [])
-    .filter((p: any) => p.status === filteredStatus)
-    .slice(0, 6);
+    if (!canonical) return [];
+    return localized?.githubLink === canonical.githubLink ? localized : canonical;
+  });
 
   return (
     <section
@@ -91,7 +93,7 @@ const ProjectsSection = () => {
         viewport={{ once: true, amount: 0.05 }}
         className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {projects.map((item: any, idx: number) => (
+        {projects.map((item, idx) => (
           <ProjectCard
             key={item.id ?? idx}
             item={item}
