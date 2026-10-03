@@ -8,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import AppQueryProvider from "@/components/providers/ReactQueryProvider";
 import PortfolioAssistant from "@/components/PortfolioAssistant";
 import NetworkStatus from "@/components/NetworkStatus";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { DEFAULT_DESCRIPTION, DEFAULT_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const dmSerif = DM_Serif_Display({
@@ -53,6 +54,7 @@ export default function RootLayout({
         <ClientProviders>
           <AppQueryProvider>
             <CookieConsent />
+            <AnalyticsTracker />
             {children}
             <PortfolioAssistant />
             <NetworkStatus />

@@ -26,6 +26,7 @@ import {
   translationCoverage,
   websiteContent,
 } from "@/lib/contentInventory";
+import AnalyticsOverview from "@/components/Dashboard/AnalyticsOverview";
 
 type Stats = {
   projects: { total: number; published: number; featured: number };
@@ -144,6 +145,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">Dashboard Overview</h1>
+
+      <AnalyticsOverview />
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {cards.map((c) => (

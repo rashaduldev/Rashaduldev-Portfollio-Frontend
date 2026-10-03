@@ -59,6 +59,7 @@ export async function apiClient<T = any>({
 
       const requestOptions: RequestInit = {
         cache: "no-store",
+        credentials: "include",
         method,
         headers: {
           // Let fetch set the multipart boundary for FormData uploads.

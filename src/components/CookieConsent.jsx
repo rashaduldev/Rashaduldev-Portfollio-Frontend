@@ -35,6 +35,7 @@ const CookieConsent = () => {
   const acceptCookies = () => {
     try {
       localStorage.setItem("cookieConsent", "accepted");
+      window.dispatchEvent(new Event("analytics-consent"));
       setVisible(false);
     } catch {
       // Silently fail without logging
