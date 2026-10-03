@@ -269,7 +269,7 @@
         "desktopimage": "/assets/projects/homequest-astro.png",
         "mobileimage": "/assets/projects/homequest-astro.png",
         "techStack": "Astro, TypeScript, Tailwind CSS, React, AOS",
-        "endtrac": "2026-09-30",
+        "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/homequest-astro",
         "liveLink": "https://homequest-astro.vercel.app",
         "status": "সাম্প্রতিক"
@@ -305,7 +305,7 @@
         "desktopimage": "/assets/projects/temporary-dishwashing-facility.png",
         "mobileimage": "/assets/projects/temporary-dishwashing-facility.png",
         "techStack": "React, TypeScript, Vite, Tailwind CSS, Firebase",
-        "endtrac": "2026-09-30",
+        "endtrac": "Frontend",
         "githubLink": "https://github.com/rashaduldev/temporary-dishwashing-facility",
         "liveLink": "https://temporary-dishwashing-facility-for-lease.com",
         "status": "সাম্প্রতিক"
